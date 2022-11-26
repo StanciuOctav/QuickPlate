@@ -1,0 +1,494 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		533098AC2927B6EB007C441D /* SignInTextFieldModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533098AB2927B6EB007C441D /* SignInTextFieldModifier.swift */; };
+		5337F1EE292ACCEE00C3A766 /* SecureInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5337F1ED292ACCEE00C3A766 /* SecureInputView.swift */; };
+		5387CFDA29252BD60010344B /* Color+CusomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5387CFD929252BD60010344B /* Color+CusomColors.swift */; };
+		538994862920F89700C370BF /* QuickPlateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538994852920F89700C370BF /* QuickPlateApp.swift */; };
+		538994882920F89700C370BF /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538994872920F89700C370BF /* SignInView.swift */; };
+		5389948A2920F89800C370BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 538994892920F89800C370BF /* Assets.xcassets */; };
+		5389948D2920F89800C370BF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5389948C2920F89800C370BF /* Preview Assets.xcassets */; };
+		538994952920FF3C00C370BF /* SpashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538994942920FF3C00C370BF /* SpashScreenView.swift */; };
+		539FDE8A29262B0A0034C036 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539FDE8929262B0A0034C036 /* SignUpView.swift */; };
+		53E2FD1E292B75A900D63069 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E2FD1D292B75A900D63069 /* MapView.swift */; };
+		53E2FD20292B75C600D63069 /* QPTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E2FD1F292B75C600D63069 /* QPTabView.swift */; };
+		53E2FD25292B772400D63069 /* RestaurantsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E2FD24292B772400D63069 /* RestaurantsListView.swift */; };
+		53E2FD27292B773F00D63069 /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E2FD26292B773F00D63069 /* UserProfileView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		533098AB2927B6EB007C441D /* SignInTextFieldModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInTextFieldModifier.swift; sourceTree = "<group>"; };
+		5337F1ED292ACCEE00C3A766 /* SecureInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureInputView.swift; sourceTree = "<group>"; };
+		537F6A16292582E2001CF422 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		5387CFD929252BD60010344B /* Color+CusomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+CusomColors.swift"; sourceTree = "<group>"; };
+		538994822920F89700C370BF /* QuickPlate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickPlate.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		538994852920F89700C370BF /* QuickPlateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickPlateApp.swift; sourceTree = "<group>"; };
+		538994872920F89700C370BF /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
+		538994892920F89800C370BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5389948C2920F89800C370BF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		538994942920FF3C00C370BF /* SpashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpashScreenView.swift; sourceTree = "<group>"; };
+		539FDE8929262B0A0034C036 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		53E2FD1D292B75A900D63069 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		53E2FD1F292B75C600D63069 /* QPTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QPTabView.swift; sourceTree = "<group>"; };
+		53E2FD24292B772400D63069 /* RestaurantsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantsListView.swift; sourceTree = "<group>"; };
+		53E2FD26292B773F00D63069 /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5389947F2920F89700C370BF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		533098A92927B66A007C441D /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				5337F1EC292ACCE200C3A766 /* CustomViews */,
+				533098AA2927B6CF007C441D /* CustomModifiers */,
+				5387CFDB29252DA70010344B /* Extensions */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		533098AA2927B6CF007C441D /* CustomModifiers */ = {
+			isa = PBXGroup;
+			children = (
+				533098AB2927B6EB007C441D /* SignInTextFieldModifier.swift */,
+			);
+			path = CustomModifiers;
+			sourceTree = "<group>";
+		};
+		5337F1EC292ACCE200C3A766 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				5337F1ED292ACCEE00C3A766 /* SecureInputView.swift */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		5387CFDB29252DA70010344B /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5387CFD929252BD60010344B /* Color+CusomColors.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		538994792920F89700C370BF = {
+			isa = PBXGroup;
+			children = (
+				538994842920F89700C370BF /* QuickPlate */,
+				538994832920F89700C370BF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		538994832920F89700C370BF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				538994822920F89700C370BF /* QuickPlate.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		538994842920F89700C370BF /* QuickPlate */ = {
+			isa = PBXGroup;
+			children = (
+				533098A92927B66A007C441D /* Shared */,
+				538994932920FF2E00C370BF /* SplashScreen */,
+				539FDE8B29262B140034C036 /* SignIn */,
+				539FDE8629262AE90034C036 /* SignUp */,
+				53E2FD19292B755900D63069 /* TabView */,
+				53E2FD1B292B759300D63069 /* Map */,
+				53E2FD21292B76E200D63069 /* RestaurantsList */,
+				53E2FD22292B76FC00D63069 /* UserProfile */,
+				537F6A16292582E2001CF422 /* Info.plist */,
+				538994852920F89700C370BF /* QuickPlateApp.swift */,
+				538994892920F89800C370BF /* Assets.xcassets */,
+				5389948B2920F89800C370BF /* Preview Content */,
+			);
+			path = QuickPlate;
+			sourceTree = "<group>";
+		};
+		5389948B2920F89800C370BF /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				5389948C2920F89800C370BF /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		538994932920FF2E00C370BF /* SplashScreen */ = {
+			isa = PBXGroup;
+			children = (
+				538994942920FF3C00C370BF /* SpashScreenView.swift */,
+			);
+			path = SplashScreen;
+			sourceTree = "<group>";
+		};
+		539FDE8629262AE90034C036 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				539FDE8729262AF60034C036 /* View */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		539FDE8729262AF60034C036 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				539FDE8929262B0A0034C036 /* SignUpView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		539FDE8B29262B140034C036 /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				539FDE8D29262B200034C036 /* View */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		539FDE8D29262B200034C036 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				538994872920F89700C370BF /* SignInView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		53E2FD19292B755900D63069 /* TabView */ = {
+			isa = PBXGroup;
+			children = (
+				53E2FD1F292B75C600D63069 /* QPTabView.swift */,
+			);
+			path = TabView;
+			sourceTree = "<group>";
+		};
+		53E2FD1B292B759300D63069 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				53E2FD1D292B75A900D63069 /* MapView.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		53E2FD21292B76E200D63069 /* RestaurantsList */ = {
+			isa = PBXGroup;
+			children = (
+				53E2FD24292B772400D63069 /* RestaurantsListView.swift */,
+			);
+			path = RestaurantsList;
+			sourceTree = "<group>";
+		};
+		53E2FD22292B76FC00D63069 /* UserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				53E2FD26292B773F00D63069 /* UserProfileView.swift */,
+			);
+			path = UserProfile;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		538994812920F89700C370BF /* QuickPlate */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 538994902920F89800C370BF /* Build configuration list for PBXNativeTarget "QuickPlate" */;
+			buildPhases = (
+				5389947E2920F89700C370BF /* Sources */,
+				5389947F2920F89700C370BF /* Frameworks */,
+				538994802920F89700C370BF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = QuickPlate;
+			productName = QuickPlate;
+			productReference = 538994822920F89700C370BF /* QuickPlate.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5389947A2920F89700C370BF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1400;
+				LastUpgradeCheck = 1400;
+				TargetAttributes = {
+					538994812920F89700C370BF = {
+						CreatedOnToolsVersion = 14.0.1;
+					};
+				};
+			};
+			buildConfigurationList = 5389947D2920F89700C370BF /* Build configuration list for PBXProject "QuickPlate" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 538994792920F89700C370BF;
+			productRefGroup = 538994832920F89700C370BF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				538994812920F89700C370BF /* QuickPlate */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		538994802920F89700C370BF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5389948D2920F89800C370BF /* Preview Assets.xcassets in Resources */,
+				5389948A2920F89800C370BF /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5389947E2920F89700C370BF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				538994882920F89700C370BF /* SignInView.swift in Sources */,
+				53E2FD1E292B75A900D63069 /* MapView.swift in Sources */,
+				539FDE8A29262B0A0034C036 /* SignUpView.swift in Sources */,
+				533098AC2927B6EB007C441D /* SignInTextFieldModifier.swift in Sources */,
+				5337F1EE292ACCEE00C3A766 /* SecureInputView.swift in Sources */,
+				538994862920F89700C370BF /* QuickPlateApp.swift in Sources */,
+				53E2FD25292B772400D63069 /* RestaurantsListView.swift in Sources */,
+				53E2FD27292B773F00D63069 /* UserProfileView.swift in Sources */,
+				538994952920FF3C00C370BF /* SpashScreenView.swift in Sources */,
+				53E2FD20292B75C600D63069 /* QPTabView.swift in Sources */,
+				5387CFDA29252BD60010344B /* Color+CusomColors.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		5389948E2920F89800C370BF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5389948F2920F89800C370BF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		538994912920F89800C370BF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"QuickPlate/Preview Content\"";
+				DEVELOPMENT_TEAM = 5UUM37YTC2;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = QuickPlate/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Allow app to access your location?";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ios.QuickPlate;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		538994922920F89800C370BF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"QuickPlate/Preview Content\"";
+				DEVELOPMENT_TEAM = 5UUM37YTC2;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = QuickPlate/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Allow app to access your location?";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ios.QuickPlate;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5389947D2920F89700C370BF /* Build configuration list for PBXProject "QuickPlate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5389948E2920F89800C370BF /* Debug */,
+				5389948F2920F89800C370BF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		538994902920F89800C370BF /* Build configuration list for PBXNativeTarget "QuickPlate" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				538994912920F89800C370BF /* Debug */,
+				538994922920F89800C370BF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5389947A2920F89700C370BF /* Project object */;
+}
