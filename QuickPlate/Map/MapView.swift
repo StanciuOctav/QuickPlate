@@ -12,16 +12,17 @@ import SwiftUI
 
 struct MapView: View {
     
-    @StateObject private var usrLocViewModel = UserLocationViewModel()
+    @StateObject private var locManager = LocationManager()
+    @State var tracking: MapUserTrackingMode = .follow
     
     private var buttonHeight: CGFloat = 50
     private var buttonWidth: CGFloat = 50
     
     var body: some View {
         ZStack(alignment: .top) {
-            Map(coordinateRegion: $usrLocViewModel.region, showsUserLocation: true)
+            Map(coordinateRegion: $locManager.region, interactionModes: .all, showsUserLocation: true, userTrackingMode: $tracking)
                 .ignoresSafeArea(edges: .top)
-                
+            
             HStack {
                 Button {
                     
@@ -42,7 +43,7 @@ struct MapView: View {
                 Spacer()
                 
                 Button {
-                    usrLocViewModel.requestAllowOnceLocationPermission()
+                    locManager.locationManager.startUpdatingLocation()
                 } label: {
                     Circle()
                         .padding()
@@ -54,8 +55,6 @@ struct MapView: View {
                             Image(systemName: "location.fill")
                                 .foregroundColor(.black)
                         )
-                        
-                    
                 }
                 .padding()
             }
@@ -66,32 +65,5 @@ struct MapView: View {
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
         MapView()
-    }
-}
-
-final class UserLocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
-    
-    @Published var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 46.770439, longitude: 23.591423), span: MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
-    
-    let locationManager = CLLocationManager()
-    
-    override init() {
-        super.init()
-        locationManager.delegate = self
-    }
-    
-    func requestAllowOnceLocationPermission() {
-        locationManager.requestWhenInUseAuthorization()
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let latestLocation = locations.first else { return }
-        DispatchQueue.main.async {
-            self.region = MKCoordinateRegion(center: latestLocation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error.localizedDescription)
     }
 }
