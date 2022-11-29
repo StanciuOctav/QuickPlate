@@ -13,7 +13,7 @@ import SwiftUI
 struct MapView: View {
     
     @StateObject private var locManager = LocationManager()
-    @State var tracking: MapUserTrackingMode = .follow
+    @State private var tracking: MapUserTrackingMode = .follow
     
     private var buttonHeight: CGFloat = 50
     private var buttonWidth: CGFloat = 50

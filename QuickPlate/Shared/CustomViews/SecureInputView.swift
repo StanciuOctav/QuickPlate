@@ -27,7 +27,6 @@ struct SecureInputView: View {
     
     var body: some View {
         ZStack(alignment: .trailing) {
-            Group {
                 if isSecured {
                     SecureField(title, text: $text)
                         .signInTextFieldStyle(withHeight: self.maxHeight, topLeading: self.topLeading, backgroundColor: self.backgroundColor)
@@ -35,7 +34,6 @@ struct SecureInputView: View {
                     TextField(title, text: $text)
                         .signInTextFieldStyle(withHeight: self.maxHeight, topLeading: self.topLeading, backgroundColor: self.backgroundColor)
                 }
-            }
             
             Button(action: {
                 isSecured.toggle()
@@ -43,5 +41,6 @@ struct SecureInputView: View {
                 Image(systemName: self.isSecured ? "eye.slash.fill" : "eye.fill")
             }.padding(.trailing, 10)
         }
+        .tint(.black)
     }
 }

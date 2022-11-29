@@ -23,30 +23,28 @@ struct SignInView: View {
             QPTabView()
         } else {
             NavigationView {
-                VStack {
-                    // MARK: HEADER
-                    Image("app-icon")
-                    Text("Bine ai venit!")
-                        .fontWeight(.medium)
-                        .font(.system(size: 20))
-                    Text("Intra in cont pentru a putea rezerva o masa la un restaurant si pentru a seta o precomanda.")
-                        .multilineTextAlignment(.center)
-                        .padding()
-                    
-                    // MARK: BODY
-                    GeometryReader { geo in
+                ScrollView {
+                    VStack {
+                        // MARK: HEADER
+                        Image("app-icon")
+                        Text("Bine ai venit!")
+                            .fontWeight(.medium)
+                            .font(.system(size: 20))
+                        Text("Intra in cont pentru a putea rezerva o masa la un restaurant si pentru a seta o precomanda.")
+                            .multilineTextAlignment(.center)
+                            .padding()
+                        
+                        // MARK: BODY
                         VStack(spacing: 30) {
-                            Group {
-                                TextField("Nume utilizator", text: $username)
-                                SecureField("Parola", text: $password)
-                            }
-                            .signInTextFieldStyle(withHeight: self.maxHeight, topLeading: 10, backgroundColor: Color.qpLightGrayColor)
+                            TextField("Nume utilizator", text: $username)
+                                .signInTextFieldStyle(withHeight: self.maxHeight, topLeading: 10, backgroundColor: Color.qpLightGrayColor)
+                            SecureInputView("Parola", text: $password, maxHeight: self.maxHeight, topLeading: 10, backgroundColor: Color.qpLightGrayColor)
                             
                             
                             
                             Button(action: {
                                 //if username != "" && password != "" {
-                                    signIn.toggle()
+                                signIn.toggle()
                                 //}
                             }) {
                                 Text("Intra in cont")
@@ -59,7 +57,9 @@ struct SignInView: View {
                             .background(Color.qpOrange)
                             .cornerRadius(.infinity)
                             
+                            
                             Text("sau")
+                                .frame(maxWidth: .infinity)
                             
                             Button {
                                 signUp.toggle()
@@ -71,7 +71,7 @@ struct SignInView: View {
                                 } label: {
                                     Text("Creeaza un cont nou")
                                         .padding()
-                                        .frame(maxWidth: abs(geo.size.width - self.roundedRectangleLineWidth), maxHeight: self.maxHeight)
+                                        .frame(maxWidth: .infinity, maxHeight: self.maxHeight)
                                         .foregroundColor(Color.qpOrange)
                                         .overlay(
                                             RoundedRectangle(cornerRadius: .infinity)
@@ -81,8 +81,8 @@ struct SignInView: View {
                             }
                         }
                     }
+                    .padding()
                 }
-                .padding()
             }
         }
     }
