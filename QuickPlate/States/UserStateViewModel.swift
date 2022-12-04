@@ -14,11 +14,11 @@ class UserStateViewModel: ObservableObject {
     
     func signIn() {
         self.isLoggedIn = true
-        print("USER STATE SIGN IN \(isLoggedIn)")
+        // print("USER STATE SIGN IN \(isLoggedIn)")
     }
     
     func signOut() {
         self.isLoggedIn = false
-        print("USER STATE SIGN IN \(isLoggedIn)")
+        // print("USER STATE SIGN IN \(isLoggedIn)")
     }
 }

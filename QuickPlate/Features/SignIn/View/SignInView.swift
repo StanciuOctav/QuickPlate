@@ -11,9 +11,12 @@ struct SignInView: View {
     
     private let maxHeight: CGFloat = 50
     private let roundedRectangleLineWidth: CGFloat = 3
+    private let fontSize: CGFloat = 20
     
     @EnvironmentObject var userStateViewModel: UserStateViewModel
     @StateObject var viewModel = SignInViewModel()
+    
+    @State var showCredentialsErrors: Bool = false
     
     @State private var signUp: Bool = false
     
@@ -24,7 +27,7 @@ struct SignInView: View {
                 Image("app-icon")
                 Text("Bine ai venit!")
                     .fontWeight(.medium)
-                    .font(.system(size: 20))
+                    .font(.system(size: self.fontSize))
                 Text("Intra in cont pentru a putea rezerva o masa la un restaurant si pentru a seta o precomanda.")
                     .multilineTextAlignment(.center)
                     .padding()
@@ -35,13 +38,20 @@ struct SignInView: View {
                         .signInTextFieldStyle(withHeight: self.maxHeight, topLeading: 10, backgroundColor: Color.qpLightGrayColor)
                     SecureInputView("Parola", text: $viewModel.password, maxHeight: self.maxHeight, topLeading: 10, backgroundColor: Color.qpLightGrayColor)
                     
+                    Text("Credentiale gresite / Cont inexistent")
+                        .foregroundColor(.red)
+                        .hidden(!self.showCredentialsErrors)
+                        
                     Button(action: {
-                        userStateViewModel.signIn()
-//                        viewModel.loginUser()
-//                        print("AFTER \(viewModel.signInSuccessfull)")
-////                        if (viewModel.isSignedIn()) {
-////                            userStateViewModel.signIn()
-////                        }
+                        viewModel.signIn { didNotSignIn in
+                            if didNotSignIn != nil {
+                                self.showCredentialsErrors = true
+                            } else {
+                                print("Did the user sign in? \(didNotSignIn != nil ? "NO" : "YES")")
+                                self.showCredentialsErrors = false
+                                userStateViewModel.signIn()
+                            }
+                        }
                     }) {
                         Text("Intra in cont")
                             .frame(maxWidth: .infinity, maxHeight: self.maxHeight)

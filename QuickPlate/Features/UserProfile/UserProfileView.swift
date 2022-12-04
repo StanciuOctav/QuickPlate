@@ -9,11 +9,19 @@ import SwiftUI
 
 struct UserProfileView: View {
     
+    @StateObject var vm = UserProfileViewModel()
     @EnvironmentObject var userStateViewModel: UserStateViewModel
     
     var body: some View {
             Button {
-                userStateViewModel.signOut()
+                vm.signOut(completion: { didNotSignOut in
+                    if didNotSignOut != nil {
+                        print("UserProfileView - The user couldn't sign out")
+                    } else {
+                        print("Did the user sign out? \(didNotSignOut != nil ? "NO" : "YES")")
+                        userStateViewModel.signOut()
+                    }
+                })
             } label: {
                 Text("Sign Out from app")
             }

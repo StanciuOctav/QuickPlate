@@ -13,6 +13,8 @@
 		535195D3293CA0DB00A44820 /* FirebaseEmailAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535195D2293CA0DB00A44820 /* FirebaseEmailAuth.swift */; };
 		535195DF293CBA7600A44820 /* UserStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535195DE293CBA7600A44820 /* UserStateViewModel.swift */; };
 		535195E1293CBBC200A44820 /* ApplicationSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535195E0293CBBC200A44820 /* ApplicationSwitcher.swift */; };
+		535195E4293CCA2900A44820 /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535195E3293CCA2900A44820 /* UserProfileViewModel.swift */; };
+		535195E6293CCCDA00A44820 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535195E5293CCCDA00A44820 /* View+Extensions.swift */; };
 		5387CFDA29252BD60010344B /* Color+CusomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5387CFD929252BD60010344B /* Color+CusomColors.swift */; };
 		538994862920F89700C370BF /* QuickPlateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538994852920F89700C370BF /* QuickPlateApp.swift */; };
 		538994882920F89700C370BF /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538994872920F89700C370BF /* SignInView.swift */; };
@@ -49,6 +51,8 @@
 		535195D2293CA0DB00A44820 /* FirebaseEmailAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseEmailAuth.swift; sourceTree = "<group>"; };
 		535195DE293CBA7600A44820 /* UserStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStateViewModel.swift; sourceTree = "<group>"; };
 		535195E0293CBBC200A44820 /* ApplicationSwitcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationSwitcher.swift; sourceTree = "<group>"; };
+		535195E3293CCA2900A44820 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
+		535195E5293CCCDA00A44820 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		537F6A16292582E2001CF422 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5387CFD929252BD60010344B /* Color+CusomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+CusomColors.swift"; sourceTree = "<group>"; };
 		538994822920F89700C370BF /* QuickPlate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickPlate.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -161,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				5387CFD929252BD60010344B /* Color+CusomColors.swift */,
+				535195E5293CCCDA00A44820 /* View+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -274,6 +279,7 @@
 			isa = PBXGroup;
 			children = (
 				53E2FD26292B773F00D63069 /* UserProfileView.swift */,
+				535195E3293CCA2900A44820 /* UserProfileViewModel.swift */,
 			);
 			path = UserProfile;
 			sourceTree = "<group>";
@@ -378,11 +384,13 @@
 				5337F1EE292ACCEE00C3A766 /* SecureInputView.swift in Sources */,
 				538994862920F89700C370BF /* QuickPlateApp.swift in Sources */,
 				53E2FD25292B772400D63069 /* RestaurantsListView.swift in Sources */,
+				535195E6293CCCDA00A44820 /* View+Extensions.swift in Sources */,
 				535195DF293CBA7600A44820 /* UserStateViewModel.swift in Sources */,
 				53E2FD27292B773F00D63069 /* UserProfileView.swift in Sources */,
 				53E19D6A2934042C00A79735 /* LocationManager.swift in Sources */,
 				538994952920FF3C00C370BF /* SpashScreenView.swift in Sources */,
 				53E2FD20292B75C600D63069 /* QPTabView.swift in Sources */,
+				535195E4293CCA2900A44820 /* UserProfileViewModel.swift in Sources */,
 				5387CFDA29252BD60010344B /* Color+CusomColors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
