@@ -33,8 +33,8 @@ struct QPTabView: View {
     }
 }
 
-struct QPTabView_Previews: PreviewProvider {
-    static var previews: some View {
-        QPTabView()
-    }
-}
+//struct QPTabView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        QPTabView()
+//    }
+//}

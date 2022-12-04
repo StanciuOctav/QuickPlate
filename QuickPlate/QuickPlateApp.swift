@@ -21,9 +21,14 @@ struct QuickPlateApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
+    @StateObject var userStateViewModel = UserStateViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            SplashScreenView()
+            NavigationView {
+                SplashScreenView()
+            }
+            .environmentObject(userStateViewModel)
         }
     }
 }

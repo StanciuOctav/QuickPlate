@@ -9,18 +9,14 @@ import SwiftUI
 
 struct UserProfileView: View {
     
-    @State var userSignOut: Bool = false
+    @EnvironmentObject var userStateViewModel: UserStateViewModel
     
     var body: some View {
-        if (userSignOut) {
-            SignInView()
-        } else {
             Button {
-                userSignOut.toggle()
+                userStateViewModel.signOut()
             } label: {
                 Text("Sign Out from app")
             }
-        }
     }
 }
 

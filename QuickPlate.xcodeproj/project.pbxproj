@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		533098AC2927B6EB007C441D /* SignInTextFieldModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533098AB2927B6EB007C441D /* SignInTextFieldModifier.swift */; };
 		5337F1EE292ACCEE00C3A766 /* SecureInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5337F1ED292ACCEE00C3A766 /* SecureInputView.swift */; };
+		535195D0293C9C6600A44820 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535195CF293C9C6500A44820 /* SignInViewModel.swift */; };
+		535195D3293CA0DB00A44820 /* FirebaseEmailAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535195D2293CA0DB00A44820 /* FirebaseEmailAuth.swift */; };
+		535195DF293CBA7600A44820 /* UserStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535195DE293CBA7600A44820 /* UserStateViewModel.swift */; };
+		535195E1293CBBC200A44820 /* ApplicationSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535195E0293CBBC200A44820 /* ApplicationSwitcher.swift */; };
 		5387CFDA29252BD60010344B /* Color+CusomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5387CFD929252BD60010344B /* Color+CusomColors.swift */; };
 		538994862920F89700C370BF /* QuickPlateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538994852920F89700C370BF /* QuickPlateApp.swift */; };
 		538994882920F89700C370BF /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538994872920F89700C370BF /* SignInView.swift */; };
@@ -41,6 +45,10 @@
 /* Begin PBXFileReference section */
 		533098AB2927B6EB007C441D /* SignInTextFieldModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInTextFieldModifier.swift; sourceTree = "<group>"; };
 		5337F1ED292ACCEE00C3A766 /* SecureInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureInputView.swift; sourceTree = "<group>"; };
+		535195CF293C9C6500A44820 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
+		535195D2293CA0DB00A44820 /* FirebaseEmailAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseEmailAuth.swift; sourceTree = "<group>"; };
+		535195DE293CBA7600A44820 /* UserStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStateViewModel.swift; sourceTree = "<group>"; };
+		535195E0293CBBC200A44820 /* ApplicationSwitcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationSwitcher.swift; sourceTree = "<group>"; };
 		537F6A16292582E2001CF422 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5387CFD929252BD60010344B /* Color+CusomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+CusomColors.swift"; sourceTree = "<group>"; };
 		538994822920F89700C370BF /* QuickPlate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickPlate.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -86,6 +94,7 @@
 		533098A92927B66A007C441D /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				535195D1293CA0C300A44820 /* Auth */,
 				5337F1EC292ACCE200C3A766 /* CustomViews */,
 				533098AA2927B6CF007C441D /* CustomModifiers */,
 				5387CFDB29252DA70010344B /* Extensions */,
@@ -107,6 +116,45 @@
 				5337F1ED292ACCEE00C3A766 /* SecureInputView.swift */,
 			);
 			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		535195CE293C9C5700A44820 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				535195CF293C9C6500A44820 /* SignInViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		535195D1293CA0C300A44820 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				535195D2293CA0DB00A44820 /* FirebaseEmailAuth.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		535195D4293CA7B500A44820 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				538994932920FF2E00C370BF /* SplashScreen */,
+				539FDE8B29262B140034C036 /* SignIn */,
+				539FDE8629262AE90034C036 /* SignUp */,
+				53E2FD19292B755900D63069 /* TabView */,
+				53E2FD1B292B759300D63069 /* Map */,
+				53E2FD21292B76E200D63069 /* RestaurantsList */,
+				53E2FD22292B76FC00D63069 /* UserProfile */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		535195E2293CC18F00A44820 /* States */ = {
+			isa = PBXGroup;
+			children = (
+				535195E0293CBBC200A44820 /* ApplicationSwitcher.swift */,
+				535195DE293CBA7600A44820 /* UserStateViewModel.swift */,
+			);
+			path = States;
 			sourceTree = "<group>";
 		};
 		5387CFDB29252DA70010344B /* Extensions */ = {
@@ -136,18 +184,13 @@
 		538994842920F89700C370BF /* QuickPlate */ = {
 			isa = PBXGroup;
 			children = (
-				53A2C3E8293BE13D00CD6FC3 /* GoogleService-Info.plist */,
+				535195E2293CC18F00A44820 /* States */,
+				535195D4293CA7B500A44820 /* Features */,
 				533098A92927B66A007C441D /* Shared */,
-				538994932920FF2E00C370BF /* SplashScreen */,
-				539FDE8B29262B140034C036 /* SignIn */,
-				539FDE8629262AE90034C036 /* SignUp */,
-				53E2FD19292B755900D63069 /* TabView */,
-				53E2FD1B292B759300D63069 /* Map */,
-				53E2FD21292B76E200D63069 /* RestaurantsList */,
-				53E2FD22292B76FC00D63069 /* UserProfile */,
-				537F6A16292582E2001CF422 /* Info.plist */,
 				538994852920F89700C370BF /* QuickPlateApp.swift */,
 				538994892920F89800C370BF /* Assets.xcassets */,
+				537F6A16292582E2001CF422 /* Info.plist */,
+				53A2C3E8293BE13D00CD6FC3 /* GoogleService-Info.plist */,
 				5389948B2920F89800C370BF /* Preview Content */,
 			);
 			path = QuickPlate;
@@ -188,6 +231,7 @@
 		539FDE8B29262B140034C036 /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
+				535195CE293C9C5700A44820 /* ViewModel */,
 				539FDE8D29262B200034C036 /* View */,
 			);
 			path = SignIn;
@@ -325,12 +369,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				538994882920F89700C370BF /* SignInView.swift in Sources */,
+				535195E1293CBBC200A44820 /* ApplicationSwitcher.swift in Sources */,
 				53E2FD1E292B75A900D63069 /* MapView.swift in Sources */,
 				539FDE8A29262B0A0034C036 /* SignUpView.swift in Sources */,
 				533098AC2927B6EB007C441D /* SignInTextFieldModifier.swift in Sources */,
+				535195D0293C9C6600A44820 /* SignInViewModel.swift in Sources */,
+				535195D3293CA0DB00A44820 /* FirebaseEmailAuth.swift in Sources */,
 				5337F1EE292ACCEE00C3A766 /* SecureInputView.swift in Sources */,
 				538994862920F89700C370BF /* QuickPlateApp.swift in Sources */,
 				53E2FD25292B772400D63069 /* RestaurantsListView.swift in Sources */,
+				535195DF293CBA7600A44820 /* UserStateViewModel.swift in Sources */,
 				53E2FD27292B773F00D63069 /* UserProfileView.swift in Sources */,
 				53E19D6A2934042C00A79735 /* LocationManager.swift in Sources */,
 				538994952920FF3C00C370BF /* SpashScreenView.swift in Sources */,

@@ -10,10 +10,11 @@ import SwiftUI
 struct SplashScreenView: View {
     
     @State var isActive: Bool = false
+    @EnvironmentObject var vm: UserStateViewModel
     
     var body: some View {
         if (isActive) {
-            SignInView()
+            ApplicationSwitcher()
         } else {
             ZStack {
                 Color("qp-beige-color").ignoresSafeArea()
