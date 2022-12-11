@@ -15,10 +15,6 @@ struct SignInView: View {
     @EnvironmentObject var userStateViewModel: UserStateViewModel
     @StateObject var viewModel = SignInViewModel()
 
-    @State var showCredentialsErrors: Bool = false
-
-    @State private var signUp: Bool = false
-
     var body: some View {
         ScrollView {
             VStack {
@@ -39,16 +35,20 @@ struct SignInView: View {
                         .signInTextFieldStyle(withHeight: self.maxHeight, topLeading: 10, backgroundColor: Color.qpLightGrayColor)
                     SecureInputView("Parola", text: $viewModel.password, maxHeight: self.maxHeight, topLeading: 10, backgroundColor: Color.qpLightGrayColor)
 
-                    Text("Credentiale gresite / Cont inexistent")
-                        .foregroundColor(.red)
-                        .hidden(!self.showCredentialsErrors)
+                    if viewModel.getShowCredentialsError() {
+                        // FIXME: This remains if the user doesn't insert the right credentials AND comes back from the Sign Up Page
+                        Text("Credentiale gresite / Cont inexistent")
+                            .foregroundColor(.red)
+                    } else {
+                        EmptyView()
+                    }
 
                     Button(action: {
                         viewModel.signIn { didNotSignIn in
                             if didNotSignIn != nil {
-                                self.showCredentialsErrors = true
+                                viewModel.setShowCredentialsErrors(withBool: true)
                             } else {
-                                self.showCredentialsErrors = false
+                                viewModel.setShowCredentialsErrors(withBool: false)
                                 userStateViewModel.signIn()
                             }
                         }
@@ -67,7 +67,7 @@ struct SignInView: View {
                         .frame(maxWidth: .infinity)
 
                     Button {
-                        signUp.toggle()
+                        viewModel.setShowCredentialsErrors(withBool: false)
                         print("Trying to Sign Up")
                     } label: {
                         NavigationLink {

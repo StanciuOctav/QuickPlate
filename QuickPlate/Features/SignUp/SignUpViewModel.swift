@@ -16,10 +16,10 @@ final class SignUpViewModel: ObservableObject {
     @Published var email: String = ""
     @Published var password: String = ""
     @Published var confirmPassword: String = ""
+    // FIXME: Maybe in the future have a list of working restaurants with DocumentReferences in them (REMEMBER: DocumentReference cannot be empty in firestore or it may not be a document at the specified path)
+    @Published var restaurantId: String = ""
 
     var dropdownRoles = ["Client", "Chelner", "Barman", "Bucatar"]
-    // TODO: Populate dropdownRestaurant with those from DB
-    var dropdownRestaurants = ["Marty", "Samsara", "Noir"]
 
     var passwordWrongFormat: Bool {
         return passwordHasWrongFormat()
@@ -44,6 +44,10 @@ final class SignUpViewModel: ObservableObject {
             email != ""
     }
 
+    func setRestaurantId(withId id: String) {
+        restaurantId = id
+    }
+
     let db = Firestore.firestore()
 
     private func doSignUpAuth(completion: @escaping (Error?) -> Void) {
@@ -59,13 +63,13 @@ final class SignUpViewModel: ObservableObject {
         }
     }
 
-    func doSignUp(withRole role: String, andRestaurant rest: String) {
+    func doSignUp(withRole role: String) {
         doSignUpAuth { error in
             if let error {
                 print("SignUpViewModel: doSignUp - Could not sign in")
                 print(error.localizedDescription)
             } else {
-                guard let newUser = MyUser(username: self.username, firstName: self.firstName, lastName: self.lastName, role: role, restaurantWorking: rest, email: self.email, password: self.password, favouriteRestaurants: []) else { return }
+                let newUser = MyUser(id: UUID().uuidString, username: self.username, firstName: self.firstName, lastName: self.lastName, role: role, restaurantWorking: self.restaurantId, email: self.email, password: self.password, favouriteRestaurants: [])
                 UserCollection.shared().saveToDB(user: newUser) { error in
                     if error != nil {
                         print("SignUpViewModel: doSignUp - Error in saving user to db")

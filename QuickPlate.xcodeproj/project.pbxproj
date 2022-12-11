@@ -15,6 +15,11 @@
 		535195E1293CBBC200A44820 /* ApplicationSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535195E0293CBBC200A44820 /* ApplicationSwitcher.swift */; };
 		535195E4293CCA2900A44820 /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535195E3293CCA2900A44820 /* UserProfileViewModel.swift */; };
 		535195E6293CCCDA00A44820 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535195E5293CCCDA00A44820 /* View+Extensions.swift */; };
+		537A1B19294658E000979FCA /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537A1B18294658E000979FCA /* Restaurant.swift */; };
+		537A1B1B29465BA800979FCA /* RestaurantsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537A1B1A29465BA800979FCA /* RestaurantsViewModel.swift */; };
+		537A1B1D29467CD100979FCA /* RestaurantSignUpDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537A1B1C29467CD100979FCA /* RestaurantSignUpDTO.swift */; };
+		537A1B2129467D5600979FCA /* RestaurantSignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537A1B2029467D5600979FCA /* RestaurantSignUpViewModel.swift */; };
+		537A1B2329467E7800979FCA /* RestaurantSignUpDTO+Hashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537A1B2229467E7800979FCA /* RestaurantSignUpDTO+Hashable.swift */; };
 		537E800D2945F3C700A02B04 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537E800C2945F3C700A02B04 /* SignUpViewModel.swift */; };
 		5387CFDA29252BD60010344B /* Color+CusomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5387CFD929252BD60010344B /* Color+CusomColors.swift */; };
 		538994862920F89700C370BF /* QuickPlateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538994852920F89700C370BF /* QuickPlateApp.swift */; };
@@ -56,6 +61,11 @@
 		535195E0293CBBC200A44820 /* ApplicationSwitcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationSwitcher.swift; sourceTree = "<group>"; };
 		535195E3293CCA2900A44820 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
 		535195E5293CCCDA00A44820 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		537A1B18294658E000979FCA /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		537A1B1A29465BA800979FCA /* RestaurantsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantsViewModel.swift; sourceTree = "<group>"; };
+		537A1B1C29467CD100979FCA /* RestaurantSignUpDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantSignUpDTO.swift; sourceTree = "<group>"; };
+		537A1B2029467D5600979FCA /* RestaurantSignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantSignUpViewModel.swift; sourceTree = "<group>"; };
+		537A1B2229467E7800979FCA /* RestaurantSignUpDTO+Hashable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RestaurantSignUpDTO+Hashable.swift"; sourceTree = "<group>"; };
 		537E800C2945F3C700A02B04 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		537F6A16292582E2001CF422 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5387CFD929252BD60010344B /* Color+CusomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+CusomColors.swift"; sourceTree = "<group>"; };
@@ -104,8 +114,9 @@
 		533098A92927B66A007C441D /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				537A1B1E29467CD900979FCA /* DTOs */,
 				53A5E8DC29461D2E00DBFAFE /* Queries */,
-				53A5E8D2294606E600DBFAFE /* Entities */,
+				53A5E8D2294606E600DBFAFE /* Models */,
 				535195D1293CA0C300A44820 /* Auth */,
 				5337F1EC292ACCE200C3A766 /* CustomViews */,
 				533098AA2927B6CF007C441D /* CustomModifiers */,
@@ -161,11 +172,20 @@
 			path = States;
 			sourceTree = "<group>";
 		};
+		537A1B1E29467CD900979FCA /* DTOs */ = {
+			isa = PBXGroup;
+			children = (
+				537A1B1C29467CD100979FCA /* RestaurantSignUpDTO.swift */,
+			);
+			path = DTOs;
+			sourceTree = "<group>";
+		};
 		5387CFDB29252DA70010344B /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				5387CFD929252BD60010344B /* Color+CusomColors.swift */,
 				535195E5293CCCDA00A44820 /* View+Extensions.swift */,
+				537A1B2229467E7800979FCA /* RestaurantSignUpDTO+Hashable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -220,6 +240,7 @@
 		539FDE8629262AE90034C036 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
+				537A1B2029467D5600979FCA /* RestaurantSignUpViewModel.swift */,
 				537E800C2945F3C700A02B04 /* SignUpViewModel.swift */,
 				539FDE8929262B0A0034C036 /* SignUpView.swift */,
 			);
@@ -235,18 +256,20 @@
 			path = SignIn;
 			sourceTree = "<group>";
 		};
-		53A5E8D2294606E600DBFAFE /* Entities */ = {
+		53A5E8D2294606E600DBFAFE /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				53A5E8D3294606F400DBFAFE /* MyUser.swift */,
+				537A1B18294658E000979FCA /* Restaurant.swift */,
 			);
-			path = Entities;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		53A5E8DC29461D2E00DBFAFE /* Queries */ = {
 			isa = PBXGroup;
 			children = (
 				53A5E8DA29461B2000DBFAFE /* UserCollection.swift */,
+				537A1B1A29465BA800979FCA /* RestaurantsViewModel.swift */,
 			);
 			path = Queries;
 			sourceTree = "<group>";
@@ -375,17 +398,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				537A1B19294658E000979FCA /* Restaurant.swift in Sources */,
 				538994882920F89700C370BF /* SignInView.swift in Sources */,
 				535195E1293CBBC200A44820 /* ApplicationSwitcher.swift in Sources */,
 				53E2FD1E292B75A900D63069 /* MapView.swift in Sources */,
 				539FDE8A29262B0A0034C036 /* SignUpView.swift in Sources */,
 				533098AC2927B6EB007C441D /* SignInTextFieldModifier.swift in Sources */,
 				537E800D2945F3C700A02B04 /* SignUpViewModel.swift in Sources */,
+				537A1B2129467D5600979FCA /* RestaurantSignUpViewModel.swift in Sources */,
 				535195D0293C9C6600A44820 /* SignInViewModel.swift in Sources */,
 				535195D3293CA0DB00A44820 /* FirebaseEmailAuth.swift in Sources */,
 				53A5E8DB29461B2000DBFAFE /* UserCollection.swift in Sources */,
+				537A1B1D29467CD100979FCA /* RestaurantSignUpDTO.swift in Sources */,
 				53A5E8D4294606F400DBFAFE /* MyUser.swift in Sources */,
 				5337F1EE292ACCEE00C3A766 /* SecureInputView.swift in Sources */,
+				537A1B2329467E7800979FCA /* RestaurantSignUpDTO+Hashable.swift in Sources */,
 				538994862920F89700C370BF /* QuickPlateApp.swift in Sources */,
 				53E2FD25292B772400D63069 /* RestaurantsListView.swift in Sources */,
 				535195E6293CCCDA00A44820 /* View+Extensions.swift in Sources */,
@@ -393,6 +420,7 @@
 				53E2FD27292B773F00D63069 /* UserProfileView.swift in Sources */,
 				53E19D6A2934042C00A79735 /* LocationManager.swift in Sources */,
 				538994952920FF3C00C370BF /* SpashScreenView.swift in Sources */,
+				537A1B1B29465BA800979FCA /* RestaurantsViewModel.swift in Sources */,
 				53E2FD20292B75C600D63069 /* QPTabView.swift in Sources */,
 				535195E4293CCA2900A44820 /* UserProfileViewModel.swift in Sources */,
 				5387CFDA29252BD60010344B /* Color+CusomColors.swift in Sources */,

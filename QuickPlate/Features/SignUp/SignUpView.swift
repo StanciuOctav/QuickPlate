@@ -11,6 +11,7 @@ struct SignUpView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
     @StateObject private var viewModel = SignUpViewModel()
+    @StateObject private var restaurantsViewModel = RestaurantsSignUpViewModel()
 
     @State private var passwordFormatError: Bool = false
     @State private var passwordsDontMatch: Bool = false
@@ -61,9 +62,10 @@ struct SignUpView: View {
                         }
 
                         Menu {
-                            ForEach(viewModel.dropdownRestaurants, id: \.self) { restaurant in
-                                Button(restaurant) {
-                                    self.selectedRestaurant = restaurant
+                            ForEach(restaurantsViewModel.restaurants, id: \.self) { restaurant in
+                                Button(restaurant.name) {
+                                    viewModel.setRestaurantId(withId: restaurant.id)
+                                    self.selectedRestaurant = restaurant.name
                                 }
                             }
                         } label: {
@@ -111,7 +113,7 @@ struct SignUpView: View {
                         }
 
                         if !self.fieldsIncompleted && !self.passwordFormatError && !self.passwordsDontMatch {
-                            viewModel.doSignUp(withRole: self.selectedRole, andRestaurant: self.selectedRestaurant)
+                            viewModel.doSignUp(withRole: self.selectedRole)
                             successSignUp = true
                         }
                     }) {
@@ -154,8 +156,7 @@ struct SignUpView: View {
             }
         }
         .alert("Completeaza toate campurile inainte de a-ti face cont!", isPresented: $fieldsIncompleted) {
-            Button("OK", role: .cancel) {
-            }
+            Button("OK", role: .cancel) { }
         }
     }
 

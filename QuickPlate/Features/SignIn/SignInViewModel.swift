@@ -9,8 +9,19 @@ import FirebaseFirestore
 import Foundation
 
 final class SignInViewModel: ObservableObject {
+    // For user
     @Published var email: String = ""
     @Published var password: String = ""
+    // For views
+    @Published var showCredentialsErrors: Bool = false
+
+    func setShowCredentialsErrors(withBool value: Bool) {
+        showCredentialsErrors = value
+    }
+
+    func getShowCredentialsError() -> Bool {
+        return showCredentialsErrors
+    }
 
     func signIn(completion: @escaping (Error?) -> Void) {
         FirebaseEmailAuth.shared().doLogin(email: email, password: password) { error in
