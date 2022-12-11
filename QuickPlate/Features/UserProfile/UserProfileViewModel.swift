@@ -8,7 +8,6 @@
 import Foundation
 
 final class UserProfileViewModel: ObservableObject {
-    
     func signOut(completion: @escaping (Error?) -> Void) {
         FirebaseEmailAuth.shared().doLogout { error in
             if let error = error {

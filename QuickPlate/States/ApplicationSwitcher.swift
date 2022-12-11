@@ -8,11 +8,10 @@
 import SwiftUI
 
 struct ApplicationSwitcher: View {
-    
     @EnvironmentObject var vm: UserStateViewModel
-    
+
     var body: some View {
-        if (vm.isLoggedIn) {
+        if vm.isLoggedIn {
             QPTabView()
         } else {
             SignInView()

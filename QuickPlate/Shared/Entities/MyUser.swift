@@ -5,9 +5,9 @@
 //  Created by Ioan-Octavian Stanciu on 11.12.2022.
 //
 
-import Foundation
 import Firebase
 import FirebaseFirestoreSwift
+import Foundation
 
 struct MyUser: Codable, Identifiable {
     @DocumentID var id: String?
@@ -19,7 +19,7 @@ struct MyUser: Codable, Identifiable {
     var email: String?
     var password: String?
     var favouriteRestaurants: [String]?
-    
+
     init?(username: String? = nil, firstName: String? = nil, lastName: String? = nil, role: String? = nil, restaurantWorking: String, email: String? = nil, password: String? = nil, favouriteRestaurants: [String]) {
         self.username = username
         self.firstName = firstName

@@ -8,11 +8,10 @@
 import SwiftUI
 
 struct SplashScreenView: View {
-    
     @State var isActive: Bool = false
-    
+
     var body: some View {
-        if (isActive) {
+        if isActive {
             ApplicationSwitcher()
         } else {
             ZStack {
@@ -23,7 +22,7 @@ struct SplashScreenView: View {
                         .font(.system(size: 40))
                 }
             }
-            .onAppear() {
+            .onAppear {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                     withAnimation {
                         self.isActive = true

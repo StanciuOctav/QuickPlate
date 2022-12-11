@@ -5,12 +5,11 @@
 //  Created by Ioan-Octavian Stanciu on 13.11.2022.
 //
 
-import SwiftUI
 import FirebaseCore
+import SwiftUI
 
 class AppDelegate: NSObject, UIApplicationDelegate {
-        
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         FirebaseApp.configure()
         return true
     }
@@ -18,11 +17,10 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
 @main
 struct QuickPlateApp: App {
-    
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
-    
+
     @StateObject var userStateViewModel = UserStateViewModel()
-    
+
     var body: some Scene {
         WindowGroup {
             NavigationView {

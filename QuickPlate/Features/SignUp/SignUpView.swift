@@ -16,12 +16,12 @@ struct SignUpView: View {
     @State private var passwordsDontMatch: Bool = false
     @State private var successSignUp: Bool = false
     @State private var fieldsIncompleted: Bool = false
-    
+
     @State private var selectedRole: String = ""
     @State private var selectedRestaurant: String = ""
-    
+
     var isRestaurantDisabled: Bool {
-        !(self.selectedRole != "Client" && !self.selectedRole.isEmpty)
+        !(selectedRole != "Client" && !selectedRole.isEmpty)
     }
 
     private let maxHeight: CGFloat = 50
@@ -104,8 +104,8 @@ struct SignUpView: View {
 
                     Button(action: {
                         self.fieldsIncompleted = viewModel.allFieldsAreCompleted() && selectedRole != "" ? false : true
-                        
-                        if (self.fieldsIncompleted == false) {
+
+                        if self.fieldsIncompleted == false {
                             self.passwordFormatError = viewModel.passwordWrongFormat
                             self.passwordsDontMatch = viewModel.passwordsAreDifferent
                         }
@@ -155,7 +155,6 @@ struct SignUpView: View {
         }
         .alert("Completeaza toate campurile inainte de a-ti face cont!", isPresented: $fieldsIncompleted) {
             Button("OK", role: .cancel) {
-                
             }
         }
     }

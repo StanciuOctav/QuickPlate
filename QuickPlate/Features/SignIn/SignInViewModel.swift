@@ -5,14 +5,13 @@
 //  Created by Ioan-Octavian Stanciu on 04.12.2022.
 //
 
-import Foundation
 import FirebaseFirestore
+import Foundation
 
 final class SignInViewModel: ObservableObject {
-    
     @Published var email: String = ""
     @Published var password: String = ""
-    
+
     func signIn(completion: @escaping (Error?) -> Void) {
         FirebaseEmailAuth.shared().doLogin(email: email, password: password) { error in
             if let error {

@@ -8,33 +8,32 @@
 import SwiftUI
 
 struct SecureInputView: View {
-    
     @Binding private var text: String
     @State private var isSecured: Bool = true
     private var title: String
-    
+
     private var maxHeight: CGFloat
     private var backgroundColor: Color
     private var topLeading: CGFloat
-    
-    init(_ title: String, text: Binding<String>, maxHeight: CGFloat, topLeading: CGFloat, backgroundColor: Color ) {
+
+    init(_ title: String, text: Binding<String>, maxHeight: CGFloat, topLeading: CGFloat, backgroundColor: Color) {
         self.title = title
-        self._text = text
+        _text = text
         self.backgroundColor = backgroundColor
         self.topLeading = topLeading
         self.maxHeight = maxHeight
     }
-    
+
     var body: some View {
         ZStack(alignment: .trailing) {
-                if isSecured {
-                    SecureField(title, text: $text)
-                        .signInTextFieldStyle(withHeight: self.maxHeight, topLeading: self.topLeading, backgroundColor: self.backgroundColor)
-                } else {
-                    TextField(title, text: $text)
-                        .signInTextFieldStyle(withHeight: self.maxHeight, topLeading: self.topLeading, backgroundColor: self.backgroundColor)
-                }
-            
+            if isSecured {
+                SecureField(title, text: $text)
+                    .signInTextFieldStyle(withHeight: self.maxHeight, topLeading: self.topLeading, backgroundColor: self.backgroundColor)
+            } else {
+                TextField(title, text: $text)
+                    .signInTextFieldStyle(withHeight: self.maxHeight, topLeading: self.topLeading, backgroundColor: self.backgroundColor)
+            }
+
             Button(action: {
                 isSecured.toggle()
             }) {

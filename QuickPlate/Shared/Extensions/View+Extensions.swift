@@ -11,7 +11,7 @@ import SwiftUI
 extension View {
     @ViewBuilder
     func hidden(_ shouldHide: Bool) -> some View {
-        switch (shouldHide) {
+        switch shouldHide {
         case true: hidden()
         case false: self
         }

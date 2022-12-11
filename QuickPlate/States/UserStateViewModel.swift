@@ -9,16 +9,15 @@ import Foundation
 
 @MainActor
 class UserStateViewModel: ObservableObject {
-    
     @Published var isLoggedIn = false
-    
+
     func signIn() {
-        self.isLoggedIn = true
+        isLoggedIn = true
         // print("USER STATE SIGN IN \(isLoggedIn)")
     }
-    
+
     func signOut() {
-        self.isLoggedIn = false
+        isLoggedIn = false
         // print("USER STATE SIGN IN \(isLoggedIn)")
     }
 }

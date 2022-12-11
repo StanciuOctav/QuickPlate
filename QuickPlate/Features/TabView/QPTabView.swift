@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct QPTabView: View {
-    
     var body: some View {
         TabView {
             Group {
@@ -17,12 +16,12 @@ struct QPTabView: View {
                         Label("Harta", systemImage: "map.fill")
                     }
                     .accentColor(.accentColor)
-                
+
                 RestaurantsListView()
                     .tabItem {
                         Label("Restaurante", systemImage: "fork.knife.circle")
                     }
-                
+
                 UserProfileView()
                     .tabItem {
                         Label("Cont", systemImage: "person.fill")
@@ -33,8 +32,8 @@ struct QPTabView: View {
     }
 }
 
-//struct QPTabView_Previews: PreviewProvider {
+// struct QPTabView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        QPTabView()
 //    }
-//}
+// }

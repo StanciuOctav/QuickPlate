@@ -5,9 +5,9 @@
 //  Created by Ioan-Octavian Stanciu on 11.12.2022.
 //
 
+import FirebaseFirestore
 import Foundation
 import SwiftUI
-import FirebaseFirestore
 
 final class SignUpViewModel: ObservableObject {
     @Published var username: String = ""
@@ -36,18 +36,18 @@ final class SignUpViewModel: ObservableObject {
     private func passwordsDontMatch() -> Bool {
         return password == "" || confirmPassword == "" || password != confirmPassword
     }
-    
+
     func allFieldsAreCompleted() -> Bool {
         return username != "" &&
-        firstName != "" &&
-        lastName != "" &&
-        email != ""
+            firstName != "" &&
+            lastName != "" &&
+            email != ""
     }
-    
+
     let db = Firestore.firestore()
-    
+
     private func doSignUpAuth(completion: @escaping (Error?) -> Void) {
-        FirebaseEmailAuth.shared().doSignUpAuth(withEmail: self.email, andPassword: self.password) { error in
+        FirebaseEmailAuth.shared().doSignUpAuth(withEmail: email, andPassword: password) { error in
             if let error {
                 print("SignUpViewModel: doSignUpAuth - Could not sign in")
                 print(error.localizedDescription)
@@ -58,14 +58,14 @@ final class SignUpViewModel: ObservableObject {
             }
         }
     }
-    
+
     func doSignUp(withRole role: String, andRestaurant rest: String) {
-        self.doSignUpAuth { error in
+        doSignUpAuth { error in
             if let error {
                 print("SignUpViewModel: doSignUp - Could not sign in")
                 print(error.localizedDescription)
             } else {
-                guard let newUser = MyUser(username: self.username, firstName: self.firstName, lastName: self.lastName, role: role, restaurantWorking: rest, email: self.email, password: self.password, favouriteRestaurants: []) else {return}
+                guard let newUser = MyUser(username: self.username, firstName: self.firstName, lastName: self.lastName, role: role, restaurantWorking: rest, email: self.email, password: self.password, favouriteRestaurants: []) else { return }
                 UserCollection.shared().saveToDB(user: newUser) { error in
                     if error != nil {
                         print("SignUpViewModel: doSignUp - Error in saving user to db")

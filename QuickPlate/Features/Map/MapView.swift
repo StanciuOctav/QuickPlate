@@ -9,23 +9,20 @@ import CoreLocationUI
 import MapKit
 import SwiftUI
 
-
 struct MapView: View {
-    
     @StateObject private var locManager = LocationManager()
     @State private var tracking: MapUserTrackingMode = .follow
-    
+
     private var buttonHeight: CGFloat = 50
     private var buttonWidth: CGFloat = 50
-    
+
     var body: some View {
         ZStack(alignment: .top) {
             Map(coordinateRegion: $locManager.region, interactionModes: .all, showsUserLocation: true, userTrackingMode: $tracking)
                 .ignoresSafeArea(edges: .top)
-            
+
             HStack {
                 Button {
-                    
                 } label: {
                     Circle()
                         .padding()
@@ -33,15 +30,15 @@ struct MapView: View {
                         .background(.white)
                         .cornerRadius(.infinity)
                         .frame(width: self.buttonWidth, height: self.buttonHeight)
-                        .overlay (
+                        .overlay(
                             Image(systemName: "magnifyingglass")
                                 .foregroundColor(.black)
                         )
                 }
                 .padding()
-                
+
                 Spacer()
-                
+
                 Button {
                     locManager.locationManager.startUpdatingLocation()
                 } label: {
@@ -51,7 +48,7 @@ struct MapView: View {
                         .background(.white)
                         .cornerRadius(.infinity)
                         .frame(width: self.buttonWidth, height: self.buttonHeight)
-                        .overlay (
+                        .overlay(
                             Image(systemName: "location.fill")
                                 .foregroundColor(.black)
                         )
@@ -62,8 +59,8 @@ struct MapView: View {
     }
 }
 
-//struct MapView_Previews: PreviewProvider {
+// struct MapView_Previews: PreviewProvider {
 //    static var previews: some View {
 //        MapView()
 //    }
-//}
+// }
