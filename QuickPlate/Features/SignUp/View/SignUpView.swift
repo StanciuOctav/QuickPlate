@@ -8,66 +8,40 @@
 import SwiftUI
 
 struct SignUpView: View {
-    
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    
-    @State private var username: String = ""
-    @State private var firstName: String = ""
-    @State private var lastName: String = ""
-    @State private var email: String = ""
-    @State private var password: String = ""
-    @State private var confirmPassword: String = ""
-    
-    @State var selectedRole: String = ""
-    var dropdownRoles = ["Client", "Chelner", "Barman", "Bucatar"]
-    
-    @State var selectedRestaurant: String = ""
-    var dropdownRestaurants = ["Marty", "Samsara", "Noir"]
-    
-    var isRestaurantDisabled: Bool {
-        get {
-            !(selectedRole != "Client" && !selectedRole.isEmpty)
-        }
-    }
-    
-    @State private var isPasswordSecure: Bool = true
-    @State private var isConfirmPasswordSecure: Bool = true
-    
+
+    @StateObject private var viewModel = SignUpViewModel()
+
+    @State private var passwordFormatError: Bool = false
+    @State private var passwordsDontMatch: Bool = false
+
     private let maxHeight: CGFloat = 50
     private let toolBarTextFontSize: CGFloat = 20
     private let topLeading: CGFloat = 10
-    
-    
-    private func resetRestaurantDropDown() -> String {
-        // This is for the use case when the user selects a restaurant and after that he selectes the Client role
-        DispatchQueue.main.async { self.selectedRestaurant = "" }
-        return "Restaurant"
-    }
-    
+
     var body: some View {
         ScrollView {
             VStack {
                 VStack(spacing: 20) {
-                    
                     Group {
-                        TextField("Nume utilizator", text: $username)
-                        TextField("Prenume", text: $firstName)
-                        TextField("Nume", text: $lastName)
+                        TextField("Nume utilizator", text: $viewModel.username)
+                        TextField("Prenume", text: $viewModel.firstName)
+                        TextField("Nume", text: $viewModel.lastName)
                     }
                     .signInTextFieldStyle(withHeight: self.maxHeight, topLeading: self.topLeading, backgroundColor: Color.qpLightGrayColor)
-                    
+
                     Group {
                         Menu {
-                            ForEach(dropdownRoles, id: \.self) { role in
+                            ForEach(viewModel.dropdownRoles, id: \.self) { role in
                                 Button(role) {
-                                    self.selectedRole = role
+                                    viewModel.selectedRole = role
                                     _ = resetRestaurantDropDown()
                                 }
                             }
                         } label: {
-                            HStack{
-                                Text(selectedRole.isEmpty ? "Tip Cont" :  selectedRole)
-                                    .foregroundColor(selectedRole.isEmpty ? nil : .black)
+                            HStack {
+                                Text(viewModel.selectedRole.isEmpty ? "Tip Cont" : viewModel.selectedRole)
+                                    .foregroundColor(viewModel.selectedRole.isEmpty ? nil : .black)
                                 Spacer()
                                 Image(systemName: "arrowtriangle.down.fill")
                                     .foregroundColor(.black)
@@ -76,39 +50,53 @@ struct SignUpView: View {
                             .background(Color.qpLightGrayColor)
                             .cornerRadius(.infinity)
                         }
-                        
+
                         Menu {
-                            ForEach(dropdownRestaurants, id: \.self) { restaurant in
+                            ForEach(viewModel.dropdownRestaurants, id: \.self) { restaurant in
                                 Button(restaurant) {
-                                    self.selectedRestaurant = restaurant
+                                    viewModel.selectedRestaurant = restaurant
                                 }
                             }
                         } label: {
-                            HStack{
-                                Text(selectedRestaurant.isEmpty || selectedRole == "Client" ? resetRestaurantDropDown() : selectedRestaurant)
-                                    .foregroundColor(selectedRestaurant.isEmpty ? nil : .black)
+                            HStack {
+                                Text(viewModel.selectedRestaurant.isEmpty || viewModel.selectedRole == "Client" ? resetRestaurantDropDown() : viewModel.selectedRestaurant)
+                                    .foregroundColor(viewModel.selectedRestaurant.isEmpty ? nil : .black)
                                 Spacer()
                                 Image(systemName: "arrowtriangle.down.fill")
                                     .foregroundColor(.black)
-                                    .opacity(isRestaurantDisabled ? 0.1 : 1.0)
+                                    .opacity(viewModel.isRestaurantDisabled ? 0.1 : 1.0)
                             }
                             .padding()
                             .background(Color.qpLightGrayColor)
                             .cornerRadius(.infinity)
-                        }.disabled(isRestaurantDisabled)
+                        }.disabled(viewModel.isRestaurantDisabled)
                     }
-                    
+
                     Group {
-                        TextField("Email", text: $email)
+                        TextField("Email", text: $viewModel.email)
                             .signInTextFieldStyle(withHeight: self.maxHeight, topLeading: self.topLeading, backgroundColor: Color.qpLightGrayColor)
-                        
-                        SecureInputView("Parola", text: $password, maxHeight: self.maxHeight, topLeading: self.topLeading, backgroundColor: Color.qpLightGrayColor)
-                        
-                        SecureInputView("Confirma Parola", text: $confirmPassword, maxHeight: self.maxHeight, topLeading: self.topLeading, backgroundColor: Color.qpLightGrayColor)
+
+                        SecureInputView("Parola", text: $viewModel.password, maxHeight: self.maxHeight, topLeading: self.topLeading, backgroundColor: Color.qpLightGrayColor)
+
+                        if self.passwordFormatError {
+                            Text("Password must have at least 6 characters")
+                                .foregroundColor(.red)
+                        } else {
+                            EmptyView()
+                        }
+
+                        SecureInputView("Confirma Parola", text: $viewModel.confirmPassword, maxHeight: self.maxHeight, topLeading: self.topLeading, backgroundColor: Color.qpLightGrayColor)
+
+                        if self.passwordsDontMatch {
+                            Text("Password don't match").foregroundColor(.red)
+                        } else {
+                            EmptyView()
+                        }
                     }
-                    
+
                     Button(action: {
-                        print("Trying to Sign Up")
+                        self.passwordFormatError = viewModel.passwordWrongFormat
+                        self.passwordsDontMatch = viewModel.passwordsAreDifferent
                     }) {
                         Text("Creeaza un cont nou")
                             .frame(maxWidth: .infinity, maxHeight: self.maxHeight)
@@ -130,7 +118,7 @@ struct SignUpView: View {
                         .font(.system(size: self.toolBarTextFontSize))
                         .fontWeight(.medium)
                 }
-                
+
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
                         self.presentationMode.wrappedValue.dismiss()
@@ -142,6 +130,12 @@ struct SignUpView: View {
                 }
             }
         }
+    }
+
+    private func resetRestaurantDropDown() -> String {
+        // This is for the use case when the user selects a restaurant and after that he selectes the Client role
+        DispatchQueue.main.async { viewModel.selectedRestaurant = "" }
+        return "Restaurant"
     }
 }
 
