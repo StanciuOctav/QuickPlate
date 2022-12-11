@@ -38,6 +38,19 @@ class FirebaseEmailAuth {
         })
     }
     
+    func doSignUpAuth(withEmail email: String, andPassword password: String, completion: @escaping (Error?) -> Void) {
+        Auth.auth().createUser(withEmail: email, password: password) { result, error in
+            if let error { completion(error) } else {
+                guard let user = result?.user else {
+                    print("FAILED: creating user")
+                    return
+                }
+                print("USER CREATED \(user.email ?? "noemail")")
+                completion(nil)
+            }
+        }
+    }
+    
     func doLogout(completion: @escaping (Error?) -> Void) {
         do {
             try Auth.auth().signOut()

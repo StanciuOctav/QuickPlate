@@ -47,7 +47,6 @@ struct SignInView: View {
                             if didNotSignIn != nil {
                                 self.showCredentialsErrors = true
                             } else {
-                                print("Did the user sign in? \(didNotSignIn != nil ? "NO" : "YES")")
                                 self.showCredentialsErrors = false
                                 userStateViewModel.signIn()
                             }

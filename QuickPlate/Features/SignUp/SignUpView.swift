@@ -14,6 +14,15 @@ struct SignUpView: View {
 
     @State private var passwordFormatError: Bool = false
     @State private var passwordsDontMatch: Bool = false
+    @State private var successSignUp: Bool = false
+    @State private var fieldsIncompleted: Bool = false
+    
+    @State private var selectedRole: String = ""
+    @State private var selectedRestaurant: String = ""
+    
+    var isRestaurantDisabled: Bool {
+        !(self.selectedRole != "Client" && !self.selectedRole.isEmpty)
+    }
 
     private let maxHeight: CGFloat = 50
     private let toolBarTextFontSize: CGFloat = 20
@@ -34,14 +43,14 @@ struct SignUpView: View {
                         Menu {
                             ForEach(viewModel.dropdownRoles, id: \.self) { role in
                                 Button(role) {
-                                    viewModel.selectedRole = role
+                                    self.selectedRole = role
                                     _ = resetRestaurantDropDown()
                                 }
                             }
                         } label: {
                             HStack {
-                                Text(viewModel.selectedRole.isEmpty ? "Tip Cont" : viewModel.selectedRole)
-                                    .foregroundColor(viewModel.selectedRole.isEmpty ? nil : .black)
+                                Text(self.selectedRole == "" ? "Tip Cont" : self.selectedRole)
+                                    .foregroundColor(self.selectedRole == "" ? nil : .black)
                                 Spacer()
                                 Image(systemName: "arrowtriangle.down.fill")
                                     .foregroundColor(.black)
@@ -54,22 +63,22 @@ struct SignUpView: View {
                         Menu {
                             ForEach(viewModel.dropdownRestaurants, id: \.self) { restaurant in
                                 Button(restaurant) {
-                                    viewModel.selectedRestaurant = restaurant
+                                    self.selectedRestaurant = restaurant
                                 }
                             }
                         } label: {
                             HStack {
-                                Text(viewModel.selectedRestaurant.isEmpty || viewModel.selectedRole == "Client" ? resetRestaurantDropDown() : viewModel.selectedRestaurant)
-                                    .foregroundColor(viewModel.selectedRestaurant.isEmpty ? nil : .black)
+                                Text(self.selectedRestaurant == "" || self.selectedRole == "Client" ? resetRestaurantDropDown() : self.selectedRestaurant)
+                                    .foregroundColor(self.selectedRestaurant.isEmpty ? nil : .black)
                                 Spacer()
                                 Image(systemName: "arrowtriangle.down.fill")
                                     .foregroundColor(.black)
-                                    .opacity(viewModel.isRestaurantDisabled ? 0.1 : 1.0)
+                                    .opacity(self.isRestaurantDisabled ? 0.1 : 1.0)
                             }
                             .padding()
                             .background(Color.qpLightGrayColor)
                             .cornerRadius(.infinity)
-                        }.disabled(viewModel.isRestaurantDisabled)
+                        }.disabled(self.isRestaurantDisabled)
                     }
 
                     Group {
@@ -78,25 +87,33 @@ struct SignUpView: View {
 
                         SecureInputView("Parola", text: $viewModel.password, maxHeight: self.maxHeight, topLeading: self.topLeading, backgroundColor: Color.qpLightGrayColor)
 
-                        if self.passwordFormatError {
-                            Text("Password must have at least 6 characters")
+                        SecureInputView("Confirma Parola", text: $viewModel.confirmPassword, maxHeight: self.maxHeight, topLeading: self.topLeading, backgroundColor: Color.qpLightGrayColor)
+
+                        if self.passwordFormatError && !self.fieldsIncompleted {
+                            Text("Parola trebuie sa aiba cel putin 6 caractere!")
                                 .foregroundColor(.red)
                         } else {
                             EmptyView()
                         }
-
-                        SecureInputView("Confirma Parola", text: $viewModel.confirmPassword, maxHeight: self.maxHeight, topLeading: self.topLeading, backgroundColor: Color.qpLightGrayColor)
-
-                        if self.passwordsDontMatch {
-                            Text("Password don't match").foregroundColor(.red)
+                        if self.passwordsDontMatch && !self.fieldsIncompleted {
+                            Text("Parolele difera!").foregroundColor(.red)
                         } else {
                             EmptyView()
                         }
                     }
 
                     Button(action: {
-                        self.passwordFormatError = viewModel.passwordWrongFormat
-                        self.passwordsDontMatch = viewModel.passwordsAreDifferent
+                        self.fieldsIncompleted = viewModel.allFieldsAreCompleted() && selectedRole != "" ? false : true
+                        
+                        if (self.fieldsIncompleted == false) {
+                            self.passwordFormatError = viewModel.passwordWrongFormat
+                            self.passwordsDontMatch = viewModel.passwordsAreDifferent
+                        }
+
+                        if !self.fieldsIncompleted && !self.passwordFormatError && !self.passwordsDontMatch {
+                            viewModel.doSignUp(withRole: self.selectedRole, andRestaurant: self.selectedRestaurant)
+                            successSignUp = true
+                        }
                     }) {
                         Text("Creeaza un cont nou")
                             .frame(maxWidth: .infinity, maxHeight: self.maxHeight)
@@ -130,11 +147,22 @@ struct SignUpView: View {
                 }
             }
         }
+        .alert("Ti-ai creat un cont cu succes!", isPresented: $successSignUp) {
+            Button("Inapoi la logare") {
+                successSignUp = false
+                self.presentationMode.wrappedValue.dismiss()
+            }
+        }
+        .alert("Completeaza toate campurile inainte de a-ti face cont!", isPresented: $fieldsIncompleted) {
+            Button("OK", role: .cancel) {
+                
+            }
+        }
     }
 
     private func resetRestaurantDropDown() -> String {
-        // This is for the use case when the user selects a restaurant and after that he selectes the Client role
-        DispatchQueue.main.async { viewModel.selectedRestaurant = "" }
+        // This is for the use case when the user selects a restaurant and after that he selects the Client role
+        DispatchQueue.main.async { self.selectedRestaurant = "" }
         return "Restaurant"
     }
 }
