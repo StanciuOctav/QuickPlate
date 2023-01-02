@@ -22,7 +22,7 @@ final class UserCollection {
         return sharedUserCollection
     }
 
-    func saveToDB(user newUser: MyUser, completion: @escaping (Error?) -> Void) {
+    func saveUserToDB(user newUser: MyUser, completion: @escaping (Error?) -> Void) {
         do {
             _ = try usrColl.addDocument(from: newUser)
             completion(nil)

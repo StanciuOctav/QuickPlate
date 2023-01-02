@@ -8,6 +8,13 @@
 import Firebase
 import Foundation
 
+enum StartupError: Error {
+    case signInError
+    case signUpError
+    case anonymousUser
+    case emailExists
+}
+
 class FirebaseEmailAuth {
     // MARK: SINGLETON
 
@@ -39,16 +46,20 @@ class FirebaseEmailAuth {
         })
     }
 
-    func doSignUpAuth(withEmail email: String, andPassword password: String, completion: @escaping (Error?) -> Void) {
+    func doRegister(withEmail email: String, andPassword password: String, completion: @escaping (Result<Int?, StartupError>) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
-            if let error { completion(error) } else {
-                guard let user = result?.user else {
-                    print("FAILED: creating user")
-                    return
+            guard result != nil else {
+                if let error {
+                    print(error.localizedDescription)
                 }
-                print("USER CREATED \(user.email ?? "noemail")")
-                completion(nil)
+                completion(.failure(.signUpError))
+                return
             }
+            guard (result?.user) != nil else {
+                completion(.failure(.anonymousUser))
+                return
+            }
+            completion(.success(1))
         }
     }
 

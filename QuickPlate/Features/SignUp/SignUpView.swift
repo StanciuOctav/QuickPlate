@@ -17,6 +17,7 @@ struct SignUpView: View {
     @State private var passwordsDontMatch: Bool = false
     @State private var successSignUp: Bool = false
     @State private var fieldsIncompleted: Bool = false
+    @State private var emailExists: Bool = false
 
     @State private var selectedRole: String = ""
     @State private var selectedRestaurant: String = ""
@@ -104,7 +105,7 @@ struct SignUpView: View {
                         }
                     }
 
-                    Button(action: {
+                    Button {
                         self.fieldsIncompleted = viewModel.allFieldsAreCompleted() && selectedRole != "" ? false : true
 
                         if self.fieldsIncompleted == false {
@@ -113,10 +114,16 @@ struct SignUpView: View {
                         }
 
                         if !self.fieldsIncompleted && !self.passwordFormatError && !self.passwordsDontMatch {
-                            viewModel.doSignUp(withRole: self.selectedRole)
-                            successSignUp = true
+                            viewModel.doSignUp(withRole: self.selectedRole) { result in
+                                switch result {
+                                case .success(_):
+                                    successSignUp = true
+                                case .failure(_):
+                                    emailExists = true
+                                }
+                            }
                         }
-                    }) {
+                    } label: {
                         Text(LocalizedStringKey("signup"))
                             .frame(maxWidth: .infinity, maxHeight: self.maxHeight)
                             .foregroundColor(.white)
@@ -156,6 +163,9 @@ struct SignUpView: View {
             }
         }
         .alert(LocalizedStringKey("complete-all-fields-message"), isPresented: $fieldsIncompleted) {
+            Button("OK", role: .cancel) { }
+        }
+        .alert(LocalizedStringKey("signup-email-exists-error"), isPresented: $emailExists) {
             Button("OK", role: .cancel) { }
         }
     }

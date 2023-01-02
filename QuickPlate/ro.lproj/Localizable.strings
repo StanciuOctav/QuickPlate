@@ -28,6 +28,7 @@
 "created-account-message" = "Ti-ai creat cu succes un cont!";
 "back-to-signin" = "Inapoi la logare";
 "complete-all-fields-message" = "Toate campurile trebuie completate inainte de a se crea un cont";
+"signup-email-exists-error" = "Adresa de email introdusa este folosita de alt cont!";
 
 // MARK: ACCOUNT TYPE
 "client" = "Client";

@@ -30,8 +30,8 @@ final class SignInViewModel: ObservableObject {
                 completion(.success(1))
             case .failure(.signInError):
                 completion(.failure(.signInError))
-            case .failure(.anonymousUser):
-                print("Sign In anonymous user failure")
+            case .failure(_):
+                print("Sign In failure")
             }
         }
     }

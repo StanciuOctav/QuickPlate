@@ -21,7 +21,6 @@
 		537A1B2129467D5600979FCA /* RestaurantSignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537A1B2029467D5600979FCA /* RestaurantSignUpViewModel.swift */; };
 		537A1B2329467E7800979FCA /* RestaurantSignUpDTO+Hashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537A1B2229467E7800979FCA /* RestaurantSignUpDTO+Hashable.swift */; };
 		537E800D2945F3C700A02B04 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537E800C2945F3C700A02B04 /* SignUpViewModel.swift */; };
-		538789732962E91400F42F9A /* Error+CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538789722962E91400F42F9A /* Error+CustomError.swift */; };
 		5387897D2962F2DD00F42F9A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5387897F2962F2DD00F42F9A /* Localizable.strings */; };
 		538789822963019600F42F9A /* LocalizedStringKey+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538789812963019600F42F9A /* LocalizedStringKey+String.swift */; };
 		5387CFDA29252BD60010344B /* Color+CusomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5387CFD929252BD60010344B /* Color+CusomColors.swift */; };
@@ -71,7 +70,6 @@
 		537A1B2229467E7800979FCA /* RestaurantSignUpDTO+Hashable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RestaurantSignUpDTO+Hashable.swift"; sourceTree = "<group>"; };
 		537E800C2945F3C700A02B04 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		537F6A16292582E2001CF422 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		538789722962E91400F42F9A /* Error+CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+CustomError.swift"; sourceTree = "<group>"; };
 		5387897E2962F2DD00F42F9A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		538789802962F2E700F42F9A /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Localizable.strings; sourceTree = "<group>"; };
 		538789812963019600F42F9A /* LocalizedStringKey+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalizedStringKey+String.swift"; sourceTree = "<group>"; };
@@ -193,7 +191,6 @@
 				5387CFD929252BD60010344B /* Color+CusomColors.swift */,
 				535195E5293CCCDA00A44820 /* View+Extensions.swift */,
 				537A1B2229467E7800979FCA /* RestaurantSignUpDTO+Hashable.swift */,
-				538789722962E91400F42F9A /* Error+CustomError.swift */,
 				538789812963019600F42F9A /* LocalizedStringKey+String.swift */,
 			);
 			path = Extensions;
@@ -435,7 +432,6 @@
 				538994952920FF3C00C370BF /* SpashScreenView.swift in Sources */,
 				537A1B1B29465BA800979FCA /* RestaurantsViewModel.swift in Sources */,
 				53E2FD20292B75C600D63069 /* QPTabView.swift in Sources */,
-				538789732962E91400F42F9A /* Error+CustomError.swift in Sources */,
 				535195E4293CCA2900A44820 /* UserProfileViewModel.swift in Sources */,
 				5387CFDA29252BD60010344B /* Color+CusomColors.swift in Sources */,
 			);

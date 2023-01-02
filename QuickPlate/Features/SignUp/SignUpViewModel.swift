@@ -53,33 +53,22 @@ final class SignUpViewModel: ObservableObject {
 
     let db = Firestore.firestore()
 
-    private func doSignUpAuth(completion: @escaping (Error?) -> Void) {
-        FirebaseEmailAuth.shared().doSignUpAuth(withEmail: email, andPassword: password) { error in
-            if let error {
-                print("SignUpViewModel: doSignUpAuth - Could not sign in")
-                print(error.localizedDescription)
-                completion(error)
-            } else {
-                print("SignUpViewModel: doSignUpAuth - User signed in")
-                completion(nil)
-            }
-        }
-    }
-
-    func doSignUp(withRole role: String) {
-        doSignUpAuth { error in
-            if let error {
-                print("SignUpViewModel: doSignUp - Could not sign in")
-                print(error.localizedDescription)
-            } else {
+    func doSignUp(withRole role: String, completion: @escaping (Result<Int?, StartupError>) -> Void) {
+        FirebaseEmailAuth.shared().doRegister(withEmail: email, andPassword: password) { result in
+            switch result {
+            case .success(_):
                 let newUser = MyUser(id: UUID().uuidString, username: self.username, firstName: self.firstName, lastName: self.lastName, role: role, restaurantWorking: self.restaurantId, email: self.email, password: self.password, favouriteRestaurants: [])
-                UserCollection.shared().saveToDB(user: newUser) { error in
+                UserCollection.shared().saveUserToDB(user: newUser) { error in
                     if error != nil {
                         print("SignUpViewModel: doSignUp - Error in saving user to db")
                     } else {
                         print("SignUpViewModel: doSignUp - User saved to db")
                     }
                 }
+                completion(.success(1))
+            case .failure(_):
+                print("SignUpViewModel: doSignUp - Could not sign in")
+                completion(.failure(.emailExists))
             }
         }
     }

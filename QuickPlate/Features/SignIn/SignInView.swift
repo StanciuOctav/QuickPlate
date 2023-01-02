@@ -51,7 +51,7 @@ struct SignInView: View {
                                 userStateViewModel.signIn()
                             case .failure(.signInError):
                                 viewModel.setShowCredentialsErrors(withBool: true)
-                            case .failure(.anonymousUser):
+                            case .failure(.anonymousUser), .failure(_):
                                 break
                             }
                         }

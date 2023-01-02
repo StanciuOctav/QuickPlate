@@ -29,6 +29,7 @@
 "created-account-message" = "Account created successfully!";
 "back-to-signin" = "Back to Sign In";
 "complete-all-fields-message" = "You need to complete all the fields in order to create a new account";
+"signup-email-exists-error" = "An account with the same email address already exists!";
 
 // MARK: ACCOUNT TYPE
 "client" = "Client";
