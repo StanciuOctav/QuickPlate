@@ -43,16 +43,27 @@ struct SignInView: View {
                         EmptyView()
                     }
 
-                    Button(action: {
-                        viewModel.signIn { didNotSignIn in
-                            if didNotSignIn != nil {
-                                viewModel.setShowCredentialsErrors(withBool: true)
-                            } else {
+                    Button {
+                        viewModel.signIn { result in
+                            switch result {
+                            case .success(_):
                                 viewModel.setShowCredentialsErrors(withBool: false)
                                 userStateViewModel.signIn()
+                            case .failure(.signInError):
+                                viewModel.setShowCredentialsErrors(withBool: true)
+                            case .failure(.anonymousUser):
+                                break
                             }
                         }
-                    }) {
+//                        viewModel.signIn { didNotSignIn in
+//                            if didNotSignIn != nil {
+//                                viewModel.setShowCredentialsErrors(withBool: true)
+//                            } else {
+//                                viewModel.setShowCredentialsErrors(withBool: false)
+//                                userStateViewModel.signIn()
+//                            }
+//                        }
+                    } label: {
                         Text("Intra in cont")
                             .frame(maxWidth: .infinity, maxHeight: self.maxHeight)
                             .foregroundColor(.white)

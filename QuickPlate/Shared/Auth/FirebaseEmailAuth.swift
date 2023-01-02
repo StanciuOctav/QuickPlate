@@ -22,18 +22,20 @@ class FirebaseEmailAuth {
 
     // MARK: AUTHENTICATION METHODS
 
-    func doLogin(email: String = "", password: String = "", completion: @escaping (Error?) -> Void) {
+    func doLogin(email: String = "", password: String = "", completion: @escaping (Result<Int?, StartupError>) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password, completion: { result, error in
-            if let error {
-                completion(error)
-            } else {
-                guard let user = result?.user else {
-                    print("FAILED: Anonymous Auth with firebase.")
-                    return
+            guard result != nil else {
+                if let error {
+                    print(error.localizedDescription)
                 }
-                print(user.email ?? "Not an email")
-                completion(nil)
+                completion(.failure(.signInError))
+                return
             }
+            guard (result?.user) != nil else {
+                completion(.failure(.anonymousUser))
+                return
+            }
+            completion(.success(1))
         })
     }
 

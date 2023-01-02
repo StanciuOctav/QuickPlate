@@ -23,15 +23,15 @@ final class SignInViewModel: ObservableObject {
         return showCredentialsErrors
     }
 
-    func signIn(completion: @escaping (Error?) -> Void) {
-        FirebaseEmailAuth.shared().doLogin(email: email, password: password) { error in
-            if let error {
-                print("SignInViewModel - Could not sign in")
-                print(error.localizedDescription)
-                completion(error)
-            } else {
-                print("SignInViewModel - User signed in")
-                completion(nil)
+    func signIn(completion: @escaping (Result<Int?,StartupError>) -> Void) {
+        FirebaseEmailAuth.shared().doLogin(email: email, password: password) { result in
+            switch result {
+            case .success(_):
+                completion(.success(1))
+            case .failure(.signInError):
+                completion(.failure(.signInError))
+            case .failure(.anonymousUser):
+                print("Sign In anonymous user failure")
             }
         }
     }
