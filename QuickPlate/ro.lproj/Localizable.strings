@@ -1,0 +1,41 @@
+/* 
+  Localizable.strings
+  QuickPlate
+
+  Created by Ioan-Octavian Stanciu on 02.01.2023.
+  
+*/
+// MARK: SIGN IN
+"welcome" = "Bine ai venit!";
+"signin-message" = "Intra in cont pentru a putea rezerva o masa la un restaurant si pentru a seta o precomanda";
+"email" = "Email";
+"password" = "Parola";
+"signin" = "Intra in cont";
+"or" = "sau";
+"signup" = "Creeaza un cont nou";
+"logout" = "Deconectare";
+"credentials-error" = "Credentiale gresite / Cont inexistent";
+
+// MARK: SIGN UP
+"username" = "Nume utilizator";
+"firstName" = "Prenume";
+"lastName" = "Nume";
+"accountType" = "Tipul contului";
+"confirm-password" = "Confirma parola";
+"password-format-error" = "Parola trebuie sa contina cel putin 6 caractere";
+"passwords-match-error" = "Parolele difera";
+"back" = "Inapoi";
+"created-account-message" = "Ti-ai creat cu succes un cont!";
+"back-to-signin" = "Inapoi la logare";
+"complete-all-fields-message" = "Toate campurile trebuie completate inainte de a se crea un cont";
+
+// MARK: ACCOUNT TYPE
+"client" = "Client";
+"waiter" = "Chelner";
+"bartender" = "Barman";
+"cook" = "Bucatar";
+
+// MARK: TAB BAR
+"map" = "Map";
+"restaurants" = "Restaurants";
+"account" = "Profile";

@@ -1,0 +1,42 @@
+/* 
+  Localizable.strings
+  QuickPlate
+
+  Created by Ioan-Octavian Stanciu on 02.01.2023.
+  
+*/
+
+// MARK: SIGN IN
+"welcome" = "Welcome!";
+"signin-message" = "Sign in so you can book a table at your favourite restaurant and to be able to pre-order";
+"email" = "Email";
+"password" = "Password";
+"signin" = "Sign In";
+"or" = "or";
+"signup" = "Create an account";
+"logout" = "Sign Out";
+"credentials-error" = "Wrong credentials / Account doesn't exist";
+
+// MARK: SIGN UP
+"username" = "Username";
+"firstName" = "First Name";
+"lastName" = "Last Name";
+"accountType" = "Account Type";
+"confirm-password" = "Confirm Password";
+"password-format-error" = "Password must have at least 6 characters";
+"passwords-match-error" = "The passwords don't match";
+"back" = "Back";
+"created-account-message" = "Account created successfully!";
+"back-to-signin" = "Back to Sign In";
+"complete-all-fields-message" = "You need to complete all the fields in order to create a new account";
+
+// MARK: ACCOUNT TYPE
+"client" = "Client";
+"waiter" = "Waiter";
+"bartender" = "Bartender";
+"cook" = "Cook";
+
+// MARK: TAB BAR
+"map" = "Map";
+"restaurants" = "Restaurants";
+"account" = "Profile";

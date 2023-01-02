@@ -22,6 +22,8 @@
 		537A1B2329467E7800979FCA /* RestaurantSignUpDTO+Hashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537A1B2229467E7800979FCA /* RestaurantSignUpDTO+Hashable.swift */; };
 		537E800D2945F3C700A02B04 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537E800C2945F3C700A02B04 /* SignUpViewModel.swift */; };
 		538789732962E91400F42F9A /* Error+CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538789722962E91400F42F9A /* Error+CustomError.swift */; };
+		5387897D2962F2DD00F42F9A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5387897F2962F2DD00F42F9A /* Localizable.strings */; };
+		538789822963019600F42F9A /* LocalizedStringKey+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538789812963019600F42F9A /* LocalizedStringKey+String.swift */; };
 		5387CFDA29252BD60010344B /* Color+CusomColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5387CFD929252BD60010344B /* Color+CusomColors.swift */; };
 		538994862920F89700C370BF /* QuickPlateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538994852920F89700C370BF /* QuickPlateApp.swift */; };
 		538994882920F89700C370BF /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538994872920F89700C370BF /* SignInView.swift */; };
@@ -70,6 +72,9 @@
 		537E800C2945F3C700A02B04 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		537F6A16292582E2001CF422 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		538789722962E91400F42F9A /* Error+CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Error+CustomError.swift"; sourceTree = "<group>"; };
+		5387897E2962F2DD00F42F9A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		538789802962F2E700F42F9A /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Localizable.strings; sourceTree = "<group>"; };
+		538789812963019600F42F9A /* LocalizedStringKey+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LocalizedStringKey+String.swift"; sourceTree = "<group>"; };
 		5387CFD929252BD60010344B /* Color+CusomColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+CusomColors.swift"; sourceTree = "<group>"; };
 		538994822920F89700C370BF /* QuickPlate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickPlate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		538994852920F89700C370BF /* QuickPlateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickPlateApp.swift; sourceTree = "<group>"; };
@@ -189,6 +194,7 @@
 				535195E5293CCCDA00A44820 /* View+Extensions.swift */,
 				537A1B2229467E7800979FCA /* RestaurantSignUpDTO+Hashable.swift */,
 				538789722962E91400F42F9A /* Error+CustomError.swift */,
+				538789812963019600F42F9A /* LocalizedStringKey+String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -220,6 +226,7 @@
 				537F6A16292582E2001CF422 /* Info.plist */,
 				53A2C3E8293BE13D00CD6FC3 /* GoogleService-Info.plist */,
 				5389948B2920F89800C370BF /* Preview Content */,
+				5387897F2962F2DD00F42F9A /* Localizable.strings */,
 			);
 			path = QuickPlate;
 			sourceTree = "<group>";
@@ -369,6 +376,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ro,
 			);
 			mainGroup = 538994792920F89700C370BF;
 			packageReferences = (
@@ -389,6 +397,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5389948D2920F89800C370BF /* Preview Assets.xcassets in Resources */,
+				5387897D2962F2DD00F42F9A /* Localizable.strings in Resources */,
 				5389948A2920F89800C370BF /* Assets.xcassets in Resources */,
 				53A2C3E9293BE13D00CD6FC3 /* GoogleService-Info.plist in Resources */,
 			);
@@ -403,6 +412,7 @@
 			files = (
 				537A1B19294658E000979FCA /* Restaurant.swift in Sources */,
 				538994882920F89700C370BF /* SignInView.swift in Sources */,
+				538789822963019600F42F9A /* LocalizedStringKey+String.swift in Sources */,
 				535195E1293CBBC200A44820 /* ApplicationSwitcher.swift in Sources */,
 				53E2FD1E292B75A900D63069 /* MapView.swift in Sources */,
 				539FDE8A29262B0A0034C036 /* SignUpView.swift in Sources */,
@@ -432,6 +442,18 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		5387897F2962F2DD00F42F9A /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5387897E2962F2DD00F42F9A /* en */,
+				538789802962F2E700F42F9A /* ro */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		5389948E2920F89800C370BF /* Debug */ = {

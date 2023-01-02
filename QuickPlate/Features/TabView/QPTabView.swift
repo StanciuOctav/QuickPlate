@@ -13,18 +13,18 @@ struct QPTabView: View {
             Group {
                 MapView()
                     .tabItem {
-                        Label("Harta", systemImage: "map.fill")
+                        Label(LocalizedStringKey("map"), systemImage: "map.fill")
                     }
                     .accentColor(.accentColor)
 
                 RestaurantsListView()
                     .tabItem {
-                        Label("Restaurante", systemImage: "fork.knife.circle")
+                        Label(LocalizedStringKey("restaurants"), systemImage: "fork.knife.circle")
                     }
 
                 UserProfileView()
                     .tabItem {
-                        Label("Cont", systemImage: "person.fill")
+                        Label(LocalizedStringKey("account"), systemImage: "person.fill")
                             .foregroundColor(.black)
                     }
             }.accentColor(.accentColor)

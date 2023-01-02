@@ -34,9 +34,9 @@ struct SignUpView: View {
             VStack {
                 VStack(spacing: 20) {
                     Group {
-                        TextField("Nume utilizator", text: $viewModel.username)
-                        TextField("Prenume", text: $viewModel.firstName)
-                        TextField("Nume", text: $viewModel.lastName)
+                        TextField(LocalizedStringKey("username"), text: $viewModel.username)
+                        TextField(LocalizedStringKey("firstName"), text: $viewModel.firstName)
+                        TextField(LocalizedStringKey("lastName"), text: $viewModel.lastName)
                     }
                     .signInTextFieldStyle(withHeight: self.maxHeight, topLeading: self.topLeading, backgroundColor: Color.qpLightGrayColor)
 
@@ -50,7 +50,7 @@ struct SignUpView: View {
                             }
                         } label: {
                             HStack {
-                                Text(self.selectedRole == "" ? "Tip Cont" : self.selectedRole)
+                                Text(self.selectedRole == "" ? LocalizedStringKey("accountType").stringValue() : self.selectedRole)
                                     .foregroundColor(self.selectedRole == "" ? nil : .black)
                                 Spacer()
                                 Image(systemName: "arrowtriangle.down.fill")
@@ -70,7 +70,7 @@ struct SignUpView: View {
                             }
                         } label: {
                             HStack {
-                                Text(self.selectedRestaurant == "" || self.selectedRole == "Client" ? resetRestaurantDropDown() : self.selectedRestaurant)
+                                Text(self.selectedRestaurant == "" || self.selectedRole == LocalizedStringKey("client").stringValue() ? resetRestaurantDropDown() : self.selectedRestaurant)
                                     .foregroundColor(self.selectedRestaurant.isEmpty ? nil : .black)
                                 Spacer()
                                 Image(systemName: "arrowtriangle.down.fill")
@@ -84,21 +84,21 @@ struct SignUpView: View {
                     }
 
                     Group {
-                        TextField("Email", text: $viewModel.email)
+                        TextField(LocalizedStringKey("email"), text: $viewModel.email)
                             .signInTextFieldStyle(withHeight: self.maxHeight, topLeading: self.topLeading, backgroundColor: Color.qpLightGrayColor)
 
-                        SecureInputView("Parola", text: $viewModel.password, maxHeight: self.maxHeight, topLeading: self.topLeading, backgroundColor: Color.qpLightGrayColor)
+                        SecureInputView(LocalizedStringKey("password").stringValue(), text: $viewModel.password, maxHeight: self.maxHeight, topLeading: self.topLeading, backgroundColor: Color.qpLightGrayColor)
 
-                        SecureInputView("Confirma Parola", text: $viewModel.confirmPassword, maxHeight: self.maxHeight, topLeading: self.topLeading, backgroundColor: Color.qpLightGrayColor)
+                        SecureInputView(LocalizedStringKey("confirm-password").stringValue(), text: $viewModel.confirmPassword, maxHeight: self.maxHeight, topLeading: self.topLeading, backgroundColor: Color.qpLightGrayColor)
 
                         if self.passwordFormatError && !self.fieldsIncompleted {
-                            Text("Parola trebuie sa aiba cel putin 6 caractere!")
+                            Text(LocalizedStringKey("password-format-error"))
                                 .foregroundColor(.red)
                         } else {
                             EmptyView()
                         }
                         if self.passwordsDontMatch && !self.fieldsIncompleted {
-                            Text("Parolele difera!").foregroundColor(.red)
+                            Text(LocalizedStringKey("passwords-match-error")).foregroundColor(.red)
                         } else {
                             EmptyView()
                         }
@@ -117,7 +117,7 @@ struct SignUpView: View {
                             successSignUp = true
                         }
                     }) {
-                        Text("Creeaza un cont nou")
+                        Text(LocalizedStringKey("signup"))
                             .frame(maxWidth: .infinity, maxHeight: self.maxHeight)
                             .foregroundColor(.white)
                         Spacer()
@@ -133,7 +133,7 @@ struct SignUpView: View {
             .tint(.black)
             .toolbar {
                 ToolbarItem(placement: .principal) {
-                    Text("Creaza un cont nou")
+                    Text(LocalizedStringKey("signup"))
                         .font(.system(size: self.toolBarTextFontSize))
                         .fontWeight(.medium)
                 }
@@ -143,19 +143,19 @@ struct SignUpView: View {
                         self.presentationMode.wrappedValue.dismiss()
                     } label: {
                         Image(systemName: "chevron.backward")
-                        Text("Inapoi")
+                        Text(LocalizedStringKey("back"))
                     }
                     .tint(Color.qpOrange)
                 }
             }
         }
-        .alert("Ti-ai creat un cont cu succes!", isPresented: $successSignUp) {
-            Button("Inapoi la logare") {
+        .alert(LocalizedStringKey("created-account-message"), isPresented: $successSignUp) {
+            Button(LocalizedStringKey("back-to-signin")) {
                 successSignUp = false
                 self.presentationMode.wrappedValue.dismiss()
             }
         }
-        .alert("Completeaza toate campurile inainte de a-ti face cont!", isPresented: $fieldsIncompleted) {
+        .alert(LocalizedStringKey("complete-all-fields-message"), isPresented: $fieldsIncompleted) {
             Button("OK", role: .cancel) { }
         }
     }

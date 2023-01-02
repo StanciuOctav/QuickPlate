@@ -19,7 +19,10 @@ final class SignUpViewModel: ObservableObject {
     // FIXME: Maybe in the future have a list of working restaurants with DocumentReferences in them (REMEMBER: DocumentReference cannot be empty in firestore or it may not be a document at the specified path)
     @Published var restaurantId: String = ""
 
-    var dropdownRoles = ["Client", "Chelner", "Barman", "Bucatar"]
+    var dropdownRoles = [LocalizedStringKey(stringLiteral: "client").stringValue(),
+                         LocalizedStringKey(stringLiteral: "waiter").stringValue(),
+                         LocalizedStringKey(stringLiteral: "bartender").stringValue(),
+                         LocalizedStringKey(stringLiteral: "cook").stringValue()]
 
     var passwordWrongFormat: Bool {
         return passwordHasWrongFormat()
