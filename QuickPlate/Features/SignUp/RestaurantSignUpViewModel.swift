@@ -20,8 +20,9 @@ final class RestaurantsSignUpViewModel: ObservableObject {
 
     func fetchAllRestaurants() {
         coll.addSnapshotListener { querySnapshot, error in
-            if let _ = error {
+            if let error = error {
                 print("RestaurantCollection - Could't retrieve restaurants")
+                print(error.localizedDescription)
             }
             guard let documents = querySnapshot?.documents else {
                 print("RestaurantCollection - No documents!")

@@ -22,7 +22,15 @@ class MyUser: Codable, Identifiable {
 
     init() {}
 
-    init(id: String, username: String, firstName: String, lastName: String, role: String, restaurantWorking: String, email: String, password: String, favouriteRestaurants: [String]) {
+    init(id: String,
+         username: String,
+         firstName: String,
+         lastName: String,
+         role: String,
+         restaurantWorking: String,
+         email: String,
+         password: String,
+         favouriteRestaurants: [String]) {
         self.id = id
         self.username = username
         self.firstName = firstName
