@@ -15,7 +15,6 @@ struct QPTabView: View {
                     .tabItem {
                         Label(LocalizedStringKey("map"), systemImage: "map.fill")
                     }
-                    .accentColor(.accentColor)
 
                 RestaurantsListView()
                     .tabItem {
@@ -31,9 +30,3 @@ struct QPTabView: View {
         }.accentColor(Color.qpOrange)
     }
 }
-
-// struct QPTabView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        QPTabView()
-//    }
-// }

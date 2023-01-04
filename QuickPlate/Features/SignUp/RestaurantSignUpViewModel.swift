@@ -5,7 +5,6 @@
 //  Created by Ioan-Octavian Stanciu on 11.12.2022.
 //
 
-import CoreLocation
 import FirebaseFirestore
 import Foundation
 

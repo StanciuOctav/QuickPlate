@@ -34,9 +34,9 @@ struct SecureInputView: View {
                     .signInTextFieldStyle(withHeight: self.maxHeight, topLeading: self.topLeading, backgroundColor: self.backgroundColor)
             }
 
-            Button(action: {
+            Button {
                 isSecured.toggle()
-            }) {
+            } label: {
                 Image(systemName: self.isSecured ? "eye.slash.fill" : "eye.fill")
             }.padding(.trailing, 10)
         }

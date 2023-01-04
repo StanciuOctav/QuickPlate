@@ -20,3 +20,13 @@ class RestaurantSignUpDTO: Codable, Identifiable {
         self.name = name
     }
 }
+
+extension RestaurantSignUpDTO: Hashable {
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+    
+    static func == (lhs: RestaurantSignUpDTO, rhs: RestaurantSignUpDTO) -> Bool {
+        return lhs.id == rhs.id
+    }
+}

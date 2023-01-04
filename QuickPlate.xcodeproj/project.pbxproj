@@ -16,10 +16,9 @@
 		535195E4293CCA2900A44820 /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535195E3293CCA2900A44820 /* UserProfileViewModel.swift */; };
 		535195E6293CCCDA00A44820 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535195E5293CCCDA00A44820 /* View+Extensions.swift */; };
 		537A1B19294658E000979FCA /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537A1B18294658E000979FCA /* Restaurant.swift */; };
-		537A1B1B29465BA800979FCA /* RestaurantsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537A1B1A29465BA800979FCA /* RestaurantsViewModel.swift */; };
+		537A1B1B29465BA800979FCA /* RestaurantsCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537A1B1A29465BA800979FCA /* RestaurantsCollection.swift */; };
 		537A1B1D29467CD100979FCA /* RestaurantSignUpDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537A1B1C29467CD100979FCA /* RestaurantSignUpDTO.swift */; };
 		537A1B2129467D5600979FCA /* RestaurantSignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537A1B2029467D5600979FCA /* RestaurantSignUpViewModel.swift */; };
-		537A1B2329467E7800979FCA /* RestaurantSignUpDTO+Hashable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537A1B2229467E7800979FCA /* RestaurantSignUpDTO+Hashable.swift */; };
 		537E800D2945F3C700A02B04 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537E800C2945F3C700A02B04 /* SignUpViewModel.swift */; };
 		5387897D2962F2DD00F42F9A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5387897F2962F2DD00F42F9A /* Localizable.strings */; };
 		538789822963019600F42F9A /* LocalizedStringKey+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538789812963019600F42F9A /* LocalizedStringKey+String.swift */; };
@@ -64,10 +63,9 @@
 		535195E3293CCA2900A44820 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
 		535195E5293CCCDA00A44820 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		537A1B18294658E000979FCA /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
-		537A1B1A29465BA800979FCA /* RestaurantsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantsViewModel.swift; sourceTree = "<group>"; };
+		537A1B1A29465BA800979FCA /* RestaurantsCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantsCollection.swift; sourceTree = "<group>"; };
 		537A1B1C29467CD100979FCA /* RestaurantSignUpDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantSignUpDTO.swift; sourceTree = "<group>"; };
 		537A1B2029467D5600979FCA /* RestaurantSignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantSignUpViewModel.swift; sourceTree = "<group>"; };
-		537A1B2229467E7800979FCA /* RestaurantSignUpDTO+Hashable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RestaurantSignUpDTO+Hashable.swift"; sourceTree = "<group>"; };
 		537E800C2945F3C700A02B04 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		537F6A16292582E2001CF422 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5387897E2962F2DD00F42F9A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -190,7 +188,6 @@
 			children = (
 				5387CFD929252BD60010344B /* Color+CusomColors.swift */,
 				535195E5293CCCDA00A44820 /* View+Extensions.swift */,
-				537A1B2229467E7800979FCA /* RestaurantSignUpDTO+Hashable.swift */,
 				538789812963019600F42F9A /* LocalizedStringKey+String.swift */,
 			);
 			path = Extensions;
@@ -276,7 +273,7 @@
 			isa = PBXGroup;
 			children = (
 				53A5E8DA29461B2000DBFAFE /* UserCollection.swift */,
-				537A1B1A29465BA800979FCA /* RestaurantsViewModel.swift */,
+				537A1B1A29465BA800979FCA /* RestaurantsCollection.swift */,
 			);
 			path = Queries;
 			sourceTree = "<group>";
@@ -359,7 +356,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1400;
-				LastUpgradeCheck = 1400;
+				LastUpgradeCheck = 1420;
 				TargetAttributes = {
 					538994812920F89700C370BF = {
 						CreatedOnToolsVersion = 14.0.1;
@@ -422,7 +419,6 @@
 				537A1B1D29467CD100979FCA /* RestaurantSignUpDTO.swift in Sources */,
 				53A5E8D4294606F400DBFAFE /* MyUser.swift in Sources */,
 				5337F1EE292ACCEE00C3A766 /* SecureInputView.swift in Sources */,
-				537A1B2329467E7800979FCA /* RestaurantSignUpDTO+Hashable.swift in Sources */,
 				538994862920F89700C370BF /* QuickPlateApp.swift in Sources */,
 				53E2FD25292B772400D63069 /* RestaurantsListView.swift in Sources */,
 				535195E6293CCCDA00A44820 /* View+Extensions.swift in Sources */,
@@ -430,7 +426,7 @@
 				53E2FD27292B773F00D63069 /* UserProfileView.swift in Sources */,
 				53E19D6A2934042C00A79735 /* LocationManager.swift in Sources */,
 				538994952920FF3C00C370BF /* SpashScreenView.swift in Sources */,
-				537A1B1B29465BA800979FCA /* RestaurantsViewModel.swift in Sources */,
+				537A1B1B29465BA800979FCA /* RestaurantsCollection.swift in Sources */,
 				53E2FD20292B75C600D63069 /* QPTabView.swift in Sources */,
 				535195E4293CCA2900A44820 /* UserProfileViewModel.swift in Sources */,
 				5387CFDA29252BD60010344B /* Color+CusomColors.swift in Sources */,
@@ -456,6 +452,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -516,6 +513,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
