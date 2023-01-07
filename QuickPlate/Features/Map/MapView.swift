@@ -12,14 +12,32 @@ import SwiftUI
 struct MapView: View {
     @StateObject private var locManager = LocationManager()
     @State private var tracking: MapUserTrackingMode = .follow
-
-    private var buttonHeight: CGFloat = 50
-    private var buttonWidth: CGFloat = 50
-
+    
+    @StateObject private var vm = MapViewModel()
+    
+    private var buttonHeightAndWidth: CGFloat = 50
+    
     var body: some View {
         ZStack(alignment: .top) {
-            Map(coordinateRegion: $locManager.region, interactionModes: .all, showsUserLocation: true, userTrackingMode: $tracking)
-                .ignoresSafeArea(edges: .top)
+            Map(coordinateRegion: $locManager.region,
+                interactionModes: .all,
+                showsUserLocation: true,
+                userTrackingMode: $tracking,
+                annotationItems: $vm.annotationItems) { item in
+                MapAnnotation(coordinate: item.wrappedValue.coordinate) {
+                    Button {
+                        print("Clicked on restaurant with id \(item.id)")
+                    } label: {
+                        ZStack(alignment: .center) {
+                            Image("restaurant-pin")
+                                .resizable()
+                            Text("\(String(format: "%.1f", item.restaurantRating.wrappedValue))")
+                                .foregroundColor(.white)
+                        }
+                    }
+                }
+            }
+            .ignoresSafeArea(edges: .top)
 
             HStack {
                 Button {
@@ -29,7 +47,7 @@ struct MapView: View {
                         .foregroundColor(.white)
                         .background(.white)
                         .cornerRadius(.infinity)
-                        .frame(width: self.buttonWidth, height: self.buttonHeight)
+                        .frame(width: self.buttonHeightAndWidth, height: self.buttonHeightAndWidth)
                         .overlay(
                             Image(systemName: "magnifyingglass")
                                 .foregroundColor(.black)
@@ -47,7 +65,7 @@ struct MapView: View {
                         .foregroundColor(.white)
                         .background(.white)
                         .cornerRadius(.infinity)
-                        .frame(width: self.buttonWidth, height: self.buttonHeight)
+                        .frame(width: self.buttonHeightAndWidth, height: self.buttonHeightAndWidth)
                         .overlay(
                             Image(systemName: "location.fill")
                                 .foregroundColor(.black)
@@ -56,6 +74,18 @@ struct MapView: View {
                 .padding()
             }
         }
+//        .onAppear {
+//            vm.restaurants.forEach { restaurant in
+//                print(restaurant.location)
+//                annotationItems.append(
+//    //                MyAnnotationItem(coordinate: CLLocationCoordinate2D(latitude: res.location.latitude, longitude: res.location.longitude),
+//    //                                 id: String(res.id))
+//                    MyAnnotationItem(coordinate: CLLocationCoordinate2D(latitude: restaurant.location.latitude,
+//                                                                        longitude: restaurant.location.longitude))
+//                )
+//            }
+//            print(annotationItems.count)
+//        }
     }
 }
 

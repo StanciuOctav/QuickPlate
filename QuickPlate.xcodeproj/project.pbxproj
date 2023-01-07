@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		533098AC2927B6EB007C441D /* SignInTextFieldModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533098AB2927B6EB007C441D /* SignInTextFieldModifier.swift */; };
+		533374B42965AFA1001850B8 /* RestaurantCardDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533374B32965AFA1001850B8 /* RestaurantCardDTO.swift */; };
+		533374B62965B11B001850B8 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533374B52965B11B001850B8 /* MapViewModel.swift */; };
 		5337F1EE292ACCEE00C3A766 /* SecureInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5337F1ED292ACCEE00C3A766 /* SecureInputView.swift */; };
 		535195D0293C9C6600A44820 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535195CF293C9C6500A44820 /* SignInViewModel.swift */; };
 		535195D3293CA0DB00A44820 /* FirebaseEmailAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535195D2293CA0DB00A44820 /* FirebaseEmailAuth.swift */; };
@@ -55,6 +57,8 @@
 
 /* Begin PBXFileReference section */
 		533098AB2927B6EB007C441D /* SignInTextFieldModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInTextFieldModifier.swift; sourceTree = "<group>"; };
+		533374B32965AFA1001850B8 /* RestaurantCardDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCardDTO.swift; sourceTree = "<group>"; };
+		533374B52965B11B001850B8 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		5337F1ED292ACCEE00C3A766 /* SecureInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureInputView.swift; sourceTree = "<group>"; };
 		535195CF293C9C6500A44820 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		535195D2293CA0DB00A44820 /* FirebaseEmailAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseEmailAuth.swift; sourceTree = "<group>"; };
@@ -179,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				537A1B1C29467CD100979FCA /* RestaurantSignUpDTO.swift */,
+				533374B32965AFA1001850B8 /* RestaurantCardDTO.swift */,
 			);
 			path = DTOs;
 			sourceTree = "<group>";
@@ -291,6 +296,7 @@
 			children = (
 				53E2FD1D292B75A900D63069 /* MapView.swift */,
 				53E19D692934042C00A79735 /* LocationManager.swift */,
+				533374B52965B11B001850B8 /* MapViewModel.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -406,6 +412,7 @@
 			files = (
 				537A1B19294658E000979FCA /* Restaurant.swift in Sources */,
 				538994882920F89700C370BF /* SignInView.swift in Sources */,
+				533374B62965B11B001850B8 /* MapViewModel.swift in Sources */,
 				538789822963019600F42F9A /* LocalizedStringKey+String.swift in Sources */,
 				535195E1293CBBC200A44820 /* ApplicationSwitcher.swift in Sources */,
 				53E2FD1E292B75A900D63069 /* MapView.swift in Sources */,
@@ -414,6 +421,7 @@
 				537E800D2945F3C700A02B04 /* SignUpViewModel.swift in Sources */,
 				537A1B2129467D5600979FCA /* RestaurantSignUpViewModel.swift in Sources */,
 				535195D0293C9C6600A44820 /* SignInViewModel.swift in Sources */,
+				533374B42965AFA1001850B8 /* RestaurantCardDTO.swift in Sources */,
 				535195D3293CA0DB00A44820 /* FirebaseEmailAuth.swift in Sources */,
 				53A5E8DB29461B2000DBFAFE /* UserCollection.swift in Sources */,
 				537A1B1D29467CD100979FCA /* RestaurantSignUpDTO.swift in Sources */,
@@ -583,7 +591,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -616,7 +624,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
