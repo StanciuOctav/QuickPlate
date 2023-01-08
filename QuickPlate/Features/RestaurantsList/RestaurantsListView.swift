@@ -17,14 +17,17 @@ struct RestaurantsListView: View {
                 .listRowInsets(EdgeInsets(top: 10, leading: 3, bottom: 10, trailing: 3))
                 .listRowSeparator(.hidden)
         }
-        .searchable(text: $searchRestaurant, prompt: LocalizedStringKey("search-placeholder"))
+        .searchable(text: $searchRestaurant,
+                    placement: .navigationBarDrawer(displayMode: .automatic),
+                    prompt: LocalizedStringKey("search-placeholder"))
+        .autocorrectionDisabled(true)
         .onChange(of: searchRestaurant) { searchTerm in
             if !searchTerm.isEmpty {
                 vm.restaurants = vm.restaurants.filter({ restaurant in
                     restaurant.name.lowercased().contains(searchTerm.lowercased())
                 })
             } else {
-                vm.fetchAllRestaurants()
+                vm.resetRestaurants()
             }
         }
         .onSubmit({

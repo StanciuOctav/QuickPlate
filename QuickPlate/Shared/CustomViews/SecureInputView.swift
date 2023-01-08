@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SecureInputView: View {
     @Binding private var text: String
-    @State private var isSecured: Bool = true
+    @State private var isSecured: Bool = true // FIXME: https://developer.apple.com/documentation/swiftui/focusstate
     private var title: String
 
     private var maxHeight: CGFloat

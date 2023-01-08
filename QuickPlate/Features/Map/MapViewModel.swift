@@ -61,4 +61,12 @@ final class MapViewModel: ObservableObject {
             )
         }
     }
+    
+    func returnSelectedRestaurantWith(id: String) -> RestaurantCardDTO? {
+        if let restaurant = self.restaurants.first(where: {$0.id == id}) {
+            return restaurant
+        } else {
+            return nil
+        }
+    }
 }

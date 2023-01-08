@@ -11,6 +11,7 @@ import SwiftUI
 
 final class RestaurantsViewViewModel: ObservableObject {
     @Published var restaurants: [RestaurantCardDTO] = []
+    private var defaultRestaurants: [RestaurantCardDTO] = []
     
     private let coll = Firestore.firestore().collection("Restaurants")
     
@@ -37,6 +38,20 @@ final class RestaurantsViewViewModel: ObservableObject {
                 let res = RestaurantCardDTO(id: id, name: name, picture: picture, location: location, address: address, openHour: openHour, closeHour: closeHour, rating: rating)
                 return res
             })
+            self.initializeDefaultRestaurants()
+        }
+    }
+    
+    private func initializeDefaultRestaurants() {
+        for res in restaurants {
+            self.defaultRestaurants.append(res)
+        }
+    }
+    
+    func resetRestaurants() {
+        self.restaurants.removeAll()
+        self.defaultRestaurants.forEach { res in
+            self.restaurants.append(res)
         }
     }
 }
