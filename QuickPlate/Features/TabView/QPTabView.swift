@@ -11,20 +11,19 @@ struct QPTabView: View {
     var body: some View {
         TabView {
             Group {
+                RestaurantsListView()
+                    .tabItem {
+                        Label(LocalizedStringKey("restaurants"), systemImage: "fork.knife.circle")
+                    }
+                
                 MapView()
                     .tabItem {
                         Label(LocalizedStringKey("map"), systemImage: "map.fill")
                     }
 
-                RestaurantsListView()
-                    .tabItem {
-                        Label(LocalizedStringKey("restaurants"), systemImage: "fork.knife.circle")
-                    }
-
                 UserProfileView()
                     .tabItem {
                         Label(LocalizedStringKey("account"), systemImage: "person.fill")
-                            .foregroundColor(.black)
                     }
             }.accentColor(.accentColor)
         }.accentColor(Color.qpOrange)

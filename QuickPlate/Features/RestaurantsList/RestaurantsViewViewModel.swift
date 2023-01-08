@@ -1,27 +1,19 @@
 //
-//  MapViewViewModel.swift
+//  RestaurantsViewViewModel.swift
 //  QuickPlate
 //
-//  Created by Ioan-Octavian Stanciu on 04.01.2023.
+//  Created by Ioan-Octavian Stanciu on 08.01.2023.
 //
 
-import CoreLocation
 import FirebaseFirestore
 import Foundation
 import SwiftUI
 
-struct MyAnnotationItem: Identifiable {
-    var coordinate: CLLocationCoordinate2D
-    var restaurantRating: Double
-    var id: String
-}
-
-final class MapViewModel: ObservableObject {
+final class RestaurantsViewViewModel: ObservableObject {
     @Published var restaurants: [RestaurantCardDTO] = []
-    @Published var annotationItems: [MyAnnotationItem] = []
-
+    
     private let coll = Firestore.firestore().collection("Restaurants")
-
+    
     func fetchAllRestaurants() {
         coll.addSnapshotListener { querySnapshot, error in
             if let error = error {
@@ -45,20 +37,6 @@ final class MapViewModel: ObservableObject {
                 let res = RestaurantCardDTO(id: id, name: name, picture: picture, location: location, address: address, openHour: openHour, closeHour: closeHour, rating: rating)
                 return res
             })
-            self.addAnnotationItems()
-        }
-    }
-
-    func addAnnotationItems() {
-        for res in restaurants {
-            let id = res.id
-            let location = res.location
-            let rating = res.rating
-            annotationItems.append(
-                MyAnnotationItem(coordinate: CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude),
-                                 restaurantRating: rating,
-                                 id: id)
-            )
         }
     }
 }

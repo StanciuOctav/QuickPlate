@@ -6,6 +6,9 @@
   
 */
 
+// MARK: RESTAURANTS LIST
+"search-placeholder" = "Search for restaurant...";
+
 // MARK: SIGN IN
 "welcome" = "Welcome!";
 "signin-message" = "Sign in so you can book a table at your favourite restaurant and to be able to pre-order";

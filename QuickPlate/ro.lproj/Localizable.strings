@@ -5,6 +5,10 @@
   Created by Ioan-Octavian Stanciu on 02.01.2023.
   
 */
+
+// MARK: RESTAURANTS LIST
+"search-placeholder" = "Cauta restaurant...";
+
 // MARK: SIGN IN
 "welcome" = "Bine ai venit!";
 "signin-message" = "Intra in cont pentru a putea rezerva o masa la un restaurant si pentru a seta o precomanda";

@@ -10,13 +10,13 @@ import MapKit
 import SwiftUI
 
 struct MapView: View {
-    @StateObject private var locManager = LocationManager()
+    @StateObject private var locManager: LocationManager = LocationManager()
     @State private var tracking: MapUserTrackingMode = .follow
-    
-    @StateObject private var vm = MapViewModel()
-    
+
+    @StateObject private var vm: MapViewModel = MapViewModel()
+
     private var buttonHeightAndWidth: CGFloat = 50
-    
+
     var body: some View {
         ZStack(alignment: .top) {
             Map(coordinateRegion: $locManager.region,
@@ -24,20 +24,21 @@ struct MapView: View {
                 showsUserLocation: true,
                 userTrackingMode: $tracking,
                 annotationItems: $vm.annotationItems) { item in
-                MapAnnotation(coordinate: item.wrappedValue.coordinate) {
-                    Button {
-                        print("Clicked on restaurant with id \(item.id)")
-                    } label: {
-                        ZStack(alignment: .center) {
-                            Image("restaurant-pin")
-                                .resizable()
-                            Text("\(String(format: "%.1f", item.restaurantRating.wrappedValue))")
-                                .foregroundColor(.white)
+                    MapAnnotation(coordinate: item.wrappedValue.coordinate) {
+                        Button {
+                            // Here will show the restaurant card
+                            print("Clicked on restaurant with id \(item.id)")
+                        } label: {
+                            ZStack(alignment: .center) {
+                                Image("restaurant-pin")
+                                    .resizable()
+                                Text("\(String(format: "%.1f", item.restaurantRating.wrappedValue))")
+                                    .foregroundColor(.white)
+                            }
                         }
                     }
                 }
-            }
-            .ignoresSafeArea(edges: .top)
+                .ignoresSafeArea(edges: .top)
 
             HStack {
                 Button {
@@ -74,18 +75,9 @@ struct MapView: View {
                 .padding()
             }
         }
-//        .onAppear {
-//            vm.restaurants.forEach { restaurant in
-//                print(restaurant.location)
-//                annotationItems.append(
-//    //                MyAnnotationItem(coordinate: CLLocationCoordinate2D(latitude: res.location.latitude, longitude: res.location.longitude),
-//    //                                 id: String(res.id))
-//                    MyAnnotationItem(coordinate: CLLocationCoordinate2D(latitude: restaurant.location.latitude,
-//                                                                        longitude: restaurant.location.longitude))
-//                )
-//            }
-//            print(annotationItems.count)
-//        }
+        .onAppear {
+            self.vm.fetchAllRestaurants()
+        }
     }
 }
 

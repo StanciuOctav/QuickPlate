@@ -26,6 +26,7 @@ struct QuickPlateApp: App {
             NavigationView {
 //                SplashScreenView()
                 QPTabView()
+//                RestaurantCardView(restaurant: RestaurantCardDTO(id: "312", name: "Marty", picture: "https://lh5.googleusercontent.com/p/AF1QipPt-VVI8HrxYQPRPmy5NIgi3Si4CI4mBp7JtX8s=w408-h544-k-no", address: "Piața Muzeului 2, Cluj-Napoca 400019",openHour: "11:00", closeHour: "23:00", rating: 4.9))
             }
             .environmentObject(userStateViewModel)
         }

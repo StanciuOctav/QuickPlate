@@ -13,17 +13,20 @@ import CoreLocation
 class RestaurantCardDTO: Codable, Identifiable {
     var id: String = UUID().uuidString
     var name: String = ""
+    var picture: String = ""
     var location: GeoPoint = GeoPoint(latitude: 0.0, longitude: 0.0)
     var address: String = ""
     var openHour: String = ""
     var closeHour: String = ""
     var rating: Double = 0.0
+    var isFavourite: Bool = false
 
     init() {}
     
-    init(id: String = UUID().uuidString, name: String = "", location: GeoPoint = GeoPoint(latitude: 0.0, longitude: 0.0), address: String = "", openHour: String = "", closeHour: String = "", rating: Double = 0.0) {
+    init(id: String = UUID().uuidString, name: String = "", picture: String, location: GeoPoint = GeoPoint(latitude: 0.0, longitude: 0.0), address: String = "", openHour: String = "", closeHour: String = "", rating: Double = 0.0) {
         self.id = id
         self.name = name
+        self.picture = picture
         self.location = location
         self.address = address
         self.openHour = openHour
