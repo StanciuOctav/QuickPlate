@@ -29,7 +29,7 @@
 "password-format-error" = "Password must have at least 6 characters";
 "passwords-match-error" = "The passwords don't match";
 "back" = "Back";
-"created-account-message" = "Account created successfully!";
+"created-account-message" = "Verify your email address!";
 "back-to-signin" = "Back to Sign In";
 "complete-all-fields-message" = "You need to complete all the fields in order to create a new account";
 "signup-email-exists-error" = "An account with the same email address already exists!";

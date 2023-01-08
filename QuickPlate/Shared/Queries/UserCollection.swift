@@ -10,17 +10,7 @@ import Foundation
 
 final class UserCollection {
     let usrColl = Firestore.firestore().collection("User")
-
-    // MARK: SINGLETON
-
-    private static let sharedUserCollection: UserCollection = {
-        let share = UserCollection()
-        return share
-    }()
-
-    class func shared() -> UserCollection {
-        return sharedUserCollection
-    }
+    static let shared = UserCollection()
 
     func saveUserToDB(user newUser: MyUser, completion: @escaping (Error?) -> Void) {
         do {

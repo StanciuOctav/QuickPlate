@@ -16,16 +16,7 @@ enum StartupError: Error {
 }
 
 class FirebaseEmailAuth {
-    // MARK: SINGLETON
-
-    private static let sharedFirebaseEmailAuth: FirebaseEmailAuth = {
-        let share = FirebaseEmailAuth()
-        return share
-    }()
-
-    class func shared() -> FirebaseEmailAuth {
-        return sharedFirebaseEmailAuth
-    }
+    static let shared = FirebaseEmailAuth()
 
     // MARK: AUTHENTICATION METHODS
 
@@ -38,11 +29,18 @@ class FirebaseEmailAuth {
                 completion(.failure(.signInError))
                 return
             }
-            guard (result?.user) != nil else {
+            guard let user = result?.user else {
                 completion(.failure(.anonymousUser))
                 return
             }
-            completion(.success(1))
+            switch user.isEmailVerified {
+            case true:
+                print("Email is verified")
+                completion(.success(1))
+            case false:
+                print("Email is not verified")
+                completion(.failure(.emailExists))
+            }
         })
     }
 
@@ -55,11 +53,24 @@ class FirebaseEmailAuth {
                 completion(.failure(.signUpError))
                 return
             }
-            guard (result?.user) != nil else {
+            guard let user = result?.user else {
                 completion(.failure(.anonymousUser))
                 return
             }
-            completion(.success(1))
+            switch user.isEmailVerified {
+            case true:
+                print("Email is verified")
+                completion(.success(1))
+            case false:
+                print("Email is not verified")
+                user.sendEmailVerification { error in
+                    guard let _ = error else {
+                        completion(.success(1))
+                        return
+                    }
+                    completion(.failure(.emailExists))
+                }
+            }
         }
     }
 

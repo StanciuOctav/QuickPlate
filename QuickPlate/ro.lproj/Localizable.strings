@@ -29,7 +29,7 @@
 "password-format-error" = "Parola trebuie sa contina cel putin 6 caractere";
 "passwords-match-error" = "Parolele difera";
 "back" = "Inapoi";
-"created-account-message" = "Ti-ai creat cu succes un cont!";
+"created-account-message" = "Verifica adresa de email!";
 "back-to-signin" = "Inapoi la logare";
 "complete-all-fields-message" = "Toate campurile trebuie completate inainte de a se crea un cont";
 "signup-email-exists-error" = "Adresa de email introdusa este folosita de alt cont!";

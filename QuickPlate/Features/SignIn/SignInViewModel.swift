@@ -24,7 +24,7 @@ final class SignInViewModel: ObservableObject {
     }
 
     func signIn(completion: @escaping (Result<Int?,StartupError>) -> Void) {
-        FirebaseEmailAuth.shared().doLogin(email: email, password: password) { result in
+        FirebaseEmailAuth.shared.doLogin(email: email, password: password) { result in
             switch result {
             case .success(_):
                 completion(.success(1))

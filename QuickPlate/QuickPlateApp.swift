@@ -24,8 +24,8 @@ struct QuickPlateApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-//                SplashScreenView()
-                QPTabView()
+                SplashScreenView()
+//                QPTabView()
             }
             .environmentObject(userStateViewModel)
         }
