@@ -13,10 +13,21 @@ import Foundation
  3. The user signed in as a worker => nextScreen is .workerSignedIn => will display the WorkerView()
  */
 
-enum LoginState {
-    case notSignedIn
-    case clientSignedIn
-    case workerSignedIn
+enum LoginState: String {
+    case notSignedIn = "notSignedIn"
+    case clientSignedIn = "clientSignedIn"
+    case workerSignedIn = "workerSignedIn"
+    
+    var valueForUserDefaults: String {
+        switch self {
+        case .notSignedIn:
+            return "notSignedIn"
+        case .clientSignedIn:
+            return "clientSignedIn"
+        case .workerSignedIn:
+            return "workerSignedIn"
+        }
+    }
 }
 
 final class LoginManager: ObservableObject {
@@ -29,32 +40,23 @@ final class LoginManager: ObservableObject {
     func checkLoginUserDefaultsExist() {
         if (UserDefaults.standard.object(forKey: "login") == nil) {
             UserDefaults.standard.set(".notSignedIn", forKey: "login")
-            nextScreen = .notSignedIn
         } else {
-            updateNextScreenWithSavedState(state: UserDefaults.standard.string(forKey: "login")!)
-        }
-    }
-    
-    func updateNextScreenWithSavedState(state: String){
-        switch state {
-        case "notSignedIn":
-            nextScreen = .notSignedIn
-            break
-        case "clientSignedIn":
-            nextScreen = .clientSignedIn
-            break
-        case "workerSignedIn":
-            nextScreen = .workerSignedIn
-            break
-        default:
-            break
+            guard let cachedLoginState = UserDefaults.standard.string(forKey: "login") else {
+                print("DEBUG - LoginManager - Error in reading the cached state")
+                return
+            }
+            guard let newState = LoginState(rawValue: cachedLoginState) else {
+                print("DEBUG - LoginManager - Error in getting the new state conversion")
+                return
+            }
+            updateWith(state: newState)
         }
     }
     
     func updateWith(state: LoginState) {
-        if (state == .notSignedIn) {
-            UserDefaults.standard.removeObject(forKey: "login")
-        }
         nextScreen = state
+        if (state == .notSignedIn) {
+            UserDefaults.standard.set(nextScreen.valueForUserDefaults, forKey: "login")
+        }
     }
 }

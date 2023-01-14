@@ -48,7 +48,6 @@ struct SignInView: View {
                             viewModel.signIn { result in
                                 switch result {
                                 case .success:
-                                    // viewModel.setShowCredentialsErrors(withBool: false)
                                     loginManager.updateWith(state: .clientSignedIn)
                                 case .failure(.signInError):
                                     viewModel.setShowCredentialsErrors(withBool: true)
