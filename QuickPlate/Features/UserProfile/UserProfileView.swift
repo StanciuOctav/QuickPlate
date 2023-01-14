@@ -9,7 +9,7 @@ import SwiftUI
 
 struct UserProfileView: View {
     @StateObject var vm = UserProfileViewModel()
-    @EnvironmentObject var userStateViewModel: UserStateViewModel
+    @ObservedObject var loginManager: LoginManager
 
     var body: some View {
         Button {
@@ -18,7 +18,7 @@ struct UserProfileView: View {
                     print("UserProfileView - The user couldn't sign out")
                 } else {
                     print("Did the user sign out? \(didNotSignOut != nil ? "NO" : "YES")")
-                    userStateViewModel.signOut()
+                    loginManager.updateWith(state: .notSignedIn)
                 }
             })
         } label: {
@@ -27,8 +27,8 @@ struct UserProfileView: View {
     }
 }
 
-struct UserProfileView_Previews: PreviewProvider {
-    static var previews: some View {
-        UserProfileView()
-    }
-}
+//struct UserProfileView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        UserProfileView()
+//    }
+//}

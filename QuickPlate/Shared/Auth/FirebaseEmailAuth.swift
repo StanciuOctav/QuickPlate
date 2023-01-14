@@ -33,14 +33,15 @@ class FirebaseEmailAuth {
                 completion(.failure(.anonymousUser))
                 return
             }
-            switch user.isEmailVerified {
-            case true:
-                print("Email is verified")
-                completion(.success(1))
-            case false:
-                print("Email is not verified")
-                completion(.failure(.emailExists))
-            }
+            completion(.success(1))
+//            switch user.isEmailVerified {
+//            case true:
+//                print("Email is verified")
+//                completion(.success(1))
+//            case false:
+//                print("Email is not verified")
+//                completion(.failure(.emailExists))
+//            }
         })
     }
 
@@ -57,20 +58,21 @@ class FirebaseEmailAuth {
                 completion(.failure(.anonymousUser))
                 return
             }
-            switch user.isEmailVerified {
-            case true:
-                print("Email is verified")
-                completion(.success(1))
-            case false:
-                print("Email is not verified")
-                user.sendEmailVerification { error in
-                    guard let _ = error else {
-                        completion(.success(1))
-                        return
-                    }
-                    completion(.failure(.emailExists))
-                }
-            }
+            completion(.success(1))
+//            switch user.isEmailVerified {
+//            case true:
+//                print("Email is verified")
+//                completion(.success(1))
+//            case false:
+//                print("Email is not verified")
+//                user.sendEmailVerification { error in
+//                    guard let _ = error else {
+//                        completion(.success(1))
+//                        return
+//                    }
+//                    completion(.failure(.emailExists))
+//                }
+//            }
         }
     }
 

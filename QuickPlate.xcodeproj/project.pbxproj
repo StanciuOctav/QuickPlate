@@ -14,10 +14,10 @@
 		5337F1EE292ACCEE00C3A766 /* SecureInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5337F1ED292ACCEE00C3A766 /* SecureInputView.swift */; };
 		535195D0293C9C6600A44820 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535195CF293C9C6500A44820 /* SignInViewModel.swift */; };
 		535195D3293CA0DB00A44820 /* FirebaseEmailAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535195D2293CA0DB00A44820 /* FirebaseEmailAuth.swift */; };
-		535195DF293CBA7600A44820 /* UserStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535195DE293CBA7600A44820 /* UserStateViewModel.swift */; };
-		535195E1293CBBC200A44820 /* ApplicationSwitcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535195E0293CBBC200A44820 /* ApplicationSwitcher.swift */; };
 		535195E4293CCA2900A44820 /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535195E3293CCA2900A44820 /* UserProfileViewModel.swift */; };
 		535195E6293CCCDA00A44820 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535195E5293CCCDA00A44820 /* View+Extensions.swift */; };
+		5358FDC32972E0BF00F75614 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5358FDC22972E0BF00F75614 /* LoginManager.swift */; };
+		5358FDC52972EE8800F75614 /* LoginStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5358FDC42972EE8800F75614 /* LoginStateView.swift */; };
 		5379FB0E296AB87C00A1A870 /* RestaurantsViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5379FB0D296AB87C00A1A870 /* RestaurantsViewViewModel.swift */; };
 		537A1B19294658E000979FCA /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537A1B18294658E000979FCA /* Restaurant.swift */; };
 		537A1B1B29465BA800979FCA /* RestaurantsCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537A1B1A29465BA800979FCA /* RestaurantsCollection.swift */; };
@@ -65,10 +65,10 @@
 		5337F1ED292ACCEE00C3A766 /* SecureInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureInputView.swift; sourceTree = "<group>"; };
 		535195CF293C9C6500A44820 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		535195D2293CA0DB00A44820 /* FirebaseEmailAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseEmailAuth.swift; sourceTree = "<group>"; };
-		535195DE293CBA7600A44820 /* UserStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserStateViewModel.swift; sourceTree = "<group>"; };
-		535195E0293CBBC200A44820 /* ApplicationSwitcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationSwitcher.swift; sourceTree = "<group>"; };
 		535195E3293CCA2900A44820 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
 		535195E5293CCCDA00A44820 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		5358FDC22972E0BF00F75614 /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
+		5358FDC42972EE8800F75614 /* LoginStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStateView.swift; sourceTree = "<group>"; };
 		5379FB0D296AB87C00A1A870 /* RestaurantsViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantsViewViewModel.swift; sourceTree = "<group>"; };
 		537A1B18294658E000979FCA /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		537A1B1A29465BA800979FCA /* RestaurantsCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantsCollection.swift; sourceTree = "<group>"; };
@@ -177,8 +177,8 @@
 		535195E2293CC18F00A44820 /* States */ = {
 			isa = PBXGroup;
 			children = (
-				535195E0293CBBC200A44820 /* ApplicationSwitcher.swift */,
-				535195DE293CBA7600A44820 /* UserStateViewModel.swift */,
+				5358FDC22972E0BF00F75614 /* LoginManager.swift */,
+				5358FDC42972EE8800F75614 /* LoginStateView.swift */,
 			);
 			path = States;
 			sourceTree = "<group>";
@@ -417,10 +417,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				537A1B19294658E000979FCA /* Restaurant.swift in Sources */,
+				5358FDC32972E0BF00F75614 /* LoginManager.swift in Sources */,
 				538994882920F89700C370BF /* SignInView.swift in Sources */,
 				533374B62965B11B001850B8 /* MapViewModel.swift in Sources */,
+				5358FDC52972EE8800F75614 /* LoginStateView.swift in Sources */,
 				538789822963019600F42F9A /* LocalizedStringKey+String.swift in Sources */,
-				535195E1293CBBC200A44820 /* ApplicationSwitcher.swift in Sources */,
 				53E2FD1E292B75A900D63069 /* MapView.swift in Sources */,
 				539FDE8A29262B0A0034C036 /* SignUpView.swift in Sources */,
 				533098AC2927B6EB007C441D /* SignInTextFieldModifier.swift in Sources */,
@@ -436,7 +437,6 @@
 				538994862920F89700C370BF /* QuickPlateApp.swift in Sources */,
 				53E2FD25292B772400D63069 /* RestaurantsListView.swift in Sources */,
 				535195E6293CCCDA00A44820 /* View+Extensions.swift in Sources */,
-				535195DF293CBA7600A44820 /* UserStateViewModel.swift in Sources */,
 				53E2FD27292B773F00D63069 /* UserProfileView.swift in Sources */,
 				53E19D6A2934042C00A79735 /* LocationManager.swift in Sources */,
 				538994952920FF3C00C370BF /* SpashScreenView.swift in Sources */,

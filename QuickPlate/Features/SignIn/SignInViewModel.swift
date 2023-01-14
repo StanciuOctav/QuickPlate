@@ -28,6 +28,7 @@ final class SignInViewModel: ObservableObject {
             switch result {
             case .success(_):
                 completion(.success(1))
+                UserDefaults.standard.set("clientSignedIn", forKey: "login"); // check if is a client or a worker
             case .failure(.signInError):
                 completion(.failure(.signInError))
             case .failure(_):

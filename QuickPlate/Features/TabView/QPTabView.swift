@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct QPTabView: View {
+    @ObservedObject var loginManager: LoginManager
     var body: some View {
         TabView {
             Group {
@@ -21,7 +22,7 @@ struct QPTabView: View {
                         Label(LocalizedStringKey("restaurants"), systemImage: "fork.knife.circle")
                     }
 
-                UserProfileView()
+                UserProfileView(loginManager: loginManager)
                     .tabItem {
                         Label(LocalizedStringKey("account"), systemImage: "person.fill")
                     }

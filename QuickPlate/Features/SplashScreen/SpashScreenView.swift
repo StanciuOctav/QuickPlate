@@ -12,7 +12,7 @@ struct SplashScreenView: View {
 
     var body: some View {
         if isActive {
-            ApplicationSwitcher()
+            LoginStateView()
         } else {
             ZStack {
                 Color("qp-beige-color").ignoresSafeArea()
