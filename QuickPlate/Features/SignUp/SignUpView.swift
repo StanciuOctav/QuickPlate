@@ -63,9 +63,9 @@ struct SignUpView: View {
                         }
 
                         Menu {
-                            ForEach(restaurantsViewModel.restaurants, id: \.self) { restaurant in
+                            ForEach(restaurantsViewModel.restaurants) { restaurant in
                                 Button(restaurant.name) {
-                                    viewModel.setRestaurantId(withId: restaurant.id)
+                                    viewModel.setRestaurantId(withId: restaurant.id ?? "")
                                     self.selectedRestaurant = restaurant.name
                                 }
                             }

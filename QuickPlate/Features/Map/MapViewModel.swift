@@ -35,16 +35,12 @@ final class MapViewModel: ObservableObject {
             }
 
             self.restaurants = documents.map({ qdSnap in
-                let id = qdSnap.documentID
-                let data = qdSnap.data()
-                let name = data["name"] as? String ?? ""
-                let picture = data["picture"] as? String ?? ""
-                let address = data["address"] as? String ?? ""
-                let openHour = data["openHour"] as? String ?? ""
-                let closeHour = data["closeHour"] as? String ?? ""
-                let rating = data["rating"] as? Double ?? -1.0
-                let location = data["location"] as? GeoPoint ?? GeoPoint(latitude: 0.0, longitude: 0.0)
-                let res = RestaurantCardDTO(id: id, name: name, picture: picture, location: location, address: address, openHour: openHour, closeHour: closeHour, rating: rating)
+                var res = RestaurantCardDTO()
+                do {
+                    res = try qdSnap.data(as: RestaurantCardDTO.self)
+                } catch {
+                    print(error)
+                }
                 return res
             })
             self.updateAnnotationItems()
@@ -77,13 +73,13 @@ extension MapViewModel {
             // If the restaurant is NOT shown on the map, it will be added in annotation items
             if !annotationItems.contains(where: { $0.id == id }) {
                 annotationItems.append(
-                    MyAnnotationItem(id: id,
+                    MyAnnotationItem(id: id ?? "",
                                      coordinate: CLLocationCoordinate2D(latitude: geoPointLocation.latitude, longitude: geoPointLocation.longitude),
                                      restaurantRating: rating
                     )
                 )
             } else {
-                self.updateRestaurantWith(id: id, rating: rating, geoPointLocation: geoPointLocation)
+                self.updateRestaurantWith(id: id ?? "", rating: rating, geoPointLocation: geoPointLocation)
             }
         }
     }

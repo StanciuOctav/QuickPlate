@@ -9,8 +9,8 @@ import Firebase
 import FirebaseFirestoreSwift
 import Foundation
 
-class MyUser: Codable, Identifiable {
-    var id: String = UUID().uuidString
+struct MyUser: Codable, Identifiable {
+    @DocumentID var id: String?
     var username: String = ""
     var firstName: String = ""
     var lastName: String = ""
@@ -19,26 +19,4 @@ class MyUser: Codable, Identifiable {
     var email: String = ""
     var password: String = ""
     var favouriteRestaurants: [String] = []
-
-    init() {}
-
-    init(id: String,
-         username: String,
-         firstName: String,
-         lastName: String,
-         role: String,
-         restaurantWorking: String,
-         email: String,
-         password: String,
-         favouriteRestaurants: [String]) {
-        self.id = id
-        self.username = username
-        self.firstName = firstName
-        self.lastName = lastName
-        self.role = role
-        self.restaurantWorking = restaurantWorking
-        self.email = email
-        self.password = password
-        self.favouriteRestaurants = favouriteRestaurants
-    }
 }

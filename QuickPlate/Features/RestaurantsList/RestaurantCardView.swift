@@ -25,7 +25,7 @@ struct RestaurantCardView: View {
                         Text(restaurant.name)
                             .fontWeight(.bold)
                         Spacer()
-                        if (restaurant.isFavourite) {
+                        if (restaurant.isFavourite ?? false) {
                             Image(systemName: "star.fill")
                                 .foregroundColor(.yellow)
                         } else {
