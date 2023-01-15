@@ -10,7 +10,7 @@ import MapKit
 import SwiftUI
 
 struct MapView: View {
-    @StateObject private var locManager: LocationManager = LocationManager()
+    @StateObject private var locManager = LocationManager()
     @State private var tracking: MapUserTrackingMode = .follow
 
     @StateObject private var vm: MapViewModel = MapViewModel()
@@ -40,9 +40,6 @@ struct MapView: View {
                         }
                     }
                     .ignoresSafeArea(edges: .top)
-                    .onTapGesture {
-                        selectedRestaurant = nil
-                    }
 
                 HStack {
                     Button {

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5308DF3C29742B7000AB9D4A /* CLLocationCoordinate2D+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5308DF3B29742B6F00AB9D4A /* CLLocationCoordinate2D+Extension.swift */; };
+		5308DF3E29742CE400AB9D4A /* GeoPoint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5308DF3D29742CE400AB9D4A /* GeoPoint+Extensions.swift */; };
 		531CCF6A29698F97005920B4 /* RestaurantCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 531CCF6929698F97005920B4 /* RestaurantCardView.swift */; };
 		533098AC2927B6EB007C441D /* SignInTextFieldModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533098AB2927B6EB007C441D /* SignInTextFieldModifier.swift */; };
 		533374B42965AFA1001850B8 /* RestaurantCardDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 533374B32965AFA1001850B8 /* RestaurantCardDTO.swift */; };
@@ -58,6 +60,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5308DF3B29742B6F00AB9D4A /* CLLocationCoordinate2D+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Extension.swift"; sourceTree = "<group>"; };
+		5308DF3D29742CE400AB9D4A /* GeoPoint+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GeoPoint+Extensions.swift"; sourceTree = "<group>"; };
 		531CCF6929698F97005920B4 /* RestaurantCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCardView.swift; sourceTree = "<group>"; };
 		533098AB2927B6EB007C441D /* SignInTextFieldModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInTextFieldModifier.swift; sourceTree = "<group>"; };
 		533374B32965AFA1001850B8 /* RestaurantCardDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCardDTO.swift; sourceTree = "<group>"; };
@@ -122,42 +126,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		533098A92927B66A007C441D /* Shared */ = {
+		533098A92927B66A007C441D /* Extras */ = {
 			isa = PBXGroup;
 			children = (
 				537A1B1E29467CD900979FCA /* DTOs */,
 				53A5E8DC29461D2E00DBFAFE /* Queries */,
 				53A5E8D2294606E600DBFAFE /* Models */,
-				535195D1293CA0C300A44820 /* Auth */,
-				5337F1EC292ACCE200C3A766 /* CustomViews */,
-				533098AA2927B6CF007C441D /* CustomModifiers */,
 				5387CFDB29252DA70010344B /* Extensions */,
 			);
-			path = Shared;
-			sourceTree = "<group>";
-		};
-		533098AA2927B6CF007C441D /* CustomModifiers */ = {
-			isa = PBXGroup;
-			children = (
-				533098AB2927B6EB007C441D /* SignInTextFieldModifier.swift */,
-			);
-			path = CustomModifiers;
-			sourceTree = "<group>";
-		};
-		5337F1EC292ACCE200C3A766 /* CustomViews */ = {
-			isa = PBXGroup;
-			children = (
-				5337F1ED292ACCEE00C3A766 /* SecureInputView.swift */,
-			);
-			path = CustomViews;
-			sourceTree = "<group>";
-		};
-		535195D1293CA0C300A44820 /* Auth */ = {
-			isa = PBXGroup;
-			children = (
-				535195D2293CA0DB00A44820 /* FirebaseEmailAuth.swift */,
-			);
-			path = Auth;
+			path = Extras;
 			sourceTree = "<group>";
 		};
 		535195D4293CA7B500A44820 /* Features */ = {
@@ -198,6 +175,8 @@
 				5387CFD929252BD60010344B /* Color+CusomColors.swift */,
 				535195E5293CCCDA00A44820 /* View+Extensions.swift */,
 				538789812963019600F42F9A /* LocalizedStringKey+String.swift */,
+				5308DF3B29742B6F00AB9D4A /* CLLocationCoordinate2D+Extension.swift */,
+				5308DF3D29742CE400AB9D4A /* GeoPoint+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -223,7 +202,10 @@
 			children = (
 				535195E2293CC18F00A44820 /* States */,
 				535195D4293CA7B500A44820 /* Features */,
-				533098A92927B66A007C441D /* Shared */,
+				533098A92927B66A007C441D /* Extras */,
+				5337F1ED292ACCEE00C3A766 /* SecureInputView.swift */,
+				533098AB2927B6EB007C441D /* SignInTextFieldModifier.swift */,
+				535195D2293CA0DB00A44820 /* FirebaseEmailAuth.swift */,
 				538994852920F89700C370BF /* QuickPlateApp.swift */,
 				538994892920F89800C370BF /* Assets.xcassets */,
 				537F6A16292582E2001CF422 /* Info.plist */,
@@ -436,11 +418,13 @@
 				5337F1EE292ACCEE00C3A766 /* SecureInputView.swift in Sources */,
 				538994862920F89700C370BF /* QuickPlateApp.swift in Sources */,
 				53E2FD25292B772400D63069 /* RestaurantsListView.swift in Sources */,
+				5308DF3E29742CE400AB9D4A /* GeoPoint+Extensions.swift in Sources */,
 				535195E6293CCCDA00A44820 /* View+Extensions.swift in Sources */,
 				53E2FD27292B773F00D63069 /* UserProfileView.swift in Sources */,
 				53E19D6A2934042C00A79735 /* LocationManager.swift in Sources */,
 				538994952920FF3C00C370BF /* SpashScreenView.swift in Sources */,
 				5379FB0E296AB87C00A1A870 /* RestaurantsViewViewModel.swift in Sources */,
+				5308DF3C29742B7000AB9D4A /* CLLocationCoordinate2D+Extension.swift in Sources */,
 				537A1B1B29465BA800979FCA /* RestaurantsCollection.swift in Sources */,
 				53E2FD20292B75C600D63069 /* QPTabView.swift in Sources */,
 				535195E4293CCA2900A44820 /* UserProfileViewModel.swift in Sources */,
