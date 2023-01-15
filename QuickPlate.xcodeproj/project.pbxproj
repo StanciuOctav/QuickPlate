@@ -32,6 +32,7 @@
 		5389948A2920F89800C370BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 538994892920F89800C370BF /* Assets.xcassets */; };
 		5389948D2920F89800C370BF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5389948C2920F89800C370BF /* Preview Assets.xcassets */; };
 		538994952920FF3C00C370BF /* SpashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 538994942920FF3C00C370BF /* SpashScreenView.swift */; };
+		5391C8322974736D00269A97 /* RestaurantDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5391C8312974736D00269A97 /* RestaurantDetailsView.swift */; };
 		539FDE8A29262B0A0034C036 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 539FDE8929262B0A0034C036 /* SignUpView.swift */; };
 		53A2C3E9293BE13D00CD6FC3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 53A2C3E8293BE13D00CD6FC3 /* GoogleService-Info.plist */; };
 		53A2C3EC293BE3D200CD6FC3 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 53A2C3EB293BE3D200CD6FC3 /* FirebaseAnalytics */; };
@@ -86,6 +87,7 @@
 		538994892920F89800C370BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5389948C2920F89800C370BF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		538994942920FF3C00C370BF /* SpashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpashScreenView.swift; sourceTree = "<group>"; };
+		5391C8312974736D00269A97 /* RestaurantDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailsView.swift; sourceTree = "<group>"; };
 		539FDE8929262B0A0034C036 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		53A2C3E8293BE13D00CD6FC3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		53A5E8D3294606F400DBFAFE /* MyUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyUser.swift; sourceTree = "<group>"; };
@@ -147,13 +149,13 @@
 			path = Features;
 			sourceTree = "<group>";
 		};
-		535195E2293CC18F00A44820 /* States */ = {
+		535195E2293CC18F00A44820 /* LoginStates */ = {
 			isa = PBXGroup;
 			children = (
 				5358FDC22972E0BF00F75614 /* LoginManager.swift */,
 				5358FDC42972EE8800F75614 /* LoginStateView.swift */,
 			);
-			path = States;
+			path = LoginStates;
 			sourceTree = "<group>";
 		};
 		5387CFDB29252DA70010344B /* Extensions */ = {
@@ -187,7 +189,7 @@
 		538994842920F89700C370BF /* QuickPlate */ = {
 			isa = PBXGroup;
 			children = (
-				535195E2293CC18F00A44820 /* States */,
+				535195E2293CC18F00A44820 /* LoginStates */,
 				535195D4293CA7B500A44820 /* Features */,
 				533098A92927B66A007C441D /* Extras */,
 				538994852920F89700C370BF /* QuickPlateApp.swift */,
@@ -285,6 +287,7 @@
 			isa = PBXGroup;
 			children = (
 				531CCF6929698F97005920B4 /* RestaurantCardView.swift */,
+				5391C8312974736D00269A97 /* RestaurantDetailsView.swift */,
 				53E2FD24292B772400D63069 /* RestaurantsListView.swift */,
 				5379FB0D296AB87C00A1A870 /* RestaurantsViewViewModel.swift */,
 			);
@@ -410,6 +413,7 @@
 				53A5E8D4294606F400DBFAFE /* MyUser.swift in Sources */,
 				5337F1EE292ACCEE00C3A766 /* SecureInputView.swift in Sources */,
 				538994862920F89700C370BF /* QuickPlateApp.swift in Sources */,
+				5391C8322974736D00269A97 /* RestaurantDetailsView.swift in Sources */,
 				53E2FD25292B772400D63069 /* RestaurantsListView.swift in Sources */,
 				5308DF3E29742CE400AB9D4A /* GeoPoint+Extensions.swift in Sources */,
 				535195E6293CCCDA00A44820 /* View+Extensions.swift in Sources */,

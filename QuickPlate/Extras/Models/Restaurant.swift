@@ -18,7 +18,7 @@
     var name: String = ""
     var openDays: [String] = []
     var openHour: String = ""
-    var picture: String = ""
+    var imageURL: String = ""
     var rating: Double = 0.0
     var reviews: [String] = []
     var tables: [String] = []

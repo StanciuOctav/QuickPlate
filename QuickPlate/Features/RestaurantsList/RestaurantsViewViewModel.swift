@@ -26,16 +26,12 @@ final class RestaurantsViewViewModel: ObservableObject {
                 return
             }
             self.restaurants = documents.map({ qdSnap in
-                let id = qdSnap.documentID
-                let data = qdSnap.data()
-                let name = data["name"] as? String ?? ""
-                let picture = data["picture"] as? String ?? ""
-                let address = data["address"] as? String ?? ""
-                let openHour = data["openHour"] as? String ?? ""
-                let closeHour = data["closeHour"] as? String ?? ""
-                let rating = data["rating"] as? Double ?? -1.0
-                let location = data["location"] as? GeoPoint ?? GeoPoint(latitude: 0.0, longitude: 0.0)
-                let res = RestaurantCardDTO(id: id, name: name, picture: picture, location: location, address: address, openHour: openHour, closeHour: closeHour, rating: rating)
+                var res = RestaurantCardDTO()
+                do {
+                    res = try qdSnap.data(as: RestaurantCardDTO.self)
+                } catch {
+                    print(error)
+                }
                 return res
             })
             self.initializeDefaultRestaurants()

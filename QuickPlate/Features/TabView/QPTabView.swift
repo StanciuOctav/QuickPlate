@@ -12,14 +12,14 @@ struct QPTabView: View {
     var body: some View {
         TabView {
             Group {
-                MapView()
-                    .tabItem {
-                        Label(LocalizedStringKey("map"), systemImage: "map.fill")
-                    }
-                
                 RestaurantsListView()
                     .tabItem {
                         Label(LocalizedStringKey("restaurants"), systemImage: "fork.knife.circle")
+                    }
+                
+                MapView()
+                    .tabItem {
+                        Label(LocalizedStringKey("map"), systemImage: "map.fill")
                     }
 
                 UserProfileView(loginManager: loginManager)

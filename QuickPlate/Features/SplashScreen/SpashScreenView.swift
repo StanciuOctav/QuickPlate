@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SplashScreenView: View {
-    @State var isActive: Bool = false
+    @State var isActive: Bool = true
 
     var body: some View {
         if isActive {

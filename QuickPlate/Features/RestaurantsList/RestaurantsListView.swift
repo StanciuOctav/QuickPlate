@@ -12,13 +12,15 @@ struct RestaurantsListView: View {
     @State var searchRestaurant: String = ""
 
     var body: some View {
-        List(vm.restaurants) { restaurant in
-            RestaurantCardView(restaurant: restaurant)
-                .listRowInsets(EdgeInsets(top: 10, leading: 3, bottom: 10, trailing: 3))
-                .listRowSeparator(.hidden)
+        NavigationView {
+            List(vm.restaurants) { restaurant in
+                RestaurantCardView(restaurant: restaurant)
+                    .listRowInsets(EdgeInsets(top: 10, leading: 1, bottom: 10, trailing: 1))
+                    .listRowSeparator(.hidden)
+            }
         }
         .searchable(text: $searchRestaurant,
-                    placement: .navigationBarDrawer(displayMode: .automatic),
+                    placement: .automatic,
                     prompt: LocalizedStringKey("search-placeholder"))
         .autocorrectionDisabled(true)
         .onChange(of: searchRestaurant) { searchTerm in

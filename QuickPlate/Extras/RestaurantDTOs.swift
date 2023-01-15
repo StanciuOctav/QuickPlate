@@ -13,7 +13,7 @@ import CoreLocation
 struct RestaurantCardDTO: Codable, Identifiable {
     @DocumentID var id: String?
     var name: String = ""
-    var picture: String = ""
+    var imageURL: String = ""
     var location: GeoPoint = GeoPoint(latitude: 0.0, longitude: 0.0)
     var address: String = ""
     var openHour: String = ""
