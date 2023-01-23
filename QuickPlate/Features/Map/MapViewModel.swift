@@ -22,7 +22,7 @@ final class MapViewModel: ObservableObject {
 
     private let coll = Firestore.firestore().collection("Restaurants")
 
-    func fetchAllRestaurants() {
+    func fetchAllRestaurants() async {
         coll.addSnapshotListener { querySnapshot, error in
             if let error {
                 print("RestaurantCollection - Could't retrieve restaurants")
@@ -35,12 +35,8 @@ final class MapViewModel: ObservableObject {
             }
 
             self.restaurants = documents.map({ qdSnap in
-                var res = RestaurantCardDTO()
-                do {
-                    res = try qdSnap.data(as: RestaurantCardDTO.self)
-                } catch {
-                    print(error)
-                }
+                let defaultRes = RestaurantCardDTO()
+                guard let res = try? qdSnap.data(as: RestaurantCardDTO.self) else { return defaultRes }
                 return res
             })
             self.updateAnnotationItems()

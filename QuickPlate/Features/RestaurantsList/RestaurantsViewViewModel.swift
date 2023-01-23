@@ -10,12 +10,12 @@ import Foundation
 import SwiftUI
 
 final class RestaurantsViewViewModel: ObservableObject {
-    @Published var restaurants: [RestaurantCardDTO] = []
-    private var defaultRestaurants: [RestaurantCardDTO] = []
+    @Published var restaurants: [Restaurant] = []
+    private var defaultRestaurants: [Restaurant] = []
     
     private let coll = Firestore.firestore().collection("Restaurants")
     
-    func fetchAllRestaurants() {
+    func fetchAllRestaurants() async {
         coll.addSnapshotListener { querySnapshot, error in
             if let error = error {
                 print("RestaurantCollection - Could't retrieve restaurants")
@@ -26,11 +26,13 @@ final class RestaurantsViewViewModel: ObservableObject {
                 return
             }
             self.restaurants = documents.map({ qdSnap in
-                var res = RestaurantCardDTO()
+                let defaultRes = Restaurant()
+                var res = Restaurant()
                 do {
-                    res = try qdSnap.data(as: RestaurantCardDTO.self)
+                    res = try qdSnap.data(as: Restaurant.self)
                 } catch {
-                    print(error)
+                    print(error.localizedDescription)
+                    return defaultRes
                 }
                 return res
             })

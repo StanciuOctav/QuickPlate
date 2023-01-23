@@ -28,12 +28,8 @@ final class RestaurantsSignUpViewModel: ObservableObject {
                 return
             }
             self.restaurants = documents.map({ qdSnap in
-                var res = RestaurantSignUpDTO()
-                do {
-                    res = try qdSnap.data(as: RestaurantSignUpDTO.self)
-                } catch {
-                    print(error)
-                }
+                let defaultRes = RestaurantSignUpDTO()
+                guard let res = try? qdSnap.data(as: RestaurantSignUpDTO.self) else { return defaultRes }
                 return res
             })
         }

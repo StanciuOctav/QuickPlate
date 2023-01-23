@@ -36,9 +36,11 @@ struct RestaurantCardView: View {
                 if restaurant.isFavourite ?? false {
                     Image(systemName: "star.fill")
                         .foregroundColor(.yellow)
+                        .padding(EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 5))
                 } else {
                     Image(systemName: "star")
                         .foregroundColor(.yellow)
+                        .padding(EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 5))
                 }
                 Spacer()
             }

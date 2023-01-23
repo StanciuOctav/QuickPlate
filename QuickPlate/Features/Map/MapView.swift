@@ -42,21 +42,6 @@ struct MapView: View {
                     .ignoresSafeArea(edges: .top)
 
                 HStack {
-                    Button {
-                    } label: {
-                        Circle()
-                            .padding()
-                            .foregroundColor(.white)
-                            .background(.white)
-                            .cornerRadius(.infinity)
-                            .frame(width: self.buttonHeightAndWidth, height: self.buttonHeightAndWidth)
-                            .overlay(
-                                Image(systemName: "magnifyingglass")
-                                    .foregroundColor(.black)
-                            )
-                    }
-                    .padding()
-
                     Spacer()
 
                     Button {
@@ -86,8 +71,8 @@ struct MapView: View {
             }
             .padding()
         }
-        .onAppear {
-            self.vm.fetchAllRestaurants()
+        .task {
+            await self.vm.fetchAllRestaurants()
         }
     }
 }

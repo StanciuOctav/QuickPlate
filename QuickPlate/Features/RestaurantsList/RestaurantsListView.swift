@@ -14,13 +14,18 @@ struct RestaurantsListView: View {
     var body: some View {
         NavigationView {
             List(vm.restaurants) { restaurant in
-                RestaurantCardView(restaurant: restaurant)
-                    .listRowInsets(EdgeInsets(top: 10, leading: 1, bottom: 10, trailing: 1))
-                    .listRowSeparator(.hidden)
+                NavigationLink(destination: RestaurantDetailsView(restaurant: restaurant)) {
+                    RestaurantCardView(restaurant: RestaurantCardDTO(from: restaurant))
+                }
+                .border(.black)
+                .listRowInsets(EdgeInsets(top: 5, leading: 1, bottom: 5, trailing: 1))
+                .listRowSeparator(.hidden)
             }
+            .border(.black)
+            .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
         }
         .searchable(text: $searchRestaurant,
-                    placement: .automatic,
+                    placement: .navigationBarDrawer(displayMode: .always),
                     prompt: LocalizedStringKey("search-placeholder"))
         .autocorrectionDisabled(true)
         .onChange(of: searchRestaurant) { searchTerm in
@@ -38,8 +43,8 @@ struct RestaurantsListView: View {
         .ignoresSafeArea(.all, edges: [.trailing, .leading])
         .frame(maxWidth: .infinity)
         .scrollContentBackground(.hidden)
-        .onAppear {
-            self.vm.fetchAllRestaurants()
+        .task {
+            await self.vm.fetchAllRestaurants()
         }
     }
 }

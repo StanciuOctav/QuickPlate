@@ -5,10 +5,10 @@
 //  Created by Ioan-Octavian Stanciu on 04.01.2023.
 //
 
+import CoreLocation
 import Firebase
 import FirebaseFirestoreSwift
 import Foundation
-import CoreLocation
 
 struct RestaurantCardDTO: Codable, Identifiable {
     @DocumentID var id: String?
@@ -22,8 +22,20 @@ struct RestaurantCardDTO: Codable, Identifiable {
     var isFavourite: Bool?
 }
 
+extension RestaurantCardDTO {
+    init(from entity: Restaurant) {
+        self.id = entity.id
+        self.name = entity.name
+        self.imageURL = entity.imageURL
+        self.location = entity.location
+        self.address = entity.address
+        self.openHour = entity.openHour
+        self.closeHour = entity.closeHour
+        self.rating = entity.rating
+    }
+}
+
 struct RestaurantSignUpDTO: Codable, Identifiable {
     @DocumentID var id: String?
     var name: String = ""
 }
-

@@ -5,12 +5,12 @@
 //  Created by Ioan-Octavian Stanciu on 11.12.2022.
 //
 
- import CoreLocation
- import Firebase
- import FirebaseFirestoreSwift
- import Foundation
+import CoreLocation
+import Firebase
+import FirebaseFirestoreSwift
+import Foundation
 
- struct Restaurant: Codable, Identifiable {
+struct Restaurant: Codable, Identifiable {
     @DocumentID var id: String?
     var address: String = ""
     var closeHour: String = ""
@@ -22,4 +22,4 @@
     var rating: Double = 0.0
     var reviews: [String] = []
     var tables: [String] = []
- }
+}
