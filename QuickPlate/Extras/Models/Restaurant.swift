@@ -10,7 +10,7 @@ import Firebase
 import FirebaseFirestoreSwift
 import Foundation
 
-struct Restaurant: Codable, Identifiable {
+struct Restaurant: Codable, Identifiable, Hashable {
     @DocumentID var id: String?
     var address: String = ""
     var closeHour: String = ""
@@ -22,4 +22,5 @@ struct Restaurant: Codable, Identifiable {
     var rating: Double = 0.0
     var reviews: [String] = []
     var tables: [String] = []
+    var menu: [String] = []
 }

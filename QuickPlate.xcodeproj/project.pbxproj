@@ -56,6 +56,9 @@
 		53E2FD20292B75C600D63069 /* QPTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E2FD1F292B75C600D63069 /* QPTabView.swift */; };
 		53E2FD25292B772400D63069 /* RestaurantsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E2FD24292B772400D63069 /* RestaurantsListView.swift */; };
 		53E2FD27292B773F00D63069 /* UserProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E2FD26292B773F00D63069 /* UserProfileView.swift */; };
+		D40F845E29AFB40F00B14911 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40F845D29AFB40F00B14911 /* Food.swift */; };
+		D40F846329AFBF3700B14911 /* RestaurantDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40F846229AFBF3700B14911 /* RestaurantDetailsViewModel.swift */; };
+		D40F846529AFC88700B14911 /* NavigationUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40F846429AFC88700B14911 /* NavigationUtil.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,6 +100,9 @@
 		53E2FD1F292B75C600D63069 /* QPTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QPTabView.swift; sourceTree = "<group>"; };
 		53E2FD24292B772400D63069 /* RestaurantsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantsListView.swift; sourceTree = "<group>"; };
 		53E2FD26292B773F00D63069 /* UserProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileView.swift; sourceTree = "<group>"; };
+		D40F845D29AFB40F00B14911 /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
+		D40F846229AFBF3700B14911 /* RestaurantDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailsViewModel.swift; sourceTree = "<group>"; };
+		D40F846429AFC88700B14911 /* NavigationUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationUtil.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +137,7 @@
 				53A5E8DC29461D2E00DBFAFE /* FirestoreOp */,
 				53A5E8D2294606E600DBFAFE /* Models */,
 				5387CFDB29252DA70010344B /* Extensions */,
+				D40F846429AFC88700B14911 /* NavigationUtil.swift */,
 			);
 			path = Extras;
 			sourceTree = "<group>";
@@ -144,6 +151,7 @@
 				53E2FD19292B755900D63069 /* TabView */,
 				53E2FD1B292B759300D63069 /* Map */,
 				53E2FD21292B76E200D63069 /* RestaurantsList */,
+				D40F846029AFBEED00B14911 /* RestaurantDetails */,
 				53E2FD22292B76FC00D63069 /* UserProfile */,
 			);
 			path = Features;
@@ -252,6 +260,7 @@
 			children = (
 				53A5E8D3294606F400DBFAFE /* MyUser.swift */,
 				537A1B18294658E000979FCA /* Restaurant.swift */,
+				D40F845D29AFB40F00B14911 /* Food.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -287,7 +296,6 @@
 			isa = PBXGroup;
 			children = (
 				531CCF6929698F97005920B4 /* RestaurantCardView.swift */,
-				5391C8312974736D00269A97 /* RestaurantDetailsView.swift */,
 				53E2FD24292B772400D63069 /* RestaurantsListView.swift */,
 				5379FB0D296AB87C00A1A870 /* RestaurantsViewViewModel.swift */,
 			);
@@ -301,6 +309,15 @@
 				535195E3293CCA2900A44820 /* UserProfileViewModel.swift */,
 			);
 			path = UserProfile;
+			sourceTree = "<group>";
+		};
+		D40F846029AFBEED00B14911 /* RestaurantDetails */ = {
+			isa = PBXGroup;
+			children = (
+				5391C8312974736D00269A97 /* RestaurantDetailsView.swift */,
+				D40F846229AFBF3700B14911 /* RestaurantDetailsViewModel.swift */,
+			);
+			path = RestaurantDetails;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -398,6 +415,7 @@
 				537A1B19294658E000979FCA /* Restaurant.swift in Sources */,
 				5358FDC32972E0BF00F75614 /* LoginManager.swift in Sources */,
 				538994882920F89700C370BF /* SignInView.swift in Sources */,
+				D40F846529AFC88700B14911 /* NavigationUtil.swift in Sources */,
 				533374B62965B11B001850B8 /* MapViewModel.swift in Sources */,
 				5358FDC52972EE8800F75614 /* LoginStateView.swift in Sources */,
 				538789822963019600F42F9A /* LocalizedStringKey+String.swift in Sources */,
@@ -405,7 +423,9 @@
 				539FDE8A29262B0A0034C036 /* SignUpView.swift in Sources */,
 				533098AC2927B6EB007C441D /* SignInTextFieldModifier.swift in Sources */,
 				537E800D2945F3C700A02B04 /* SignUpViewModel.swift in Sources */,
+				D40F846329AFBF3700B14911 /* RestaurantDetailsViewModel.swift in Sources */,
 				537A1B2129467D5600979FCA /* RestaurantSignUpViewModel.swift in Sources */,
+				D40F845E29AFB40F00B14911 /* Food.swift in Sources */,
 				535195D0293C9C6600A44820 /* SignInViewModel.swift in Sources */,
 				533374B42965AFA1001850B8 /* RestaurantDTOs.swift in Sources */,
 				535195D3293CA0DB00A44820 /* FirebaseEmailAuth.swift in Sources */,

@@ -13,16 +13,17 @@ struct RestaurantsListView: View {
 
     var body: some View {
         NavigationView {
-            List(vm.restaurants) { restaurant in
-                NavigationLink(destination: RestaurantDetailsView(restaurant: restaurant)) {
-                    RestaurantCardView(restaurant: RestaurantCardDTO(from: restaurant))
+            ScrollView {
+                ForEach(vm.restaurants) { restaurant in
+                    NavigationLink(destination: RestaurantDetailsView(restaurant: restaurant)) {
+                        RestaurantCardView(restaurant: RestaurantCardDTO(from: restaurant))
+                            .ignoresSafeArea(.all, edges: [.leading, .trailing])
+                    }
+                    .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
+                    .buttonStyle(.plain)
+                    .listRowSeparator(.hidden)
                 }
-                .border(.black)
-                .listRowInsets(EdgeInsets(top: 5, leading: 1, bottom: 5, trailing: 1))
-                .listRowSeparator(.hidden)
             }
-            .border(.black)
-            .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
         }
         .searchable(text: $searchRestaurant,
                     placement: .navigationBarDrawer(displayMode: .always),

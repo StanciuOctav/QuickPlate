@@ -12,9 +12,9 @@ import SwiftUI
 final class RestaurantsViewViewModel: ObservableObject {
     @Published var restaurants: [Restaurant] = []
     private var defaultRestaurants: [Restaurant] = []
-    
+
     private let coll = Firestore.firestore().collection("Restaurants")
-    
+
     func fetchAllRestaurants() async {
         coll.addSnapshotListener { querySnapshot, error in
             if let error = error {
@@ -39,16 +39,16 @@ final class RestaurantsViewViewModel: ObservableObject {
             self.initializeDefaultRestaurants()
         }
     }
-    
+
     private func initializeDefaultRestaurants() {
         for res in restaurants {
-            self.defaultRestaurants.append(res)
+            defaultRestaurants.append(res)
         }
     }
-    
+
     func resetRestaurants() {
-        self.restaurants.removeAll()
-        self.defaultRestaurants.forEach { res in
+        restaurants.removeAll()
+        defaultRestaurants.forEach { res in
             self.restaurants.append(res)
         }
     }
