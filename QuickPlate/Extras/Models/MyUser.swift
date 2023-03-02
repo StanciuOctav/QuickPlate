@@ -18,5 +18,6 @@ struct MyUser: Codable, Identifiable {
     var restaurantWorking: String = ""
     var email: String = ""
     var password: String = ""
-    var favouriteRestaurants: [String] = []
+    var favouriteRestaurants = [String]()
+    var bookedTables = [String]()
 }

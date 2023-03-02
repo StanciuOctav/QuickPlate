@@ -9,7 +9,7 @@ import FirebaseFirestore
 import Foundation
 import SwiftUI
 
-final class RestaurantsViewViewModel: ObservableObject {
+final class RestaurantsListViewModel: ObservableObject {
     @Published var restaurants: [Restaurant] = []
     private var defaultRestaurants: [Restaurant] = []
 

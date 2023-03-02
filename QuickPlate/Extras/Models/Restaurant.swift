@@ -5,7 +5,6 @@
 //  Created by Ioan-Octavian Stanciu on 11.12.2022.
 //
 
-import CoreLocation
 import Firebase
 import FirebaseFirestoreSwift
 import Foundation
@@ -16,11 +15,11 @@ struct Restaurant: Codable, Identifiable, Hashable {
     var closeHour: String = ""
     var location: GeoPoint = GeoPoint(latitude: 0.0, longitude: 0.0)
     var name: String = ""
-    var openDays: [String] = []
+    var openDays = [String]()
     var openHour: String = ""
     var imageURL: String = ""
     var rating: Double = 0.0
-    var reviews: [String] = []
-    var tables: [String] = []
-    var menu: [String] = []
+    var reviews = [String]()
+    var tables = [String]()
+    var menu = [String]()
 }

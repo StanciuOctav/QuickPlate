@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RestaurantsListView: View {
-    @StateObject var vm = RestaurantsViewViewModel()
+    @StateObject var vm = RestaurantsListViewModel()
     @State var searchRestaurant: String = ""
 
     var body: some View {

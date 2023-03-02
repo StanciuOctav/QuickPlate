@@ -33,6 +33,7 @@ class FirebaseEmailAuth {
                 completion(.failure(.anonymousUser))
                 return
             }
+            UserDefaults.standard.set(user.uid, forKey: "userId")
             completion(.success(1))
 //            switch user.isEmailVerified {
 //            case true:
@@ -45,7 +46,7 @@ class FirebaseEmailAuth {
         })
     }
 
-    func doRegister(withEmail email: String, andPassword password: String, completion: @escaping (Result<Int?, StartupError>) -> Void) {
+    func doRegister(withEmail email: String, andPassword password: String, completion: @escaping (Result<String?, StartupError>) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             guard result != nil else {
                 if let error {
@@ -58,7 +59,7 @@ class FirebaseEmailAuth {
                 completion(.failure(.anonymousUser))
                 return
             }
-            completion(.success(1))
+            completion(.success(user.uid))
 //            switch user.isEmailVerified {
 //            case true:
 //                print("Email is verified")

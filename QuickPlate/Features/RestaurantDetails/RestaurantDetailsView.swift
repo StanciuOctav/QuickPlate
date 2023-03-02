@@ -26,7 +26,9 @@ struct FoodCard: View {
 struct RestaurantDetailsView: View {
     @StateObject var vm = RestaurantDetailsViewModel()
     @State var isFavourite: Bool = false
+    @State var bookingTable: Bool = false
     let restaurant: Restaurant
+    @State var value: Int = 0
 
     var body: some View {
         ScrollView {
@@ -56,6 +58,7 @@ struct RestaurantDetailsView: View {
                     Text(restaurant.address)
                         .font(.title2)
                     Text(restaurant.openHour + " - " + restaurant.closeHour)
+                    
                         .foregroundColor(.green)
                         .font(.title2)
                     Text("Rating: " + String(format: "%.1f", restaurant.rating))
@@ -75,6 +78,18 @@ struct RestaurantDetailsView: View {
             .navigationBarTitle("", displayMode: .inline)
             .task {
                 await self.vm.fetchFoods(restaurant.menu)
+            }
+            .toolbar {
+                Button {
+                    self.bookingTable.toggle()
+                } label: {
+                    Text("Book a table")
+                }
+            }
+            .sheet(isPresented: $bookingTable) {
+                NavigationView {
+                    TablesView(restaurant: self.restaurant)
+                }
             }
         }
     }

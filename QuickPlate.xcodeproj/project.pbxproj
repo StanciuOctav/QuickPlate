@@ -20,7 +20,7 @@
 		535195E6293CCCDA00A44820 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535195E5293CCCDA00A44820 /* View+Extensions.swift */; };
 		5358FDC32972E0BF00F75614 /* LoginManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5358FDC22972E0BF00F75614 /* LoginManager.swift */; };
 		5358FDC52972EE8800F75614 /* LoginStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5358FDC42972EE8800F75614 /* LoginStateView.swift */; };
-		5379FB0E296AB87C00A1A870 /* RestaurantsViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5379FB0D296AB87C00A1A870 /* RestaurantsViewViewModel.swift */; };
+		5379FB0E296AB87C00A1A870 /* RestaurantsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5379FB0D296AB87C00A1A870 /* RestaurantsListViewModel.swift */; };
 		537A1B19294658E000979FCA /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537A1B18294658E000979FCA /* Restaurant.swift */; };
 		537A1B2129467D5600979FCA /* RestaurantSignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537A1B2029467D5600979FCA /* RestaurantSignUpViewModel.swift */; };
 		537E800D2945F3C700A02B04 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537E800C2945F3C700A02B04 /* SignUpViewModel.swift */; };
@@ -59,6 +59,9 @@
 		D40F845E29AFB40F00B14911 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40F845D29AFB40F00B14911 /* Food.swift */; };
 		D40F846329AFBF3700B14911 /* RestaurantDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40F846229AFBF3700B14911 /* RestaurantDetailsViewModel.swift */; };
 		D40F846529AFC88700B14911 /* NavigationUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40F846429AFC88700B14911 /* NavigationUtil.swift */; };
+		D4ADEC9129B109FE00261C10 /* TablesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4ADEC9029B109FE00261C10 /* TablesView.swift */; };
+		D4ADEC9329B10FC500261C10 /* TablesViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4ADEC9229B10FC500261C10 /* TablesViewViewModel.swift */; };
+		D4ADEC9529B10FED00261C10 /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4ADEC9429B10FED00261C10 /* Table.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -75,7 +78,7 @@
 		535195E5293CCCDA00A44820 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		5358FDC22972E0BF00F75614 /* LoginManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginManager.swift; sourceTree = "<group>"; };
 		5358FDC42972EE8800F75614 /* LoginStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginStateView.swift; sourceTree = "<group>"; };
-		5379FB0D296AB87C00A1A870 /* RestaurantsViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantsViewViewModel.swift; sourceTree = "<group>"; };
+		5379FB0D296AB87C00A1A870 /* RestaurantsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantsListViewModel.swift; sourceTree = "<group>"; };
 		537A1B18294658E000979FCA /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		537A1B2029467D5600979FCA /* RestaurantSignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantSignUpViewModel.swift; sourceTree = "<group>"; };
 		537E800C2945F3C700A02B04 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
@@ -103,6 +106,9 @@
 		D40F845D29AFB40F00B14911 /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		D40F846229AFBF3700B14911 /* RestaurantDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailsViewModel.swift; sourceTree = "<group>"; };
 		D40F846429AFC88700B14911 /* NavigationUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationUtil.swift; sourceTree = "<group>"; };
+		D4ADEC9029B109FE00261C10 /* TablesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TablesView.swift; sourceTree = "<group>"; };
+		D4ADEC9229B10FC500261C10 /* TablesViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TablesViewViewModel.swift; sourceTree = "<group>"; };
+		D4ADEC9429B10FED00261C10 /* Table.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Table.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,8 +156,9 @@
 				539FDE8629262AE90034C036 /* SignUp */,
 				53E2FD19292B755900D63069 /* TabView */,
 				53E2FD1B292B759300D63069 /* Map */,
-				53E2FD21292B76E200D63069 /* RestaurantsList */,
+				53E2FD21292B76E200D63069 /* Restaurants */,
 				D40F846029AFBEED00B14911 /* RestaurantDetails */,
+				D4ADEC8F29B109E900261C10 /* TablesList */,
 				53E2FD22292B76FC00D63069 /* UserProfile */,
 			);
 			path = Features;
@@ -261,6 +268,7 @@
 				53A5E8D3294606F400DBFAFE /* MyUser.swift */,
 				537A1B18294658E000979FCA /* Restaurant.swift */,
 				D40F845D29AFB40F00B14911 /* Food.swift */,
+				D4ADEC9429B10FED00261C10 /* Table.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -292,14 +300,14 @@
 			path = Map;
 			sourceTree = "<group>";
 		};
-		53E2FD21292B76E200D63069 /* RestaurantsList */ = {
+		53E2FD21292B76E200D63069 /* Restaurants */ = {
 			isa = PBXGroup;
 			children = (
 				531CCF6929698F97005920B4 /* RestaurantCardView.swift */,
 				53E2FD24292B772400D63069 /* RestaurantsListView.swift */,
-				5379FB0D296AB87C00A1A870 /* RestaurantsViewViewModel.swift */,
+				5379FB0D296AB87C00A1A870 /* RestaurantsListViewModel.swift */,
 			);
-			path = RestaurantsList;
+			path = Restaurants;
 			sourceTree = "<group>";
 		};
 		53E2FD22292B76FC00D63069 /* UserProfile */ = {
@@ -318,6 +326,15 @@
 				D40F846229AFBF3700B14911 /* RestaurantDetailsViewModel.swift */,
 			);
 			path = RestaurantDetails;
+			sourceTree = "<group>";
+		};
+		D4ADEC8F29B109E900261C10 /* TablesList */ = {
+			isa = PBXGroup;
+			children = (
+				D4ADEC9029B109FE00261C10 /* TablesView.swift */,
+				D4ADEC9229B10FC500261C10 /* TablesViewViewModel.swift */,
+			);
+			path = TablesList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -421,6 +438,7 @@
 				538789822963019600F42F9A /* LocalizedStringKey+String.swift in Sources */,
 				53E2FD1E292B75A900D63069 /* MapView.swift in Sources */,
 				539FDE8A29262B0A0034C036 /* SignUpView.swift in Sources */,
+				D4ADEC9529B10FED00261C10 /* Table.swift in Sources */,
 				533098AC2927B6EB007C441D /* SignInTextFieldModifier.swift in Sources */,
 				537E800D2945F3C700A02B04 /* SignUpViewModel.swift in Sources */,
 				D40F846329AFBF3700B14911 /* RestaurantDetailsViewModel.swift in Sources */,
@@ -440,11 +458,13 @@
 				53E2FD27292B773F00D63069 /* UserProfileView.swift in Sources */,
 				53E19D6A2934042C00A79735 /* LocationManager.swift in Sources */,
 				538994952920FF3C00C370BF /* SpashScreenView.swift in Sources */,
-				5379FB0E296AB87C00A1A870 /* RestaurantsViewViewModel.swift in Sources */,
+				5379FB0E296AB87C00A1A870 /* RestaurantsListViewModel.swift in Sources */,
 				5308DF3C29742B7000AB9D4A /* CLLocationCoordinate2D+Extension.swift in Sources */,
 				53E2FD20292B75C600D63069 /* QPTabView.swift in Sources */,
 				535195E4293CCA2900A44820 /* UserProfileViewModel.swift in Sources */,
 				5387CFDA29252BD60010344B /* Color+CusomColors.swift in Sources */,
+				D4ADEC9129B109FE00261C10 /* TablesView.swift in Sources */,
+				D4ADEC9329B10FC500261C10 /* TablesViewViewModel.swift in Sources */,
 				531CCF6A29698F97005920B4 /* RestaurantCardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

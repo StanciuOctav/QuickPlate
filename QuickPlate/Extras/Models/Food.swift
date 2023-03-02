@@ -5,7 +5,6 @@
 //  Created by Ioan-Octavian Stanciu on 01.03.2023.
 //
 
-import CoreLocation
 import Firebase
 import FirebaseFirestoreSwift
 import Foundation

@@ -57,7 +57,8 @@ final class SignUpViewModel: ObservableObject {
         FirebaseEmailAuth.shared.doRegister(withEmail: email, andPassword: password) { result in
             switch result {
             case .success(_):
-                let newUser = MyUser(id: UUID().uuidString, username: self.username, firstName: self.firstName, lastName: self.lastName, role: role, restaurantWorking: self.restaurantId, email: self.email, password: self.password, favouriteRestaurants: [])
+                let userId = try? result.get()
+                let newUser = MyUser(id: userId, username: self.username, firstName: self.firstName, lastName: self.lastName, role: role, restaurantWorking: self.restaurantId, email: self.email, password: self.password, favouriteRestaurants: [])
                 UserCollection.shared.saveUserToDB(user: newUser) { error in
                     if error != nil {
                         print("SignUpViewModel: doSignUp - Error in saving user to db")

@@ -116,9 +116,9 @@ struct SignUpView: View {
                         if !self.fieldsIncompleted && !self.passwordFormatError && !self.passwordsDontMatch {
                             viewModel.doSignUp(withRole: self.selectedRole) { result in
                                 switch result {
-                                case .success(_):
+                                case .success:
                                     successSignUp = true
-                                case .failure(_):
+                                case .failure:
                                     emailExists = true
                                 }
                             }

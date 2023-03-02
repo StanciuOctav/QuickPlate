@@ -9,16 +9,21 @@ import FirebaseFirestore
 import Foundation
 
 final class UserCollection {
-    let usrColl = Firestore.firestore().collection("User")
+    let usrColl = Firestore.firestore().collection("Users")
     static let shared = UserCollection()
 
     func saveUserToDB(user newUser: MyUser, completion: @escaping (Error?) -> Void) {
-        do {
-            _ = try usrColl.addDocument(from: newUser)
-            completion(nil)
-        } catch let error {
-            print(error.localizedDescription)
-            completion(error)
-        }
+        // saving like this instead of saveDocument so we can have a custom DocumentId (to match the UID of the authentication user)
+        usrColl.document(newUser.id!).setData([
+            "username": newUser.username,
+            "firstName": newUser.firstName,
+            "lastName": newUser.lastName,
+            "role": newUser.role,
+            "restaurantWorking": newUser.restaurantWorking,
+            "email": newUser.email,
+            "password": newUser.password,
+            "favouriteRestaurants": newUser.favouriteRestaurants,
+        ])
+        completion(nil)
     }
 }
