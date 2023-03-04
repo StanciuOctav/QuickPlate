@@ -30,7 +30,7 @@ final class UserCollection {
     
     func saveBookedTable(withId tableId: String) {
         let userId = UserDefaults.standard.value(forKey: "userId") as! String
-        var currUser = usrColl.document(userId)
+        let currUser = usrColl.document(userId)
         currUser.getDocument { qdSnap, error in
             if let error = error {
                 print("TablesViewVM - Couldn't assign booked table to user")

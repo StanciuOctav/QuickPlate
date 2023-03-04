@@ -17,3 +17,9 @@ struct Table: Codable, Identifiable {
     var tableNumber: Int = 0
     var day: String = ""
 }
+
+extension Table: Comparable {
+    static func <(lhs: Table, rhs: Table) -> Bool {
+        return lhs.id! < rhs.id!
+       }
+}
