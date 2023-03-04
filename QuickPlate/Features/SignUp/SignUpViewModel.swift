@@ -58,7 +58,7 @@ final class SignUpViewModel: ObservableObject {
             switch result {
             case .success(_):
                 let userId = try? result.get()
-                let newUser = MyUser(id: userId, username: self.username, firstName: self.firstName, lastName: self.lastName, role: role, restaurantWorking: self.restaurantId, email: self.email, password: self.password, favouriteRestaurants: [])
+                let newUser = MyUser(id: userId, username: self.username, firstName: self.firstName, lastName: self.lastName, role: role, restaurantWorking: self.restaurantId, email: self.email, password: self.password, favouriteRestaurants: [], bookedTables: [])
                 UserCollection.shared.saveUserToDB(user: newUser) { error in
                     if error != nil {
                         print("SignUpViewModel: doSignUp - Error in saving user to db")

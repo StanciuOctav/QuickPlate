@@ -15,9 +15,11 @@ struct TablesView: View {
     @State private var selectedTable = Table()
     @State private var selectedHour: Int = 0
     @State private var selectedDay: String = ""
-    private let weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 
     let restaurant: Restaurant
+    let minHour: Int
+    let maxHour: Int
+    let weekdays: [String]
 
     var body: some View {
         VStack {
@@ -57,7 +59,7 @@ struct TablesView: View {
                     VStack {
                         Text("Please choose an hour")
                         Picker("", selection: $selectedHour) {
-                            ForEach(0 ... 23, id: \.self) {
+                            ForEach(minHour ... maxHour, id: \.self) {
                                 Text("\($0):00")
                             }
                         }
@@ -112,13 +114,7 @@ struct TablesView: View {
             }
         }
         .task {
-            await self.vm.fetAllTables(forRestaurant: self.restaurant)
+            await self.vm.fetchAllTables(forRestaurant: self.restaurant)
         }
     }
 }
-
-// struct TablesView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TablesView()
-//    }
-// }

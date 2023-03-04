@@ -23,7 +23,24 @@ final class UserCollection {
             "email": newUser.email,
             "password": newUser.password,
             "favouriteRestaurants": newUser.favouriteRestaurants,
+            "bookedTables": newUser.bookedTables
         ])
         completion(nil)
+    }
+    
+    func saveBookedTable(withId tableId: String) {
+        let userId = UserDefaults.standard.value(forKey: "userId") as! String
+        var currUser = usrColl.document(userId)
+        currUser.getDocument { qdSnap, error in
+            if let error = error {
+                print("TablesViewVM - Couldn't assign booked table to user")
+                print(error.localizedDescription)
+            }
+            if let qdSnap = qdSnap, let document = try? qdSnap.data(as: MyUser.self) {
+                var newBookedTablesArr = document.bookedTables
+                newBookedTablesArr.append(tableId)
+                currUser.updateData(["bookedTables": newBookedTablesArr])
+            }
+        }
     }
 }

@@ -88,7 +88,10 @@ struct RestaurantDetailsView: View {
             }
             .sheet(isPresented: $bookingTable) {
                 NavigationView {
-                    TablesView(restaurant: self.restaurant)
+                    TablesView(restaurant: self.restaurant,
+                               minHour: self.restaurant.minHour,
+                               maxHour: self.restaurant.maxHour,
+                               weekdays: self.restaurant.openDays)
                 }
             }
         }

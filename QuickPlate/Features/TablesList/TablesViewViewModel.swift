@@ -15,7 +15,7 @@ final class TablesViewViewModel: ObservableObject {
     private let coll = Firestore.firestore().collection("Tables")
     private let usrColl = Firestore.firestore().collection("Users")
     
-    func fetAllTables(forRestaurant restaurant: Restaurant) async {
+    func fetchAllTables(forRestaurant restaurant: Restaurant) async {
         coll.addSnapshotListener { querySnapshot, error in
             if let error = error {
                 print("TablesCollection - Could't retrieve tables")
@@ -44,6 +44,7 @@ final class TablesViewViewModel: ObservableObject {
                                         "hourBooked": hour,
                                         "day": day], merge: true)
         updateTables()
+        UserCollection.shared.saveBookedTable(withId: tableId)
     }
     
     private func updateTables() {

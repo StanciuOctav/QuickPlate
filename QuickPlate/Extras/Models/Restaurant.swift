@@ -22,4 +22,14 @@ struct Restaurant: Codable, Identifiable, Hashable {
     var reviews = [String]()
     var tables = [String]()
     var menu = [String]()
+    var minHour: Int {
+        get {
+            Int(openHour.split(separator: ":")[0]) ?? 0
+        }
+    }
+    var maxHour: Int {
+        get {
+            Int(closeHour.split(separator: ":")[0]) ?? 23
+        }
+    }
 }
