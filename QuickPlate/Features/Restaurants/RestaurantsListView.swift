@@ -16,7 +16,7 @@ struct RestaurantsListView: View {
             ScrollView {
                 ForEach(vm.restaurants) { restaurant in
                     NavigationLink(destination: RestaurantDetailsView(restaurant: restaurant)) {
-                        RestaurantCardView(restaurant: RestaurantCardDTO(from: restaurant))
+                        RestaurantCardView(restaurant: restaurant.restaurantCardDTO)
                             .ignoresSafeArea(.all, edges: [.leading, .trailing])
                     }
                     .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))

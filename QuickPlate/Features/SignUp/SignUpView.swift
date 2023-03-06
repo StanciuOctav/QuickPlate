@@ -10,8 +10,7 @@ import SwiftUI
 struct SignUpView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
 
-    @StateObject private var viewModel = SignUpViewModel()
-    @StateObject private var restaurantsViewModel = RestaurantsSignUpViewModel()
+    @StateObject private var vm = SignUpViewModel()
 
     @State private var passwordFormatError: Bool = false
     @State private var passwordsDontMatch: Bool = false
@@ -35,15 +34,15 @@ struct SignUpView: View {
             VStack {
                 VStack(spacing: 20) {
                     Group {
-                        TextField(LocalizedStringKey("username"), text: $viewModel.username)
-                        TextField(LocalizedStringKey("firstName"), text: $viewModel.firstName)
-                        TextField(LocalizedStringKey("lastName"), text: $viewModel.lastName)
+                        TextField(LocalizedStringKey("username"), text: $vm.username)
+                        TextField(LocalizedStringKey("firstName"), text: $vm.firstName)
+                        TextField(LocalizedStringKey("lastName"), text: $vm.lastName)
                     }
                     .signInTextFieldStyle(withHeight: self.maxHeight, topLeading: self.topLeading, backgroundColor: Color.qpLightGrayColor)
 
                     Group {
                         Menu {
-                            ForEach(viewModel.dropdownRoles, id: \.self) { role in
+                            ForEach(vm.dropdownRoles, id: \.self) { role in
                                 Button(role) {
                                     self.selectedRole = role
                                     _ = resetRestaurantDropDown()
@@ -63,9 +62,9 @@ struct SignUpView: View {
                         }
 
                         Menu {
-                            ForEach(restaurantsViewModel.restaurants) { restaurant in
+                            ForEach(vm.restaurants) { restaurant in
                                 Button(restaurant.name) {
-                                    viewModel.setRestaurantId(withId: restaurant.id ?? "")
+                                    vm.setRestaurantId(withId: restaurant.id ?? "")
                                     self.selectedRestaurant = restaurant.name
                                 }
                             }
@@ -85,12 +84,12 @@ struct SignUpView: View {
                     }
 
                     Group {
-                        TextField(LocalizedStringKey("email"), text: $viewModel.email)
+                        TextField(LocalizedStringKey("email"), text: $vm.email)
                             .signInTextFieldStyle(withHeight: self.maxHeight, topLeading: self.topLeading, backgroundColor: Color.qpLightGrayColor)
 
-                        SecureInputView(LocalizedStringKey("password").stringValue(), text: $viewModel.password, maxHeight: self.maxHeight, topLeading: self.topLeading, backgroundColor: Color.qpLightGrayColor)
+                        SecureInputView(LocalizedStringKey("password").stringValue(), text: $vm.password, maxHeight: self.maxHeight, topLeading: self.topLeading, backgroundColor: Color.qpLightGrayColor)
 
-                        SecureInputView(LocalizedStringKey("confirm-password").stringValue(), text: $viewModel.confirmPassword, maxHeight: self.maxHeight, topLeading: self.topLeading, backgroundColor: Color.qpLightGrayColor)
+                        SecureInputView(LocalizedStringKey("confirm-password").stringValue(), text: $vm.confirmPassword, maxHeight: self.maxHeight, topLeading: self.topLeading, backgroundColor: Color.qpLightGrayColor)
 
                         if self.passwordFormatError && !self.fieldsIncompleted {
                             Text(LocalizedStringKey("password-format-error"))
@@ -106,15 +105,15 @@ struct SignUpView: View {
                     }
 
                     Button {
-                        self.fieldsIncompleted = viewModel.allFieldsAreCompleted() && selectedRole != "" ? false : true
+                        self.fieldsIncompleted = vm.allFieldsAreCompleted() && selectedRole != "" ? false : true
 
                         if self.fieldsIncompleted == false {
-                            self.passwordFormatError = viewModel.passwordWrongFormat
-                            self.passwordsDontMatch = viewModel.passwordsAreDifferent
+                            self.passwordFormatError = vm.passwordWrongFormat
+                            self.passwordsDontMatch = vm.passwordsAreDifferent
                         }
 
                         if !self.fieldsIncompleted && !self.passwordFormatError && !self.passwordsDontMatch {
-                            viewModel.doSignUp(withRole: self.selectedRole) { result in
+                            vm.doSignUp(withRole: self.selectedRole) { result in
                                 switch result {
                                 case .success:
                                     successSignUp = true
@@ -155,6 +154,9 @@ struct SignUpView: View {
                     .tint(Color.qpOrange)
                 }
             }
+        }
+        .task {
+            await vm.fetchAllRestaurants()
         }
         .alert(LocalizedStringKey("created-account-message"), isPresented: $successSignUp) {
             Button(LocalizedStringKey("back-to-signin")) {

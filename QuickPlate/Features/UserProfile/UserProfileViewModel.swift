@@ -12,44 +12,22 @@ final class UserProfileViewModel: ObservableObject {
     @Published var user = MyUser()
     @Published var bookedTables = [Table]()
 
-    private let coll = Firestore.firestore().collection("Users")
-    private let tColl = Firestore.firestore().collection("Tables")
-    private let rColl = Firestore.firestore().collection("Restaurants")
-
+    private let coll = Firestore.firestore().collection(FSCollNames.users.rawValue)
 
     func fetchLoggedUser() async {
-        let userId = UserDefaults.standard.value(forKey: "userId") as! String
-        coll.document(userId).addSnapshotListener { querySnapshot, error in
-            if let error = error {
-                print("UserCollection - Could't retrieve logged user")
-                print(error.localizedDescription)
-            }
-            guard let querySnapshot = querySnapshot else {
-                print("UserCollection - There is no user with the id \(userId)")
-                return
-            }
-            do {
-                self.user = try querySnapshot.data(as: MyUser.self)
-                self.updateBookedTables(self.user)
-            } catch {
-                print(error.localizedDescription)
-                return
-            }
-        }
+        await FSUserColl.shared.fetchLoggedUser(completion: { user in
+            guard let user = user else { return }
+            self.user = user
+            self.updateBookedTables(self.user)
+        })
     }
 
     func updateBookedTables(_ user: MyUser) {
         bookedTables.removeAll()
         for tId in user.bookedTables {
-            tColl.document(tId).getDocument { qdSnap, error in
-                if let error = error {
-                    print("UserProfileVM - Couldn't get booked table with id \(tId)")
-                    print(error.localizedDescription)
-                }
-
-                if let qdSnap = qdSnap, let table = try? qdSnap.data(as: Table.self) {
-                    self.bookedTables.append(table)
-                }
+            FSTableColl.shared.getTableWith(id: tId) { table in
+                guard let table = table else { return }
+                self.bookedTables.append(table)
             }
         }
     }

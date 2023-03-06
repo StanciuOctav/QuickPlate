@@ -44,53 +44,65 @@ struct SignInView: View {
                             EmptyView()
                         }
 
-                        Button {
-                            viewModel.signIn { result in
-                                switch result {
-                                case .success:
-                                    loginManager.updateWith(state: .clientSignedIn)
-                                case .failure(.signInError):
-                                    viewModel.setShowCredentialsErrors(withBool: true)
-                                case .failure(.anonymousUser), .failure:
-                                    break
-                                }
-                            }
-                        } label: {
-                            Text(LocalizedStringKey("signin"))
-                                .frame(maxWidth: .infinity, maxHeight: self.maxHeight)
-                                .foregroundColor(.white)
-                            Spacer()
-                        }
-                        .padding()
-                        .frame(maxWidth: .infinity, maxHeight: self.maxHeight)
-                        .background(Color.qpOrange)
-                        .cornerRadius(.infinity)
+                        SignInButton()
 
                         Text(LocalizedStringKey("or"))
                             .frame(maxWidth: .infinity)
 
-                        Button {
-                            viewModel.setShowCredentialsErrors(withBool: false)
-                            print("Trying to Sign Up")
-                        } label: {
-                            NavigationLink {
-                                SignUpView()
-                                    .navigationBarBackButtonHidden(true)
-                            } label: {
-                                Text(LocalizedStringKey("signup"))
-                                    .padding()
-                                    .frame(maxWidth: .infinity, maxHeight: self.maxHeight)
-                                    .foregroundColor(Color.qpOrange)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: .infinity)
-                                            .stroke(Color.qpOrange, lineWidth: self.roundedRectangleLineWidth)
-                                    )
-                            }
-                        }
+                        CreateAccountButton()
                     }
                 }
             }
             .padding()
+        }
+    }
+    
+    @ViewBuilder
+    func SignInButton() -> some View {
+        Button {
+            viewModel.signIn { result in
+                switch result {
+                case .success:
+                    loginManager.updateWith(state: .clientSignedIn)
+                case .failure(.signInError):
+                    viewModel.setShowCredentialsErrors(withBool: true)
+                case .failure(.anonymousUser), .failure:
+                    break
+                }
+            }
+        } label: {
+            Text(LocalizedStringKey("signin"))
+                .frame(maxWidth: .infinity, maxHeight: self.maxHeight)
+                .padding(.horizontal, 10)
+                .foregroundColor(.white)
+            Spacer()
+        }
+        .padding()
+        .frame(maxWidth: .infinity, maxHeight: self.maxHeight)
+        .background(Color.qpOrange)
+        .cornerRadius(.infinity)
+    }
+
+    @ViewBuilder
+    func CreateAccountButton() -> some View {
+        Button {
+            viewModel.setShowCredentialsErrors(withBool: false)
+            print("Trying to Sign Up")
+        } label: {
+            NavigationLink {
+                SignUpView()
+                    .navigationBarBackButtonHidden(true)
+            } label: {
+                Text(LocalizedStringKey("signup"))
+                    .padding()
+                    .frame(maxWidth: .infinity, maxHeight: self.maxHeight)
+                    .foregroundColor(Color.qpOrange)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: .infinity)
+                            .stroke(Color.qpOrange, lineWidth: self.roundedRectangleLineWidth)
+                            .padding(.horizontal, 10)
+                    )
+            }
         }
     }
 }

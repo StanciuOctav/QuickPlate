@@ -13,29 +13,12 @@ final class RestaurantsListViewModel: ObservableObject {
     @Published var restaurants: [Restaurant] = []
     private var defaultRestaurants: [Restaurant] = []
 
-    private let coll = Firestore.firestore().collection("Restaurants")
+    private let coll = Firestore.firestore().collection(FSCollNames.restaurants.rawValue)
 
     func fetchAllRestaurants() async {
-        coll.addSnapshotListener { querySnapshot, error in
-            if let error = error {
-                print("RestaurantCollection - Could't retrieve restaurants")
-                print(error.localizedDescription)
-            }
-            guard let documents = querySnapshot?.documents else {
-                print("RestaurantCollection - No documents!")
-                return
-            }
-            self.restaurants = documents.map({ qdSnap in
-                let defaultRes = Restaurant()
-                var res = Restaurant()
-                do {
-                    res = try qdSnap.data(as: Restaurant.self)
-                } catch {
-                    print(error.localizedDescription)
-                    return defaultRes
-                }
-                return res
-            })
+        await FSResColl.shared.fetchAllRestaurants() { results in
+            guard let results = results else { return }
+            self.restaurants = results
             self.initializeDefaultRestaurants()
         }
     }

@@ -12,39 +12,17 @@ import FirebaseFirestore
 final class TablesViewViewModel: ObservableObject {
     @Published var tables = [Table]()
     
-    private let coll = Firestore.firestore().collection("Tables")
-    private let usrColl = Firestore.firestore().collection("Users")
-    
     func fetchAllTables(forRestaurant restaurant: Restaurant) async {
-        coll.addSnapshotListener { querySnapshot, error in
-            if let error = error {
-                print("TablesCollection - Could't retrieve tables")
-                print(error.localizedDescription)
-            }
-            guard let documents = querySnapshot?.documents else {
-                print("TablesCollection - No documents!")
-                return
-            }
-            self.tables = documents.compactMap({ qdSnap in
-                let defaultTable = Table()
-                var res = Table()
-                do {
-                    res = try qdSnap.data(as: Table.self)
-                } catch {
-                    print(error.localizedDescription)
-                    return defaultTable
-                }
-                return restaurant.tables.contains(where: {$0 == res.id && !res.booked}) ? res : nil
-            })
-        }
+        await FSTableColl.shared.fetchAllTables(forRestaurant: restaurant, completion: { tables in
+            guard let tables = tables else { return }
+            self.tables = tables
+        })
     }
     
     func bookingTable(tableId: String, hour: String, day: String) {
-        coll.document(tableId).setData(["booked": true,
-                                        "hourBooked": hour,
-                                        "day": day], merge: true)
+        FSTableColl.shared.tableBooked(tableId: tableId, hour: hour, day: day)
+        FSUserColl.shared.saveBookedTable(withId: tableId)
         updateTables()
-        UserCollection.shared.saveBookedTable(withId: tableId)
     }
     
     private func updateTables() {

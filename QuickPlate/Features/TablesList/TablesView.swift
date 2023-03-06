@@ -15,6 +15,7 @@ struct TablesView: View {
     @State private var selectedTable = Table()
     @State private var selectedHour: Int = 0
     @State private var selectedDay: String = ""
+    @Binding var isPresentingBookedTables: Bool
 
     let restaurant: Restaurant
     let minHour: Int
@@ -88,7 +89,7 @@ struct TablesView: View {
                 vm.bookingTable(tableId: self.selectedTable.id ?? "", hour: String(self.selectedHour) + ":00", day: self.selectedDay)
                 presentAlert.toggle()
                 confirmationAlert.toggle()
-                self.selectedHour = 0
+                self.selectedHour = Int(self.restaurant.openHour.split(separator: ":")[0]) ?? 0
                 self.selectedDay = weekdays[0]
             }
             Button("No", role: .destructive) {
@@ -98,6 +99,7 @@ struct TablesView: View {
         .alert(isPresented: $confirmationAlert) {
             Alert(title: Text("Booking confirmed!"), dismissButton: .cancel {
                 confirmationAlert.toggle()
+                self.isPresentingBookedTables = false
             })
         }
         .toolbar {
@@ -115,6 +117,7 @@ struct TablesView: View {
         }
         .task {
             await self.vm.fetchAllTables(forRestaurant: self.restaurant)
+            self.selectedHour = Int(self.restaurant.openHour.split(separator: ":")[0]) ?? 0
         }
     }
 }

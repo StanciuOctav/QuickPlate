@@ -33,3 +33,29 @@ struct Restaurant: Codable, Identifiable, Hashable {
         }
     }
 }
+
+struct RestaurantCardDTO: Codable, Identifiable {
+    @DocumentID var id: String?
+    var name: String = ""
+    var imageURL: String = ""
+    var location: GeoPoint = GeoPoint(latitude: 0.0, longitude: 0.0)
+    var address: String = ""
+    var openHour: String = ""
+    var closeHour: String = ""
+    var rating: Double = 0.0
+    var isFavourite: Bool?
+}
+
+struct RestaurantSignUpDTO: Codable, Identifiable {
+    @DocumentID var id: String?
+    var name: String = ""
+}
+
+extension Restaurant {
+    var restaurantCardDTO: RestaurantCardDTO {
+        RestaurantCardDTO(id: id, name: name, imageURL: imageURL, location: location, address: address, openHour: openHour, closeHour: closeHour, rating: rating, isFavourite: false)
+    }
+    var restaurantSignUpDTO: RestaurantSignUpDTO {
+        RestaurantSignUpDTO(id: id, name: name)
+    }
+}

@@ -18,6 +18,7 @@ final class SignUpViewModel: ObservableObject {
     @Published var confirmPassword: String = ""
     // FIXME: Maybe in the future have a list of working restaurants with DocumentReferences in them (REMEMBER: DocumentReference cannot be empty in firestore or it may not be a document at the specified path)
     @Published var restaurantId: String = ""
+    @Published var restaurants: [RestaurantSignUpDTO] = []
 
     var dropdownRoles = [LocalizedStringKey(stringLiteral: "client").stringValue(),
                          LocalizedStringKey(stringLiteral: "waiter").stringValue(),
@@ -51,15 +52,13 @@ final class SignUpViewModel: ObservableObject {
         restaurantId = id
     }
 
-    let db = Firestore.firestore()
-
-    func doSignUp(withRole role: String, completion: @escaping (Result<Int?, StartupError>) -> Void) {
+    func doSignUp(withRole role: String, completion: @escaping (Result<Int, StartupError>) -> Void) {
         FirebaseEmailAuth.shared.doRegister(withEmail: email, andPassword: password) { result in
             switch result {
             case .success(_):
                 let userId = try? result.get()
                 let newUser = MyUser(id: userId, username: self.username, firstName: self.firstName, lastName: self.lastName, role: role, restaurantWorking: self.restaurantId, email: self.email, password: self.password, favouriteRestaurants: [], bookedTables: [])
-                UserCollection.shared.saveUserToDB(user: newUser) { error in
+                FSUserColl.shared.saveUserToDB(user: newUser) { error in
                     if error != nil {
                         print("SignUpViewModel: doSignUp - Error in saving user to db")
                     } else {
@@ -71,6 +70,15 @@ final class SignUpViewModel: ObservableObject {
                 print("SignUpViewModel: doSignUp - Could not sign in")
                 completion(.failure(.emailExists))
             }
+        }
+    }
+
+    func fetchAllRestaurants() async {
+        await FSResColl.shared.fetchAllRestaurants { restaurants in
+            guard let restaurants = restaurants else { return }
+            self.restaurants = restaurants.compactMap({ res in
+                return res.restaurantSignUpDTO
+            })
         }
     }
 }

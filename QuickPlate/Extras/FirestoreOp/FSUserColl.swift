@@ -8,13 +8,13 @@
 import FirebaseFirestore
 import Foundation
 
-final class UserCollection {
-    let usrColl = Firestore.firestore().collection("Users")
-    static let shared = UserCollection()
+final class FSUserColl {
+    let coll = Firestore.firestore().collection(FSCollNames.users.rawValue)
+    static let shared = FSUserColl()
 
     func saveUserToDB(user newUser: MyUser, completion: @escaping (Error?) -> Void) {
         // saving like this instead of saveDocument so we can have a custom DocumentId (to match the UID of the authentication user)
-        usrColl.document(newUser.id!).setData([
+        coll.document(newUser.id!).setData([
             "username": newUser.username,
             "firstName": newUser.firstName,
             "lastName": newUser.lastName,
@@ -28,9 +28,26 @@ final class UserCollection {
         completion(nil)
     }
     
+    func fetchLoggedUser(completion: @escaping (MyUser?) -> Void) async {
+        let userId = UserDefaults.standard.value(forKey: "userId") as! String
+        coll.document(userId).addSnapshotListener { qdSnap, error in
+            if let error = error {
+                print("UserCollection - Could't retrieve logged user")
+                print(error.localizedDescription)
+                completion(nil)
+            }
+            guard let qdSnap = qdSnap else {
+                print("UserCollection - There is no user with the id \(userId)")
+                completion(nil)
+                return
+            }
+            completion(try? qdSnap.data(as: MyUser.self))
+        }
+    }
+    
     func saveBookedTable(withId tableId: String) {
         let userId = UserDefaults.standard.value(forKey: "userId") as! String
-        let currUser = usrColl.document(userId)
+        let currUser = coll.document(userId)
         currUser.getDocument { qdSnap, error in
             if let error = error {
                 print("TablesViewVM - Couldn't assign booked table to user")
