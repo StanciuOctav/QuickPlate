@@ -7,35 +7,13 @@
 
 import SwiftUI
 
-struct LogoutButton: View {
-    @ObservedObject var vm: UserProfileViewModel
-    @ObservedObject var loginManager: LoginManager
-
-    var body: some View {
-        Button {
-            vm.signOut(completion: { didNotSignOut in
-                if didNotSignOut != nil {
-                    print("UserProfileView - The user couldn't sign out")
-                } else {
-                    print("Did the user sign out? \(didNotSignOut != nil ? "NO" : "YES")")
-                    loginManager.updateWith(state: .notSignedIn)
-                }
-            })
-        } label: {
-            Text("Sign out")
-                .foregroundColor(Color.qpLightGrayColor)
-                .padding(.horizontal, 10)
-                .background(Capsule(style: .circular).foregroundColor(.black))
-        }
-    }
-}
-
 struct UserProfileView: View {
     @StateObject var vm = UserProfileViewModel()
     @ObservedObject var loginManager: LoginManager
     
-    @State var confirmCancel: Bool = false
+    @State var isShowingCancelBooking: Bool = false
     @State var selectedReservation = Table()
+    @State var isShowingSignOutAlert: Bool = false
 
     var body: some View {
         VStack {
@@ -53,7 +31,14 @@ struct UserProfileView: View {
                     }
                     Spacer()
                     VStack {
-                        LogoutButton(vm: self.vm, loginManager: self.loginManager)
+                        Button {
+                            self.isShowingSignOutAlert.toggle()
+                        } label: {
+                            Text("Sign out")
+                                .foregroundColor(Color.qpLightGrayColor)
+                                .padding(.horizontal, 10)
+                                .background(Capsule(style: .circular).foregroundColor(.black))
+                        }
                         Spacer()
                     }
                 }
@@ -88,7 +73,7 @@ struct UserProfileView: View {
                                 }
                                 Button {
                                     self.selectedReservation = table
-                                    self.confirmCancel.toggle()
+                                    self.isShowingCancelBooking.toggle()
                                 } label: {
                                     HStack {
                                         Image(systemName: "x.circle.fill")
@@ -112,10 +97,24 @@ struct UserProfileView: View {
             }
             Spacer()
         }
-        .alert("Are you sure you want to cancel the reservation?", isPresented: $confirmCancel) {
+        .alert("Are you sure you want to cancel the reservation?", isPresented: $isShowingCancelBooking) {
             Button("Yes", role: .cancel) {
                 vm.cancelBookingForTableWith(tableId: self.selectedReservation.id ?? "")
-                self.confirmCancel.toggle()
+                self.isShowingCancelBooking.toggle()
+            }
+            Button("No", role: .destructive) { }
+        }
+        .alert("Are you sure you want to Sign Out?", isPresented: $isShowingSignOutAlert) {
+            Button("Yes", role: .cancel) {
+                vm.signOut(completion: { didNotSignOut in
+                    if didNotSignOut != nil {
+                        print("UserProfileView - The user couldn't sign out")
+                    } else {
+                        print("Did the user sign out? \(didNotSignOut != nil ? "NO" : "YES")")
+                        loginManager.updateWith(state: .notSignedIn)
+                    }
+                })
+                self.isShowingSignOutAlert.toggle()
             }
             Button("No", role: .destructive) { }
         }
