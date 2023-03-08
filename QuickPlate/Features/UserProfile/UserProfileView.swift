@@ -7,96 +7,37 @@
 
 import SwiftUI
 
+var tags: [String] = ["Booked Tables", "Favourite Restaurants"]
+
 struct UserProfileView: View {
     @StateObject var vm = UserProfileViewModel()
     @ObservedObject var loginManager: LoginManager
-    
-    @State var isShowingCancelBooking: Bool = false
+
     @State var selectedReservation = Table()
-    @State var isShowingSignOutAlert: Bool = false
+
+    @State private var isShowingCancelBooking: Bool = false
+    @State private var isShowingSignOutAlert: Bool = false
+    @State private var activeTag: String = tags[0]
+
+    @Namespace private var animation
 
     var body: some View {
         VStack {
-            VStack {
-                HStack {
-                    Image(systemName: "person.circle.fill")
-                        .resizable()
-                        .scaledToFit()
-                    VStack(alignment: .leading, spacing: 3) {
-                        Text(vm.user.username)
-                            .font(.title2)
-                            .bold()
-                        Text(vm.user.firstName + " " + vm.user.lastName)
-                        Text(vm.user.email)
-                    }
-                    Spacer()
-                    VStack {
-                        Button {
-                            self.isShowingSignOutAlert.toggle()
-                        } label: {
-                            Text("Sign out")
-                                .foregroundColor(Color.qpLightGrayColor)
-                                .padding(.horizontal, 10)
-                                .background(Capsule(style: .circular).foregroundColor(.black))
-                        }
-                        Spacer()
-                    }
-                }
-                .padding()
-            }
-            .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.size.height / 6)
-            .background(Color.qpOrange)
+            TopSection()
 
-            if !vm.user.bookedTables.isEmpty {
-                HStack {
-                    Text("Booked tables")
-                        .font(.title2)
-                    Spacer()
-                }
-                .padding()
-                ScrollView {
-                    ForEach(vm.bookedTables, id: \.self.id) { table in
-                        HStack {
-                            BookedTableView(table: table)
-                            
-                            Spacer()
-                            VStack(alignment: .trailing) {
-                                Button {
-                                } label: {
-                                    HStack {
-                                        Image(systemName: "checkmark.circle")
-                                            .resizable()
-                                            .fixedSize()
-                                        Text("Confirm arrival")
-                                    }
-                                    .foregroundColor(.green)
-                                }
-                                Button {
-                                    self.selectedReservation = table
-                                    self.isShowingCancelBooking.toggle()
-                                } label: {
-                                    HStack {
-                                        Image(systemName: "x.circle.fill")
-                                            .resizable()
-                                            .fixedSize()
-                                        Text("Cancel")
-                                    }
-                                    .foregroundColor(.red)
-                                }
-                            }
-                            .padding()
-                        }
-                        .background {
-                            RoundedRectangle(cornerRadius: 5, style: .continuous)
-                                .fill(.white)
-                                .shadow(color: .black.opacity(0.01), radius: 8, x: 5, y: 5)
-                        }
-                        .padding(.horizontal, 10)
-                    }
-                }
+            TagsView()
+                .padding(.vertical, 10)
+
+            switch activeTag {
+            case tags[0]:
+                BookedTablesView()
+            case tags[1]:
+                FavouriteRestaurantsView()
+            default:
+                EmptyView()
             }
-            Spacer()
         }
+        .frame(maxWidth: .infinity)
         .alert("Are you sure you want to cancel the reservation?", isPresented: $isShowingCancelBooking) {
             Button("Yes", role: .cancel) {
                 vm.cancelBookingForTableWith(tableId: self.selectedReservation.id ?? "")
@@ -107,12 +48,12 @@ struct UserProfileView: View {
         .alert("Are you sure you want to Sign Out?", isPresented: $isShowingSignOutAlert) {
             Button("Yes", role: .cancel) {
                 vm.signOut(completion: { didNotSignOut in
-                    if didNotSignOut != nil {
+                    guard let _ = didNotSignOut else {
                         print("UserProfileView - The user couldn't sign out")
-                    } else {
-                        print("Did the user sign out? \(didNotSignOut != nil ? "NO" : "YES")")
-                        loginManager.updateWith(state: .notSignedIn)
+                        return
                     }
+                    print("The user signed out")
+                    loginManager.updateWith(state: .notSignedIn)
                 })
                 self.isShowingSignOutAlert.toggle()
             }
@@ -121,6 +62,168 @@ struct UserProfileView: View {
         .task {
             await self.vm.fetchLoggedUser()
         }
-        .background(Color.qpLightGrayColor)
+        .background(Color.qpBeigeColor)
+    }
+
+    @ViewBuilder
+    func TopSection() -> some View {
+        VStack(alignment: .center) {
+            HStack {
+                Image(systemName: "person.circle.fill")
+                    .resizable()
+                    .scaledToFit()
+                VStack(alignment: .leading, spacing: 3) {
+                    Text(vm.user.username)
+                        .font(.title2)
+                        .bold()
+                    Text(vm.user.firstName + " " + vm.user.lastName)
+                    Text(vm.user.email)
+                }
+                Spacer()
+                VStack {
+                    Button {
+                        self.isShowingSignOutAlert.toggle()
+                    } label: {
+                        Text("Sign out")
+                            .foregroundColor(Color.qpLightGrayColor)
+                            .padding(.horizontal, 10)
+                            .background(Capsule(style: .circular).foregroundColor(.black))
+                    }
+                }
+            }
+            .padding()
+        }
+        .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.size.height / 6)
+        .background(Color.qpOrange)
+    }
+
+    @ViewBuilder
+    func TagsView() -> some View {
+        HStack(alignment: .center) {
+            ForEach(tags, id: \.self) { tag in
+                Text(tag)
+                    .font(.caption)
+                    .padding(.all, 10)
+                    .background {
+                        if activeTag == tag {
+                            Capsule()
+                                .fill(Color.qpOrange)
+                                .matchedGeometryEffect(id: "ACTIVETAB", in: animation)
+                        } else {
+                            Capsule()
+                                .fill(.white)
+                        }
+                    }
+                    .foregroundColor(activeTag == tag ? .white : .black)
+                    .onTapGesture {
+                        withAnimation(.interactiveSpring(response: 0.5, dampingFraction: 0.7, blendDuration: 0.7)) {
+                            activeTag = tag
+                        }
+                    }
+            }
+        }
+    }
+
+    @ViewBuilder
+    func BookedTablesView() -> some View {
+        if !vm.user.bookedTables.isEmpty {
+            ScrollView {
+                ForEach(vm.bookedTables, id: \.self.id) { table in
+                    HStack {
+                        BookedTableView(table: table)
+
+                        Spacer()
+                        VStack(alignment: .trailing) {
+                            Button {
+                            } label: {
+                                HStack {
+                                    Image(systemName: "checkmark.circle")
+                                        .resizable()
+                                        .fixedSize()
+                                    Text("Confirm arrival")
+                                }
+                                .foregroundColor(.green)
+                            }
+                            Button {
+                                self.selectedReservation = table
+                                self.isShowingCancelBooking.toggle()
+                            } label: {
+                                HStack {
+                                    Image(systemName: "x.circle.fill")
+                                        .resizable()
+                                        .fixedSize()
+                                    Text("Cancel")
+                                }
+                                .foregroundColor(.red)
+                            }
+                        }
+                        .padding()
+                    }
+                    .background {
+                        RoundedRectangle(cornerRadius: 5, style: .continuous)
+                            .fill(.white)
+                            .shadow(color: .black.opacity(0.01), radius: 8, x: 5, y: 5)
+                    }
+                    .padding(.horizontal, 10)
+                }
+            }
+        } else {
+            Spacer()
+            Text("You don't have any booked tables at the moment")
+                .font(.headline)
+            Spacer()
+        }
+    }
+
+    // FIXME: Make this view to display the user's favourite restaurants
+    @ViewBuilder
+    func FavouriteRestaurantsView() -> some View {
+        if !vm.user.bookedTables.isEmpty {
+            ScrollView {
+                ForEach(vm.bookedTables, id: \.self.id) { table in
+                    HStack {
+                        BookedTableView(table: table)
+
+                        Spacer()
+                        VStack(alignment: .trailing) {
+                            Button {
+                            } label: {
+                                HStack {
+                                    Image(systemName: "checkmark.circle")
+                                        .resizable()
+                                        .fixedSize()
+                                    Text("Confirm arrival")
+                                }
+                                .foregroundColor(.green)
+                            }
+                            Button {
+                                self.selectedReservation = table
+                                self.isShowingCancelBooking.toggle()
+                            } label: {
+                                HStack {
+                                    Image(systemName: "x.circle.fill")
+                                        .resizable()
+                                        .fixedSize()
+                                    Text("Cancel")
+                                }
+                                .foregroundColor(.red)
+                            }
+                        }
+                        .padding()
+                    }
+                    .background {
+                        RoundedRectangle(cornerRadius: 5, style: .continuous)
+                            .fill(.white)
+                            .shadow(color: .black.opacity(0.01), radius: 8, x: 5, y: 5)
+                    }
+                    .padding(.horizontal, 10)
+                }
+            }
+        } else {
+            Spacer()
+            Text("You don't have any booked tables at the moment")
+                .font(.headline)
+            Spacer()
+        }
     }
 }

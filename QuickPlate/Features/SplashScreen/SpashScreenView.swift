@@ -9,10 +9,18 @@ import SwiftUI
 
 struct SplashScreenView: View {
     @State var isActive: Bool = true
+    @StateObject var loginManager = LoginManager()
 
     var body: some View {
         if isActive {
-            LoginStateView()
+            switch loginManager.nextScreen {
+            case .notSignedIn:
+                SignInView(loginManager: loginManager)
+            case .clientSignedIn:
+                QPTabView(loginManager: loginManager)
+            case .workerSignedIn:
+                QPTabView(loginManager: loginManager) // FIXME: replace this with worker's home screen
+            }
         } else {
             ZStack {
                 Color("qp-beige-color").ignoresSafeArea()

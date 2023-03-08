@@ -12,17 +12,15 @@ struct RestaurantsListView: View {
     @State var searchRestaurant: String = ""
 
     var body: some View {
-        NavigationView {
-            ScrollView {
-                ForEach(vm.restaurants) { restaurant in
-                    NavigationLink(destination: RestaurantDetailsView(restaurant: restaurant)) {
-                        RestaurantCardView(restaurant: restaurant.restaurantCardDTO)
-                            .ignoresSafeArea(.all, edges: [.leading, .trailing])
-                    }
-                    .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
-                    .buttonStyle(.plain)
-                    .listRowSeparator(.hidden)
+        ScrollView {
+            ForEach(vm.restaurants) { restaurant in
+                NavigationLink(destination: RestaurantDetailsView(restaurant: restaurant)) {
+                    RestaurantCardView(restaurant: restaurant.restaurantCardDTO)
+                        .ignoresSafeArea(.all, edges: [.leading, .trailing])
                 }
+                .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
+                .buttonStyle(.plain)
+                .listRowSeparator(.hidden)
             }
         }
         .searchable(text: $searchRestaurant,
@@ -41,9 +39,8 @@ struct RestaurantsListView: View {
         .onSubmit({
             self.searchRestaurant = ""
         })
-        .ignoresSafeArea(.all, edges: [.trailing, .leading])
         .frame(maxWidth: .infinity)
-        .scrollContentBackground(.hidden)
+        .background(Color.qpBeigeColor)
         .task {
             await self.vm.fetchAllRestaurants()
         }

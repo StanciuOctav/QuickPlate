@@ -24,13 +24,16 @@ struct RestaurantCardView: View {
             VStack(alignment: .leading) {
                 Text(restaurant.name)
                     .fontWeight(.bold)
-
+                Spacer()
                 Text(restaurant.address)
-                    .font(.subheadline)
+                    .font(.caption)
                 Text(restaurant.openHour + " - " + restaurant.closeHour)
                     .foregroundColor(.green)
+                    .font(.caption)
                 Text("Rating: " + String(format: "%.1f", restaurant.rating))
+                    .font(.caption)
             }
+            .padding(.vertical, 5)
             Spacer()
             VStack {
                 if restaurant.isFavourite ?? false {
@@ -53,10 +56,3 @@ struct RestaurantCardView: View {
         .frame(maxWidth: .infinity, maxHeight: 100)
     }
 }
-
-//struct RestaurantCardView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        RestaurantCardView(restaurant: RestaurantCardDTO)
-//        // .previewLayout(.fixed(width: 400, height: 100))
-//    }
-//}
