@@ -51,4 +51,10 @@ final class FSTableColl {
             }
         }
     }
+    
+    func resetBookedTableWith(tableId: String) {
+        coll.document(tableId).setData(["booked": false,
+                                        "hourBooked": "",
+                                        "day": ""], merge: true)
+    }
 }

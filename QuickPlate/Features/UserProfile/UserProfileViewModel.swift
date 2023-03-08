@@ -12,8 +12,6 @@ final class UserProfileViewModel: ObservableObject {
     @Published var user = MyUser()
     @Published var bookedTables = [Table]()
 
-    private let coll = Firestore.firestore().collection(FSCollNames.users.rawValue)
-
     func fetchLoggedUser() async {
         await FSUserColl.shared.fetchLoggedUser(completion: { user in
             guard let user = user else { return }
@@ -27,7 +25,24 @@ final class UserProfileViewModel: ObservableObject {
         for tId in user.bookedTables {
             FSTableColl.shared.getTableWith(id: tId) { table in
                 guard let table = table else { return }
-                self.bookedTables.append(table)
+                if !self.bookedTables.contains(where: { $0.id == table.id }) {
+                    self.bookedTables.append(table)
+                }
+            }
+        }
+    }
+    
+    func cancelBookingForTableWith(tableId: String) {
+        FSUserColl.shared.deleteBookedTableWith(tableId: tableId) { res in
+            switch res {
+            case 1:
+                FSTableColl.shared.resetBookedTableWith(tableId: tableId)
+                break
+            case -1:
+                print("UserProfileVM - error in deleting a reservation")
+                break
+            default:
+                break
             }
         }
     }

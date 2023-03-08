@@ -15,10 +15,25 @@ struct BookedTableView: View {
         HStack {
             VStack(alignment: .leading) {
                 Text(vm.restaurantName)
-                    .font(.title)
-                Text("Table for \(table.nrPersons) persons")
-                Text("Booking hour: \(table.hourBooked)")
-                Text("Day of booking: \(table.day)")
+                    .font(.title2)
+                HStack() {
+                    Image(systemName: "person")
+                        .resizable()
+                        .fixedSize()
+                    Text(": \(table.nrPersons)")
+                }
+                HStack() {
+                    Image(systemName: "clock")
+                        .resizable()
+                        .fixedSize()
+                    Text(": \(table.hourBooked)")
+                }
+                HStack() {
+                    Image(systemName: "calendar")
+                        .resizable()
+                        .fixedSize()
+                    Text(": \(table.day)")
+                }
             }
         }
         .padding()

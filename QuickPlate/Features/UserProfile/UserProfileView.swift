@@ -7,7 +7,7 @@
 
 import SwiftUI
 
- struct LogoutButton: View {
+struct LogoutButton: View {
     @ObservedObject var vm: UserProfileViewModel
     @ObservedObject var loginManager: LoginManager
 
@@ -22,15 +22,20 @@ import SwiftUI
                 }
             })
         } label: {
-            Text("Logout")
+            Text("Sign out")
+                .foregroundColor(Color.qpLightGrayColor)
+                .padding(.horizontal, 10)
+                .background(Capsule(style: .circular).foregroundColor(.black))
         }
     }
- }
+}
 
 struct UserProfileView: View {
     @StateObject var vm = UserProfileViewModel()
     @ObservedObject var loginManager: LoginManager
-    // let user: MyUser
+    
+    @State var confirmCancel: Bool = false
+    @State var selectedReservation = Table()
 
     var body: some View {
         VStack {
@@ -47,7 +52,10 @@ struct UserProfileView: View {
                         Text(vm.user.email)
                     }
                     Spacer()
-                    LogoutButton(vm: self.vm, loginManager: self.loginManager)
+                    VStack {
+                        LogoutButton(vm: self.vm, loginManager: self.loginManager)
+                        Spacer()
+                    }
                 }
                 .padding()
             }
@@ -61,34 +69,59 @@ struct UserProfileView: View {
                     Spacer()
                 }
                 .padding()
-                ForEach(vm.bookedTables, id: \.self.id) { table in
-                    HStack {
-                        BookedTableView(table: table)
-                        Spacer()
-                        Button {
+                ScrollView {
+                    ForEach(vm.bookedTables, id: \.self.id) { table in
+                        HStack {
+                            BookedTableView(table: table)
                             
-                        } label: {
-                             Text("Confirm arrival")
+                            Spacer()
+                            VStack(alignment: .trailing) {
+                                Button {
+                                } label: {
+                                    HStack {
+                                        Image(systemName: "checkmark.circle")
+                                            .resizable()
+                                            .fixedSize()
+                                        Text("Confirm arrival")
+                                    }
+                                    .foregroundColor(.green)
+                                }
+                                Button {
+                                    self.selectedReservation = table
+                                    self.confirmCancel.toggle()
+                                } label: {
+                                    HStack {
+                                        Image(systemName: "x.circle.fill")
+                                            .resizable()
+                                            .fixedSize()
+                                        Text("Cancel")
+                                    }
+                                    .foregroundColor(.red)
+                                }
+                            }
+                            .padding()
                         }
+                        .background {
+                            RoundedRectangle(cornerRadius: 5, style: .continuous)
+                                .fill(.white)
+                                .shadow(color: .black.opacity(0.01), radius: 8, x: 5, y: 5)
+                        }
+                        .padding(.horizontal, 10)
                     }
-                    .padding()
                 }
             }
             Spacer()
+        }
+        .alert("Are you sure you want to cancel the reservation?", isPresented: $confirmCancel) {
+            Button("Yes", role: .cancel) {
+                vm.cancelBookingForTableWith(tableId: self.selectedReservation.id ?? "")
+                self.confirmCancel.toggle()
+            }
+            Button("No", role: .destructive) { }
         }
         .task {
             await self.vm.fetchLoggedUser()
         }
         .background(Color.qpLightGrayColor)
-        .toolbar {
-            Button {
-            } label: {
-                HStack {
-                    Text("Sign out")
-                    Image(systemName: "rectangle.portrait.and.arrow.right")
-                }
-                .foregroundColor(Color.white)
-            }
-        }
     }
 }
