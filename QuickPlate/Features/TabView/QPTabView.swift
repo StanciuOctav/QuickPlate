@@ -13,14 +13,13 @@ struct QPTabView: View {
     var body: some View {
         TabView {
             Group {
-                
                 NavigationView {
                     UserProfileView(loginManager: loginManager)
                 }
                 .tabItem {
                     Label(LocalizedStringKey("account"), systemImage: "person.fill")
                 }
-                
+
                 NavigationView {
                     RestaurantsListView()
                 }
@@ -32,8 +31,7 @@ struct QPTabView: View {
                     .tabItem {
                         Label(LocalizedStringKey("map"), systemImage: "map.fill")
                     }
-            }
-        }
-        .tint(Color.qpOrange)
+            }.accentColor(.accentColor)
+        }.accentColor(Color.qpOrange)
     }
 }

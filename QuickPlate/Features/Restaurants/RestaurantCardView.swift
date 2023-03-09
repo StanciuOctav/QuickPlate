@@ -27,6 +27,7 @@ struct RestaurantCardView: View {
                 Spacer()
                 Text(restaurant.address)
                     .font(.caption)
+                    .multilineTextAlignment(.leading)
                 Text(restaurant.openHour + " - " + restaurant.closeHour)
                     .foregroundColor(.green)
                     .font(.caption)
@@ -35,24 +36,7 @@ struct RestaurantCardView: View {
             }
             .padding(.vertical, 5)
             Spacer()
-            VStack {
-                if restaurant.isFavourite ?? false {
-                    Image(systemName: "star.fill")
-                        .foregroundColor(.yellow)
-                        .padding(EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 5))
-                } else {
-                    Image(systemName: "star")
-                        .foregroundColor(.yellow)
-                        .padding(EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 5))
-                }
-                Spacer()
-            }
         }
-        .background(
-            RoundedRectangle(cornerRadius: 5)
-                .foregroundColor(.white)
-                .shadow(color: Color.qpBlackColor, radius: 2)
-        )
-        .frame(maxWidth: .infinity, maxHeight: 100)
+        .frame(maxWidth: .infinity)
     }
 }

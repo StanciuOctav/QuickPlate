@@ -10,19 +10,37 @@ import SwiftUI
 struct RestaurantsListView: View {
     @StateObject var vm = RestaurantsListViewModel()
     @State var searchRestaurant: String = ""
+    @State var changeStar: Bool = false
 
     var body: some View {
         ScrollView {
             ForEach(vm.restaurants) { restaurant in
-                NavigationLink(destination: RestaurantDetailsView(restaurant: restaurant)) {
-                    RestaurantCardView(restaurant: restaurant.restaurantCardDTO)
-                        .ignoresSafeArea(.all, edges: [.leading, .trailing])
+                HStack {
+                    NavigationLink(destination: RestaurantDetailsView(restaurant: restaurant)) {
+                        RestaurantCardView(restaurant: restaurant.restaurantCardDTO)
+                            .ignoresSafeArea(edges: [.leading, .trailing])
+                    }
+                    VStack(alignment: .trailing) {
+                        // FIXME: Implement this for each restaurant
+                        Button {
+                            self.changeStar.toggle()
+                        } label: {
+                            Image(systemName: changeStar ? "star.fill" : "star")
+                                .foregroundColor(.yellow)
+                                .padding(EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 5))
+                        }
+                        Spacer()
+                    }
                 }
-                .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 10))
-                .buttonStyle(.plain)
-                .listRowSeparator(.hidden)
+                .background(
+                    RoundedRectangle(cornerRadius: 5)
+                        .foregroundColor(.white)
+                        .shadow(color: Color.qpBlackColor, radius: 3)
+                )
+                .padding([.top, .leading, .trailing], 10)
             }
         }
+        .navigationBarTitleDisplayMode(.inline)
         .searchable(text: $searchRestaurant,
                     placement: .navigationBarDrawer(displayMode: .always),
                     prompt: LocalizedStringKey("search-placeholder"))
@@ -41,6 +59,7 @@ struct RestaurantsListView: View {
         })
         .frame(maxWidth: .infinity)
         .background(Color.qpBeigeColor)
+        .foregroundColor(.black)
         .task {
             await self.vm.fetchAllRestaurants()
         }

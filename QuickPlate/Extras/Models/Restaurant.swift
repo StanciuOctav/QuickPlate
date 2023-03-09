@@ -43,7 +43,6 @@ struct RestaurantCardDTO: Codable, Identifiable {
     var openHour: String = ""
     var closeHour: String = ""
     var rating: Double = 0.0
-    var isFavourite: Bool?
 }
 
 struct RestaurantSignUpDTO: Codable, Identifiable {
@@ -53,7 +52,7 @@ struct RestaurantSignUpDTO: Codable, Identifiable {
 
 extension Restaurant {
     var restaurantCardDTO: RestaurantCardDTO {
-        RestaurantCardDTO(id: id, name: name, imageURL: imageURL, location: location, address: address, openHour: openHour, closeHour: closeHour, rating: rating, isFavourite: false)
+        RestaurantCardDTO(id: id, name: name, imageURL: imageURL, location: location, address: address, openHour: openHour, closeHour: closeHour, rating: rating)
     }
     var restaurantSignUpDTO: RestaurantSignUpDTO {
         RestaurantSignUpDTO(id: id, name: name)

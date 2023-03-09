@@ -28,7 +28,6 @@ struct RestaurantDetailsView: View {
     @State var isFavourite: Bool = false
     @State var isPresentingTables: Bool = false
     let restaurant: Restaurant
-    @State var value: Int = 0
 
     var body: some View {
         ScrollView {
@@ -87,13 +86,13 @@ struct RestaurantDetailsView: View {
                 }
             }
             .sheet(isPresented: $isPresentingTables) {
-                //NavigationView {
+                NavigationView {
                     TablesView(restaurant: self.restaurant,
                                minHour: self.restaurant.minHour,
                                maxHour: self.restaurant.maxHour,
                                weekdays: self.restaurant.openDays
-                )
-                // }
+                    )
+                }
             }
         }
     }
