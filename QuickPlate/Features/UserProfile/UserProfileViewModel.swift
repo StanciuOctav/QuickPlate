@@ -47,15 +47,15 @@ final class UserProfileViewModel: ObservableObject {
         }
     }
 
-    func signOut(completion: @escaping (Error?) -> Void) {
+    func signOut(completion: @escaping (Int?) -> Void) {
         FirebaseEmailAuth.shared.doLogout { error in
             if let error = error {
                 print("UserProfileViewModel - Could not sign out")
                 print(error.localizedDescription)
-                completion(error)
+                completion(nil)
             } else {
                 print("UserProfileViewModel - User signed out")
-                completion(nil)
+                completion(1)
             }
         }
     }

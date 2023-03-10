@@ -37,6 +37,7 @@ struct RestaurantCardView: View {
             .padding(.vertical, 5)
             Spacer()
         }
-        .frame(maxWidth: .infinity)
+        .frame(maxWidth: .infinity, maxHeight: 100)
+        .background(.white)
     }
 }

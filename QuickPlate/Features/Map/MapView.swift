@@ -14,7 +14,7 @@ struct MapView: View {
     @State private var tracking: MapUserTrackingMode = .follow
 
     @StateObject private var vm = MapViewModel()
-    @State private var selectedRestaurant = RestaurantCardDTO()
+    @State private var selectedRestaurant: RestaurantCardDTO?
 
     private var buttonHeightAndWidth: CGFloat = 50
 
@@ -28,7 +28,7 @@ struct MapView: View {
                     annotationItems: $vm.annotationItems) { item in
                         MapAnnotation(coordinate: item.wrappedValue.coordinate) {
                             Button {
-                                selectedRestaurant = vm.returnSelectedRestaurantWith(id: item.id) ?? RestaurantCardDTO()
+                                selectedRestaurant = vm.returnSelectedRestaurantWith(id: item.id)
                             } label: {
                                 ZStack(alignment: .center) {
                                     Image("restaurant-pin")
