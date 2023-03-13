@@ -64,7 +64,7 @@ struct UserProfileView: View {
         }
         .task {
             await self.vm.fetchLoggedUser()
-           // await self.vm.fetchFavRestaurants()
+            await self.vm.fetchFavRests()
         }
         .background(Color.qpBeigeColor)
     }

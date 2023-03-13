@@ -19,14 +19,16 @@ final class UserProfileViewModel: ObservableObject {
             self.user = user
             self.updateBookedTables(self.user)
         })
+    }
+
+    func fetchFavRests() async {
         await FSUserColl.shared.fetchFavouriteRestaurants(completion: { results in
+            self.favouriteRestaurants.removeAll()
             guard let results = results else { return }
             for resId in results {
                 FSResColl.shared.getResWithId(resId: resId) { restaurant in
                     guard let restaurant = restaurant else { return }
-                    if !self.favouriteRestaurants.contains(where: {$0.id == resId}) {
-                        self.favouriteRestaurants.append(restaurant)
-                    }
+                    self.favouriteRestaurants.append(restaurant)
                 }
             }
         })
@@ -43,7 +45,7 @@ final class UserProfileViewModel: ObservableObject {
             }
         }
     }
-    
+
     func cancelBookingForTableWith(tableId: String) {
         FSUserColl.shared.deleteBookedTableWith(tableId: tableId) { res in
             switch res {
