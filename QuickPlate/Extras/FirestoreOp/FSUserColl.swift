@@ -45,6 +45,58 @@ final class FSUserColl {
             }
         }
     }
+    
+    func fetchFavouriteRestaurants(completion: @escaping ([String]?) -> Void) async {
+        let userId = UserDefaults.standard.value(forKey: "userId") as! String
+        coll.document(userId).addSnapshotListener { qdSnap, error in
+            if let error = error {
+                print("FSUserColl - Could't retrieve logged user")
+                print(error.localizedDescription)
+                completion(nil)
+            }
+            guard let qdSnap = qdSnap else {
+                print("FSUserColl - There is no user with the id \(userId)")
+                completion(nil)
+                return
+            }
+            let user = try? qdSnap.data(as: MyUser.self)
+            completion(user?.favouriteRestaurants)
+        }
+    }
+    
+    func addRestaurantToFavourites(id: String) {
+        let userId = UserDefaults.standard.value(forKey: "userId") as! String
+        let currUser = coll.document(userId)
+        currUser.getDocument { qdSnap, error in
+            if let error = error {
+                print("FSUserColl - Couldn't assign restaurant to user's favourites")
+                print(error.localizedDescription)
+            }
+            if let qdSnap = qdSnap, let document = try? qdSnap.data(as: MyUser.self) {
+                var favouriteRestaurants = document.favouriteRestaurants
+                if !favouriteRestaurants.contains(where: {$0 == id}) {
+                    favouriteRestaurants.append(id)
+                }
+                currUser.updateData(["favouriteRestaurants": favouriteRestaurants])
+            }
+        }
+    }
+    
+    func removeRestFromFavs(resId: String) {
+        let userId = UserDefaults.standard.value(forKey: "userId") as! String
+        let currUser = coll.document(userId)
+        currUser.getDocument { qdSnap, error in
+            if let error = error {
+                print("FSUserColl - Couldn't assign restaurant to user's favourites")
+                print(error.localizedDescription)
+            }
+            if let qdSnap = qdSnap, let document = try? qdSnap.data(as: MyUser.self) {
+                var favouriteRestaurants = document.favouriteRestaurants
+                favouriteRestaurants.removeAll(where: {$0 == resId})
+                currUser.updateData(["favouriteRestaurants": favouriteRestaurants])
+            }
+        }
+    }
 }
 
 // MARK: Extension FSUserColl that have methods for startup flow

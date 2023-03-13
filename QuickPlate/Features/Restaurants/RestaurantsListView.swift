@@ -21,11 +21,12 @@ struct RestaurantsListView: View {
                             .ignoresSafeArea(edges: [.leading, .trailing])
                     }
                     VStack(alignment: .trailing) {
-                        // FIXME: Implement this for each restaurant
                         Button {
-                            self.changeStar.toggle()
+                            vm.favouritesRes.contains(where: {$0 == restaurant.id ?? "" }) ?
+                            vm.removeRestFromFavs(resId: restaurant.id ?? "") :
+                            vm.addFavouriteRestaurant(restaurantId: restaurant.id ?? "")
                         } label: {
-                            Image(systemName: changeStar ? "star.fill" : "star")
+                            Image(systemName: vm.favouritesRes.contains(where: {$0 == restaurant.id ?? "" }) ? "star.fill" : "star")
                                 .foregroundColor(.yellow)
                                 .padding(EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 5))
                         }
