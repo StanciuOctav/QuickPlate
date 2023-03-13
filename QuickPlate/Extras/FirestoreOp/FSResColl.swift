@@ -31,6 +31,7 @@ final class FSResColl {
         }
     }
     
+    // FIXME: Fix warnings trying this https://stackoverflow.com/questions/59482689/storing-asynchronous-cloud-firestore-query-results-in-swift
     func getResNameThatHas(tableId: String, completion: @escaping (String?) -> Void) async {
         coll.getDocuments() { querySnapshot, error in
             if let error = error {
@@ -53,6 +54,21 @@ final class FSResColl {
                     }
                 }
             }
+        }
+    }
+    
+    func getResWithId(resId: String, completion: @escaping (Restaurant?) -> Void) {
+        coll.document(resId).getDocument() { qdSnap, error in
+            if let error = error {
+                print("FSUserColl - Couldn't assign booked table to user")
+                print(error.localizedDescription)
+                completion(nil)
+            }
+            guard let qdSnap = qdSnap else {
+                completion(nil)
+                return
+            }
+            completion(try? qdSnap.data(as: Restaurant.self))
         }
     }
 }

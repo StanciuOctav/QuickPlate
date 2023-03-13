@@ -7,7 +7,12 @@
 
 import SwiftUI
 
-var tags: [String] = ["Booked Tables", "Favourite Restaurants"]
+private enum SelectedTab: String {
+    case bookedTables = "Booked Tables"
+    case favRests = "Favourite Restaurants"
+}
+
+private var tags: [SelectedTab] = [.favRests, .bookedTables]
 
 struct UserProfileView: View {
     @StateObject var vm = UserProfileViewModel()
@@ -17,7 +22,7 @@ struct UserProfileView: View {
 
     @State private var isShowingCancelBooking: Bool = false
     @State private var isShowingSignOutAlert: Bool = false
-    @State private var activeTag: String = tags[0]
+    @State private var activeTag: SelectedTab = tags[0]
 
     @Namespace private var animation
 
@@ -29,12 +34,10 @@ struct UserProfileView: View {
                 .padding(.vertical, 10)
 
             switch activeTag {
-            case tags[0]:
+            case .bookedTables:
                 BookedTablesView()
-            case tags[1]:
+            case .favRests:
                 FavouriteRestaurantsView()
-            default:
-                EmptyView()
             }
         }
         .frame(maxWidth: .infinity)
@@ -61,6 +64,7 @@ struct UserProfileView: View {
         }
         .task {
             await self.vm.fetchLoggedUser()
+           // await self.vm.fetchFavRestaurants()
         }
         .background(Color.qpBeigeColor)
     }
@@ -101,7 +105,7 @@ struct UserProfileView: View {
     func TagsView() -> some View {
         HStack(alignment: .center) {
             ForEach(tags, id: \.self) { tag in
-                Text(tag)
+                Text(tag.rawValue)
                     .font(.caption)
                     .padding(.all, 10)
                     .background {
@@ -175,41 +179,13 @@ struct UserProfileView: View {
         }
     }
 
-    // FIXME: Make this view to display the user's favourite restaurants
     @ViewBuilder
     func FavouriteRestaurantsView() -> some View {
-        if !vm.user.bookedTables.isEmpty {
+        if !vm.user.favouriteRestaurants.isEmpty {
             ScrollView {
-                ForEach(vm.bookedTables, id: \.self.id) { table in
+                ForEach(vm.favouriteRestaurants, id: \.self.id) { restaurant in
                     HStack {
-                        BookedTableView(table: table)
-
-                        Spacer()
-                        VStack(alignment: .trailing) {
-                            Button {
-                            } label: {
-                                HStack {
-                                    Image(systemName: "checkmark.circle")
-                                        .resizable()
-                                        .fixedSize()
-                                    Text("Confirm arrival")
-                                }
-                                .foregroundColor(.green)
-                            }
-                            Button {
-                                self.selectedReservation = table
-                                self.isShowingCancelBooking.toggle()
-                            } label: {
-                                HStack {
-                                    Image(systemName: "x.circle.fill")
-                                        .resizable()
-                                        .fixedSize()
-                                    Text("Cancel")
-                                }
-                                .foregroundColor(.red)
-                            }
-                        }
-                        .padding()
+                        RestaurantCardView(restaurant: restaurant.restaurantCardDTO)
                     }
                     .background {
                         RoundedRectangle(cornerRadius: 5, style: .continuous)
@@ -221,7 +197,7 @@ struct UserProfileView: View {
             }
         } else {
             Spacer()
-            Text("You don't have any booked tables at the moment")
+            Text("You don't have any favourite restaurants yet")
                 .font(.headline)
             Spacer()
         }

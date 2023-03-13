@@ -11,12 +11,24 @@ import Foundation
 final class UserProfileViewModel: ObservableObject {
     @Published var user = MyUser()
     @Published var bookedTables = [Table]()
+    @Published var favouriteRestaurants = [Restaurant]()
 
     func fetchLoggedUser() async {
         await FSUserColl.shared.fetchLoggedUser(completion: { user in
             guard let user = user else { return }
             self.user = user
             self.updateBookedTables(self.user)
+        })
+        await FSUserColl.shared.fetchFavouriteRestaurants(completion: { results in
+            guard let results = results else { return }
+            for resId in results {
+                FSResColl.shared.getResWithId(resId: resId) { restaurant in
+                    guard let restaurant = restaurant else { return }
+                    if !self.favouriteRestaurants.contains(where: {$0.id == resId}) {
+                        self.favouriteRestaurants.append(restaurant)
+                    }
+                }
+            }
         })
     }
 
@@ -37,10 +49,8 @@ final class UserProfileViewModel: ObservableObject {
             switch res {
             case 1:
                 FSTableColl.shared.resetBookedTableWith(tableId: tableId)
-                break
             case -1:
                 print("UserProfileVM - error in deleting a reservation")
-                break
             default:
                 break
             }

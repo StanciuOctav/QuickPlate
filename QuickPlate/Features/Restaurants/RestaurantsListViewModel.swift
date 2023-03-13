@@ -22,6 +22,9 @@ final class RestaurantsListViewModel: ObservableObject {
             self.restaurants = results
             self.initializeDefaultRestaurants()
         }
+    }
+    
+    func fetchFavouriteRestaurants() async {
         await FSUserColl.shared.fetchFavouriteRestaurants(completion: { results in
             guard let results = results else { return }
             for restaurantId in results {

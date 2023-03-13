@@ -63,6 +63,7 @@ struct RestaurantsListView: View {
         .foregroundColor(.black)
         .task {
             await self.vm.fetchAllRestaurants()
+            await self.vm.fetchFavouriteRestaurants()
         }
     }
 }
