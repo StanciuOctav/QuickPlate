@@ -54,6 +54,10 @@ struct SignInView: View {
                 }
             }
             .padding()
+            .onDisappear {
+                viewModel.email = ""
+                viewModel.password = ""
+            }
         }
     }
     

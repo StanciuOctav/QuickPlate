@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 /** In UserDefaults we put for the key --login-- the following strings for different cases
  1. The user didn't sign in ever in app => nextScreen is .notSignedIn => will display the SignInView()
@@ -13,7 +14,7 @@ import Foundation
  3. The user signed in as a worker => nextScreen is .workerSignedIn => will display the WorkerView()
  */
 
-enum LoginState: String {
+enum LoginStateEnum: String {
     case notSignedIn = "notSignedIn"
     case clientSignedIn = "clientSignedIn"
     case workerSignedIn = "workerSignedIn"
@@ -31,7 +32,7 @@ enum LoginState: String {
 }
 
 final class LoginManager: ObservableObject {
-    @Published var nextScreen: LoginState = .notSignedIn
+    @Published var nextScreen: LoginStateEnum = .notSignedIn
 
     init() {
         checkLoginUserDefaultsExist()
@@ -45,7 +46,7 @@ final class LoginManager: ObservableObject {
                 print("DEBUG - LoginManager - Error in reading the cached state")
                 return
             }
-            guard let newState = LoginState(rawValue: cachedLoginState) else {
+            guard let newState = LoginStateEnum(rawValue: cachedLoginState) else {
                 print("DEBUG - LoginManager - Error in getting the new state conversion")
                 return
             }
@@ -53,7 +54,7 @@ final class LoginManager: ObservableObject {
         }
     }
     
-    func updateWith(state: LoginState) {
+    func updateWith(state: LoginStateEnum) {
         nextScreen = state
         if (state == .notSignedIn) {
             UserDefaults.standard.set(nextScreen.valueForUserDefaults, forKey: "login")
