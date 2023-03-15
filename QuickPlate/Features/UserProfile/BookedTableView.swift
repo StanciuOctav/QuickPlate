@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct BookedTableView: View {
-    @StateObject var vm = BookedTableViewModel()
+    @StateObject private var vm = BookedTableViewModel()
     let table: Table
     
     var body: some View {

@@ -12,13 +12,12 @@ private enum SelectedTab: String {
     case favRests = "Favourite Restaurants"
 }
 
-private var tags: [SelectedTab] = [.favRests, .bookedTables]
+private var tags: [SelectedTab] = [.bookedTables, .favRests]
 
 struct UserProfileView: View {
-    @StateObject var vm = UserProfileViewModel()
-    @ObservedObject var loginManager: LoginManager
-
-    @State var selectedReservation = Table()
+    @EnvironmentObject var authManager: AuthManager
+    @StateObject private var vm = UserProfileViewModel()
+    @State private var selectedReservation = Table()
 
     @State private var isShowingCancelBooking: Bool = false
     @State private var isShowingSignOutAlert: Bool = false
@@ -56,7 +55,7 @@ struct UserProfileView: View {
                         return
                     }
                     print("The user signed out")
-                    loginManager.updateWith(state: .notSignedIn)
+                    authManager.updateWith(state: .notSignedIn)
                 })
                 self.isShowingSignOutAlert.toggle()
             }

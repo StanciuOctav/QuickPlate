@@ -40,6 +40,7 @@ struct MapView: View {
                         }
                     }
                     .ignoresSafeArea(edges: .top)
+                    .tint(Color.qpOrange)
 
                 HStack {
                     Spacer()

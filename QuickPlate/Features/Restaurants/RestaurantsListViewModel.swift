@@ -35,13 +35,19 @@ final class RestaurantsListViewModel: ObservableObject {
         })
     }
     
-    func addFavouriteRestaurant(restaurantId: String) {
-        FSUserColl.shared.addRestaurantToFavourites(id: restaurantId)
+    func addFavouriteRestaurant(restaurantId: String?) {
+        guard let id = restaurantId else { return }
+        FSUserColl.shared.addRestaurantToFavourites(id: id)
     }
     
-    func removeRestFromFavs(resId: String) {
-        FSUserColl.shared.removeRestFromFavs(resId: resId)
-        self.favouritesRes.removeAll(where: {$0 == resId})
+    func removeRestFromFavs(resId: String?) {
+        guard let id = resId else { return }
+        FSUserColl.shared.removeRestFromFavs(resId: id)
+        self.favouritesRes.removeAll(where: {$0 == id})
+    }
+    
+    func isRestaurantFavourite(_ id: String?) -> Bool {
+        return self.favouritesRes.contains(where: { $0 == id ?? "" })
     }
 
     private func initializeDefaultRestaurants() {

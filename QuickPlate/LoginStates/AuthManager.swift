@@ -31,7 +31,7 @@ enum LoginStateEnum: String {
     }
 }
 
-final class LoginManager: ObservableObject {
+final class AuthManager: ObservableObject {
     @Published var nextScreen: LoginStateEnum = .notSignedIn
 
     init() {

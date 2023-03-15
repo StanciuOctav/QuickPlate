@@ -24,9 +24,9 @@ struct FoodCard: View {
 }
 
 struct RestaurantDetailsView: View {
-    @StateObject var vm = RestaurantDetailsViewModel()
-    @State var isFavourite: Bool = false
-    @State var isPresentingTables: Bool = false
+    @StateObject private var vm = RestaurantDetailsViewModel()
+    @State private var isFavourite: Bool = false
+    @State private var isPresentingTables: Bool = false
     let restaurant: Restaurant
 
     var body: some View {

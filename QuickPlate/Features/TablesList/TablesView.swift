@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TablesView: View {
     @Environment(\.dismiss) private var dismiss
-    @StateObject var vm = TablesViewViewModel()
+    @StateObject private var vm = TablesViewViewModel()
     @State private var presentAlert: Bool = false
     @State private var confirmationAlert: Bool = false
     @State private var selectedTable = Table()
