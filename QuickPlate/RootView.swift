@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RootView: View {
     @StateObject var authManager = AuthManager()
-    @State private var isShowingSplash = true
+    @State private var isShowingSplash = false
     var body: some View {
         ZStack {
             if isShowingSplash {

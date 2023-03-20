@@ -57,6 +57,31 @@ final class FSResColl {
         }
     }
     
+    func getResMenuThatHas(tableId: String, completion: @escaping ([String]?) -> Void) async {
+        coll.getDocuments() { querySnapshot, error in
+            if let error = error {
+                print("BookedTableVM - Couldn't get restaurants")
+                print(error.localizedDescription)
+                completion(nil)
+            }
+            guard let documents = querySnapshot?.documents else {
+                print("BookedTableVM - No documents!")
+                completion(nil)
+                return
+            }
+            let restaurants = documents.compactMap({ qdSnap in
+                return try? qdSnap.data(as: Restaurant.self)
+            })
+            restaurants.forEach { restaurant in
+                restaurant.tables.forEach { currTableId in
+                    if tableId == currTableId {
+                        completion(restaurant.menu)
+                    }
+                }
+            }
+        }
+    }
+    
     func getResWithId(resId: String, completion: @escaping (Restaurant?) -> Void) {
         coll.document(resId).getDocument() { qdSnap, error in
             if let error = error {

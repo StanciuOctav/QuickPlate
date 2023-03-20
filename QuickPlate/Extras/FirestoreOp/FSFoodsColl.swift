@@ -15,12 +15,12 @@ final class FSFoodsColl {
     func fetchAllFoods(completion: @escaping ([Food]?) -> Void) async {
         coll.addSnapshotListener { querySnapshot, error in
             if let error = error {
-                print("FoodsCollection - Could't retrieve foods")
+                print("FSFoodsColl - Could't retrieve foods")
                 print(error.localizedDescription)
                 completion(nil)
             }
             guard let documents = querySnapshot?.documents else {
-                print("FoodsCollection - No documents!")
+                print("FSFoodsColl - No documents!")
                 completion(nil)
                 return
             }
@@ -28,6 +28,22 @@ final class FSFoodsColl {
                 return try? qdSnap.data(as: Food.self)
             }
             completion(foods)
+        }
+    }
+    
+    func fetchFoodWith(id: String, completion: @escaping (Food?) -> Void) {
+        coll.document(id).getDocument { qdSnap, error in
+            if let error = error {
+                print("FSFoodsColl - Could't retrieve logged user")
+                print(error.localizedDescription)
+                completion(nil)
+            }
+            guard let qdSnap = qdSnap else {
+                print("FSFoodsColl - There is no user with the id \(id)")
+                completion(nil)
+                return
+            }
+            completion(try? qdSnap.data(as: Food.self))
         }
     }
 }
