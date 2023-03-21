@@ -14,7 +14,7 @@ struct Food: Codable, Identifiable {
     var foodName: String = ""
     var ingredients: [String] = []
     var price: Double = 0.0
-    var stoc: Int = 0
+    var stock: Int = 0
     var ingredientsString: String {
         var str = ""
         for index in 0 ..< ingredients.count - 1 {

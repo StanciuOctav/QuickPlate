@@ -12,5 +12,5 @@ public enum FSCollNames: String {
     case restaurants = "Restaurants"
     case tables = "Tables"
     case foods = "Foods"
-    case reviews = "Reviews"
+    case orders = "Orders"
 }

@@ -5,13 +5,13 @@
 //  Created by Ioan-Octavian Stanciu on 06.03.2023.
 //
 
-import Foundation
 import FirebaseFirestore
+import Foundation
 
 final class FSFoodsColl {
     private let coll = Firestore.firestore().collection(FSCollNames.foods.rawValue)
     static let shared = FSFoodsColl()
-    
+
     func fetchAllFoods(completion: @escaping ([Food]?) -> Void) async {
         coll.addSnapshotListener { querySnapshot, error in
             if let error = error {
@@ -25,12 +25,12 @@ final class FSFoodsColl {
                 return
             }
             let foods = documents.compactMap { qdSnap -> Food? in
-                return try? qdSnap.data(as: Food.self)
+                try? qdSnap.data(as: Food.self)
             }
             completion(foods)
         }
     }
-    
+
     func fetchFoodWith(id: String, completion: @escaping (Food?) -> Void) {
         coll.document(id).getDocument { qdSnap, error in
             if let error = error {
@@ -44,6 +44,18 @@ final class FSFoodsColl {
                 return
             }
             completion(try? qdSnap.data(as: Food.self))
+        }
+    }
+
+    func updateFoodstockkWith(id: String, nrOrdered: Int) {
+        self.fetchFoodWith(id: id) { food in
+            guard let food = food else { return }
+            self.coll.document(id).updateData(["stock": food.stock - nrOrdered]) { error in
+                if let error = error {
+                    print("FSFoodsColl - Couldn't update food stockk number")
+                    print(error.localizedDescription)
+                }
+            }
         }
     }
 }
