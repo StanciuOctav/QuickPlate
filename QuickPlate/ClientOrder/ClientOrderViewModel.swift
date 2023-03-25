@@ -15,9 +15,17 @@ final class ClientOrderViewModel: ObservableObject {
 
     private var foodIds: [String] = []
     private var tableId: String = ""
+    private var table = Table()
 
     func updateTableIdWith(id: String) {
         tableId = id
+        FSTableColl.shared.getTableWith(id: tableId) { table in
+            guard let table = table else {
+                print("ClientOrderVM - Couldn't retrive table with id \(self.tableId)")
+                return
+            }
+            self.table = table
+        }
     }
 
     func fetchFoodIds() async {
@@ -56,7 +64,7 @@ final class ClientOrderViewModel: ObservableObject {
                     FSFoodsColl.shared.updateFoodstockkWith(id: self.foods[index].id ?? "", nrOrdered: nr)
                 }
             }
-            let order = Order(id: UUID().uuidString, resName: name, tableId: self.tableId, foodIds: ids, foodQuantity: quan, totalCost: self.totalCost)
+            let order = Order(id: UUID().uuidString, resName: name, tableNr: self.table.tableNumber, foodIds: ids, foodQuantity: quan, totalCost: self.totalCost)
             FSOrdersColl.shared.saveOrder(order)
         }
     }

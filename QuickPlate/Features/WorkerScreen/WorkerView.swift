@@ -17,6 +17,14 @@ struct WorkerView: View {
         VStack {
             TopSection()
             Spacer()
+            ScrollView {
+                ForEach(vm.orders, id: \.self.id) { order in
+                    HStack {
+                        OrderCard(order: order)
+                            .cornerRadius(4)
+                    }
+                }
+            }
         }
         .frame(maxWidth: .infinity)
         .alert("Are you sure you want to Sign Out?", isPresented: $isShowingSignOutAlert) {
@@ -69,7 +77,7 @@ struct WorkerView: View {
             HStack {
                 Spacer()
                 Text("Works for:")
-                Text(vm.restaurant.name)
+                Text(vm.restaurant.value.name)
                     .bold()
                 Spacer()
             }

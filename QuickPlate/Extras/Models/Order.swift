@@ -12,7 +12,7 @@ import Foundation
 struct Order: Identifiable, Codable {
     @DocumentID var id: String?
     var resName: String = ""
-    var tableId: String = ""
+    var tableNr: Int = 0
     var foodIds: [String] = []
     var foodQuantity: [Int] = []
     var totalCost: Double = 0.0

@@ -5,16 +5,25 @@
 //  Created by Ioan-Octavian Stanciu on 25.03.2023.
 //
 
+import Combine
 import FirebaseFirestore
 import Foundation
 
 final class WorkerViewViewModel: ObservableObject {
     @Published var user = MyUser()
-    @Published var restaurant = Restaurant()
     @Published var orders: [Order] = []
+    @Published var restaurant = CurrentValueSubject<Restaurant, Never>(Restaurant())
+    
+    private var cancelables = [AnyCancellable]()
     
     func fetchAllOrders() {
-        
+        FSOrdersColl.shared.fetchOrdersForRestaurant(restaurantName: self.restaurant.value.name, completion: { orders in
+            guard let orders = orders else {
+                print("WorkerViewVM - Couldn't get orders from restaurant \(self.restaurant.value.name)")
+                return
+            }
+            self.orders = orders
+        })
     }
 }
 
@@ -25,15 +34,17 @@ extension WorkerViewViewModel {
             guard let user = user else { return }
             self.user = user
             let resId = UserDefaults.standard.string(forKey: "restaurantWorking") ?? ""
-            print("Debug -- \(resId)")
             FSResColl.shared.getResWithId(resId: resId) { res in
                 guard let res = res else {
                     print("WorkerViewVM - Couldn't retrive restaurant with id \(resId)")
                     return
                 }
-                self.restaurant = res
+                self.restaurant.value = res
             }
         })
+        self.restaurant.sink { [unowned self] _ in
+            self.fetchAllOrders()
+        }.store(in: &self.cancelables)
     }
     
     func signOut(completion: @escaping (Int?) -> Void) {

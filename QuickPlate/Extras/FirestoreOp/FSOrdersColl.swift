@@ -21,7 +21,23 @@ final class FSOrdersColl {
         }
     }
     
-    func fetchOrdersForRestaurant(restaurantName: String) {
-        
+    func fetchOrdersForRestaurant(restaurantName: String, completion: @escaping ([Order]?) -> Void) {
+        coll.addSnapshotListener { qdSnap, error in
+            if let error = error {
+                print("FSOrderColl - Couldn't get all orders")
+                print(error.localizedDescription)
+                completion(nil)
+            }
+            guard let documents = qdSnap?.documents else {
+                print("FSOrderColl - Couldn't get documents")
+                completion(nil)
+                return
+            }
+            let orders = documents.compactMap { qdSnap -> Order? in
+                let order = try? qdSnap.data(as: Order.self)
+                return order?.resName == restaurantName ? order : nil
+            }
+            completion(orders)
+        }
     }
 }
