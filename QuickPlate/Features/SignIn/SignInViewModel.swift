@@ -23,16 +23,28 @@ final class SignInViewModel: ObservableObject {
         return showCredentialsErrors
     }
 
-    func signIn(completion: @escaping (Result<Int,StartupError>) -> Void) {
+    func signIn(completion: @escaping (Result<Int, StartupError>) -> Void) {
         FirebaseEmailAuth.shared.doLogin(email: email, password: password) { result in
             switch result {
-            case .success(let userId):
+            case let .success(userId):
                 UserDefaults.standard.set(userId, forKey: "userId")
-                UserDefaults.standard.set("clientSignedIn", forKey: "login"); // check if is a client or a worker
-                completion(.success(1))
+                FSUserColl.shared.fetchUserWith(id: userId) { myUser in
+                    guard let myUser = myUser else {
+                        print("SignInVM - Couldn't get user with id \(userId)")
+                        return
+                    }
+                    if myUser.restaurantWorking.isEmpty {
+                        UserDefaults.standard.set("clientSignedIn", forKey: "login")
+                        completion(.success(1))
+                    } else {
+                        UserDefaults.standard.set("workerSignedIn", forKey: "login")
+                        UserDefaults.standard.set(myUser.restaurantWorking, forKey: "restaurantWorking")
+                        completion(.success(2))
+                    }
+                }
             case .failure(.signInError):
                 completion(.failure(.signInError))
-            case .failure(_):
+            case .failure:
                 print("Sign In failure")
             }
         }

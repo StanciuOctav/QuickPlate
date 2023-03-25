@@ -134,4 +134,20 @@ extension FSUserColl {
             completion(try? qdSnap.data(as: MyUser.self))
         }
     }
+    
+    func fetchUserWith(id: String, completion: @escaping (MyUser?) -> Void) {
+        coll.document(id).getDocument { qdSnap, error in
+            if let error = error {
+                print("FSUserColl - Could't retrieve logged user")
+                print(error.localizedDescription)
+                completion(nil)
+            }
+            guard let qdSnap = qdSnap else {
+                print("FSUserColl - There is no user with the id \(id)")
+                completion(nil)
+                return
+            }
+            completion(try? qdSnap.data(as: MyUser.self))
+        }
+    }
 }

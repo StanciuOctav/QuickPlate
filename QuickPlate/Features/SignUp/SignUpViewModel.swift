@@ -21,9 +21,7 @@ final class SignUpViewModel: ObservableObject {
     @Published var restaurants: [RestaurantSignUpDTO] = []
 
     var dropdownRoles = [LocalizedStringKey(stringLiteral: "client").stringValue(),
-                         LocalizedStringKey(stringLiteral: "waiter").stringValue(),
-                         LocalizedStringKey(stringLiteral: "bartender").stringValue(),
-                         LocalizedStringKey(stringLiteral: "cook").stringValue()]
+                         LocalizedStringKey(stringLiteral: "waiter").stringValue()]
 
     var passwordWrongFormat: Bool {
         return passwordHasWrongFormat()

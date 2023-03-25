@@ -48,13 +48,15 @@ final class ClientOrderViewModel: ObservableObject {
                 return
             }
             var ids: [String] = []
+            var quan: [Int] = []
             for (index, nr) in self.numberOrdered.enumerated() {
                 if nr > 0 {
                     ids.append(self.foods[index].id ?? "")
+                    quan.append(nr)
                     FSFoodsColl.shared.updateFoodstockkWith(id: self.foods[index].id ?? "", nrOrdered: nr)
                 }
             }
-            let order = Order(id: UUID().uuidString, resName: name, tableId: self.tableId, foodIds: ids, totalCost: self.totalCost)
+            let order = Order(id: UUID().uuidString, resName: name, tableId: self.tableId, foodIds: ids, foodQuantity: quan, totalCost: self.totalCost)
             FSOrdersColl.shared.saveOrder(order)
         }
     }

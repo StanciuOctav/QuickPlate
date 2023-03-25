@@ -64,8 +64,15 @@ struct SignInView: View {
         Button {
             viewModel.signIn { result in
                 switch result {
-                case .success:
-                    authManager.updateWith(state: .clientSignedIn)
+                case .success(let value):
+                    switch value {
+                    case 1:
+                        authManager.updateWith(state: .clientSignedIn)
+                    case 2:
+                        authManager.updateWith(state: .workerSignedIn)
+                    default:
+                        break
+                    }
                 case .failure(.signInError):
                     viewModel.setShowCredentialsErrors(withBool: true)
                 case .failure(.anonymousUser), .failure:

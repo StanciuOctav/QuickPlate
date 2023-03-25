@@ -20,4 +20,8 @@ final class FSOrdersColl {
             print(error.localizedDescription)
         }
     }
+    
+    func fetchOrdersForRestaurant(restaurantName: String) {
+        
+    }
 }

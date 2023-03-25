@@ -23,7 +23,7 @@ struct RootView: View {
                 case .clientSignedIn:
                     QPTabView()
                 case .workerSignedIn:
-                    QPTabView() // FIXME: replace this with worker's home screen
+                    WorkerView()
                 }
             }
         }
