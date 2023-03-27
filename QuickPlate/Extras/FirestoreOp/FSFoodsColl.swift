@@ -47,10 +47,11 @@ final class FSFoodsColl {
         }
     }
 
-    func updateFoodstockkWith(id: String, nrOrdered: Int) {
-        self.fetchFoodWith(id: id) { food in
+    func updateFoodstockkWith(id: String, nrOrdered: Int, addStock: Bool) {
+        fetchFoodWith(id: id) { food in
             guard let food = food else { return }
-            self.coll.document(id).updateData(["stock": food.stock - nrOrdered]) { error in
+            let number = addStock ? food.stock + nrOrdered : food.stock - nrOrdered
+            self.coll.document(id).updateData(["stock": number]) { error in
                 if let error = error {
                     print("FSFoodsColl - Couldn't update food stockk number")
                     print(error.localizedDescription)

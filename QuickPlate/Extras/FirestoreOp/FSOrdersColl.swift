@@ -40,4 +40,15 @@ final class FSOrdersColl {
             completion(orders)
         }
     }
+    
+    func deleteOrderWith(id: String) {
+        coll.document(id).delete() { error in
+            if let error = error {
+                print("Couldn't delete order with id \(id)")
+                print(error.localizedDescription)
+            } else {
+                print("Order with id \(id) was deleted")
+            }
+        }
+    }
 }

@@ -19,10 +19,29 @@ struct WorkerView: View {
             Spacer()
             ScrollView {
                 ForEach(vm.orders, id: \.self.id) { order in
-                    HStack {
+                    VStack {
                         OrderCard(order: order)
                             .cornerRadius(4)
+                        HStack {
+                            Button {
+                            } label: {
+                                Image(systemName: "checkmark.circle")
+                                Text("Accept Order")
+                            }
+                            .foregroundColor(.green)
+                            Spacer()
+                            Button {
+                                // This should be pressed when the restaurant doesn't have some igredients
+                                self.vm.removeOrder(order.id ?? "")
+                            } label: {
+                                Image(systemName: "x.circle")
+                                Text("Reject Order")
+                            }
+                            .foregroundColor(.red)
+                        }
+                        .padding([.bottom, .leading, .trailing], 5)
                     }
+                    .background(Color.qpLightGrayColor)
                 }
             }
         }

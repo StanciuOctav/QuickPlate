@@ -9,7 +9,7 @@ import Firebase
 import FirebaseFirestoreSwift
 import Foundation
 
-struct Food: Codable, Identifiable {
+struct Food: Codable, Identifiable, Equatable {
     @DocumentID var id: String?
     var foodName: String = ""
     var ingredients: [String] = []

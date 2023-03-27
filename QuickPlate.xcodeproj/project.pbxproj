@@ -179,7 +179,7 @@
 				539FDE8B29262B140034C036 /* SignIn */,
 				539FDE8629262AE90034C036 /* SignUp */,
 				D4B1368329CF5DA30016A7AD /* Client */,
-				D4B1367E29CF58140016A7AD /* WorkerScreen */,
+				D4B1367E29CF58140016A7AD /* Worker */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -227,7 +227,6 @@
 				D4035C9129C2311C00F90D24 /* RootView.swift */,
 				535195E2293CC18F00A44820 /* LoginStates */,
 				535195D4293CA7B500A44820 /* Features */,
-				D4CEFAE729C8B9EB00011911 /* ClientOrder */,
 				533098A92927B66A007C441D /* Extras */,
 				538994892920F89800C370BF /* Assets.xcassets */,
 				537F6A16292582E2001CF422 /* Info.plist */,
@@ -364,7 +363,7 @@
 			path = TablesList;
 			sourceTree = "<group>";
 		};
-		D4B1367E29CF58140016A7AD /* WorkerScreen */ = {
+		D4B1367E29CF58140016A7AD /* Worker */ = {
 			isa = PBXGroup;
 			children = (
 				D4B1367F29CF58260016A7AD /* WorkerView.swift */,
@@ -372,7 +371,7 @@
 				D4B1368729CF6BB80016A7AD /* OrderCard.swift */,
 				D4B1368929CF6C960016A7AD /* OrderCardViewModel.swift */,
 			);
-			path = WorkerScreen;
+			path = Worker;
 			sourceTree = "<group>";
 		};
 		D4B1368329CF5DA30016A7AD /* Client */ = {
@@ -384,6 +383,7 @@
 				D40F846029AFBEED00B14911 /* RestaurantDetails */,
 				D4ADEC8F29B109E900261C10 /* TablesList */,
 				53E2FD22292B76FC00D63069 /* UserProfile */,
+				D4CEFAE729C8B9EB00011911 /* ClientOrder */,
 			);
 			path = Client;
 			sourceTree = "<group>";

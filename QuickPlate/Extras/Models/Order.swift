@@ -16,4 +16,5 @@ struct Order: Identifiable, Codable {
     var foodIds: [String] = []
     var foodQuantity: [Int] = []
     var totalCost: Double = 0.0
+    var userId: String = ""
 }

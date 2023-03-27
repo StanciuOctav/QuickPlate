@@ -18,13 +18,14 @@ struct OrderCard: View {
                 .font(.title2)
                 .padding([.bottom], 5)
             VStack(alignment: .leading) {
-                ForEach(Array(vm.foods.enumerated()), id: \.offset) { index, food in
+                ForEach(vm.foods) { food in
+                    let index = vm.foods.firstIndex(of: food)
                     HStack {
                         Text("\(food.foodName)")
                         Spacer()
-                        Text("x\(order.foodQuantity[index])")
+                        Text("x\(order.foodQuantity[index ?? 0])")
                             .padding([.trailing], 3)
-                        Text("\(String(format: "%.2f", food.price * Double(order.foodQuantity[index]))) lei")
+                        Text("\(String(format: "%.2f", food.price * Double(order.foodQuantity[index ?? 0]))) lei")
                     }
                 }
                 Text("Total: \(String(format: "%.2f", order.totalCost))")
