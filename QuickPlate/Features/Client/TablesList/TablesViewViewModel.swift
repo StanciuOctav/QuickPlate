@@ -19,8 +19,8 @@ final class TablesViewViewModel: ObservableObject {
         })
     }
     
-    func bookingTable(tableId: String, hour: String, day: String) {
-        FSTableColl.shared.tableBooked(tableId: tableId, hour: hour, day: day)
+    func bookingTable(tableId: String, hour: String, day: String, userId: String) {
+        FSTableColl.shared.tableBooked(tableId: tableId, hour: hour, day: day, userId: userId)
         FSUserColl.shared.saveBookedTable(withId: tableId)
         updateTables()
     }

@@ -28,6 +28,17 @@ final class ClientOrderViewModel: ObservableObject {
         }
     }
 
+    func deleteBooking() {
+        FSTableColl.shared.deleteBookingAtTable(tableId: tableId)
+        FSUserColl.shared.deleteBookedTableWith(tableId: tableId) { res in
+            guard let _ = res else {
+                print("ClientOrderVM - Error in deleting table with id \(self.tableId)")
+                return
+            }
+        }
+        FSOrdersColl.shared.deleteOrdersAtTable(id: tableId)
+    }
+
     func fetchFoodIds() async {
         await FSResColl.shared.getResMenuThatHas(tableId: tableId, completion: { foodIds in
             guard let foodIds = foodIds else {
@@ -48,16 +59,16 @@ final class ClientOrderViewModel: ObservableObject {
             }
         })
     }
-    
+
     func sendOrder() {
-        FSResColl.shared.getResNameThatHas(tableId: self.tableId) { name in
+        FSResColl.shared.getResNameThatHas(tableId: tableId) { name in
             guard let name = name else {
                 print("ClientOrderVM - Couldn't get restaurant's name that has the table with id \(self.tableId)")
                 return
             }
             var ids: [String] = []
             var quan: [Int] = []
-            for index in 0..<self.numberOrdered.count {
+            for index in 0 ..< self.numberOrdered.count {
                 if self.numberOrdered[index] > 0 {
                     ids.append(self.foods[index].id ?? "")
                     quan.append(self.numberOrdered[index])
@@ -70,8 +81,10 @@ final class ClientOrderViewModel: ObservableObject {
                               foodIds: ids,
                               foodQuantity: quan,
                               totalCost: self.totalCost,
-                              userId: UserDefaults.standard.value(forKey: "userId") as? String ?? "")
+                              userId: UserDefaults.standard.value(forKey: "userId") as? String ?? "",
+                              tableId: self.tableId)
             FSOrdersColl.shared.saveOrder(order)
+            self.resetOrder()
         }
     }
 
@@ -79,16 +92,16 @@ final class ClientOrderViewModel: ObservableObject {
         if numberOrdered[index] > 0 && numberOrdered[index] <= foods[index].stock {
             numberOrdered[index] -= 1
         }
-        self.calculateTotalCost()
+        calculateTotalCost()
     }
 
     func incrementFood(_ index: Int) {
         if numberOrdered[index] >= 0 && numberOrdered[index] < foods[index].stock {
             numberOrdered[index] += 1
         }
-        self.calculateTotalCost()
+        calculateTotalCost()
     }
-    
+
     func didOrderFood() -> Bool {
         for nr in numberOrdered {
             if nr > 0 {
@@ -102,11 +115,11 @@ final class ClientOrderViewModel: ObservableObject {
         totalCost = 0
         numberOrdered = numberOrdered.map { _ in 0 }
     }
-    
+
     private func calculateTotalCost() {
         totalCost = 0.0
         for (index, nr) in numberOrdered.enumerated() {
-            totalCost += Double(nr) * self.foods[index].price
+            totalCost += Double(nr) * foods[index].price
         }
     }
 }

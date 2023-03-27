@@ -12,8 +12,6 @@ final class OrderCardViewModel: ObservableObject {
 
     func fetchFoodsFor(order: Order) {
         foods.removeAll()
-        print("FoodIds: \(order.foodIds)")
-        print("FoodQuan: \(order.foodQuantity)")
         order.foodIds.forEach { foodId in
             // since accesing something from firestore is async, the order of the self.foods array won't be the same with order.foodIds
             FSFoodsColl.shared.fetchFoodWith(id: foodId) { food in

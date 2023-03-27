@@ -21,6 +21,10 @@ final class FSOrdersColl {
         }
     }
     
+    func acceptOrder(id: String) {
+        coll.document(id).setData(["wasAccepted": true], merge: true)
+    }
+    
     func fetchOrdersForRestaurant(restaurantName: String, completion: @escaping ([Order]?) -> Void) {
         coll.addSnapshotListener { qdSnap, error in
             if let error = error {
@@ -48,6 +52,29 @@ final class FSOrdersColl {
                 print(error.localizedDescription)
             } else {
                 print("Order with id \(id) was deleted")
+            }
+        }
+    }
+    
+    func deleteOrdersAtTable(id: String) {
+        print("Table Id: \(id)")
+        coll.getDocuments { qdSnap, error in
+            if let error = error {
+                print("FSOrdersColl - Couldn't get orders")
+                print(error.localizedDescription)
+                return
+            }
+            guard let documents = qdSnap?.documents else {
+                print("FSOrdersColl - Couldn't get orders 2")
+                return
+            }
+            let orders = documents.compactMap { qdSnap -> Order? in
+                return try? qdSnap.data(as: Order.self)
+            }
+            for index in 0..<orders.count {
+                if orders[index].tableId == id {
+                    self.deleteOrderWith(id: orders[index].id ?? "")
+                }
             }
         }
     }

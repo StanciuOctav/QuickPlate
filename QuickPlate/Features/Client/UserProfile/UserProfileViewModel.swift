@@ -13,6 +13,33 @@ final class UserProfileViewModel: ObservableObject {
     @Published var bookedTables = [Table]()
     @Published var favouriteRestaurants = [Restaurant]()
 
+    func updateBookedTables(_ user: MyUser) {
+        bookedTables.removeAll()
+        for tId in user.bookedTables {
+            FSTableColl.shared.getTableWith(id: tId) { table in
+                guard let table = table else { return }
+                if !self.bookedTables.contains(where: { $0.id == table.id }) {
+                    self.bookedTables.append(table)
+                }
+            }
+        }
+    }
+
+    func cancelBookingForTableWith(tableId: String) {
+        FSUserColl.shared.deleteBookedTableWith(tableId: tableId) { res in
+            switch res {
+            case 1:
+                FSTableColl.shared.deleteBookingAtTable(tableId: tableId)
+            case -1:
+                print("UserProfileVM - error in deleting a reservation")
+            default:
+                break
+            }
+        }
+    }
+}
+
+extension UserProfileViewModel {
     func fetchLoggedUser() async {
         await FSUserColl.shared.fetchLoggedUser(completion: { user in
             guard let user = user else { return }
@@ -33,32 +60,7 @@ final class UserProfileViewModel: ObservableObject {
             }
         })
     }
-
-    func updateBookedTables(_ user: MyUser) {
-        bookedTables.removeAll()
-        for tId in user.bookedTables {
-            FSTableColl.shared.getTableWith(id: tId) { table in
-                guard let table = table else { return }
-                if !self.bookedTables.contains(where: { $0.id == table.id }) {
-                    self.bookedTables.append(table)
-                }
-            }
-        }
-    }
-
-    func cancelBookingForTableWith(tableId: String) {
-        FSUserColl.shared.deleteBookedTableWith(tableId: tableId) { res in
-            switch res {
-            case 1:
-                FSTableColl.shared.resetBookedTableWith(tableId: tableId)
-            case -1:
-                print("UserProfileVM - error in deleting a reservation")
-            default:
-                break
-            }
-        }
-    }
-
+    
     func signOut(completion: @escaping (Int?) -> Void) {
         FirebaseEmailAuth.shared.doLogout { error in
             if let error = error {

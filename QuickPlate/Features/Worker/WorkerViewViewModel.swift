@@ -17,6 +17,7 @@ final class WorkerViewViewModel: ObservableObject {
     private var cancelables = [AnyCancellable]()
     
     func fetchAllOrders() {
+        self.orders.removeAll()
         FSOrdersColl.shared.fetchOrdersForRestaurant(restaurantName: self.restaurant.value.name, completion: { orders in
             guard let orders = orders else {
                 print("WorkerViewVM - Couldn't get orders from restaurant \(self.restaurant.value.name)")
@@ -24,6 +25,16 @@ final class WorkerViewViewModel: ObservableObject {
             }
             self.orders = orders
         })
+    }
+    
+    func acceptOrder(id: String) {
+        FSOrdersColl.shared.acceptOrder(id: id)
+        for index in 0..<orders.count {
+            if orders[index].id == id {
+                self.orders.remove(at: index)
+                break
+            }
+        }
     }
     
     func removeOrder(_ id: String) {

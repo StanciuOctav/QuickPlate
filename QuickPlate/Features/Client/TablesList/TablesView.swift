@@ -85,7 +85,7 @@ struct TablesView: View {
         .background(Color.qpLightGrayColor)
         .alert("Confirm?", isPresented: $presentAlert) {
             Button("Yes", role: .cancel) {
-                vm.bookingTable(tableId: self.selectedTable.id ?? "", hour: String(self.selectedHour) + ":00", day: self.selectedDay)
+                vm.bookingTable(tableId: self.selectedTable.id ?? "", hour: String(self.selectedHour) + ":00", day: self.selectedDay, userId: UserDefaults.standard.string(forKey: "userId") ?? "")
                 presentAlert.toggle()
                 confirmationAlert.toggle()
                 self.selectedHour = Int(self.restaurant.openHour.split(separator: ":")[0]) ?? 0

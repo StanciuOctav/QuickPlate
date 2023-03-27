@@ -43,10 +43,3 @@ struct BookedTableView: View {
         }
     }
 }
-
-struct BookedTableView_Previews: PreviewProvider {
-    static var previews: some View {
-        BookedTableView(table: Table(id: "asda", booked: true, hourBooked: "19:00", nrPersons: 4, tableNumber: 4, day: "Wednesday"))
-            .previewLayout(.sizeThatFits)
-    }
-}

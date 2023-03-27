@@ -12,10 +12,11 @@ final class FSTableColl {
     let coll = Firestore.firestore().collection(FSCollNames.tables.rawValue)
     static let shared = FSTableColl()
     
-    func tableBooked(tableId: String, hour: String, day: String) {
+    func tableBooked(tableId: String, hour: String, day: String, userId: String) {
         coll.document(tableId).setData(["booked": true,
                                         "hourBooked": hour,
-                                        "day": day], merge: true)
+                                        "day": day,
+                                        "userId": userId], merge: true)
         
     }
     
@@ -52,9 +53,10 @@ final class FSTableColl {
         }
     }
     
-    func resetBookedTableWith(tableId: String) {
+    func deleteBookingAtTable(tableId: String) {
         coll.document(tableId).setData(["booked": false,
                                         "hourBooked": "",
-                                        "day": ""], merge: true)
+                                        "day": "",
+                                        "userId": ""], merge: true)
     }
 }

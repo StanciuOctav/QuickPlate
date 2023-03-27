@@ -16,32 +16,40 @@ struct WorkerView: View {
     var body: some View {
         VStack {
             TopSection()
-            Spacer()
-            ScrollView {
-                ForEach(vm.orders, id: \.self.id) { order in
-                    VStack {
-                        OrderCard(order: order)
-                            .cornerRadius(4)
-                        HStack {
-                            Button {
-                            } label: {
-                                Image(systemName: "checkmark.circle")
-                                Text("Accept Order")
+            if vm.orders.isEmpty {
+                Text("There are no orders")
+                    .font(.title2)
+                Spacer()
+            } else {
+                Spacer()
+                ScrollView {
+                    ForEach(vm.orders, id: \.self.id) { order in
+                        VStack {
+                            OrderCard(order: order)
+                                .cornerRadius(4)
+                            HStack {
+                                Button {
+                                    // add the order to the bill
+                                    self.vm.acceptOrder(id: order.id ?? "")
+                                } label: {
+                                    Image(systemName: "checkmark.circle")
+                                    Text("Accept Order")
+                                }
+                                .foregroundColor(.green)
+                                Spacer()
+                                Button {
+                                    // This should be pressed when the restaurant doesn't have some igredients
+                                    self.vm.removeOrder(order.id ?? "")
+                                } label: {
+                                    Image(systemName: "x.circle")
+                                    Text("Reject Order")
+                                }
+                                .foregroundColor(.red)
                             }
-                            .foregroundColor(.green)
-                            Spacer()
-                            Button {
-                                // This should be pressed when the restaurant doesn't have some igredients
-                                self.vm.removeOrder(order.id ?? "")
-                            } label: {
-                                Image(systemName: "x.circle")
-                                Text("Reject Order")
-                            }
-                            .foregroundColor(.red)
+                            .padding([.bottom, .leading, .trailing], 5)
                         }
-                        .padding([.bottom, .leading, .trailing], 5)
+                        .background(Color.qpLightGrayColor)
                     }
-                    .background(Color.qpLightGrayColor)
                 }
             }
         }

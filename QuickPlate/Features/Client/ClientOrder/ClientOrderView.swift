@@ -12,6 +12,8 @@ struct ClientOrderView: View {
     @StateObject private var vm = ClientOrderViewModel()
     @State private var isShowingConfirmation: Bool = false
     @State private var noFoodOrdered: Bool = false
+    @State private var requestedBill: Bool = false
+    @State private var selectedPaymentMethod: Bool = false
     @Binding var tableId: String
     @Binding var confirmedArrival: Bool
 
@@ -27,7 +29,6 @@ struct ClientOrderView: View {
             Button("Yes", role: .cancel) {
                 if vm.didOrderFood() {
                     isShowingConfirmation.toggle()
-                    confirmedArrival.toggle()
                     vm.sendOrder()
                 } else {
                     isShowingConfirmation.toggle()
@@ -43,8 +44,38 @@ struct ClientOrderView: View {
                 noFoodOrdered.toggle()
             }
         }
+        .alert("How do you want to pay?", isPresented: $requestedBill) {
+            Button("Cash") {
+                self.requestedBill.toggle()
+                self.selectedPaymentMethod.toggle()
+            }
+            Button("By card") {
+                self.requestedBill.toggle()
+                self.selectedPaymentMethod.toggle()
+            }
+            Button("Using the app") {
+                self.requestedBill.toggle()
+                self.selectedPaymentMethod.toggle()
+            }
+            Button("Go back", role: .cancel) {}
+        }
+        .alert("Our staff will get in touch with you shortly!", isPresented: $selectedPaymentMethod) {
+            Button("Ok", role: .cancel) {
+                vm.deleteBooking()
+                self.selectedPaymentMethod.toggle()
+                dismiss()
+            }
+        }
         .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    vm.resetOrder()
+                } label: {
+                    Text("Reset order")
+                        .foregroundColor(Color.qpOrange)
+                }
+            }
+            ToolbarItem(placement: .navigationBarLeading) {
                 Button {
                     isShowingConfirmation.toggle()
                 } label: {
@@ -52,12 +83,12 @@ struct ClientOrderView: View {
                         .foregroundColor(Color.qpOrange)
                 }
             }
-            ToolbarItem(placement: .navigationBarLeading) {
+            ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    vm.resetOrder()
+                    self.requestedBill.toggle()
                 } label: {
-                    Text("Reset order")
-                        .foregroundColor(Color.red)
+                    Text("Request bill")
+                        .foregroundColor(Color.qpOrange)
                 }
             }
         }
@@ -68,7 +99,7 @@ struct ClientOrderView: View {
             }
         }
         .interactiveDismissDisabled()
-        .navigationTitle("Restaurant's menu")
+        .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
     }
 
@@ -106,7 +137,7 @@ struct ClientOrderView: View {
             }
         }
     }
-    
+
     @ViewBuilder
     func OrderedFoodsScrollView() -> some View {
         VStack(alignment: .center) {

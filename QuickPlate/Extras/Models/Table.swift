@@ -16,6 +16,7 @@ struct Table: Codable, Identifiable {
     var nrPersons: Int = 0
     var tableNumber: Int = 0
     var day: String = ""
+    var userId: String = ""
 }
 
 extension Table: Comparable {
