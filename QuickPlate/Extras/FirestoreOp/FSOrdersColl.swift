@@ -21,8 +21,36 @@ final class FSOrdersColl {
         }
     }
     
-    func acceptOrder(id: String) {
-        coll.document(id).setData(["wasAccepted": true], merge: true)
+    func changeOrderState(id: String) {
+        coll.document(id).getDocument { qdSnap, error in
+            if let error = error {
+                print("FSOrderColl - Couldn't retrieve order with id \(id)")
+                print(error.localizedDescription)
+            }
+            guard let qdSnap = qdSnap else {
+                print("FSOrderColl - There is no order with the id \(id)")
+                return
+            }
+            let order = try? qdSnap.data(as: Order.self)
+            guard let order = order else {
+                print("FSOrderColl - Couldn't not convert qdSnap to order")
+                return
+            }
+            switch order.orderState {
+            case .pending:
+                self.setOrderState(orderId: id, state: .preparing)
+            case .preparing:
+                self.setOrderState(orderId: id, state: .ready)
+            case .ready:
+                self.setOrderState(orderId: id, state: .sent)
+            case .sent:
+                break
+            }
+        }
+    }
+    
+    private func setOrderState(orderId: String, state: OrderState) {
+        coll.document(orderId).setData(["orderState": state.rawValue], merge: true)
     }
     
     func fetchOrdersForRestaurant(restaurantName: String, completion: @escaping ([Order]?) -> Void) {

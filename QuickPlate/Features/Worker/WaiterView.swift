@@ -33,7 +33,11 @@ struct WaiterView: View {
                                     self.vm.acceptOrder(id: order.id ?? "")
                                 } label: {
                                     Image(systemName: "checkmark.circle")
-                                    Text("Accept Order")
+                                    if order.orderState == .pending {
+                                        Text("Send to kitchen")
+                                    } else if order.orderState == .ready {
+                                        Text("Deliver Order")
+                                    }
                                 }
                                 .foregroundColor(.green)
                                 Spacer()

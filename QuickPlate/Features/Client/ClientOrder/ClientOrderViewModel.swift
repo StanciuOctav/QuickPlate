@@ -82,7 +82,8 @@ final class ClientOrderViewModel: ObservableObject {
                               foodQuantity: quan,
                               totalCost: self.totalCost,
                               userId: UserDefaults.standard.value(forKey: "userId") as? String ?? "",
-                              tableId: self.tableId)
+                              tableId: self.tableId,
+                              orderState: .pending)
             FSOrdersColl.shared.saveOrder(order)
             self.resetOrder()
         }

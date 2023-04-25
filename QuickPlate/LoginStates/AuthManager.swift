@@ -15,23 +15,7 @@ import SwiftUI
  */
 
 enum LoginStateEnum: String {
-    case notSignedIn = "notSignedIn"
-    case clientSignedIn = "clientSignedIn"
-    case waiterSignedIn = "waiterSignedIn"
-    case cookSignedIn = "cookSignedIn"
-    
-    var valueForUserDefaults: String {
-        switch self {
-        case .notSignedIn:
-            return "notSignedIn"
-        case .clientSignedIn:
-            return "clientSignedIn"
-        case .waiterSignedIn:
-            return "workerSignedIn"
-        case .cookSignedIn:
-            return "cookSignedIn"
-        }
-    }
+    case notSignedIn, clientSignedIn, waiterSignedIn, cookSignedIn
 }
 
 final class AuthManager: ObservableObject {
@@ -43,7 +27,7 @@ final class AuthManager: ObservableObject {
     
     func checkLoginUserDefaultsExist() {
         if (UserDefaults.standard.object(forKey: "login") == nil) {
-            UserDefaults.standard.set(".notSignedIn", forKey: "login")
+            UserDefaults.standard.set(LoginStateEnum.notSignedIn.rawValue, forKey: "login")
         } else {
             guard let cachedLoginState = UserDefaults.standard.string(forKey: "login") else {
                 print("DEBUG - LoginManager - Error in reading the cached state")
@@ -60,7 +44,7 @@ final class AuthManager: ObservableObject {
     func updateWith(state: LoginStateEnum) {
         nextScreen = state
         if (state == .notSignedIn) {
-            UserDefaults.standard.set(nextScreen.valueForUserDefaults, forKey: "login")
+            UserDefaults.standard.set(nextScreen.rawValue, forKey: "login")
         }
     }
 }

@@ -23,18 +23,17 @@ final class CookViewModel: ObservableObject {
                 print("WorkerViewVM - Couldn't get orders from restaurant \(self.restaurant.value.name)")
                 return
             }
-            self.orders = orders
+            self.orders = orders.compactMap({ order in
+                if order.orderState == .preparing {
+                    return order
+                }
+                return nil
+            })
         })
     }
     
     func acceptOrder(id: String) {
-        FSOrdersColl.shared.acceptOrder(id: id)
-        for index in 0..<orders.count {
-            if orders[index].id == id {
-                self.orders.remove(at: index)
-                break
-            }
-        }
+        FSOrdersColl.shared.changeOrderState(id: id)
     }
     
     func removeOrder(_ id: String) {

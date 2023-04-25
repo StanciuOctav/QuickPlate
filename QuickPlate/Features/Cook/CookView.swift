@@ -33,7 +33,7 @@ struct CookView: View {
                                     self.vm.acceptOrder(id: order.id ?? "")
                                 } label: {
                                     Image(systemName: "checkmark.circle")
-                                    Text("Accept Order")
+                                    Text("Order is ready")
                                 }
                                 .foregroundColor(.green)
                                 Spacer()

@@ -34,12 +34,12 @@ final class FSFoodsColl {
     func fetchFoodWith(id: String, completion: @escaping (Food?) -> Void) {
         coll.document(id).getDocument { qdSnap, error in
             if let error = error {
-                print("FSFoodsColl - Could't retrieve logged user")
+                print("FSFoodsColl - Couldn't retrieve food with id \(id)")
                 print(error.localizedDescription)
                 completion(nil)
             }
             guard let qdSnap = qdSnap else {
-                print("FSFoodsColl - There is no user with the id \(id)")
+                print("FSFoodsColl - There is no food with the id \(id)")
                 completion(nil)
                 return
             }
