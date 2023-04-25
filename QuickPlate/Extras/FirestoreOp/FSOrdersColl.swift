@@ -12,6 +12,27 @@ final class FSOrdersColl {
     let coll = Firestore.firestore().collection(FSCollNames.orders.rawValue)
     static let shared = FSOrdersColl()
 
+    func fetchAllOrdersForCurrentUser(_ completion: @escaping ([Order]?) -> Void) async {
+        coll.addSnapshotListener { querySnapshot, error in
+            if let error = error {
+                print("FSOrderColl - Could't retrieve orders")
+                print(error.localizedDescription)
+                completion(nil)
+                return
+            }
+            guard let documents = querySnapshot?.documents else {
+                print("FSOrderColl - No documents!")
+                completion(nil)
+                return
+            }
+            let orders = documents.compactMap { qdSnap -> Order? in
+                try? qdSnap.data(as: Order.self)
+            }
+            completion(orders)
+            return
+        }
+    }
+    
     func saveOrder(_ order: Order) {
         do {
             try coll.document(order.id ?? UUID().uuidString).setData(from: order)

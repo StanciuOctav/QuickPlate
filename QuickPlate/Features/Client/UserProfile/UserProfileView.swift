@@ -44,7 +44,7 @@ struct UserProfileView: View {
         .frame(maxWidth: .infinity)
         .sheet(isPresented: $confirmedArrival) {
             NavigationView {
-                ClientOrderView(tableId: self.$confirmedBookingTableId, confirmedArrival: $confirmedArrival)
+                ClientOrderView(tableId: self.$confirmedBookingTableId)
             }
         }
         .alert("Are you sure you want to cancel the reservation?", isPresented: $isShowingCancelBooking) {

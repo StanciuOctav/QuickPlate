@@ -76,6 +76,8 @@
 		D4F4C1B129B39540001289A2 /* BookedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F4C1B029B39540001289A2 /* BookedTableView.swift */; };
 		D4FBCED029F7C28700D4FA77 /* CookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FBCECF29F7C28700D4FA77 /* CookView.swift */; };
 		D4FBCED229F7C3D000D4FA77 /* CookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FBCED129F7C3D000D4FA77 /* CookViewModel.swift */; };
+		D4FBCED429F816B500D4FA77 /* BillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FBCED329F816B500D4FA77 /* BillView.swift */; };
+		D4FBCED629F816C100D4FA77 /* BillViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FBCED529F816C100D4FA77 /* BillViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -137,6 +139,8 @@
 		D4F4C1B029B39540001289A2 /* BookedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookedTableView.swift; sourceTree = "<group>"; };
 		D4FBCECF29F7C28700D4FA77 /* CookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookView.swift; sourceTree = "<group>"; };
 		D4FBCED129F7C3D000D4FA77 /* CookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookViewModel.swift; sourceTree = "<group>"; };
+		D4FBCED329F816B500D4FA77 /* BillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillView.swift; sourceTree = "<group>"; };
+		D4FBCED529F816C100D4FA77 /* BillViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BillViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -398,6 +402,8 @@
 			children = (
 				D4CEFAE829C8B9FD00011911 /* ClientOrderView.swift */,
 				D4CEFAEA29C8BB0F00011911 /* ClientOrderViewModel.swift */,
+				D4FBCED329F816B500D4FA77 /* BillView.swift */,
+				D4FBCED529F816C100D4FA77 /* BillViewModel.swift */,
 			);
 			path = ClientOrder;
 			sourceTree = "<group>";
@@ -530,6 +536,7 @@
 				D46F98F729B65FD600960B1E /* FSTableColl.swift in Sources */,
 				5308DF3E29742CE400AB9D4A /* GeoPoint+Extensions.swift in Sources */,
 				535195E6293CCCDA00A44820 /* View+Extensions.swift in Sources */,
+				D4FBCED429F816B500D4FA77 /* BillView.swift in Sources */,
 				D46F98F929B65FE300960B1E /* FSResColl.swift in Sources */,
 				D4CB312929B9CF22000466BA /* RestaurantCardView.swift in Sources */,
 				D418FEC329CA34E600FD082B /* Order.swift in Sources */,
@@ -544,6 +551,7 @@
 				D418FEC529CA36F800FD082B /* FSOrdersColl.swift in Sources */,
 				5379FB0E296AB87C00A1A870 /* RestaurantsListViewModel.swift in Sources */,
 				D45B008329B6738300739976 /* FSFoodsColl.swift in Sources */,
+				D4FBCED629F816C100D4FA77 /* BillViewModel.swift in Sources */,
 				5308DF3C29742B7000AB9D4A /* CLLocationCoordinate2D+Extension.swift in Sources */,
 				53E2FD20292B75C600D63069 /* QPTabView.swift in Sources */,
 				535195E4293CCA2900A44820 /* UserProfileViewModel.swift in Sources */,

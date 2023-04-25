@@ -12,10 +12,8 @@ struct ClientOrderView: View {
     @StateObject private var vm = ClientOrderViewModel()
     @State private var isShowingConfirmation: Bool = false
     @State private var noFoodOrdered: Bool = false
-    @State private var requestedBill: Bool = false
     @State private var selectedPaymentMethod: Bool = false
     @Binding var tableId: String
-    @Binding var confirmedArrival: Bool
 
     var body: some View {
         VStack {
@@ -55,26 +53,13 @@ struct ClientOrderView: View {
                 vm.hasUnfinishedOrders.toggle()
             }
         }
-        .alert("How do you want to pay?", isPresented: $vm.canPay) {
-            Button("Cash") {
-                self.vm.canPay.toggle()
-                self.selectedPaymentMethod.toggle()
-            }
-            Button("By card") {
-                self.vm.canPay.toggle()
-                self.selectedPaymentMethod.toggle()
-            }
-            Button("Using the app") {
-                self.vm.canPay.toggle()
-                self.selectedPaymentMethod.toggle()
-            }
-            Button("Go back", role: .cancel) {}
-        }
-        .alert("Our staff will get in touch with you shortly!", isPresented: $selectedPaymentMethod) {
-            Button("Ok", role: .cancel) {
-                vm.deleteBooking()
-                self.selectedPaymentMethod.toggle()
-                dismiss()
+        .sheet(isPresented: $vm.canPay) {
+            NavigationStack {
+                BillView()
+                    .onDisappear {
+                        dismiss()
+                       vm.deleteBooking()
+                    }
             }
         }
         .toolbar {
