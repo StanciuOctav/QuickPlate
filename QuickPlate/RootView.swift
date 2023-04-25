@@ -23,7 +23,7 @@ struct RootView: View {
                 case .clientSignedIn:
                     QPTabView()
                 case .waiterSignedIn:
-                    WorkerView()
+                    WaiterView()
                 case .cookSignedIn:
                     CookView()
                 }

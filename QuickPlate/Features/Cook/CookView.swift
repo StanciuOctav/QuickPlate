@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CookView: View {
     @EnvironmentObject var authManager: AuthManager
-    @StateObject private var vm = WorkerViewViewModel()
+    @StateObject private var vm = CookViewModel()
 
     @State private var isShowingSignOutAlert: Bool = false
 

@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct WorkerView: View {
+struct WaiterView: View {
     @EnvironmentObject var authManager: AuthManager
-    @StateObject private var vm = WorkerViewViewModel()
+    @StateObject private var vm = WaiterViewViewModel()
 
     @State private var isShowingSignOutAlert: Bool = false
 

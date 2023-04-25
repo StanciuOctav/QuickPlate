@@ -9,7 +9,7 @@ import Combine
 import FirebaseFirestore
 import Foundation
 
-final class WorkerViewViewModel: ObservableObject {
+final class WaiterViewViewModel: ObservableObject {
     @Published var user = MyUser()
     @Published var orders: [Order] = []
     @Published var restaurant = CurrentValueSubject<Restaurant, Never>(Restaurant())
@@ -49,7 +49,7 @@ final class WorkerViewViewModel: ObservableObject {
     }
 }
 
-extension WorkerViewViewModel {
+extension WaiterViewViewModel {
     
     func fetchLoggedUserAndRes() async {
         await FSUserColl.shared.fetchLoggedUser(completion: { user in

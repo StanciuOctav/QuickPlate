@@ -65,8 +65,8 @@
 		D4ADEC9129B109FE00261C10 /* TablesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4ADEC9029B109FE00261C10 /* TablesView.swift */; };
 		D4ADEC9329B10FC500261C10 /* TablesViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4ADEC9229B10FC500261C10 /* TablesViewViewModel.swift */; };
 		D4ADEC9529B10FED00261C10 /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4ADEC9429B10FED00261C10 /* Table.swift */; };
-		D4B1368029CF58260016A7AD /* WorkerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B1367F29CF58260016A7AD /* WorkerView.swift */; };
-		D4B1368229CF5BA90016A7AD /* WorkerViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B1368129CF5BA90016A7AD /* WorkerViewViewModel.swift */; };
+		D4B1368029CF58260016A7AD /* WaiterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B1367F29CF58260016A7AD /* WaiterView.swift */; };
+		D4B1368229CF5BA90016A7AD /* WaiterViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B1368129CF5BA90016A7AD /* WaiterViewViewModel.swift */; };
 		D4B1368829CF6BB80016A7AD /* OrderCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B1368729CF6BB80016A7AD /* OrderCard.swift */; };
 		D4B1368A29CF6C960016A7AD /* OrderCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B1368929CF6C960016A7AD /* OrderCardViewModel.swift */; };
 		D4BC837A29B3C02A0079CC20 /* BookedTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BC837929B3C02A0079CC20 /* BookedTableViewModel.swift */; };
@@ -126,8 +126,8 @@
 		D4ADEC9029B109FE00261C10 /* TablesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TablesView.swift; sourceTree = "<group>"; };
 		D4ADEC9229B10FC500261C10 /* TablesViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TablesViewViewModel.swift; sourceTree = "<group>"; };
 		D4ADEC9429B10FED00261C10 /* Table.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Table.swift; sourceTree = "<group>"; };
-		D4B1367F29CF58260016A7AD /* WorkerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkerView.swift; sourceTree = "<group>"; };
-		D4B1368129CF5BA90016A7AD /* WorkerViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkerViewViewModel.swift; sourceTree = "<group>"; };
+		D4B1367F29CF58260016A7AD /* WaiterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaiterView.swift; sourceTree = "<group>"; };
+		D4B1368129CF5BA90016A7AD /* WaiterViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaiterViewViewModel.swift; sourceTree = "<group>"; };
 		D4B1368729CF6BB80016A7AD /* OrderCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCard.swift; sourceTree = "<group>"; };
 		D4B1368929CF6C960016A7AD /* OrderCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCardViewModel.swift; sourceTree = "<group>"; };
 		D4BC837929B3C02A0079CC20 /* BookedTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookedTableViewModel.swift; sourceTree = "<group>"; };
@@ -371,8 +371,8 @@
 		D4B1367E29CF58140016A7AD /* Worker */ = {
 			isa = PBXGroup;
 			children = (
-				D4B1367F29CF58260016A7AD /* WorkerView.swift */,
-				D4B1368129CF5BA90016A7AD /* WorkerViewViewModel.swift */,
+				D4B1367F29CF58260016A7AD /* WaiterView.swift */,
+				D4B1368129CF5BA90016A7AD /* WaiterViewViewModel.swift */,
 				D4B1368729CF6BB80016A7AD /* OrderCard.swift */,
 				D4B1368929CF6C960016A7AD /* OrderCardViewModel.swift */,
 			);
@@ -536,11 +536,11 @@
 				53E2FD27292B773F00D63069 /* UserProfileView.swift in Sources */,
 				D4F4C1B129B39540001289A2 /* BookedTableView.swift in Sources */,
 				53E19D6A2934042C00A79735 /* LocationManager.swift in Sources */,
-				D4B1368029CF58260016A7AD /* WorkerView.swift in Sources */,
+				D4B1368029CF58260016A7AD /* WaiterView.swift in Sources */,
 				538994952920FF3C00C370BF /* SpashScreenView.swift in Sources */,
 				D4CEFAEB29C8BB0F00011911 /* ClientOrderViewModel.swift in Sources */,
 				D4035C9229C2311C00F90D24 /* RootView.swift in Sources */,
-				D4B1368229CF5BA90016A7AD /* WorkerViewViewModel.swift in Sources */,
+				D4B1368229CF5BA90016A7AD /* WaiterViewViewModel.swift in Sources */,
 				D418FEC529CA36F800FD082B /* FSOrdersColl.swift in Sources */,
 				5379FB0E296AB87C00A1A870 /* RestaurantsListViewModel.swift in Sources */,
 				D45B008329B6738300739976 /* FSFoodsColl.swift in Sources */,
