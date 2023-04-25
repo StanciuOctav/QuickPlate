@@ -37,9 +37,18 @@ final class SignInViewModel: ObservableObject {
                         UserDefaults.standard.set("clientSignedIn", forKey: "login")
                         completion(.success(1))
                     } else {
-                        UserDefaults.standard.set("workerSignedIn", forKey: "login")
-                        UserDefaults.standard.set(myUser.restaurantWorking, forKey: "restaurantWorking")
-                        completion(.success(2))
+                        switch myUser.role {
+                        case "Waiter":
+                            UserDefaults.standard.set("workerSignedIn", forKey: "login")
+                            UserDefaults.standard.set(myUser.restaurantWorking, forKey: "restaurantWorking")
+                            completion(.success(2))
+                        case "Cook":
+                            UserDefaults.standard.set("cookSignedIn", forKey: "login")
+                            UserDefaults.standard.set(myUser.restaurantWorking, forKey: "restaurantWorking")
+                            completion(.success(3))
+                        default:
+                            break
+                        }
                     }
                 }
             case .failure(.signInError):

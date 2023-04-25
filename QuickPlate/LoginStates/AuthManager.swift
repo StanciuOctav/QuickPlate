@@ -17,7 +17,8 @@ import SwiftUI
 enum LoginStateEnum: String {
     case notSignedIn = "notSignedIn"
     case clientSignedIn = "clientSignedIn"
-    case workerSignedIn = "workerSignedIn"
+    case waiterSignedIn = "waiterSignedIn"
+    case cookSignedIn = "cookSignedIn"
     
     var valueForUserDefaults: String {
         switch self {
@@ -25,8 +26,10 @@ enum LoginStateEnum: String {
             return "notSignedIn"
         case .clientSignedIn:
             return "clientSignedIn"
-        case .workerSignedIn:
+        case .waiterSignedIn:
             return "workerSignedIn"
+        case .cookSignedIn:
+            return "cookSignedIn"
         }
     }
 }

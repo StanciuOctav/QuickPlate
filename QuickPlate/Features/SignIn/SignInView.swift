@@ -69,7 +69,9 @@ struct SignInView: View {
                     case 1:
                         authManager.updateWith(state: .clientSignedIn)
                     case 2:
-                        authManager.updateWith(state: .workerSignedIn)
+                        authManager.updateWith(state: .waiterSignedIn)
+                    case 3:
+                        authManager.updateWith(state: .cookSignedIn)
                     default:
                         break
                     }

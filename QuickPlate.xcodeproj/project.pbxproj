@@ -74,6 +74,8 @@
 		D4CEFAE929C8B9FD00011911 /* ClientOrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CEFAE829C8B9FD00011911 /* ClientOrderView.swift */; };
 		D4CEFAEB29C8BB0F00011911 /* ClientOrderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CEFAEA29C8BB0F00011911 /* ClientOrderViewModel.swift */; };
 		D4F4C1B129B39540001289A2 /* BookedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F4C1B029B39540001289A2 /* BookedTableView.swift */; };
+		D4FBCED029F7C28700D4FA77 /* CookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FBCECF29F7C28700D4FA77 /* CookView.swift */; };
+		D4FBCED229F7C3D000D4FA77 /* CookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FBCED129F7C3D000D4FA77 /* CookViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -133,6 +135,8 @@
 		D4CEFAE829C8B9FD00011911 /* ClientOrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientOrderView.swift; sourceTree = "<group>"; };
 		D4CEFAEA29C8BB0F00011911 /* ClientOrderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientOrderViewModel.swift; sourceTree = "<group>"; };
 		D4F4C1B029B39540001289A2 /* BookedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookedTableView.swift; sourceTree = "<group>"; };
+		D4FBCECF29F7C28700D4FA77 /* CookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookView.swift; sourceTree = "<group>"; };
+		D4FBCED129F7C3D000D4FA77 /* CookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +184,7 @@
 				539FDE8629262AE90034C036 /* SignUp */,
 				D4B1368329CF5DA30016A7AD /* Client */,
 				D4B1367E29CF58140016A7AD /* Worker */,
+				D4FBCECE29F7C26D00D4FA77 /* Cook */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -397,6 +402,15 @@
 			path = ClientOrder;
 			sourceTree = "<group>";
 		};
+		D4FBCECE29F7C26D00D4FA77 /* Cook */ = {
+			isa = PBXGroup;
+			children = (
+				D4FBCECF29F7C28700D4FA77 /* CookView.swift */,
+				D4FBCED129F7C3D000D4FA77 /* CookViewModel.swift */,
+			);
+			path = Cook;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -507,6 +521,7 @@
 				535195D0293C9C6600A44820 /* SignInViewModel.swift in Sources */,
 				535195D3293CA0DB00A44820 /* FirebaseEmailAuth.swift in Sources */,
 				53A5E8DB29461B2000DBFAFE /* FSUserColl.swift in Sources */,
+				D4FBCED029F7C28700D4FA77 /* CookView.swift in Sources */,
 				53A5E8D4294606F400DBFAFE /* MyUser.swift in Sources */,
 				5337F1EE292ACCEE00C3A766 /* SecureInputView.swift in Sources */,
 				538994862920F89700C370BF /* QuickPlateApp.swift in Sources */,
@@ -535,6 +550,7 @@
 				5387CFDA29252BD60010344B /* Color+CusomColors.swift in Sources */,
 				D4BC837A29B3C02A0079CC20 /* BookedTableViewModel.swift in Sources */,
 				D4CEFAE929C8B9FD00011911 /* ClientOrderView.swift in Sources */,
+				D4FBCED229F7C3D000D4FA77 /* CookViewModel.swift in Sources */,
 				D4ADEC9129B109FE00261C10 /* TablesView.swift in Sources */,
 				D4ADEC9329B10FC500261C10 /* TablesViewViewModel.swift in Sources */,
 				D46F98FB29B661C700960B1E /* FSCollNames.swift in Sources */,

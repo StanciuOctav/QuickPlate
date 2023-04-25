@@ -37,7 +37,6 @@
 // MARK: ACCOUNT TYPE
 "client" = "Client";
 "waiter" = "Waiter";
-"bartender" = "Bartender";
 "cook" = "Cook";
 
 // MARK: TAB BAR
