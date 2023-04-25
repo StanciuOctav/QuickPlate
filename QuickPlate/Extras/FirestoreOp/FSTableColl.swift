@@ -26,6 +26,7 @@ final class FSTableColl {
                 print("TablesCollection - Could't retrieve tables")
                 print(error.localizedDescription)
                 completion(nil)
+                return
             }
             guard let documents = querySnapshot?.documents else {
                 print("TablesCollection - No documents!")

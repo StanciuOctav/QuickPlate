@@ -25,6 +25,9 @@ struct ClientOrderView: View {
         }
         .frame(maxWidth: .infinity)
         .background(Color.qpBeigeColor)
+
+        // MARK: Sending order
+
         .alert("You want to send the order?", isPresented: $isShowingConfirmation) {
             Button("Yes", role: .cancel) {
                 if vm.didOrderFood() {
@@ -44,17 +47,25 @@ struct ClientOrderView: View {
                 noFoodOrdered.toggle()
             }
         }
-        .alert("How do you want to pay?", isPresented: $requestedBill) {
+
+        // MARK: Requesting bill
+
+        .alert("Please wait!\nYou have unprocessed/no orders.", isPresented: $vm.hasUnfinishedOrders) {
+            Button("Ok", role: .cancel) {
+                vm.hasUnfinishedOrders.toggle()
+            }
+        }
+        .alert("How do you want to pay?", isPresented: $vm.canPay) {
             Button("Cash") {
-                self.requestedBill.toggle()
+                self.vm.canPay.toggle()
                 self.selectedPaymentMethod.toggle()
             }
             Button("By card") {
-                self.requestedBill.toggle()
+                self.vm.canPay.toggle()
                 self.selectedPaymentMethod.toggle()
             }
             Button("Using the app") {
-                self.requestedBill.toggle()
+                self.vm.canPay.toggle()
                 self.selectedPaymentMethod.toggle()
             }
             Button("Go back", role: .cancel) {}
@@ -85,7 +96,7 @@ struct ClientOrderView: View {
             }
             ToolbarItem(placement: .navigationBarTrailing) {
                 Button {
-                    self.requestedBill.toggle()
+                    vm.checkForOrdersStatus()
                 } label: {
                     Text("Request bill")
                         .foregroundColor(Color.qpOrange)

@@ -19,6 +19,7 @@ final class FSUserColl {
             if let error = error {
                 print("FSUserColl - Couldn't assign booked table to user")
                 print(error.localizedDescription)
+                return
             }
             if let qdSnap = qdSnap, let document = try? qdSnap.data(as: MyUser.self) {
                 var newBookedTablesArr = document.bookedTables
@@ -36,12 +37,14 @@ final class FSUserColl {
                 print("FSUserColl - Couldn't get current logged in user document")
                 print(error.localizedDescription)
                 completion(-1)
+                return
             }
             if let qdSnap = qdSnap, let document = try? qdSnap.data(as: MyUser.self) {
                 var newBookedTablesArr = document.bookedTables
                 newBookedTablesArr.removeAll(where: { $0 == tableId })
                 currUser.updateData(["bookedTables": newBookedTablesArr])
                 completion(1)
+                return
             }
         }
     }
@@ -53,6 +56,7 @@ final class FSUserColl {
                 print("FSUserColl - Could't retrieve logged user")
                 print(error.localizedDescription)
                 completion(nil)
+                return
             }
             guard let qdSnap = qdSnap else {
                 print("FSUserColl - There is no user with the id \(userId)")
@@ -71,6 +75,7 @@ final class FSUserColl {
             if let error = error {
                 print("FSUserColl - Couldn't assign restaurant to user's favourites")
                 print(error.localizedDescription)
+                return
             }
             if let qdSnap = qdSnap, let document = try? qdSnap.data(as: MyUser.self) {
                 var favouriteRestaurants = document.favouriteRestaurants
@@ -89,6 +94,7 @@ final class FSUserColl {
             if let error = error {
                 print("FSUserColl - Couldn't assign restaurant to user's favourites")
                 print(error.localizedDescription)
+                return
             }
             if let qdSnap = qdSnap, let document = try? qdSnap.data(as: MyUser.self) {
                 var favouriteRestaurants = document.favouriteRestaurants
@@ -125,6 +131,7 @@ extension FSUserColl {
                 print("FSUserColl - Could't retrieve logged user")
                 print(error.localizedDescription)
                 completion(nil)
+                return
             }
             guard let qdSnap = qdSnap else {
                 print("FSUserColl - There is no user with the id \(userId)")
@@ -141,6 +148,7 @@ extension FSUserColl {
                 print("FSUserColl - Could't retrieve logged user")
                 print(error.localizedDescription)
                 completion(nil)
+                return
             }
             guard let qdSnap = qdSnap else {
                 print("FSUserColl - There is no user with the id \(id)")

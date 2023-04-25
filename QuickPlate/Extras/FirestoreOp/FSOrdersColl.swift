@@ -5,13 +5,13 @@
 //  Created by Ioan-Octavian Stanciu on 21.03.2023.
 //
 
-import Foundation
 import FirebaseFirestore
+import Foundation
 
 final class FSOrdersColl {
     let coll = Firestore.firestore().collection(FSCollNames.orders.rawValue)
     static let shared = FSOrdersColl()
-    
+
     func saveOrder(_ order: Order) {
         do {
             try coll.document(order.id ?? UUID().uuidString).setData(from: order)
@@ -20,12 +20,41 @@ final class FSOrdersColl {
             print(error.localizedDescription)
         }
     }
-    
+
+    func hasUnfinishedOrders(tableId: String, completion: @escaping (Bool?) -> Void) {
+        coll.getDocuments { querySnapshot, error in
+            if let error = error {
+                print("FSOrdersColl - Couldn't get orders")
+                print(error.localizedDescription)
+                completion(false)
+                return
+            }
+            guard let documents = querySnapshot?.documents else {
+                print("FSOrdersColl - No documents!")
+                completion(false)
+                return
+            }
+            let orders = documents.compactMap({ qdSnap in
+                let order = try? qdSnap.data(as: Order.self)
+                if order?.tableId == tableId && order?.orderState != .sent && order?.userId == UserDefaults.standard.string(forKey: "userId") {
+                    return order
+                }
+                return nil
+            })
+            if orders.count != 0 {
+                completion(true)
+                return
+            }
+            completion(false)
+        }
+    }
+
     func changeOrderState(id: String) {
-        coll.document(id).getDocument { qdSnap, error in
+        coll.document(id).getDocument { [weak self] qdSnap, error in
             if let error = error {
                 print("FSOrderColl - Couldn't retrieve order with id \(id)")
                 print(error.localizedDescription)
+                return
             }
             guard let qdSnap = qdSnap else {
                 print("FSOrderColl - There is no order with the id \(id)")
@@ -38,27 +67,28 @@ final class FSOrdersColl {
             }
             switch order.orderState {
             case .pending:
-                self.setOrderState(orderId: id, state: .preparing)
+                self?.setOrderState(orderId: id, state: .preparing)
             case .preparing:
-                self.setOrderState(orderId: id, state: .ready)
+                self?.setOrderState(orderId: id, state: .ready)
             case .ready:
-                self.setOrderState(orderId: id, state: .sent)
+                self?.setOrderState(orderId: id, state: .sent)
             case .sent:
                 break
             }
         }
     }
-    
+
     private func setOrderState(orderId: String, state: OrderState) {
         coll.document(orderId).setData(["orderState": state.rawValue], merge: true)
     }
-    
+
     func fetchOrdersForRestaurant(restaurantName: String, completion: @escaping ([Order]?) -> Void) {
         coll.addSnapshotListener { qdSnap, error in
             if let error = error {
                 print("FSOrderColl - Couldn't get all orders")
                 print(error.localizedDescription)
                 completion(nil)
+                return
             }
             guard let documents = qdSnap?.documents else {
                 print("FSOrderColl - Couldn't get documents")
@@ -72,9 +102,9 @@ final class FSOrdersColl {
             completion(orders)
         }
     }
-    
+
     func deleteOrderWith(id: String) {
-        coll.document(id).delete() { error in
+        coll.document(id).delete { error in
             if let error = error {
                 print("Couldn't delete order with id \(id)")
                 print(error.localizedDescription)
@@ -83,10 +113,10 @@ final class FSOrdersColl {
             }
         }
     }
-    
+
     func deleteOrdersAtTable(id: String) {
         print("Table Id: \(id)")
-        coll.getDocuments { qdSnap, error in
+        coll.getDocuments { [weak self] qdSnap, error in
             if let error = error {
                 print("FSOrdersColl - Couldn't get orders")
                 print(error.localizedDescription)
@@ -97,11 +127,11 @@ final class FSOrdersColl {
                 return
             }
             let orders = documents.compactMap { qdSnap -> Order? in
-                return try? qdSnap.data(as: Order.self)
+                try? qdSnap.data(as: Order.self)
             }
-            for index in 0..<orders.count {
+            for index in 0 ..< orders.count {
                 if orders[index].tableId == id {
-                    self.deleteOrderWith(id: orders[index].id ?? "")
+                    self?.deleteOrderWith(id: orders[index].id ?? "")
                 }
             }
         }

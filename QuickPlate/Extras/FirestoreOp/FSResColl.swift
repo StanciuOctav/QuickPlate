@@ -18,6 +18,7 @@ final class FSResColl {
                 print("FSResColl - Could't retrieve restaurants")
                 print(error.localizedDescription)
                 completion(nil)
+                return
             }
             guard let documents = querySnapshot?.documents else {
                 print("FSResColl - No documents!")
@@ -38,6 +39,7 @@ final class FSResColl {
                 print("BookedTableVM - Couldn't get restaurants")
                 print(error.localizedDescription)
                 completion(nil)
+                return
             }
             guard let documents = querySnapshot?.documents else {
                 print("BookedTableVM - No documents!")
@@ -63,6 +65,7 @@ final class FSResColl {
                 print("BookedTableVM - Couldn't get restaurants")
                 print(error.localizedDescription)
                 completion(nil)
+                return
             }
             guard let documents = querySnapshot?.documents else {
                 print("BookedTableVM - No documents!")
@@ -88,6 +91,7 @@ final class FSResColl {
                 print("BookedTableVM - Couldn't get restaurants")
                 print(error.localizedDescription)
                 completion(nil)
+                return
             }
             guard let documents = querySnapshot?.documents else {
                 print("BookedTableVM - No documents!")
@@ -113,6 +117,7 @@ final class FSResColl {
                 print("FSUserColl - Couldn't assign booked table to user")
                 print(error.localizedDescription)
                 completion(nil)
+                return
             }
             guard let qdSnap = qdSnap else {
                 completion(nil)

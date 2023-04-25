@@ -18,6 +18,7 @@ final class FSFoodsColl {
                 print("FSFoodsColl - Could't retrieve foods")
                 print(error.localizedDescription)
                 completion(nil)
+                return
             }
             guard let documents = querySnapshot?.documents else {
                 print("FSFoodsColl - No documents!")
@@ -37,6 +38,7 @@ final class FSFoodsColl {
                 print("FSFoodsColl - Couldn't retrieve food with id \(id)")
                 print(error.localizedDescription)
                 completion(nil)
+                return
             }
             guard let qdSnap = qdSnap else {
                 print("FSFoodsColl - There is no food with the id \(id)")

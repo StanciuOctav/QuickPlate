@@ -12,6 +12,8 @@ final class ClientOrderViewModel: ObservableObject {
     @Published var foods: [Food] = []
     @Published var numberOrdered: [Int] = []
     @Published var totalCost: Double = 0
+    @Published var hasUnfinishedOrders: Bool = false
+    @Published var canPay: Bool = false
 
     private var foodIds: [String] = []
     private var tableId: String = ""
@@ -86,6 +88,18 @@ final class ClientOrderViewModel: ObservableObject {
                               orderState: .pending)
             FSOrdersColl.shared.saveOrder(order)
             self.resetOrder()
+        }
+    }
+
+    // This method checks if the client still has orders that are not in the final state when he requests the bill
+    func checkForOrdersStatus() {
+        FSOrdersColl.shared.hasUnfinishedOrders(tableId: tableId) { [weak self] result in
+            guard let result = result else {
+                print("ClientOrderViewModel - Couldn't check for order status")
+                return
+            }
+            self?.hasUnfinishedOrders = result
+            self?.canPay = !result
         }
     }
 
