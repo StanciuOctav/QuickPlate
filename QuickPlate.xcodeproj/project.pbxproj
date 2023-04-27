@@ -187,7 +187,7 @@
 				539FDE8B29262B140034C036 /* SignIn */,
 				539FDE8629262AE90034C036 /* SignUp */,
 				D4B1368329CF5DA30016A7AD /* Client */,
-				D4B1367E29CF58140016A7AD /* Worker */,
+				D4B1367E29CF58140016A7AD /* Waiter */,
 				D4FBCECE29F7C26D00D4FA77 /* Cook */,
 			);
 			path = Features;
@@ -372,7 +372,7 @@
 			path = TablesList;
 			sourceTree = "<group>";
 		};
-		D4B1367E29CF58140016A7AD /* Worker */ = {
+		D4B1367E29CF58140016A7AD /* Waiter */ = {
 			isa = PBXGroup;
 			children = (
 				D4B1367F29CF58260016A7AD /* WaiterView.swift */,
@@ -380,7 +380,7 @@
 				D4B1368729CF6BB80016A7AD /* OrderCard.swift */,
 				D4B1368929CF6C960016A7AD /* OrderCardViewModel.swift */,
 			);
-			path = Worker;
+			path = Waiter;
 			sourceTree = "<group>";
 		};
 		D4B1368329CF5DA30016A7AD /* Client */ = {

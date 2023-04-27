@@ -79,6 +79,9 @@ class FirebaseEmailAuth {
     func doLogout(completion: @escaping (Error?) -> Void) {
         do {
             try Auth.auth().signOut()
+            if let bundleID = Bundle.main.bundleIdentifier {
+                UserDefaults.standard.removePersistentDomain(forName: bundleID)
+            }
             completion(nil)
         } catch let error {
             completion(error)

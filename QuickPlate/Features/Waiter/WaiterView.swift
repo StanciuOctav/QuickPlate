@@ -30,7 +30,7 @@ struct WaiterView: View {
                             HStack {
                                 Button {
                                     // add the order to the bill
-                                    self.vm.acceptOrder(id: order.id ?? "")
+                                    self.vm.acceptOrder(id: order.id ?? "", state: order.orderState)
                                 } label: {
                                     Image(systemName: "checkmark.circle")
                                     if order.orderState == .pending {
@@ -39,7 +39,8 @@ struct WaiterView: View {
                                         Text("Deliver Order")
                                     }
                                 }
-                                .foregroundColor(.green)
+                                .disabled(!vm.canTakeOrder && order.orderState == .pending)
+                                .foregroundColor(!vm.canTakeOrder && order.orderState == .pending ? .gray : .green)
                                 Spacer()
                                 Button {
                                     // This should be pressed when the restaurant doesn't have some igredients

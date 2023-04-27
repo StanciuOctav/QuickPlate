@@ -35,17 +35,6 @@ final class CookViewModel: ObservableObject {
     func acceptOrder(id: String) {
         FSOrdersColl.shared.changeOrderState(id: id)
     }
-    
-    func removeOrder(_ id: String) {
-        for order in self.orders {
-            if order.id == id {
-                for index in 0..<order.foodIds.count {
-                    FSFoodsColl.shared.updateFoodstockkWith(id: order.foodIds[index], nrOrdered: order.foodQuantity[index], addStock: true)
-                }
-            }
-        }
-        FSOrdersColl.shared.deleteOrderWith(id: id)
-    }
 }
 
 extension CookViewModel {

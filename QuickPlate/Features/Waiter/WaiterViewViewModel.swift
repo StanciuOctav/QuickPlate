@@ -13,8 +13,10 @@ final class WaiterViewViewModel: ObservableObject {
     @Published var user = MyUser()
     @Published var orders: [Order] = []
     @Published var restaurant = CurrentValueSubject<Restaurant, Never>(Restaurant())
+    @Published var canTakeOrder: Bool = true
     
     private var cancelables = [AnyCancellable]()
+    private let maxNumberOfOrders = 2
     
     func fetchAllOrders() {
         self.orders.removeAll()
@@ -32,7 +34,22 @@ final class WaiterViewViewModel: ObservableObject {
         })
     }
     
-    func acceptOrder(id: String) {
+    func acceptOrder(id: String, state: OrderState) {
+        var currentNumber = UserDefaults.standard.integer(forKey: "ordersAccepted")
+        if state == .pending {
+            currentNumber += 1
+        }
+        if state == .ready {
+            currentNumber -= 1
+        }
+        if currentNumber < 0 {
+            currentNumber = 0
+        }
+        if currentNumber > maxNumberOfOrders {
+            currentNumber = maxNumberOfOrders
+        }
+        UserDefaults.standard.set(currentNumber, forKey: "ordersAccepted")
+        canAcceptOrders()
         FSOrdersColl.shared.changeOrderState(id: id)
     }
     
@@ -45,6 +62,16 @@ final class WaiterViewViewModel: ObservableObject {
             }
         }
         FSOrdersColl.shared.deleteOrderWith(id: id)
+    }
+    
+    private func canAcceptOrders() {
+        var currNumber = 0
+        if (UserDefaults.standard.object(forKey: "ordersAccepted") == nil) {
+            UserDefaults.standard.set(0, forKey: "ordersAccepted")
+        } else {
+            currNumber = UserDefaults.standard.integer(forKey: "ordersAccepted")
+        }
+        canTakeOrder =  !(currNumber >= maxNumberOfOrders)
     }
 }
 

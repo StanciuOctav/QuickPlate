@@ -36,15 +36,6 @@ struct CookView: View {
                                     Text("Order is ready")
                                 }
                                 .foregroundColor(.green)
-                                Spacer()
-                                Button {
-                                    // This should be pressed when the restaurant doesn't have some igredients
-                                    self.vm.removeOrder(order.id ?? "")
-                                } label: {
-                                    Image(systemName: "x.circle")
-                                    Text("Reject Order")
-                                }
-                                .foregroundColor(.red)
                             }
                             .padding([.bottom, .leading, .trailing], 5)
                         }
