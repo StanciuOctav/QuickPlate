@@ -33,6 +33,7 @@ struct SignInView: View {
                 VStack(spacing: 30) {
                     TextField(LocalizedStringKey("email"), text: $viewModel.email)
                         .signInTextFieldStyle(withHeight: self.maxHeight, topLeading: 10, backgroundColor: Color.qpLightGrayColor)
+                        .keyboardType(.emailAddress)
                     SecureInputView(LocalizedStringKey("password").stringValue(), text: $viewModel.password, maxHeight: self.maxHeight, topLeading: 10, backgroundColor: Color.qpLightGrayColor)
 
                     if viewModel.getShowCredentialsError() {

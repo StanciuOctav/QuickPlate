@@ -86,6 +86,7 @@ struct SignUpView: View {
                     Group {
                         TextField(LocalizedStringKey("email"), text: $vm.email)
                             .signInTextFieldStyle(withHeight: self.maxHeight, topLeading: self.topLeading, backgroundColor: Color.qpLightGrayColor)
+                            .keyboardType(.emailAddress)
 
                         SecureInputView(LocalizedStringKey("password").stringValue(), text: $vm.password, maxHeight: self.maxHeight, topLeading: self.topLeading, backgroundColor: Color.qpLightGrayColor)
 
