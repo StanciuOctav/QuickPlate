@@ -16,19 +16,18 @@ struct QPTabView: View {
     var body: some View {
         TabView {
             Group {
-                UserProfileView()
+                MapView()
                     .tabItem {
-                        Label(LocalizedStringKey("account"), systemImage: "person.fill")
+                        Label(LocalizedStringKey("map"), systemImage: "map.fill")
                     }
-                
+
                 RestaurantsListView()
                     .tabItem {
                         Label(LocalizedStringKey("restaurants"), systemImage: "fork.knife.circle")
                     }
-                
-                MapView()
+                UserProfileView()
                     .tabItem {
-                        Label(LocalizedStringKey("map"), systemImage: "map.fill")
+                        Label(LocalizedStringKey("account"), systemImage: "person.fill")
                     }
             }
             .tint(.qpBlackColor)
