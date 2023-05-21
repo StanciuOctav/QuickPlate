@@ -10,30 +10,12 @@ import Foundation
 import SwiftUI
 
 final class RestaurantsListViewModel: ObservableObject {
+    
     @Published var restaurants: [Restaurant] = []
     @Published var favouritesRes: [String] = []
-    private var defaultRestaurants: [Restaurant] = []
-
-    private let coll = Firestore.firestore().collection(FSCollNames.restaurants.rawValue)
-
-    func fetchAllRestaurants() async {
-        await FSResColl.shared.fetchAllRestaurants() { results in
-            guard let results = results else { return }
-            self.restaurants = results
-            self.initializeDefaultRestaurants()
-        }
-    }
     
-    func fetchFavouriteRestaurants() async {
-        await FSUserColl.shared.fetchFavouriteRestaurants(completion: { results in
-            guard let results = results else { return }
-            for restaurantId in results {
-                if !self.favouritesRes.contains(where: {$0 == restaurantId}) {
-                    self.favouritesRes.append(restaurantId)
-                }
-            }
-        })
-    }
+    private var defaultRestaurants: [Restaurant] = []
+    private let coll = Firestore.firestore().collection(FSCollNames.restaurants.rawValue)
     
     func addFavouriteRestaurant(restaurantId: String?) {
         guard let id = restaurantId else { return }
@@ -61,5 +43,27 @@ final class RestaurantsListViewModel: ObservableObject {
         defaultRestaurants.forEach { res in
             self.restaurants.append(res)
         }
+    }
+}
+
+extension RestaurantsListViewModel {
+    
+    func fetchAllRestaurants() async {
+        await FSResColl.shared.fetchAllRestaurants() { results in
+            guard let results = results else { return }
+            self.restaurants = results
+            self.initializeDefaultRestaurants()
+        }
+    }
+    
+    func fetchFavouriteRestaurants() async {
+        await FSUserColl.shared.fetchFavouriteRestaurants(completion: { results in
+            guard let results = results else { return }
+            for restaurantId in results {
+                if !self.favouritesRes.contains(where: {$0 == restaurantId}) {
+                    self.favouritesRes.append(restaurantId)
+                }
+            }
+        })
     }
 }

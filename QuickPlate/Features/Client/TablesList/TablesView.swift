@@ -24,7 +24,7 @@ struct TablesView: View {
     var body: some View {
         VStack {
             if vm.tables.count == 0 {
-                Text("We're sorry but all tables are booked at the moment 😢")
+                Text(LocalizedStringKey("no-available-tables"))
                     .multilineTextAlignment(.center)
                     .font(.headline)
                     .foregroundColor(Color.qpOrange)
@@ -42,7 +42,7 @@ struct TablesView: View {
                                 }
                             }
                             Spacer()
-                            Button("Book") {
+                            Button(LocalizedStringKey("book-table-action")) {
                                 presentAlert.toggle()
                                 selectedTable = table
                             }
@@ -57,7 +57,7 @@ struct TablesView: View {
                 Spacer()
                 HStack {
                     VStack {
-                        Text("Please choose an hour")
+                        Text(LocalizedStringKey("choose-hour"))
                         Picker("", selection: $selectedHour) {
                             ForEach(minHour ... maxHour, id: \.self) {
                                 Text("\($0):00")
@@ -67,7 +67,7 @@ struct TablesView: View {
                     }
                     .padding()
                     VStack {
-                        Text("Please choose a day")
+                        Text(LocalizedStringKey("choose-day"))
                         Picker("", selection: $selectedDay) {
                             ForEach(self.weekdays, id: \.self) {
                                 Text($0)
@@ -83,8 +83,8 @@ struct TablesView: View {
             }
         }
         .background(Color.qpLightGrayColor)
-        .alert("Confirm?", isPresented: $presentAlert) {
-            Button("Yes", role: .cancel) {
+        .alert(LocalizedStringKey("confirm"), isPresented: $presentAlert) {
+            Button(LocalizedStringKey("yes"), role: .cancel) {
                 vm.bookingTable(tableId: self.selectedTable.id ?? "", hour: String(self.selectedHour) + ":00", day: self.selectedDay, userId: UserDefaults.standard.string(forKey: "userId") ?? "")
                 presentAlert.toggle()
                 confirmationAlert.toggle()
@@ -92,24 +92,24 @@ struct TablesView: View {
                 self.selectedDay = weekdays[0]
                 self.selectedDay = self.restaurant.openDays[0]
             }
-            Button("No", role: .destructive) {
+            Button(LocalizedStringKey("no"), role: .destructive) {
                 presentAlert.toggle()
             }
         }
-        .alert("Booking confirmed", isPresented: $confirmationAlert) {
+        .alert(LocalizedStringKey("booking-confirmed"), isPresented: $confirmationAlert) {
             Button("Ok", role: .cancel) {
                 confirmationAlert.toggle()
             }
         }
         .toolbar {
             ToolbarItem(placement: .cancellationAction) {
-                Button("Cancel") {
+                Button(LocalizedStringKey("cancel")) {
                     dismiss()
                 }
                 .foregroundColor(Color.qpOrange)
             }
             ToolbarItem(placement: .principal) {
-                Text("Book a table")
+                Text(LocalizedStringKey("book-table"))
                     .fontWeight(.bold)
                     .foregroundColor(Color.qpBlackColor)
             }

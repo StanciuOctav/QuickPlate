@@ -77,6 +77,7 @@ final class FSOrdersColl {
                 print(error.localizedDescription)
                 return
             }
+            guard let self = self else { return }
             guard let qdSnap = qdSnap else {
                 print("FSOrderColl - There is no order with the id \(id)")
                 return
@@ -88,11 +89,11 @@ final class FSOrdersColl {
             }
             switch order.orderState {
             case .pending:
-                self?.setOrderState(orderId: id, state: .preparing)
+                self.setOrderState(orderId: id, state: .preparing)
             case .preparing:
-                self?.setOrderState(orderId: id, state: .ready)
+                self.setOrderState(orderId: id, state: .ready)
             case .ready:
-                self?.setOrderState(orderId: id, state: .sent)
+                self.setOrderState(orderId: id, state: .sent)
             case .sent:
                 break
             }
@@ -138,6 +139,7 @@ final class FSOrdersColl {
     func deleteOrdersAtTable(id: String) {
         print("Table Id: \(id)")
         coll.getDocuments { [weak self] qdSnap, error in
+            guard let self = self else { return }
             if let error = error {
                 print("FSOrdersColl - Couldn't get orders")
                 print(error.localizedDescription)
@@ -152,7 +154,7 @@ final class FSOrdersColl {
             }
             for index in 0 ..< orders.count {
                 if orders[index].tableId == id {
-                    self?.deleteOrderWith(id: orders[index].id ?? "")
+                    self.deleteOrderWith(id: orders[index].id ?? "")
                 }
             }
         }

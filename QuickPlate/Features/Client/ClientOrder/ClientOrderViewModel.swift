@@ -77,6 +77,7 @@ final class ClientOrderViewModel: ObservableObject {
                     FSFoodsColl.shared.updateFoodstockkWith(id: self.foods[index].id ?? "", nrOrdered: self.numberOrdered[index], addStock: false)
                 }
             }
+            self.calculateTotalCost()
             let order = Order(id: UUID().uuidString,
                               resName: name,
                               tableNr: self.table.tableNumber,
@@ -94,12 +95,12 @@ final class ClientOrderViewModel: ObservableObject {
     // This method checks if the client still has orders that are not in the final state when he requests the bill
     func checkForOrdersStatus() {
         FSOrdersColl.shared.hasUnfinishedOrders(tableId: tableId) { [weak self] result in
-            guard let result = result else {
+            guard let result = result, let self = self else {
                 print("ClientOrderViewModel - Couldn't check for order status")
                 return
             }
-            self?.hasUnfinishedOrders = result
-            self?.canPay = !result
+            self.hasUnfinishedOrders = result
+            self.canPay = !result
         }
     }
 

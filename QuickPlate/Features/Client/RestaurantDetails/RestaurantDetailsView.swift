@@ -10,14 +10,14 @@ import SwiftUI
 
 struct FoodCard: View {
     let food: Food
-
+    
     var body: some View {
         VStack(alignment: .leading) {
             Text(food.foodName)
                 .font(.title2)
                 .bold()
-            Text("Ingredients: " + food.ingredientsString)
-            Text("Price: " + String(food.price))
+            Text(LocalizedStringKey("ingredients").stringValue() + ": " + food.ingredientsString)
+            Text(LocalizedStringKey("price").stringValue() + ": " +  String(food.price))
         }
         .background(Color.qpLightGrayColor)
     }
@@ -28,7 +28,7 @@ struct RestaurantDetailsView: View {
     @State private var isFavourite: Bool = false
     @State private var isPresentingTables: Bool = false
     let restaurant: Restaurant
-
+    
     var body: some View {
         ScrollView {
             VStack {
@@ -48,7 +48,7 @@ struct RestaurantDetailsView: View {
                     isFavourite ? Image(systemName: "star.fill")
                         .foregroundColor(.yellow)
                         .imageScale(.large)
-                        : Image(systemName: "star")
+                    : Image(systemName: "star")
                         .foregroundColor(.yellow)
                         .imageScale(.large)
                 }
@@ -56,13 +56,12 @@ struct RestaurantDetailsView: View {
                 VStack(alignment: .leading) {
                     Text(restaurant.address)
                         .font(.title2)
-                    Text(restaurant.openHour + " - " + restaurant.closeHour)
-
-                        .foregroundColor(.green)
+                    
+                    self.isOpened()
+                    
+                    Text(LocalizedStringKey("rating").stringValue() + String(format: " %.1f", restaurant.rating))
                         .font(.title2)
-                    Text("Rating: " + String(format: "%.1f", restaurant.rating))
-                        .font(.title2)
-                    Text("Meniu")
+                    Text(LocalizedStringKey("menu"))
                         .font(.title)
                         .bold()
                         .padding(EdgeInsets(top: 10, leading: 0, bottom: 0, trailing: 0))
@@ -71,7 +70,7 @@ struct RestaurantDetailsView: View {
                             .ignoresSafeArea(.all, edges: [.leading, .trailing])
                     }
                 }
-
+                
                 Spacer()
             }
             .navigationBarTitle("", displayMode: .inline)
@@ -82,7 +81,7 @@ struct RestaurantDetailsView: View {
                 Button {
                     self.isPresentingTables.toggle()
                 } label: {
-                    Text("Book a table")
+                    Text(LocalizedStringKey("book-table"))
                 }
             }
             .sheet(isPresented: $isPresentingTables) {
@@ -96,21 +95,21 @@ struct RestaurantDetailsView: View {
             }
         }
     }
-}
-
-struct RestaurantDetailsView_Previews: PreviewProvider {
-    static var previews: some View {
-        RestaurantDetailsView(restaurant: Restaurant(id: "3LaipEo6CDKAjn5U4dFT",
-                                                     address: "Piața Muzeului 2, Cluj-Napoca 400019",
-                                                     closeHour: "23:00",
-                                                     location: GeoPoint(latitude: 46.77152454761758, longitude: 23.587253522621697),
-                                                     name: "Marty",
-                                                     // description: "Lorem ipsum dolor sit amet consecteur adisciping elit set diam Lorem ipsum dolor sit amet.",
-                                                     openDays: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-                                                     openHour: "11:00",
-                                                     imageURL: "https://lh5.googleusercontent.com/p/AF1QipPt-VVI8HrxYQPRPmy5NIgi3Si4CI4mBp7JtX8s=w408-h544-k-no",
-                                                     rating: 3.9,
-                                                     reviews: [],
-                                                     tables: []))
+    
+    @ViewBuilder
+    private func isOpened() -> some View {
+        let openHour = Int(restaurant.openHour.split(separator: ":").first!)!
+        let closeHour = Int(restaurant.closeHour.split(separator: ":").first!)!
+        let currentHour = (Calendar.current.component(.hour, from: Date()))
+        
+        if currentHour >= openHour && currentHour <= closeHour {
+            Text(restaurant.openHour + " - " + restaurant.closeHour)
+                .foregroundColor(.green)
+                .font(.title2)
+        } else {
+            Text(LocalizedStringKey("restaurant-closed"))
+                .foregroundColor(.red)
+                .font(.title2)
+        }
     }
 }

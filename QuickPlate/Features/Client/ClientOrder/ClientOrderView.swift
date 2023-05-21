@@ -26,8 +26,8 @@ struct ClientOrderView: View {
 
         // MARK: Sending order
 
-        .alert("You want to send the order?", isPresented: $isShowingConfirmation) {
-            Button("Yes", role: .cancel) {
+        .alert(LocalizedStringKey("send-order-alert"), isPresented: $isShowingConfirmation) {
+            Button(LocalizedStringKey("yes"), role: .cancel) {
                 if vm.didOrderFood() {
                     isShowingConfirmation.toggle()
                     vm.sendOrder()
@@ -36,11 +36,11 @@ struct ClientOrderView: View {
                     noFoodOrdered.toggle()
                 }
             }
-            Button("No", role: .destructive) {
+            Button(LocalizedStringKey("no"), role: .destructive) {
                 isShowingConfirmation.toggle()
             }
         }
-        .alert("Sorry but you didn't order any food", isPresented: $noFoodOrdered) {
+        .alert(LocalizedStringKey("no-food-ordered"), isPresented: $noFoodOrdered) {
             Button("Ok", role: .cancel) {
                 noFoodOrdered.toggle()
             }
@@ -48,7 +48,7 @@ struct ClientOrderView: View {
 
         // MARK: Requesting bill
 
-        .alert("Please wait!\nYou have unprocessed/no orders.", isPresented: $vm.hasUnfinishedOrders) {
+        .alert(LocalizedStringKey("unfinished-orders"), isPresented: $vm.hasUnfinishedOrders) {
             Button("Ok", role: .cancel) {
                 vm.hasUnfinishedOrders.toggle()
             }
@@ -67,7 +67,7 @@ struct ClientOrderView: View {
                 Button {
                     vm.resetOrder()
                 } label: {
-                    Text("Reset order")
+                    Text(LocalizedStringKey("reset-order"))
                         .foregroundColor(Color.qpOrange)
                 }
             }
@@ -75,7 +75,7 @@ struct ClientOrderView: View {
                 Button {
                     isShowingConfirmation.toggle()
                 } label: {
-                    Text("Send order")
+                    Text(LocalizedStringKey("send-order"))
                         .foregroundColor(Color.qpOrange)
                 }
             }
@@ -83,7 +83,7 @@ struct ClientOrderView: View {
                 Button {
                     vm.checkForOrdersStatus()
                 } label: {
-                    Text("Request bill")
+                    Text(LocalizedStringKey("request-bill"))
                         .foregroundColor(Color.qpOrange)
                 }
             }
@@ -138,7 +138,7 @@ struct ClientOrderView: View {
     func OrderedFoodsScrollView() -> some View {
         VStack(alignment: .center) {
             HStack {
-                Text("Your order")
+                Text(LocalizedStringKey("your-order"))
                     .font(.title)
                 Spacer()
                 Text("Total: \(vm.totalCost, specifier: "%.2f")")

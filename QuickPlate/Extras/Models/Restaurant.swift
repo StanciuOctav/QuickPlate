@@ -19,7 +19,6 @@ struct Restaurant: Codable, Identifiable, Hashable {
     var openHour: String = ""
     var imageURL: String = ""
     var rating: Double = 0.0
-    var reviews = [String]()
     var tables = [String]()
     var menu = [String]()
     var minHour: Int {

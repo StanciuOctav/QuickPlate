@@ -17,7 +17,7 @@ struct WaiterView: View {
         VStack {
             TopSection()
             if vm.orders.isEmpty {
-                Text("There are no orders")
+                Text(LocalizedStringKey("employee-no-orders"))
                     .font(.title2)
                 Spacer()
             } else {
@@ -34,9 +34,9 @@ struct WaiterView: View {
                                 } label: {
                                     Image(systemName: "checkmark.circle")
                                     if order.orderState == .pending {
-                                        Text("Send to kitchen")
+                                        Text(LocalizedStringKey("send-to-kitchen"))
                                     } else if order.orderState == .ready {
-                                        Text("Deliver Order")
+                                        Text(LocalizedStringKey("deliver-order"))
                                     }
                                 }
                                 .disabled(!vm.canTakeOrder && order.orderState == .pending)
@@ -47,7 +47,7 @@ struct WaiterView: View {
                                     self.vm.removeOrder(order.id ?? "")
                                 } label: {
                                     Image(systemName: "x.circle")
-                                    Text("Reject Order")
+                                    Text(LocalizedStringKey("reject-order"))
                                 }
                                 .foregroundColor(.red)
                             }
@@ -59,8 +59,8 @@ struct WaiterView: View {
             }
         }
         .frame(maxWidth: .infinity)
-        .alert("Are you sure you want to Sign Out?", isPresented: $isShowingSignOutAlert) {
-            Button("Yes", role: .cancel) {
+        .alert(LocalizedStringKey("signout-alert"), isPresented: $isShowingSignOutAlert) {
+            Button(LocalizedStringKey("yes"), role: .cancel) {
                 vm.signOut(completion: { didNotSignOut in
                     guard let _ = didNotSignOut else {
                         print("UserProfileView - The user couldn't sign out")
@@ -71,7 +71,7 @@ struct WaiterView: View {
                 })
                 self.isShowingSignOutAlert.toggle()
             }
-            Button("No", role: .destructive) { }
+            Button(LocalizedStringKey("no"), role: .destructive) { }
         }
         .task {
             await self.vm.fetchLoggedUserAndRes()
@@ -98,7 +98,7 @@ struct WaiterView: View {
                     Button {
                         self.isShowingSignOutAlert.toggle()
                     } label: {
-                        Text("Sign out")
+                        Text(LocalizedStringKey("logout"))
                             .foregroundColor(Color.qpLightGrayColor)
                             .padding(.horizontal, 10)
                             .background(Capsule(style: .circular).foregroundColor(.black))
@@ -108,7 +108,7 @@ struct WaiterView: View {
             .padding()
             HStack {
                 Spacer()
-                Text("Works for:")
+                Text(LocalizedStringKey("works-at"))
                 Text(vm.restaurant.value.name)
                     .bold()
                 Spacer()

@@ -7,38 +7,35 @@
 
 import SwiftUI
 
-private enum SelectedTab: String {
-    case bookedTables = "Booked Tables"
-    case favRests = "Favourite Restaurants"
-}
-
-private var tags: [SelectedTab] = [.bookedTables, .favRests]
+private var tags: [String] = [LocalizedStringKey("booked-tables").stringValue(), LocalizedStringKey("favourite-restaurants").stringValue()]
 
 struct UserProfileView: View {
     @EnvironmentObject var authManager: AuthManager
     @StateObject private var vm = UserProfileViewModel()
     @State private var selectedReservation = Table()
-
+    
     @State private var isShowingCancelBooking: Bool = false
     @State private var isShowingSignOutAlert: Bool = false
-    @State private var activeTag: SelectedTab = tags[0]
+    @State private var activeTag: String = tags[0]
     @State private var confirmedArrival: Bool = false
     @State private var confirmedBookingTableId: String = ""
-
+    
     @Namespace private var animation
-
+    
     var body: some View {
         VStack {
             TopSection()
-
+            
             TagsView()
                 .padding(.vertical, 10)
-
+            
             switch activeTag {
-            case .bookedTables:
+            case LocalizedStringKey("booked-tables").stringValue():
                 BookedTablesView()
-            case .favRests:
+            case LocalizedStringKey("favourite-restaurants").stringValue():
                 FavouriteRestaurantsView()
+            default:
+                EmptyView()
             }
         }
         .frame(maxWidth: .infinity)
@@ -47,15 +44,15 @@ struct UserProfileView: View {
                 ClientOrderView(tableId: self.$confirmedBookingTableId)
             }
         }
-        .alert("Are you sure you want to cancel the reservation?", isPresented: $isShowingCancelBooking) {
-            Button("Yes", role: .cancel) {
+        .alert(LocalizedStringKey("cancel-reservation"), isPresented: $isShowingCancelBooking) {
+            Button(LocalizedStringKey("yes"), role: .cancel) {
                 vm.cancelBookingForTableWith(tableId: self.selectedReservation.id ?? "")
                 self.isShowingCancelBooking.toggle()
             }
-            Button("No", role: .destructive) { }
+            Button(LocalizedStringKey("no"), role: .destructive) { }
         }
-        .alert("Are you sure you want to Sign Out?", isPresented: $isShowingSignOutAlert) {
-            Button("Yes", role: .cancel) {
+        .alert(LocalizedStringKey("signout-alert"), isPresented: $isShowingSignOutAlert) {
+            Button(LocalizedStringKey("yes"), role: .cancel) {
                 vm.signOut(completion: { didNotSignOut in
                     guard let _ = didNotSignOut else {
                         print("UserProfileView - The user couldn't sign out")
@@ -66,7 +63,7 @@ struct UserProfileView: View {
                 })
                 self.isShowingSignOutAlert.toggle()
             }
-            Button("No", role: .destructive) { }
+            Button(LocalizedStringKey("no"), role: .destructive) { }
         }
         .task {
             await self.vm.fetchLoggedUser()
@@ -74,7 +71,7 @@ struct UserProfileView: View {
         }
         .background(Color.qpBeigeColor)
     }
-
+    
     @ViewBuilder
     func BookedTablesView() -> some View {
         if !vm.user.bookedTables.isEmpty {
@@ -82,7 +79,7 @@ struct UserProfileView: View {
                 ForEach(vm.bookedTables, id: \.self.id) { table in
                     HStack {
                         BookedTableView(table: table)
-
+                        
                         Spacer()
                         VStack(alignment: .trailing) {
                             Button {
@@ -93,7 +90,7 @@ struct UserProfileView: View {
                                     Image(systemName: "checkmark.circle")
                                         .resizable()
                                         .fixedSize()
-                                    Text("Confirm arrival")
+                                    Text(LocalizedStringKey("confirm-arrival"))
                                 }
                                 .foregroundColor(.green)
                             }
@@ -105,7 +102,7 @@ struct UserProfileView: View {
                                     Image(systemName: "x.circle.fill")
                                         .resizable()
                                         .fixedSize()
-                                    Text("Cancel")
+                                    Text(LocalizedStringKey("cancel"))
                                 }
                                 .foregroundColor(.red)
                             }
@@ -122,12 +119,12 @@ struct UserProfileView: View {
             }
         } else {
             Spacer()
-            Text("You don't have any booked tables at the moment")
+            Text(LocalizedStringKey("no-booked-tables"))
                 .font(.headline)
             Spacer()
         }
     }
-
+    
     @ViewBuilder
     func TopSection() -> some View {
         VStack(alignment: .center) {
@@ -135,23 +132,28 @@ struct UserProfileView: View {
                 Image(systemName: "person.circle.fill")
                     .resizable()
                     .scaledToFit()
-                VStack(alignment: .leading, spacing: 3) {
-                    Text(vm.user.username)
-                        .font(.title2)
-                        .bold()
-                    Text(vm.user.firstName + " " + vm.user.lastName)
-                    Text(vm.user.email)
-                }
-                Spacer()
-                VStack {
-                    Button {
-                        self.isShowingSignOutAlert.toggle()
-                    } label: {
-                        Text("Sign out")
-                            .foregroundColor(Color.qpLightGrayColor)
-                            .padding(.horizontal, 10)
-                            .background(Capsule(style: .circular).foregroundColor(.black))
+                VStack(alignment: .leading) {
+                    HStack {
+                        Text(vm.user.username)
+                            .font(.title2)
+                            .bold()
                     }
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text(vm.user.firstName + " " + vm.user.lastName)
+                            Text(vm.user.email)
+                        }
+                        Button {
+                            self.isShowingSignOutAlert.toggle()
+                        } label: {
+                            Text(LocalizedStringKey("logout"))
+                                .foregroundColor(Color.qpLightGrayColor)
+                                .font(.subheadline)
+                                .padding(.horizontal, 10)
+                                .background(Capsule(style: .circular).foregroundColor(.black))
+                        }
+                    }
+                    
                 }
             }
             .padding()
@@ -159,12 +161,12 @@ struct UserProfileView: View {
         .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.size.height / 6)
         .background(Color.qpOrange)
     }
-
+    
     @ViewBuilder
     func TagsView() -> some View {
         HStack(alignment: .center) {
             ForEach(tags, id: \.self) { tag in
-                Text(tag.rawValue)
+                Text(tag)
                     .font(.caption)
                     .padding(.all, 10)
                     .background {
@@ -205,7 +207,7 @@ struct UserProfileView: View {
             }
         } else {
             Spacer()
-            Text("You don't have any favourite restaurants yet")
+            Text(LocalizedStringKey("no-fav-restaurants"))
                 .font(.headline)
             Spacer()
         }

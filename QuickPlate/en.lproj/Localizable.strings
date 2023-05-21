@@ -1,10 +1,16 @@
 /* 
-  Localizable.strings
-  QuickPlate
+ Localizable.strings
+ QuickPlate
+ 
+ Created by Ioan-Octavian Stanciu on 02.01.2023.
+ 
+ */
 
-  Created by Ioan-Octavian Stanciu on 02.01.2023.
-  
-*/
+// MARK: GENERAL
+"confirm" = "Confirm?";
+"yes" = "Yes";
+"no" = "No";
+"cancel" = "Cancel";
 
 // MARK: RESTAURANTS LIST
 "search-placeholder" = "Search for restaurant...";
@@ -43,3 +49,46 @@
 "map" = "Map";
 "restaurants" = "Restaurants";
 "account" = "Profile";
+
+// MARK: RESTAURANTS TAB
+"restaurant-closed" = "Closed";
+"rating" = "Rating";
+"ingredients" = "Ingredients";
+"price" = "Price";
+"menu" = "Menu";
+"book-table" = "Book a table";
+"no-available-tables" = "We're sorry but all tables are booked at the moment 😢";
+"book-table-action" = "Book";
+"choose-hour" = "Please choose an hour";
+"choose-day" = "Please choose a day";
+"booking-confirmed" = "Booking confirmed";
+
+// MARK: USER PROFILES
+// MARK: CLIENT
+"booked-tables" = "Booked tables";
+"favourite-restaurants" = "Favourite Restaurants";
+"cancel-reservation" = "Are you sure you want to cancel the reservation?";
+"signout-alert" = "Are you sure you want to Sign Out?";
+"confirm-arrival" = "Confirm arrival";
+"no-booked-tables" = "You don't have any booked tables at the moment";
+"no-fav-restaurants" = "You don't have any favourite restaurants yet";
+"send-order-alert" = "You want to send the order?";
+"no-food-ordered" = "Sorry but you didn't order any food";
+"unfinished-orders" = "Please wait!\nYou have unprocessed/no orders.";
+"reset-order" = "Reset order";
+"send-order" = "Send order";
+"request-bill" = "Request bill";
+"your-order" = "Your order";
+"select-payment" = "How do you want to pay?";
+"pay-bill" = "Choose payment method";
+"card-pay" = "By card";
+"app-pay" = "Using the app";
+"payment-confirmation" = "Our staff will get in touch with you shortly!";
+
+// MARK: EMPLOYEE
+"employee-no-orders" = "There are no orders";
+"send-to-kitchen" = "Send to kitchen";
+"deliver-order" = "Deliver Order";
+"reject-order" = "Reject Order";
+"works-at" = "Works at:";
+"order-ready" = "Order is ready";

@@ -17,7 +17,7 @@ struct CookView: View {
         VStack {
             TopSection()
             if vm.orders.isEmpty {
-                Text("There are no orders")
+                Text(LocalizedStringKey("employee-no-orders"))
                     .font(.title2)
                 Spacer()
             } else {
@@ -33,7 +33,7 @@ struct CookView: View {
                                     self.vm.acceptOrder(id: order.id ?? "")
                                 } label: {
                                     Image(systemName: "checkmark.circle")
-                                    Text("Order is ready")
+                                    Text(LocalizedStringKey("order-ready"))
                                 }
                                 .foregroundColor(.green)
                             }
@@ -45,8 +45,8 @@ struct CookView: View {
             }
         }
         .frame(maxWidth: .infinity)
-        .alert("Are you sure you want to Sign Out?", isPresented: $isShowingSignOutAlert) {
-            Button("Yes", role: .cancel) {
+        .alert(LocalizedStringKey("signout-alert"), isPresented: $isShowingSignOutAlert) {
+            Button(LocalizedStringKey("yes"), role: .cancel) {
                 vm.signOut(completion: { didNotSignOut in
                     guard let _ = didNotSignOut else {
                         print("UserProfileView - The user couldn't sign out")
@@ -57,7 +57,7 @@ struct CookView: View {
                 })
                 self.isShowingSignOutAlert.toggle()
             }
-            Button("No", role: .destructive) { }
+            Button(LocalizedStringKey("no"), role: .destructive) { }
         }
         .task {
             await self.vm.fetchLoggedUserAndRes()
@@ -84,7 +84,7 @@ struct CookView: View {
                     Button {
                         self.isShowingSignOutAlert.toggle()
                     } label: {
-                        Text("Sign out")
+                        Text(LocalizedStringKey("logout"))
                             .foregroundColor(Color.qpLightGrayColor)
                             .padding(.horizontal, 10)
                             .background(Capsule(style: .circular).foregroundColor(.black))
@@ -94,7 +94,7 @@ struct CookView: View {
             .padding()
             HStack {
                 Spacer()
-                Text("Works for:")
+                Text(LocalizedStringKey("works-at"))
                 Text(vm.restaurant.value.name)
                     .bold()
                 Spacer()

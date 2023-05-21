@@ -14,7 +14,7 @@ struct BillView: View {
     var body: some View {
         VStack(alignment: .center) {
             HStack {
-                Text("Your order")
+                Text(LocalizedStringKey("your-order"))
                     .font(.title)
                 Spacer()
                 Text("Total: \(vm.totalCost, specifier: "%.2f")")
@@ -39,22 +39,22 @@ struct BillView: View {
             }
         }
         .padding()
-        .alert("How do you want to pay?", isPresented: $vm.canPay) {
+        .alert(LocalizedStringKey("choose-payment"), isPresented: $vm.canPay) {
             Button("Cash") {
                 self.vm.canPay.toggle()
                 self.vm.selectedPaymentMethod.toggle()
             }
-            Button("By card") {
+            Button(LocalizedStringKey("card-pay")) {
                 self.vm.canPay.toggle()
                 self.vm.selectedPaymentMethod.toggle()
             }
-            Button("Using the app") {
+            Button(LocalizedStringKey("app-pay")) {
                 self.vm.canPay.toggle()
                 self.vm.selectedPaymentMethod.toggle()
             }
-            Button("Go back", role: .cancel) {}
+            Button(LocalizedStringKey("cancel"), role: .cancel) {}
         }
-        .alert("Our staff will get in touch with you shortly!", isPresented: $vm.selectedPaymentMethod) {
+        .alert(LocalizedStringKey("payment-confirmation"), isPresented: $vm.selectedPaymentMethod) {
             Button("Ok", role: .cancel) {
                 self.vm.selectedPaymentMethod.toggle()
                 dismiss()
@@ -68,7 +68,7 @@ struct BillView: View {
                 Button {
                     vm.canPay.toggle()
                 } label: {
-                    Text("Choose payment method")
+                    Text(LocalizedStringKey("pay-bill"))
                         .foregroundColor(Color.qpOrange)
                 }
             }

@@ -6,6 +6,12 @@
   
 */
 
+// MARK: GENERAL
+"confirm" = "Confirmi?";
+"yes" = "Da";
+"no" = "Nu";
+"cancel" = "Anuleaza";
+
 // MARK: RESTAURANTS LIST
 "search-placeholder" = "Cauta restaurant...";
 
@@ -37,10 +43,51 @@
 // MARK: ACCOUNT TYPE
 "client" = "Client";
 "waiter" = "Chelner";
-"bartender" = "Barman";
 "cook" = "Bucatar";
 
 // MARK: TAB BAR
-"map" = "Map";
-"restaurants" = "Restaurants";
-"account" = "Profile";
+"map" = "Harta";
+"restaurants" = "Restaurante";
+"account" = "Profil";
+
+// MARK: RESTAURANTS TAB
+"restaurant-closed" = "Inchis";
+"rating" = "Recenzie";
+"ingredients" = "Ingrediente";
+"price" = "Pret";
+"menu" = "Meniu";
+"book-table" = "Rezerva o masa";
+"no-available-tables" = "Ne pare rau, dar nu este nicio masa libera 😢";
+"book-table-action" = "Rezerva";
+"choose-hour" = "Alege ora";
+"choose-day" = "Alege ziua";
+"booking-confirmed" = "Rezervare confirmata";
+
+// MARK: USER PROFILE
+"booked-tables" = "Rezervari";
+"favourite-restaurants" = "Restaurante preferate";
+"cancel-reservation" = "Esti sigur ca vrei sa anulezi rezervarea?";
+"signout-alert" = "Esti sigur ca vrei sa te deconectezi?";
+"confirm-arrival" = "Confirma sosirea";
+"no-booked-tables" = "Momentan nu aveti nicio rezervare facuta";
+"no-fav-restaurants" = "Momentan nu aveti niciun restaurant preferat";
+"send-order-alert" = "Confirmi plasarea comenzii?";
+"no-food-ordered" = "Ne pare rau, dar nu ai plasat nicio comanda";
+"unfinished-orders" = "Va rugam sa asteptati!\nAveti comenzi neterminate sau nicio comanda plasata.";
+"reset-order" = "Reseteaza comanda";
+"send-order" = "Trimite comanda";
+"request-bill" = "Cere nota";
+"your-order" = "Comanda ta";
+"select-payment" = "Cum doriti sa achitati?";
+"pay-bill" = "Achitati nota de plata";
+"card-pay" = "Cu cardul";
+"app-pay" = "Folosind aplicatia";
+"payment-confirmation" = "Unul dintre angajatii nostri o sa vina imediat!";
+
+// MARK: EMPLOYEE
+"employee-no-orders" = "Nu sunt comenzi";
+"send-to-kitchen" = "Trimite la bucatarie";
+"deliver-order" = "Serveste comanda";
+"reject-order" = "Anuleaza comanda";
+"works-at" = "Lucreaza la:";
+"order-ready" = "Comanda este gata";

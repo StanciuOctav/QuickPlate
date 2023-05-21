@@ -28,10 +28,10 @@ struct RestaurantCardView: View {
                 Text(restaurant.address)
                     .font(.caption)
                     .multilineTextAlignment(.leading)
-                Text(restaurant.openHour + " - " + restaurant.closeHour)
-                    .foregroundColor(.green)
-                    .font(.caption)
-                Text("Rating: " + String(format: "%.1f", restaurant.rating))
+                
+                self.isOpened()
+
+                Text(LocalizedStringKey("rating").stringValue() + String(format: " %.1f", restaurant.rating))
                     .font(.caption)
             }
             .padding(.vertical, 5)
@@ -39,5 +39,22 @@ struct RestaurantCardView: View {
         }
         .frame(maxWidth: .infinity, maxHeight: 100)
         .background(.white)
+    }
+    
+    @ViewBuilder
+    private func isOpened() -> some View {
+        let openHour = Int(restaurant.openHour.split(separator: ":").first!)!
+        let closeHour = Int(restaurant.closeHour.split(separator: ":").first!)!
+        let currentHour = (Calendar.current.component(.hour, from: Date()))
+        
+        if currentHour >= openHour && currentHour <= closeHour {
+            Text(restaurant.openHour + " - " + restaurant.closeHour)
+                .foregroundColor(.green)
+                .font(.caption)
+        } else {
+            Text(LocalizedStringKey("restaurant-closed"))
+                .foregroundColor(.red)
+                .font(.caption)
+        }
     }
 }
