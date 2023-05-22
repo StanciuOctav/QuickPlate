@@ -14,15 +14,15 @@ final class SignInViewModel: ObservableObject {
     @Published var password: String = ""
     // For views
     @Published var showCredentialsErrors: Bool = false
-
+    
     func setShowCredentialsErrors(withBool value: Bool) {
         showCredentialsErrors = value
     }
-
+    
     func getShowCredentialsError() -> Bool {
         return showCredentialsErrors
     }
-
+    
     func signIn(completion: @escaping (Result<Int, StartupError>) -> Void) {
         FirebaseEmailAuth.shared.doLogin(email: email, password: password) { result in
             switch result {

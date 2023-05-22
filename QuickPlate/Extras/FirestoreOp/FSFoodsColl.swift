@@ -11,7 +11,7 @@ import Foundation
 final class FSFoodsColl {
     private let coll = Firestore.firestore().collection(FSCollNames.foods.rawValue)
     static let shared = FSFoodsColl()
-
+    
     func fetchAllFoods(completion: @escaping ([Food]?) -> Void) async {
         coll.addSnapshotListener { querySnapshot, error in
             if let error = error {
@@ -31,7 +31,7 @@ final class FSFoodsColl {
             completion(foods)
         }
     }
-
+    
     func fetchFoodWith(id: String, completion: @escaping (Food?) -> Void) {
         coll.document(id).getDocument { qdSnap, error in
             if let error = error {
@@ -48,7 +48,7 @@ final class FSFoodsColl {
             completion(try? qdSnap.data(as: Food.self))
         }
     }
-
+    
     func updateFoodstockkWith(id: String, nrOrdered: Int, addStock: Bool) {
         fetchFoodWith(id: id) { food in
             guard let food = food else { return }

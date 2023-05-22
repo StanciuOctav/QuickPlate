@@ -19,7 +19,7 @@ struct MyAnnotationItem: Identifiable {
 final class MapViewModel: ObservableObject {
     @Published var annotationItems: [MyAnnotationItem] = []
     private var restaurants: [RestaurantCardDTO] = []
-
+    
     func fetchAllRestaurants() async {
         await FSResColl.shared.fetchAllRestaurants(completion: { restaurants in
             guard let restaurants = restaurants else { return }
@@ -29,7 +29,7 @@ final class MapViewModel: ObservableObject {
             self.updateAnnotationItems()
         })
     }
-
+    
     func returnSelectedRestaurantWith(id: String) -> RestaurantCardDTO? {
         if let restaurant = restaurants.first(where: { $0.id == id }) {
             return restaurant
@@ -43,7 +43,7 @@ final class MapViewModel: ObservableObject {
 extension MapViewModel {
     private func updateAnnotationItems() {
         annotationItems.removeAll()
-
+        
         for restaurant in restaurants {
             let id = restaurant.id
             let geoPointLocation = restaurant.location
@@ -53,7 +53,7 @@ extension MapViewModel {
                 MyAnnotationItem(id: id ?? "",
                                  coordinate: CLLocationCoordinate2D(latitude: geoPointLocation.latitude, longitude: geoPointLocation.longitude),
                                  restaurantRating: rating
-                )
+                                )
             )
         }
     }

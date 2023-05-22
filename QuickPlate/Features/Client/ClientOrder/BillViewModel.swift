@@ -14,11 +14,11 @@ final class BillViewModel: ObservableObject {
     @Published var totalCost: Double = 0
     @Published var canPay: Bool = false
     @Published var selectedPaymentMethod: Bool = false
-
+    
     private var orders = CurrentValueSubject<[Order], Never>([Order]())
     private var foodIds: [String] = []
     private var cancelables = [AnyCancellable]()
-
+    
     func getOrders() async {
         await FSOrdersColl.shared.fetchAllOrdersForCurrentUser({ orders in
             guard let orders = orders else { return }
@@ -26,12 +26,12 @@ final class BillViewModel: ObservableObject {
                 order.userId == UserDefaults.standard.string(forKey: "userId") ? order : nil
             })
         })
-
+        
         orders.sink { [unowned self] _ in
             self.getFoods()
         }.store(in: &cancelables)
     }
-
+    
     private func getFoodIndex(_ foodId: String) -> Int {
         for index in 0..<foodIds.count {
             if foodIds[index] == foodId {

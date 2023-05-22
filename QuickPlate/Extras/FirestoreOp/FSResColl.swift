@@ -26,7 +26,7 @@ final class FSResColl {
                 return
             }
             let restaurants = documents.compactMap { qdSnap -> Restaurant? in
-               return try? qdSnap.data(as: Restaurant.self)
+                return try? qdSnap.data(as: Restaurant.self)
             }
             completion(restaurants)
         }

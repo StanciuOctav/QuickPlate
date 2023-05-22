@@ -15,12 +15,12 @@ struct TablesView: View {
     @State private var selectedTable = Table()
     @State private var selectedHour: Int = 0
     @State private var selectedDay: String = ""
-
+    
     let restaurant: Restaurant
     let minHour: Int
     let maxHour: Int
     let weekdays: [String]
-
+    
     var body: some View {
         VStack {
             if vm.tables.count == 0 {

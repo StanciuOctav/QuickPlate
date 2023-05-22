@@ -12,12 +12,12 @@ import SwiftUI
 struct MapView: View {
     @StateObject private var locManager = LocationManager()
     @State private var tracking: MapUserTrackingMode = .follow
-
+    
     @StateObject private var vm = MapViewModel()
     @State private var selectedRestaurant: RestaurantCardDTO?
-
+    
     private var buttonHeightAndWidth: CGFloat = 50
-
+    
     var body: some View {
         ZStack(alignment: .bottom) {
             ZStack(alignment: .top) {
@@ -26,25 +26,25 @@ struct MapView: View {
                     showsUserLocation: true,
                     userTrackingMode: $tracking,
                     annotationItems: $vm.annotationItems) { item in
-                        MapAnnotation(coordinate: item.wrappedValue.coordinate) {
-                            Button {
-                                selectedRestaurant = vm.returnSelectedRestaurantWith(id: item.id)
-                            } label: {
-                                ZStack(alignment: .center) {
-                                    Image("restaurant-pin")
-                                        .resizable()
-                                    Text("\(String(format: "%.1f", item.restaurantRating.wrappedValue))")
-                                        .foregroundColor(.white)
-                                }
+                    MapAnnotation(coordinate: item.wrappedValue.coordinate) {
+                        Button {
+                            selectedRestaurant = vm.returnSelectedRestaurantWith(id: item.id)
+                        } label: {
+                            ZStack(alignment: .center) {
+                                Image("restaurant-pin")
+                                    .resizable()
+                                Text("\(String(format: "%.1f", item.restaurantRating.wrappedValue))")
+                                    .foregroundColor(.white)
                             }
                         }
                     }
+                }
                     .ignoresSafeArea(edges: .top)
                     .tint(Color.qpOrange)
-
+                
                 HStack {
                     Spacer()
-
+                    
                     Button {
                         locManager.locationManager.startUpdatingLocation()
                     } label: {

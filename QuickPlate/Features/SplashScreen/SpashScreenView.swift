@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SplashScreenView: View {
     @Binding var showing: Bool
-
+    
     var body: some View {
         ZStack {
             Color("qp-beige-color").ignoresSafeArea()

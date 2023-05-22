@@ -10,9 +10,9 @@ import SwiftUI
 struct CookView: View {
     @EnvironmentObject var authManager: AuthManager
     @StateObject private var vm = CookViewModel()
-
+    
     @State private var isShowingSignOutAlert: Bool = false
-
+    
     var body: some View {
         VStack {
             TopSection()
@@ -64,7 +64,7 @@ struct CookView: View {
         }
         .background(Color.qpBeigeColor)
     }
-
+    
     @ViewBuilder
     func TopSection() -> some View {
         VStack(alignment: .center) {

@@ -12,7 +12,7 @@ final class UserProfileViewModel: ObservableObject {
     @Published var user = MyUser()
     @Published var bookedTables = [Table]()
     @Published var favouriteRestaurants = [Restaurant]()
-
+    
     func updateBookedTables(_ user: MyUser) {
         bookedTables.removeAll()
         for tId in user.bookedTables {
@@ -24,7 +24,7 @@ final class UserProfileViewModel: ObservableObject {
             }
         }
     }
-
+    
     func cancelBookingForTableWith(tableId: String) {
         FSUserColl.shared.deleteBookedTableWith(tableId: tableId) { res in
             switch res {
@@ -47,7 +47,7 @@ extension UserProfileViewModel {
             self.updateBookedTables(self.user)
         })
     }
-
+    
     func fetchFavRests() async {
         await FSUserColl.shared.fetchFavouriteRestaurants(completion: { results in
             self.favouriteRestaurants.removeAll()

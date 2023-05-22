@@ -15,7 +15,6 @@
 		535195D0293C9C6600A44820 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535195CF293C9C6500A44820 /* SignInViewModel.swift */; };
 		535195D3293CA0DB00A44820 /* FirebaseEmailAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535195D2293CA0DB00A44820 /* FirebaseEmailAuth.swift */; };
 		535195E4293CCA2900A44820 /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535195E3293CCA2900A44820 /* UserProfileViewModel.swift */; };
-		535195E6293CCCDA00A44820 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 535195E5293CCCDA00A44820 /* View+Extensions.swift */; };
 		5358FDC32972E0BF00F75614 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5358FDC22972E0BF00F75614 /* AuthManager.swift */; };
 		5379FB0E296AB87C00A1A870 /* RestaurantsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5379FB0D296AB87C00A1A870 /* RestaurantsListViewModel.swift */; };
 		537A1B19294658E000979FCA /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 537A1B18294658E000979FCA /* Restaurant.swift */; };
@@ -88,7 +87,6 @@
 		535195CF293C9C6500A44820 /* SignInViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		535195D2293CA0DB00A44820 /* FirebaseEmailAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseEmailAuth.swift; sourceTree = "<group>"; };
 		535195E3293CCA2900A44820 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
-		535195E5293CCCDA00A44820 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		5358FDC22972E0BF00F75614 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		5379FB0D296AB87C00A1A870 /* RestaurantsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantsListViewModel.swift; sourceTree = "<group>"; };
 		537A1B18294658E000979FCA /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
@@ -202,7 +200,6 @@
 			isa = PBXGroup;
 			children = (
 				5387CFD929252BD60010344B /* Color+CusomColors.swift */,
-				535195E5293CCCDA00A44820 /* View+Extensions.swift */,
 				538789812963019600F42F9A /* LocalizedStringKey+String.swift */,
 				5308DF3B29742B6F00AB9D4A /* CLLocationCoordinate2D+Extension.swift */,
 				5308DF3D29742CE400AB9D4A /* GeoPoint+Extensions.swift */,
@@ -531,7 +528,6 @@
 				53E2FD25292B772400D63069 /* RestaurantsListView.swift in Sources */,
 				D46F98F729B65FD600960B1E /* FSTableColl.swift in Sources */,
 				5308DF3E29742CE400AB9D4A /* GeoPoint+Extensions.swift in Sources */,
-				535195E6293CCCDA00A44820 /* View+Extensions.swift in Sources */,
 				D4FBCED429F816B500D4FA77 /* BillView.swift in Sources */,
 				D46F98F929B65FE300960B1E /* FSResColl.swift in Sources */,
 				D4CB312929B9CF22000466BA /* RestaurantCardView.swift in Sources */,

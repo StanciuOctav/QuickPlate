@@ -22,5 +22,5 @@ struct Table: Codable, Identifiable {
 extension Table: Comparable {
     static func <(lhs: Table, rhs: Table) -> Bool {
         return lhs.id! < rhs.id!
-       }
+    }
 }

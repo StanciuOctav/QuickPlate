@@ -11,15 +11,15 @@ struct SignInView: View {
     private let maxHeight: CGFloat = 50
     private let roundedRectangleLineWidth: CGFloat = 3
     private let fontSize: CGFloat = 20
-
+    
     @EnvironmentObject var authManager: AuthManager
     @StateObject var viewModel = SignInViewModel()
-
+    
     var body: some View {
         ScrollView {
             VStack {
                 // MARK: HEADER
-
+                
                 Image("app-icon")
                 Text(LocalizedStringKey("welcome"))
                     .fontWeight(.medium)
@@ -27,15 +27,15 @@ struct SignInView: View {
                 Text(LocalizedStringKey("signin-message"))
                     .multilineTextAlignment(.center)
                     .padding()
-
+                
                 // MARK: BODY
-
+                
                 VStack(spacing: 30) {
                     TextField(LocalizedStringKey("email"), text: $viewModel.email)
                         .signInTextFieldStyle(withHeight: self.maxHeight, topLeading: 10, backgroundColor: Color.qpLightGrayColor)
                         .keyboardType(.emailAddress)
                     SecureInputView(LocalizedStringKey("password").stringValue(), text: $viewModel.password, maxHeight: self.maxHeight, topLeading: 10, backgroundColor: Color.qpLightGrayColor)
-
+                    
                     if viewModel.getShowCredentialsError() {
                         // FIXME: This remains if the user doesn't insert the right credentials AND comes back from the Sign Up Page
                         Text(LocalizedStringKey("credentials-error"))
@@ -43,12 +43,12 @@ struct SignInView: View {
                     } else {
                         EmptyView()
                     }
-
+                    
                     SignInButton()
-
+                    
                     Text(LocalizedStringKey("or"))
                         .frame(maxWidth: .infinity)
-
+                    
                     CreateAccountButton()
                 }
             }
@@ -59,7 +59,7 @@ struct SignInView: View {
             viewModel.password = ""
         }
     }
-
+    
     @ViewBuilder
     func SignInButton() -> some View {
         Button {
@@ -94,7 +94,7 @@ struct SignInView: View {
         .background(Color.qpOrange)
         .cornerRadius(.infinity)
     }
-
+    
     @ViewBuilder
     func CreateAccountButton() -> some View {
         Button {

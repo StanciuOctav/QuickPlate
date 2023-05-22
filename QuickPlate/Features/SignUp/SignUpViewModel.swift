@@ -19,38 +19,38 @@ final class SignUpViewModel: ObservableObject {
     // FIXME: Maybe in the future have a list of working restaurants with DocumentReferences in them (REMEMBER: DocumentReference cannot be empty in firestore or it may not be a document at the specified path)
     @Published var restaurantId: String = ""
     @Published var restaurants: [RestaurantSignUpDTO] = []
-
+    
     var dropdownRoles = [LocalizedStringKey(stringLiteral: "client").stringValue(),
                          LocalizedStringKey(stringLiteral: "waiter").stringValue(),
                          LocalizedStringKey(stringLiteral: "cook").stringValue()]
-
+    
     var passwordWrongFormat: Bool {
         return passwordHasWrongFormat()
     }
-
+    
     var passwordsAreDifferent: Bool {
         return passwordsDontMatch()
     }
-
+    
     private func passwordHasWrongFormat() -> Bool {
         return password.count < 6 || password == ""
     }
-
+    
     private func passwordsDontMatch() -> Bool {
         return password == "" || confirmPassword == "" || password != confirmPassword
     }
-
+    
     func allFieldsAreCompleted() -> Bool {
         return username != "" &&
-            firstName != "" &&
-            lastName != "" &&
-            email != ""
+        firstName != "" &&
+        lastName != "" &&
+        email != ""
     }
-
+    
     func setRestaurantId(withId id: String) {
         restaurantId = id
     }
-
+    
     func doSignUp(withRole role: String, completion: @escaping (Result<Int, StartupError>) -> Void) {
         FirebaseEmailAuth.shared.doRegister(withEmail: email, andPassword: password) { result in
             switch result {
@@ -71,7 +71,7 @@ final class SignUpViewModel: ObservableObject {
             }
         }
     }
-
+    
     func fetchAllRestaurants() async {
         await FSResColl.shared.fetchAllRestaurants { restaurants in
             guard let restaurants = restaurants else { return }

@@ -31,13 +31,13 @@ final class RestaurantsListViewModel: ObservableObject {
     func isRestaurantFavourite(_ id: String?) -> Bool {
         return self.favouritesRes.contains(where: { $0 == id ?? "" })
     }
-
+    
     private func initializeDefaultRestaurants() {
         for res in restaurants {
             defaultRestaurants.append(res)
         }
     }
-
+    
     func resetRestaurants() {
         restaurants.removeAll()
         defaultRestaurants.forEach { res in

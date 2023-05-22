@@ -10,9 +10,9 @@ import SwiftUI
 struct WaiterView: View {
     @EnvironmentObject var authManager: AuthManager
     @StateObject private var vm = WaiterViewViewModel()
-
+    
     @State private var isShowingSignOutAlert: Bool = false
-
+    
     var body: some View {
         VStack {
             TopSection()
@@ -78,7 +78,7 @@ struct WaiterView: View {
         }
         .background(Color.qpBeigeColor)
     }
-
+    
     @ViewBuilder
     func TopSection() -> some View {
         VStack(alignment: .center) {

@@ -14,7 +14,7 @@ struct ClientOrderView: View {
     @State private var noFoodOrdered: Bool = false
     @State private var selectedPaymentMethod: Bool = false
     @Binding var tableId: String
-
+    
     var body: some View {
         VStack {
             AllFoodsScrollView()
@@ -23,9 +23,9 @@ struct ClientOrderView: View {
         }
         .frame(maxWidth: .infinity)
         .background(Color.qpBeigeColor)
-
+        
         // MARK: Sending order
-
+        
         .alert(LocalizedStringKey("send-order-alert"), isPresented: $isShowingConfirmation) {
             Button(LocalizedStringKey("yes"), role: .cancel) {
                 if vm.didOrderFood() {
@@ -45,9 +45,9 @@ struct ClientOrderView: View {
                 noFoodOrdered.toggle()
             }
         }
-
+        
         // MARK: Requesting bill
-
+        
         .alert(LocalizedStringKey("unfinished-orders"), isPresented: $vm.hasUnfinishedOrders) {
             Button("Ok", role: .cancel) {
                 vm.hasUnfinishedOrders.toggle()
@@ -58,7 +58,7 @@ struct ClientOrderView: View {
                 BillView()
                     .onDisappear {
                         dismiss()
-                       vm.deleteBooking()
+                        vm.deleteBooking()
                     }
             }
         }
@@ -98,7 +98,7 @@ struct ClientOrderView: View {
         .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
     }
-
+    
     @ViewBuilder
     func AllFoodsScrollView() -> some View {
         ScrollView {
@@ -133,7 +133,7 @@ struct ClientOrderView: View {
             }
         }
     }
-
+    
     @ViewBuilder
     func OrderedFoodsScrollView() -> some View {
         VStack(alignment: .center) {

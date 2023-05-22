@@ -11,7 +11,7 @@ struct RestaurantsListView: View {
     @StateObject private var vm = RestaurantsListViewModel()
     @State private var searchRestaurant: String = ""
     @State private var changeStar: Bool = false
-
+    
     var body: some View {
         NavigationView {
             ScrollView {
@@ -24,8 +24,8 @@ struct RestaurantsListView: View {
                         VStack(alignment: .trailing) {
                             Button {
                                 vm.favouritesRes.contains(where: { $0 == restaurant.id}) ?
-                                    vm.removeRestFromFavs(resId: restaurant.id) :
-                                    vm.addFavouriteRestaurant(restaurantId: restaurant.id)
+                                vm.removeRestFromFavs(resId: restaurant.id) :
+                                vm.addFavouriteRestaurant(restaurantId: restaurant.id)
                             } label: {
                                 Image(systemName: vm.isRestaurantFavourite(restaurant.id) ? "star.fill" : "star")
                                     .foregroundColor(.yellow)

@@ -9,26 +9,26 @@ import SwiftUI
 
 struct SignUpView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-
+    
     @StateObject private var vm = SignUpViewModel()
-
+    
     @State private var passwordFormatError: Bool = false
     @State private var passwordsDontMatch: Bool = false
     @State private var successSignUp: Bool = false
     @State private var fieldsIncompleted: Bool = false
     @State private var emailExists: Bool = false
-
+    
     @State private var selectedRole: String = ""
     @State private var selectedRestaurant: String = ""
-
+    
     var isRestaurantDisabled: Bool {
         !(selectedRole != "Client" && !selectedRole.isEmpty)
     }
-
+    
     private let maxHeight: CGFloat = 50
     private let toolBarTextFontSize: CGFloat = 20
     private let topLeading: CGFloat = 10
-
+    
     var body: some View {
         ScrollView {
             VStack {
@@ -39,7 +39,7 @@ struct SignUpView: View {
                         TextField(LocalizedStringKey("lastName"), text: $vm.lastName)
                     }
                     .signInTextFieldStyle(withHeight: self.maxHeight, topLeading: self.topLeading, backgroundColor: Color.qpLightGrayColor)
-
+                    
                     Group {
                         Menu {
                             ForEach(vm.dropdownRoles, id: \.self) { role in
@@ -60,7 +60,7 @@ struct SignUpView: View {
                             .background(Color.qpLightGrayColor)
                             .cornerRadius(.infinity)
                         }
-
+                        
                         Menu {
                             ForEach(vm.restaurants) { restaurant in
                                 Button(restaurant.name) {
@@ -82,16 +82,16 @@ struct SignUpView: View {
                             .cornerRadius(.infinity)
                         }.disabled(self.isRestaurantDisabled)
                     }
-
+                    
                     Group {
                         TextField(LocalizedStringKey("email"), text: $vm.email)
                             .signInTextFieldStyle(withHeight: self.maxHeight, topLeading: self.topLeading, backgroundColor: Color.qpLightGrayColor)
                             .keyboardType(.emailAddress)
-
+                        
                         SecureInputView(LocalizedStringKey("password").stringValue(), text: $vm.password, maxHeight: self.maxHeight, topLeading: self.topLeading, backgroundColor: Color.qpLightGrayColor)
-
+                        
                         SecureInputView(LocalizedStringKey("confirm-password").stringValue(), text: $vm.confirmPassword, maxHeight: self.maxHeight, topLeading: self.topLeading, backgroundColor: Color.qpLightGrayColor)
-
+                        
                         if self.passwordFormatError && !self.fieldsIncompleted {
                             Text(LocalizedStringKey("password-format-error"))
                                 .foregroundColor(.red)
@@ -104,15 +104,15 @@ struct SignUpView: View {
                             EmptyView()
                         }
                     }
-
+                    
                     Button {
                         self.fieldsIncompleted = vm.allFieldsAreCompleted() && selectedRole != "" ? false : true
-
+                        
                         if self.fieldsIncompleted == false {
                             self.passwordFormatError = vm.passwordWrongFormat
                             self.passwordsDontMatch = vm.passwordsAreDifferent
                         }
-
+                        
                         if !self.fieldsIncompleted && !self.passwordFormatError && !self.passwordsDontMatch {
                             vm.doSignUp(withRole: self.selectedRole) { result in
                                 switch result {
@@ -144,7 +144,7 @@ struct SignUpView: View {
                         .font(.system(size: self.toolBarTextFontSize))
                         .fontWeight(.medium)
                 }
-
+                
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button {
                         self.presentationMode.wrappedValue.dismiss()
@@ -172,7 +172,7 @@ struct SignUpView: View {
             Button("OK", role: .cancel) { }
         }
     }
-
+    
     private func resetRestaurantDropDown() -> String {
         // This is for the use case when the user selects a restaurant and after that he selects the Client role
         DispatchQueue.main.async { self.selectedRestaurant = "" }

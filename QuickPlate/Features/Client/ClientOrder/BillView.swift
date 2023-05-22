@@ -10,7 +10,7 @@ import SwiftUI
 struct BillView: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject private var vm = BillViewModel()
-
+    
     var body: some View {
         VStack(alignment: .center) {
             HStack {

@@ -17,9 +17,9 @@ enum StartupError: Error {
 
 class FirebaseEmailAuth {
     static let shared = FirebaseEmailAuth()
-
+    
     // MARK: AUTHENTICATION METHODS
-
+    
     func doLogin(email: String = "", password: String = "", completion: @escaping (Result<String, StartupError>) -> Void) {
         Auth.auth().signIn(withEmail: email, password: password, completion: { result, error in
             guard result != nil else {
@@ -34,17 +34,17 @@ class FirebaseEmailAuth {
                 return
             }
             completion(.success(user.uid))
-//            switch user.isEmailVerified {
-//            case true:
-//                print("Email is verified")
-//                completion(.success(1))
-//            case false:
-//                print("Email is not verified")
-//                completion(.failure(.emailExists))
-//            }
+            //            switch user.isEmailVerified {
+            //            case true:
+            //                print("Email is verified")
+            //                completion(.success(1))
+            //            case false:
+            //                print("Email is not verified")
+            //                completion(.failure(.emailExists))
+            //            }
         })
     }
-
+    
     func doRegister(withEmail email: String, andPassword password: String, completion: @escaping (Result<String, StartupError>) -> Void) {
         Auth.auth().createUser(withEmail: email, password: password) { result, error in
             guard result != nil else {
@@ -59,23 +59,23 @@ class FirebaseEmailAuth {
                 return
             }
             completion(.success(user.uid))
-//            switch user.isEmailVerified {
-//            case true:
-//                print("Email is verified")
-//                completion(.success(1))
-//            case false:
-//                print("Email is not verified")
-//                user.sendEmailVerification { error in
-//                    guard let _ = error else {
-//                        completion(.success(1))
-//                        return
-//                    }
-//                    completion(.failure(.emailExists))
-//                }
-//            }
+            //            switch user.isEmailVerified {
+            //            case true:
+            //                print("Email is verified")
+            //                completion(.success(1))
+            //            case false:
+            //                print("Email is not verified")
+            //                user.sendEmailVerification { error in
+            //                    guard let _ = error else {
+            //                        completion(.success(1))
+            //                        return
+            //                    }
+            //                    completion(.failure(.emailExists))
+            //                }
+            //            }
         }
     }
-
+    
     func doLogout(completion: @escaping (Error?) -> Void) {
         do {
             try Auth.auth().signOut()

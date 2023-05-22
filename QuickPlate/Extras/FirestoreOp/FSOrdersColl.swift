@@ -11,7 +11,7 @@ import Foundation
 final class FSOrdersColl {
     let coll = Firestore.firestore().collection(FSCollNames.orders.rawValue)
     static let shared = FSOrdersColl()
-
+    
     func fetchAllOrdersForCurrentUser(_ completion: @escaping ([Order]?) -> Void) async {
         coll.addSnapshotListener { querySnapshot, error in
             if let error = error {
@@ -41,7 +41,7 @@ final class FSOrdersColl {
             print(error.localizedDescription)
         }
     }
-
+    
     func hasUnfinishedOrders(tableId: String, completion: @escaping (Bool?) -> Void) {
         coll.getDocuments { querySnapshot, error in
             if let error = error {
@@ -69,7 +69,7 @@ final class FSOrdersColl {
             completion(false)
         }
     }
-
+    
     func changeOrderState(id: String) {
         coll.document(id).getDocument { [weak self] qdSnap, error in
             if let error = error {
@@ -99,11 +99,11 @@ final class FSOrdersColl {
             }
         }
     }
-
+    
     private func setOrderState(orderId: String, state: OrderState) {
         coll.document(orderId).setData(["orderState": state.rawValue], merge: true)
     }
-
+    
     func fetchOrdersForRestaurant(restaurantName: String, completion: @escaping ([Order]?) -> Void) {
         coll.addSnapshotListener { qdSnap, error in
             if let error = error {
@@ -124,7 +124,7 @@ final class FSOrdersColl {
             completion(orders)
         }
     }
-
+    
     func deleteOrderWith(id: String) {
         coll.document(id).delete { error in
             if let error = error {
@@ -135,7 +135,7 @@ final class FSOrdersColl {
             }
         }
     }
-
+    
     func deleteOrdersAtTable(id: String) {
         print("Table Id: \(id)")
         coll.getDocuments { [weak self] qdSnap, error in

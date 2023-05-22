@@ -11,11 +11,11 @@ struct SecureInputView: View {
     @Binding private var text: String
     @State private var isSecured: Bool = true // FIXME: https://developer.apple.com/documentation/swiftui/focusstate
     private var title: String
-
+    
     private var maxHeight: CGFloat
     private var backgroundColor: Color
     private var topLeading: CGFloat
-
+    
     init(_ title: String, text: Binding<String>, maxHeight: CGFloat, topLeading: CGFloat, backgroundColor: Color) {
         self.title = title
         _text = text
@@ -23,7 +23,7 @@ struct SecureInputView: View {
         self.topLeading = topLeading
         self.maxHeight = maxHeight
     }
-
+    
     var body: some View {
         ZStack(alignment: .trailing) {
             if isSecured {
@@ -33,7 +33,7 @@ struct SecureInputView: View {
                 TextField(title, text: $text)
                     .signInTextFieldStyle(withHeight: self.maxHeight, topLeading: self.topLeading, backgroundColor: self.backgroundColor)
             }
-
+            
             Button {
                 isSecured.toggle()
             } label: {

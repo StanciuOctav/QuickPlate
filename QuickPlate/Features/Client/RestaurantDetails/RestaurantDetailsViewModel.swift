@@ -11,7 +11,7 @@ import SwiftUI
 
 final class RestaurantDetailsViewModel: ObservableObject {
     @Published var foods: [Food] = []
-
+    
     func fetchRestaurantMenu(_ foodIds: [String]) async {
         await FSFoodsColl.shared.fetchAllFoods { foods in
             guard let foods = foods else { return }

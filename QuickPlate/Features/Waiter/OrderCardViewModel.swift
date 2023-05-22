@@ -9,7 +9,7 @@ import Foundation
 
 final class OrderCardViewModel: ObservableObject {
     @Published var foods = [Food]()
-
+    
     func fetchFoodsFor(order: Order) {
         foods.removeAll()
         order.foodIds.forEach { foodId in
@@ -24,7 +24,7 @@ final class OrderCardViewModel: ObservableObject {
             }
         }
     }
-
+    
     private func orderFoodsAfterIds(_ order: Order) {
         for i in 0 ..< foods.count {
             if foods[i].id != order.foodIds[i] {

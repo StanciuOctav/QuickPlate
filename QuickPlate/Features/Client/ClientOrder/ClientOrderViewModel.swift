@@ -14,11 +14,11 @@ final class ClientOrderViewModel: ObservableObject {
     @Published var totalCost: Double = 0
     @Published var hasUnfinishedOrders: Bool = false
     @Published var canPay: Bool = false
-
+    
     private var foodIds: [String] = []
     private var tableId: String = ""
     private var table = Table()
-
+    
     func updateTableIdWith(id: String) {
         tableId = id
         FSTableColl.shared.getTableWith(id: tableId) { table in
@@ -29,7 +29,7 @@ final class ClientOrderViewModel: ObservableObject {
             self.table = table
         }
     }
-
+    
     func deleteBooking() {
         FSTableColl.shared.deleteBookingAtTable(tableId: tableId)
         FSUserColl.shared.deleteBookedTableWith(tableId: tableId) { res in
@@ -40,7 +40,7 @@ final class ClientOrderViewModel: ObservableObject {
         }
         FSOrdersColl.shared.deleteOrdersAtTable(id: tableId)
     }
-
+    
     func fetchFoodIds() async {
         await FSResColl.shared.getResMenuThatHas(tableId: tableId, completion: { foodIds in
             guard let foodIds = foodIds else {
@@ -61,7 +61,7 @@ final class ClientOrderViewModel: ObservableObject {
             }
         })
     }
-
+    
     func sendOrder() {
         FSResColl.shared.getResNameThatHas(tableId: tableId) { name in
             guard let name = name else {
@@ -91,7 +91,7 @@ final class ClientOrderViewModel: ObservableObject {
             self.resetOrder()
         }
     }
-
+    
     // This method checks if the client still has orders that are not in the final state when he requests the bill
     func checkForOrdersStatus() {
         FSOrdersColl.shared.hasUnfinishedOrders(tableId: tableId) { [weak self] result in
@@ -103,21 +103,21 @@ final class ClientOrderViewModel: ObservableObject {
             self.canPay = !result
         }
     }
-
+    
     func decrementFood(_ index: Int) {
         if numberOrdered[index] > 0 && numberOrdered[index] <= foods[index].stock {
             numberOrdered[index] -= 1
         }
         calculateTotalCost()
     }
-
+    
     func incrementFood(_ index: Int) {
         if numberOrdered[index] >= 0 && numberOrdered[index] < foods[index].stock {
             numberOrdered[index] += 1
         }
         calculateTotalCost()
     }
-
+    
     func didOrderFood() -> Bool {
         for nr in numberOrdered {
             if nr > 0 {
@@ -126,12 +126,12 @@ final class ClientOrderViewModel: ObservableObject {
         }
         return false
     }
-
+    
     func resetOrder() {
         totalCost = 0
         numberOrdered = numberOrdered.map { _ in 0 }
     }
-
+    
     private func calculateTotalCost() {
         totalCost = 0.0
         for (index, nr) in numberOrdered.enumerated() {

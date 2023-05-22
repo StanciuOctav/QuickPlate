@@ -11,7 +11,7 @@ struct SignInCustomTextField: ViewModifier {
     var height: CGFloat
     var topLeading: CGFloat
     var backgroundColor: Color
-
+    
     func body(content: Content) -> some View {
         content
             .padding(EdgeInsets(top: 0, leading: topLeading, bottom: 0, trailing: 0))

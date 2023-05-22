@@ -12,7 +12,7 @@ struct QPTabView: View {
         UITabBar.appearance().unselectedItemTintColor = UIColor(Color.qpDarkGrayColor)
         UITabBar.appearance().backgroundColor = .white
     }
-
+    
     var body: some View {
         TabView {
             Group {
@@ -20,7 +20,7 @@ struct QPTabView: View {
                     .tabItem {
                         Label(LocalizedStringKey("map"), systemImage: "map.fill")
                     }
-
+                
                 RestaurantsListView()
                     .tabItem {
                         Label(LocalizedStringKey("restaurants"), systemImage: "fork.knife.circle")

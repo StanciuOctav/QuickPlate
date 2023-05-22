@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RestaurantCardView: View {
     let restaurant: RestaurantCardDTO
-
+    
     var body: some View {
         HStack {
             AsyncImage(url: URL(string: restaurant.imageURL)) { image in
@@ -20,7 +20,7 @@ struct RestaurantCardView: View {
                 ProgressView()
             }
             .ignoresSafeArea(.all, edges: [.top, .bottom])
-
+            
             VStack(alignment: .leading) {
                 Text(restaurant.name)
                     .fontWeight(.bold)
@@ -30,7 +30,7 @@ struct RestaurantCardView: View {
                     .multilineTextAlignment(.leading)
                 
                 self.isOpened()
-
+                
                 Text(LocalizedStringKey("rating").stringValue() + String(format: " %.1f", restaurant.rating))
                     .font(.caption)
             }
