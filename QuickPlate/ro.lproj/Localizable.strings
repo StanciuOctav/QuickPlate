@@ -25,6 +25,7 @@
 "signup" = "Creeaza un cont nou";
 "logout" = "Deconectare";
 "credentials-error" = "Credentiale gresite / Cont inexistent";
+"email-not-verified" = "Adresa de email nu a fost confirmata";
 
 // MARK: SIGN UP
 "username" = "Nume utilizator";

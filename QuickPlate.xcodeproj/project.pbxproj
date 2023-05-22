@@ -55,7 +55,6 @@
 		D4035C9229C2311C00F90D24 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4035C9129C2311C00F90D24 /* RootView.swift */; };
 		D40F845E29AFB40F00B14911 /* Food.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40F845D29AFB40F00B14911 /* Food.swift */; };
 		D40F846329AFBF3700B14911 /* RestaurantDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40F846229AFBF3700B14911 /* RestaurantDetailsViewModel.swift */; };
-		D40F846529AFC88700B14911 /* NavigationUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40F846429AFC88700B14911 /* NavigationUtil.swift */; };
 		D418FEC329CA34E600FD082B /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = D418FEC229CA34E600FD082B /* Order.swift */; };
 		D418FEC529CA36F800FD082B /* FSOrdersColl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D418FEC429CA36F800FD082B /* FSOrdersColl.swift */; };
 		D45B008329B6738300739976 /* FSFoodsColl.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45B008229B6738300739976 /* FSFoodsColl.swift */; };
@@ -118,7 +117,6 @@
 		D4035C9129C2311C00F90D24 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		D40F845D29AFB40F00B14911 /* Food.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Food.swift; sourceTree = "<group>"; };
 		D40F846229AFBF3700B14911 /* RestaurantDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantDetailsViewModel.swift; sourceTree = "<group>"; };
-		D40F846429AFC88700B14911 /* NavigationUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationUtil.swift; sourceTree = "<group>"; };
 		D418FEC229CA34E600FD082B /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		D418FEC429CA36F800FD082B /* FSOrdersColl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSOrdersColl.swift; sourceTree = "<group>"; };
 		D45B008229B6738300739976 /* FSFoodsColl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FSFoodsColl.swift; sourceTree = "<group>"; };
@@ -171,7 +169,6 @@
 		533098A92927B66A007C441D /* Extras */ = {
 			isa = PBXGroup;
 			children = (
-				D40F846429AFC88700B14911 /* NavigationUtil.swift */,
 				D46F98FA29B661C700960B1E /* FSCollNames.swift */,
 				53A5E8DC29461D2E00DBFAFE /* FirestoreOp */,
 				53A5E8D2294606E600DBFAFE /* Models */,
@@ -513,7 +510,6 @@
 				537A1B19294658E000979FCA /* Restaurant.swift in Sources */,
 				5358FDC32972E0BF00F75614 /* AuthManager.swift in Sources */,
 				538994882920F89700C370BF /* SignInView.swift in Sources */,
-				D40F846529AFC88700B14911 /* NavigationUtil.swift in Sources */,
 				533374B62965B11B001850B8 /* MapViewModel.swift in Sources */,
 				538789822963019600F42F9A /* LocalizedStringKey+String.swift in Sources */,
 				53E2FD1E292B75A900D63069 /* MapView.swift in Sources */,

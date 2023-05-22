@@ -25,6 +25,7 @@
 "signup" = "Create an account";
 "logout" = "Sign Out";
 "credentials-error" = "Wrong credentials / Account doesn't exist";
+"email-not-verified" = "The email address wasn't verified";
 
 // MARK: SIGN UP
 "username" = "Username";
