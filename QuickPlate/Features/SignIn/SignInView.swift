@@ -32,9 +32,13 @@ struct SignInView: View {
                 
                 VStack(spacing: 30) {
                     TextField(LocalizedStringKey("email"), text: $viewModel.email)
-                        .signInTextFieldStyle(withHeight: self.maxHeight, topLeading: 10, backgroundColor: Color.qpLightGrayColor)
+                        .signInTextFieldStyle(withHeight: self.maxHeight, topInset: 10, backgroundColor: Color.qpLightGrayColor)
                         .keyboardType(.emailAddress)
-                    SecureInputView(LocalizedStringKey("password").stringValue(), text: $viewModel.password, maxHeight: self.maxHeight, topLeading: 10, backgroundColor: Color.qpLightGrayColor)
+                    SecureInputView(LocalizedStringKey("password").stringValue(),
+                                    text: $viewModel.password,
+                                    maxHeight: self.maxHeight,
+                                    topInset: 10,
+                                    backgroundColor: Color.qpLightGrayColor)
                     
                     if viewModel.getShowCredentialsError() {
                         // FIXME: This remains if the user doesn't insert the right credentials AND comes back from the Sign Up Page

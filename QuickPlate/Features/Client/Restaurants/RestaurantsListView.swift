@@ -23,7 +23,7 @@ struct RestaurantsListView: View {
                         }
                         VStack(alignment: .trailing) {
                             Button {
-                                vm.favouritesRes.contains(where: { $0 == restaurant.id}) ?
+                                vm.isRestaurantFavourite(restaurant.id) ?
                                 vm.removeRestFromFavs(resId: restaurant.id) :
                                 vm.addFavouriteRestaurant(restaurantId: restaurant.id)
                             } label: {

@@ -371,8 +371,6 @@
 			children = (
 				D4B1367F29CF58260016A7AD /* WaiterView.swift */,
 				D4B1368129CF5BA90016A7AD /* WaiterViewViewModel.swift */,
-				D4B1368729CF6BB80016A7AD /* OrderCard.swift */,
-				D4B1368929CF6C960016A7AD /* OrderCardViewModel.swift */,
 			);
 			path = Waiter;
 			sourceTree = "<group>";
@@ -386,6 +384,7 @@
 				D40F846029AFBEED00B14911 /* RestaurantDetails */,
 				D4ADEC8F29B109E900261C10 /* TablesList */,
 				53E2FD22292B76FC00D63069 /* UserProfile */,
+				D4E724FC2A1E4F16000497B0 /* OrderView */,
 				D4CEFAE729C8B9EB00011911 /* ClientOrder */,
 			);
 			path = Client;
@@ -400,6 +399,15 @@
 				D4FBCED529F816C100D4FA77 /* BillViewModel.swift */,
 			);
 			path = ClientOrder;
+			sourceTree = "<group>";
+		};
+		D4E724FC2A1E4F16000497B0 /* OrderView */ = {
+			isa = PBXGroup;
+			children = (
+				D4B1368729CF6BB80016A7AD /* OrderCard.swift */,
+				D4B1368929CF6C960016A7AD /* OrderCardViewModel.swift */,
+			);
+			path = OrderView;
 			sourceTree = "<group>";
 		};
 		D4FBCECE29F7C26D00D4FA77 /* Cook */ = {

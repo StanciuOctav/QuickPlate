@@ -9,12 +9,12 @@ import SwiftUI
 
 struct SignInCustomTextField: ViewModifier {
     var height: CGFloat
-    var topLeading: CGFloat
+    var topInset: CGFloat
     var backgroundColor: Color
     
     func body(content: Content) -> some View {
         content
-            .padding(EdgeInsets(top: 0, leading: topLeading, bottom: 0, trailing: 0))
+            .padding(EdgeInsets(top: 0, leading: topInset, bottom: 0, trailing: 0))
             .frame(height: height)
             .background(backgroundColor)
             .cornerRadius(.infinity)
@@ -23,7 +23,7 @@ struct SignInCustomTextField: ViewModifier {
 }
 
 extension View {
-    func signInTextFieldStyle(withHeight height: CGFloat, topLeading leading: CGFloat, backgroundColor color: Color) -> some View {
-        modifier(SignInCustomTextField(height: height, topLeading: leading, backgroundColor: color))
+    func signInTextFieldStyle(withHeight height: CGFloat, topInset inset: CGFloat, backgroundColor color: Color) -> some View {
+        modifier(SignInCustomTextField(height: height, topInset: inset, backgroundColor: color))
     }
 }

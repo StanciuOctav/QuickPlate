@@ -21,13 +21,13 @@ final class MapViewModel: ObservableObject {
     private var restaurants: [RestaurantCardDTO] = []
     
     func fetchAllRestaurants() async {
-        await FSResColl.shared.fetchAllRestaurants(completion: { restaurants in
-            guard let restaurants = restaurants else { return }
+        await FSResColl.shared.fetchAllRestaurants { [weak self] restaurants in
+            guard let restaurants, let self else { return }
             self.restaurants = restaurants.compactMap({ r in
                 r.restaurantCardDTO
             })
             self.updateAnnotationItems()
-        })
+        }
     }
     
     func returnSelectedRestaurantWith(id: String) -> RestaurantCardDTO? {

@@ -14,13 +14,13 @@ struct SecureInputView: View {
     
     private var maxHeight: CGFloat
     private var backgroundColor: Color
-    private var topLeading: CGFloat
+    private var topInset: CGFloat
     
-    init(_ title: String, text: Binding<String>, maxHeight: CGFloat, topLeading: CGFloat, backgroundColor: Color) {
+    init(_ title: String, text: Binding<String>, maxHeight: CGFloat, topInset: CGFloat, backgroundColor: Color) {
         self.title = title
         _text = text
         self.backgroundColor = backgroundColor
-        self.topLeading = topLeading
+        self.topInset = topInset
         self.maxHeight = maxHeight
     }
     
@@ -28,10 +28,10 @@ struct SecureInputView: View {
         ZStack(alignment: .trailing) {
             if isSecured {
                 SecureField(title, text: $text)
-                    .signInTextFieldStyle(withHeight: self.maxHeight, topLeading: self.topLeading, backgroundColor: self.backgroundColor)
+                    .signInTextFieldStyle(withHeight: self.maxHeight, topInset: self.topInset, backgroundColor: self.backgroundColor)
             } else {
                 TextField(title, text: $text)
-                    .signInTextFieldStyle(withHeight: self.maxHeight, topLeading: self.topLeading, backgroundColor: self.backgroundColor)
+                    .signInTextFieldStyle(withHeight: self.maxHeight, topInset: self.topInset, backgroundColor: self.backgroundColor)
             }
             
             Button {

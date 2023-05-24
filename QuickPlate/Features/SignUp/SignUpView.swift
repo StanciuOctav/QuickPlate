@@ -27,7 +27,7 @@ struct SignUpView: View {
     
     private let maxHeight: CGFloat = 50
     private let toolBarTextFontSize: CGFloat = 20
-    private let topLeading: CGFloat = 10
+    private let topInset: CGFloat = 10
     
     var body: some View {
         ScrollView {
@@ -38,7 +38,7 @@ struct SignUpView: View {
                         TextField(LocalizedStringKey("firstName"), text: $vm.firstName)
                         TextField(LocalizedStringKey("lastName"), text: $vm.lastName)
                     }
-                    .signInTextFieldStyle(withHeight: self.maxHeight, topLeading: self.topLeading, backgroundColor: Color.qpLightGrayColor)
+                    .signInTextFieldStyle(withHeight: self.maxHeight, topInset: self.topInset, backgroundColor: Color.qpLightGrayColor)
                     
                     Group {
                         Menu {
@@ -85,12 +85,12 @@ struct SignUpView: View {
                     
                     Group {
                         TextField(LocalizedStringKey("email"), text: $vm.email)
-                            .signInTextFieldStyle(withHeight: self.maxHeight, topLeading: self.topLeading, backgroundColor: Color.qpLightGrayColor)
+                            .signInTextFieldStyle(withHeight: self.maxHeight, topInset: self.topInset, backgroundColor: Color.qpLightGrayColor)
                             .keyboardType(.emailAddress)
                         
-                        SecureInputView(LocalizedStringKey("password").stringValue(), text: $vm.password, maxHeight: self.maxHeight, topLeading: self.topLeading, backgroundColor: Color.qpLightGrayColor)
+                        SecureInputView(LocalizedStringKey("password").stringValue(), text: $vm.password, maxHeight: self.maxHeight, topInset: self.topInset, backgroundColor: Color.qpLightGrayColor)
                         
-                        SecureInputView(LocalizedStringKey("confirm-password").stringValue(), text: $vm.confirmPassword, maxHeight: self.maxHeight, topLeading: self.topLeading, backgroundColor: Color.qpLightGrayColor)
+                        SecureInputView(LocalizedStringKey("confirm-password").stringValue(), text: $vm.confirmPassword, maxHeight: self.maxHeight, topInset: self.topInset, backgroundColor: Color.qpLightGrayColor)
                         
                         if self.passwordFormatError && !self.fieldsIncompleted {
                             Text(LocalizedStringKey("password-format-error"))

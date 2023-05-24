@@ -137,12 +137,14 @@ struct UserProfileView: View {
                         Text(vm.user.username)
                             .font(.title2)
                             .bold()
+                        Spacer()
                     }
                     HStack {
                         VStack(alignment: .leading) {
                             Text(vm.user.firstName + " " + vm.user.lastName)
                             Text(vm.user.email)
                         }
+                        Spacer()
                         Button {
                             self.isShowingSignOutAlert.toggle()
                         } label: {
@@ -153,7 +155,6 @@ struct UserProfileView: View {
                                 .background(Capsule(style: .circular).foregroundColor(.black))
                         }
                     }
-                    
                 }
             }
             .padding()

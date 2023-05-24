@@ -11,9 +11,9 @@ import SwiftUI
 
 struct MapView: View {
     @StateObject private var locManager = LocationManager()
-    @State private var tracking: MapUserTrackingMode = .follow
-    
     @StateObject private var vm = MapViewModel()
+    
+    @State private var tracking: MapUserTrackingMode = .follow
     @State private var selectedRestaurant: RestaurantCardDTO?
     
     private var buttonHeightAndWidth: CGFloat = 50
