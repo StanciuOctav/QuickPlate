@@ -18,6 +18,10 @@ final class WaiterViewViewModel: ObservableObject {
     private var cancelables = [AnyCancellable]()
     private let maxNumberOfOrders = 2
     
+    init() {
+        canAcceptOrders()
+    }
+    
     func fetchAllOrders() {
         self.orders.removeAll()
         FSOrdersColl.shared.fetchOrdersForRestaurant(restaurantName: self.restaurant.value.name, completion: { orders in
@@ -41,9 +45,6 @@ final class WaiterViewViewModel: ObservableObject {
         }
         if state == .ready {
             currentNumber -= 1
-        }
-        if currentNumber < 0 {
-            currentNumber = 0
         }
         if currentNumber > maxNumberOfOrders {
             currentNumber = maxNumberOfOrders

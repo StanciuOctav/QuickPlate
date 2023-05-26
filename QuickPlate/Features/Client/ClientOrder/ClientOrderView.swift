@@ -71,7 +71,7 @@ struct ClientOrderView: View {
                         .foregroundColor(Color.qpOrange)
                 }
             }
-            ToolbarItem(placement: .navigationBarLeading) {
+            ToolbarItem(placement: .principal) {
                 Button {
                     isShowingConfirmation.toggle()
                 } label: {

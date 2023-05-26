@@ -76,14 +76,15 @@
 "send-order-alert" = "You want to send the order?";
 "no-food-ordered" = "Sorry but you didn't order any food";
 "unfinished-orders" = "Please wait!\nYou have unprocessed/no orders.";
-"reset-order" = "Reset order";
-"send-order" = "Send order";
+"reset-order" = "Reset";
+"send-order" = "Send";
 "request-bill" = "Request bill";
 "your-order" = "Your order";
 "select-payment" = "How do you want to pay?";
 "pay-bill" = "Choose payment method";
 "card-pay" = "By card";
 "app-pay" = "Using the app";
+"choose-payment" = "Please choose the payment method";
 "payment-confirmation" = "Our staff will get in touch with you shortly!";
 
 // MARK: EMPLOYEE

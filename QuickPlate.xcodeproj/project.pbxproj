@@ -65,7 +65,7 @@
 		D4ADEC9529B10FED00261C10 /* Table.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4ADEC9429B10FED00261C10 /* Table.swift */; };
 		D4B1368029CF58260016A7AD /* WaiterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B1367F29CF58260016A7AD /* WaiterView.swift */; };
 		D4B1368229CF5BA90016A7AD /* WaiterViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B1368129CF5BA90016A7AD /* WaiterViewViewModel.swift */; };
-		D4B1368829CF6BB80016A7AD /* OrderCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B1368729CF6BB80016A7AD /* OrderCard.swift */; };
+		D4B1368829CF6BB80016A7AD /* OrderCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B1368729CF6BB80016A7AD /* OrderCardView.swift */; };
 		D4B1368A29CF6C960016A7AD /* OrderCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B1368929CF6C960016A7AD /* OrderCardViewModel.swift */; };
 		D4BC837A29B3C02A0079CC20 /* BookedTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BC837929B3C02A0079CC20 /* BookedTableViewModel.swift */; };
 		D4CB312929B9CF22000466BA /* RestaurantCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CB312829B9CF22000466BA /* RestaurantCardView.swift */; };
@@ -126,7 +126,7 @@
 		D4ADEC9429B10FED00261C10 /* Table.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Table.swift; sourceTree = "<group>"; };
 		D4B1367F29CF58260016A7AD /* WaiterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaiterView.swift; sourceTree = "<group>"; };
 		D4B1368129CF5BA90016A7AD /* WaiterViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaiterViewViewModel.swift; sourceTree = "<group>"; };
-		D4B1368729CF6BB80016A7AD /* OrderCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCard.swift; sourceTree = "<group>"; };
+		D4B1368729CF6BB80016A7AD /* OrderCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCardView.swift; sourceTree = "<group>"; };
 		D4B1368929CF6C960016A7AD /* OrderCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderCardViewModel.swift; sourceTree = "<group>"; };
 		D4BC837929B3C02A0079CC20 /* BookedTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookedTableViewModel.swift; sourceTree = "<group>"; };
 		D4CB312829B9CF22000466BA /* RestaurantCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantCardView.swift; sourceTree = "<group>"; };
@@ -404,7 +404,7 @@
 		D4E724FC2A1E4F16000497B0 /* OrderView */ = {
 			isa = PBXGroup;
 			children = (
-				D4B1368729CF6BB80016A7AD /* OrderCard.swift */,
+				D4B1368729CF6BB80016A7AD /* OrderCardView.swift */,
 				D4B1368929CF6C960016A7AD /* OrderCardViewModel.swift */,
 			);
 			path = OrderView;
@@ -511,7 +511,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4B1368829CF6BB80016A7AD /* OrderCard.swift in Sources */,
+				D4B1368829CF6BB80016A7AD /* OrderCardView.swift in Sources */,
 				537A1B19294658E000979FCA /* Restaurant.swift in Sources */,
 				5358FDC32972E0BF00F75614 /* AuthManager.swift in Sources */,
 				538994882920F89700C370BF /* SignInView.swift in Sources */,

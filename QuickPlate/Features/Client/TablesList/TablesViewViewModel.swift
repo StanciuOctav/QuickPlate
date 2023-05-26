@@ -26,6 +26,6 @@ final class TablesViewViewModel: ObservableObject {
     }
     
     private func updateTables() {
-        self.tables.removeAll(where: {$0.booked})
+        self.tables.removeAll(where: { $0.booked })
     }
 }

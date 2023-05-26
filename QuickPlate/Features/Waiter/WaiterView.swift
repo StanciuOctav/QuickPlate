@@ -25,7 +25,7 @@ struct WaiterView: View {
                 ScrollView {
                     ForEach(vm.orders, id: \.self.id) { order in
                         VStack {
-                            OrderCard(order: order)
+                            OrderCardView(order: order)
                                 .cornerRadius(4)
                             HStack {
                                 Button {

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct OrderCard: View {
+struct OrderCardView: View {
     @StateObject private var vm = OrderCardViewModel()
     let order: Order
     

@@ -75,14 +75,15 @@
 "send-order-alert" = "Confirmi plasarea comenzii?";
 "no-food-ordered" = "Ne pare rau, dar nu ai plasat nicio comanda";
 "unfinished-orders" = "Va rugam sa asteptati!\nAveti comenzi neterminate sau nicio comanda plasata.";
-"reset-order" = "Reseteaza comanda";
-"send-order" = "Trimite comanda";
+"reset-order" = "Reseteaza";
+"send-order" = "Trimite";
 "request-bill" = "Cere nota";
 "your-order" = "Comanda ta";
 "select-payment" = "Cum doriti sa achitati?";
 "pay-bill" = "Achitati nota de plata";
 "card-pay" = "Cu cardul";
 "app-pay" = "Folosind aplicatia";
+"choose-payment" = "Alegeti metoda cu care doriti sa achitati";
 "payment-confirmation" = "Unul dintre angajatii nostri o sa vina imediat!";
 
 // MARK: EMPLOYEE
