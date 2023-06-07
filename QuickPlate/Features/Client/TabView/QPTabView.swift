@@ -26,7 +26,7 @@ struct QPTabView: View {
                     }
                 UserProfileView()
                     .tabItem {
-                        Label(LocalizedStringKey("account"), systemImage: "person.fill")
+                        Label(LocalizedStringKey("profile"), systemImage: "person.fill")
                     }
             }
             .tint(.qpBlackColor)

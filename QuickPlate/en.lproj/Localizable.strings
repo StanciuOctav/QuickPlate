@@ -49,7 +49,7 @@
 // MARK: TAB BAR
 "map" = "Map";
 "restaurants" = "Restaurants";
-"account" = "Profile";
+"profile" = "Profile";
 
 // MARK: RESTAURANTS TAB
 "restaurant-closed" = "Closed";

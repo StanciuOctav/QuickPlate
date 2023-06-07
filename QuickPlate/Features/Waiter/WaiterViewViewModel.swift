@@ -50,11 +50,15 @@ final class WaiterViewViewModel: ObservableObject {
             currentNumber = maxNumberOfOrders
         }
         UserDefaults.standard.set(currentNumber, forKey: "ordersAccepted")
-        canAcceptOrders()
         FSOrdersColl.shared.changeOrderState(id: id)
+        canAcceptOrders()
     }
     
     func removeOrder(_ id: String) {
+        var currentNumber = UserDefaults.standard.integer(forKey: "ordersAccepted")
+        currentNumber = currentNumber - 1 < 0 ? 0 : currentNumber - 1 // if the order is canceled than the number of accepted orders must decrement
+        UserDefaults.standard.set(currentNumber, forKey: "ordersAccepted")
+        
         for order in self.orders {
             if order.id == id {
                 for index in 0..<order.foodIds.count {

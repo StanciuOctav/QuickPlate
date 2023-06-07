@@ -61,9 +61,9 @@ struct RestaurantsListView: View {
                 vm.resetRestaurants()
             }
         }
-        .onSubmit({
+        .onSubmit {
             self.searchRestaurant = ""
-        })
+        }
         .frame(maxWidth: .infinity)
         .task {
             await self.vm.fetchAllRestaurants()

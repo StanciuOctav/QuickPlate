@@ -15,7 +15,6 @@ final class RestaurantsListViewModel: ObservableObject {
     @Published var favouritesRes: [String] = []
     
     private var defaultRestaurants: [Restaurant] = []
-    private let coll = Firestore.firestore().collection(FSCollNames.restaurants.rawValue)
     
     func addFavouriteRestaurant(restaurantId: String?) {
         guard let id = restaurantId else { return }

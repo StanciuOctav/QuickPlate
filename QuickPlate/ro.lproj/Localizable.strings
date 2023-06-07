@@ -49,7 +49,7 @@
 // MARK: TAB BAR
 "map" = "Harta";
 "restaurants" = "Restaurante";
-"account" = "Profil";
+"profile" = "Profil";
 
 // MARK: RESTAURANTS TAB
 "restaurant-closed" = "Inchis";

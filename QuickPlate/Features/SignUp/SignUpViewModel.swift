@@ -44,7 +44,8 @@ final class SignUpViewModel: ObservableObject {
         return username != "" &&
         firstName != "" &&
         lastName != "" &&
-        email != ""
+        email != "" &&
+        password != ""
     }
     
     func setRestaurantId(withId id: String) {
