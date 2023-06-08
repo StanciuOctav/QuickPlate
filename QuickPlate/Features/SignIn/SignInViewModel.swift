@@ -53,6 +53,8 @@ final class SignInViewModel: ObservableObject {
                 }
             case .failure(.signInError):
                 completion(.failure(.signInError))
+            case .failure(.emailExists):
+                completion(.failure(.emailExists))
             case .failure:
                 print("Sign In failure")
             }

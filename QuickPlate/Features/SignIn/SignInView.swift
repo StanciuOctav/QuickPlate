@@ -80,7 +80,7 @@ struct SignInView: View {
                     default:
                         break
                     }
-                case .failure(.signInError):
+                case .failure(.signInError), .failure(.emailExists):
                     viewModel.setShowCredentialsErrors(withBool: true)
                 case .failure(.anonymousUser), .failure:
                     break
