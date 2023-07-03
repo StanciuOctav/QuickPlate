@@ -1,0 +1,95 @@
+<mxfile host="app.diagrams.net" modified="2023-06-07T15:06:10.658Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.5 Safari/605.1.15" etag="pWupFwhkXJmZI_JGgL_U" version="21.3.7">
+  <diagram name="Page-1" id="EsUINYeXv3JpKhitD1GO">
+    <mxGraphModel dx="896" dy="772" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="umwTI3W-mNoqkro4EDPA-133" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="90" width="620" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="umwTI3W-mNoqkro4EDPA-145" value="Date despre utilizator stocate local" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;" parent="1" vertex="1">
+          <mxGeometry x="610" y="75" width="80" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="umwTI3W-mNoqkro4EDPA-150" value="iOS App" style="text;html=1;strokeColor=#9673a6;fillColor=#e1d5e7;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="384" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="umwTI3W-mNoqkro4EDPA-151" value="" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="259" y="370" width="310" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="umwTI3W-mNoqkro4EDPA-152" value="Firebase" style="text;html=1;strokeColor=#9673a6;fillColor=#e1d5e7;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+          <mxGeometry x="389" y="370" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="umwTI3W-mNoqkro4EDPA-153" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=0.4;entryY=1.003;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="umwTI3W-mNoqkro4EDPA-151" target="umwTI3W-mNoqkro4EDPA-133" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="230" y="780" as="sourcePoint" />
+            <mxPoint x="190" y="960" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="umwTI3W-mNoqkro4EDPA-154" value="Reply" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="umwTI3W-mNoqkro4EDPA-153" vertex="1" connectable="0">
+          <mxGeometry x="-0.2572" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="umwTI3W-mNoqkro4EDPA-155" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.644;exitY=0.996;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;exitPerimeter=0;" parent="1" source="umwTI3W-mNoqkro4EDPA-133" target="umwTI3W-mNoqkro4EDPA-151" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="218" y="930" as="sourcePoint" />
+            <mxPoint x="216" y="790" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="umwTI3W-mNoqkro4EDPA-156" value="Request" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="umwTI3W-mNoqkro4EDPA-155" vertex="1" connectable="0">
+          <mxGeometry x="-0.2572" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="umwTI3W-mNoqkro4EDPA-157" value="Baza de date Firestore" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="1" vertex="1">
+          <mxGeometry x="270" y="435" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="umwTI3W-mNoqkro4EDPA-158" value="Serviciile de autentificare si&amp;nbsp;&lt;br&gt;autorizare" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" parent="1" vertex="1">
+          <mxGeometry x="444" y="435" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="umwTI3W-mNoqkro4EDPA-187" value="" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="100" y="40" width="480" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="umwTI3W-mNoqkro4EDPA-188" value="View-ul RootView" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="198" y="45" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="umwTI3W-mNoqkro4EDPA-189" value="Manager de autentificare" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="198" y="145" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="umwTI3W-mNoqkro4EDPA-192" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" parent="1" source="umwTI3W-mNoqkro4EDPA-189" target="umwTI3W-mNoqkro4EDPA-188" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="528" y="160" as="sourcePoint" />
+            <mxPoint x="578" y="110" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="umwTI3W-mNoqkro4EDPA-195" value="Modulul Features" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="362" y="95" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="umwTI3W-mNoqkro4EDPA-196" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" target="umwTI3W-mNoqkro4EDPA-195" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="248" y="120" as="sourcePoint" />
+            <mxPoint x="288" y="130" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="umwTI3W-mNoqkro4EDPA-200" value="Modulul Extras" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+          <mxGeometry x="362" y="180" width="100" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="umwTI3W-mNoqkro4EDPA-201" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="umwTI3W-mNoqkro4EDPA-195" target="umwTI3W-mNoqkro4EDPA-200" edge="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="528" y="160" as="sourcePoint" />
+            <mxPoint x="578" y="110" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="SpRrCIqTvxjNhUW899ok-1" value="QuickPlate" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="305" y="40" width="70" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="SpRrCIqTvxjNhUW899ok-2" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;exitX=1;exitY=0.395;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="umwTI3W-mNoqkro4EDPA-187" target="umwTI3W-mNoqkro4EDPA-145">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="258" y="130" as="sourcePoint" />
+            <mxPoint x="372" y="130" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

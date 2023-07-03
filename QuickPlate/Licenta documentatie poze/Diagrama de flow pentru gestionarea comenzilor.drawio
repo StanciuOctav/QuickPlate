@@ -1,0 +1,148 @@
+<mxfile host="app.diagrams.net" modified="2023-05-29T16:50:26.608Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.5 Safari/605.1.15" etag="quboaWYojDKOi6jE7teE" version="21.3.5" type="device">
+  <diagram name="Page-1" id="EsUINYeXv3JpKhitD1GO">
+    <mxGraphModel dx="587" dy="802" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="umwTI3W-mNoqkro4EDPA-1" value="Comanda plasata" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="95" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="umwTI3W-mNoqkro4EDPA-2" value="Poate ospatarul sa accepte comenzi?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="90" y="90" width="130" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="umwTI3W-mNoqkro4EDPA-3" value="Se incrementeaza numarul de comenzi acceptate" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="95" y="390" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="umwTI3W-mNoqkro4EDPA-4" value="Comanda este trimisa inapoi la chelner de catre bucatar" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="95" y="500" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="umwTI3W-mNoqkro4EDPA-5" value="Ospatarul serveste comanda" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="240" y="750" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="umwTI3W-mNoqkro4EDPA-7" value="Anuleaza comanda?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="115" y="240" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="umwTI3W-mNoqkro4EDPA-8" value="Da" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="umwTI3W-mNoqkro4EDPA-7" target="umwTI3W-mNoqkro4EDPA-16">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="280" y="360" as="sourcePoint" />
+            <mxPoint x="330" y="310" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="umwTI3W-mNoqkro4EDPA-9" value="Nu" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="umwTI3W-mNoqkro4EDPA-7" target="umwTI3W-mNoqkro4EDPA-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="270" y="300" as="sourcePoint" />
+            <mxPoint x="170" y="300" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="umwTI3W-mNoqkro4EDPA-10" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="umwTI3W-mNoqkro4EDPA-3" target="umwTI3W-mNoqkro4EDPA-4">
+          <mxGeometry x="0.0154" width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="310" y="340" as="sourcePoint" />
+            <mxPoint x="310" y="410" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="umwTI3W-mNoqkro4EDPA-11" value="Anuleaza comanda?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="115" y="590" width="80" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="umwTI3W-mNoqkro4EDPA-14" value="Nu" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="umwTI3W-mNoqkro4EDPA-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="310" y="340" as="sourcePoint" />
+            <mxPoint x="260" y="150" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="umwTI3W-mNoqkro4EDPA-16" value="Scade numarul de comenzi acceptate" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="430" y="250" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="umwTI3W-mNoqkro4EDPA-17" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" target="umwTI3W-mNoqkro4EDPA-16">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="490" y="180" as="sourcePoint" />
+            <mxPoint x="170" y="450" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="umwTI3W-mNoqkro4EDPA-18" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="umwTI3W-mNoqkro4EDPA-1" target="umwTI3W-mNoqkro4EDPA-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="230" y="160" as="sourcePoint" />
+            <mxPoint x="440" y="160" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="umwTI3W-mNoqkro4EDPA-19" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="umwTI3W-mNoqkro4EDPA-2" target="umwTI3W-mNoqkro4EDPA-7">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="240" y="170" as="sourcePoint" />
+            <mxPoint x="450" y="170" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="umwTI3W-mNoqkro4EDPA-20" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="umwTI3W-mNoqkro4EDPA-11" target="umwTI3W-mNoqkro4EDPA-16">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="270" y="350" as="sourcePoint" />
+            <mxPoint x="320" y="300" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="460" y="630" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="umwTI3W-mNoqkro4EDPA-21" value="Da" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="umwTI3W-mNoqkro4EDPA-20">
+          <mxGeometry x="-0.3949" y="-4" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="umwTI3W-mNoqkro4EDPA-22" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="umwTI3W-mNoqkro4EDPA-11">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="205" y="640" as="sourcePoint" />
+            <mxPoint x="460" y="710" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="155" y="710" />
+              <mxPoint x="390" y="710" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="umwTI3W-mNoqkro4EDPA-23" value="Nu" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="umwTI3W-mNoqkro4EDPA-22">
+          <mxGeometry x="-0.3949" y="-4" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="umwTI3W-mNoqkro4EDPA-24" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="umwTI3W-mNoqkro4EDPA-4" target="umwTI3W-mNoqkro4EDPA-11">
+          <mxGeometry x="0.0154" width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="165" y="460" as="sourcePoint" />
+            <mxPoint x="165" y="510" as="targetPoint" />
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="umwTI3W-mNoqkro4EDPA-25" value="Poate alt ospatar sa accepte comenzi?" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="260" y="90" width="130" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="umwTI3W-mNoqkro4EDPA-26" value="Da" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="umwTI3W-mNoqkro4EDPA-25" target="umwTI3W-mNoqkro4EDPA-7">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="205" y="290" as="sourcePoint" />
+            <mxPoint x="440" y="290" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="umwTI3W-mNoqkro4EDPA-27" value="Da" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="umwTI3W-mNoqkro4EDPA-25">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="500" y="190" as="sourcePoint" />
+            <mxPoint x="450" y="150" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="umwTI3W-mNoqkro4EDPA-28" value="Cel putin o comanda trebuie servita" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="450" y="120" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="umwTI3W-mNoqkro4EDPA-30" value="Comanda este servita" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="460" y="680" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="umwTI3W-mNoqkro4EDPA-31" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.75;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="umwTI3W-mNoqkro4EDPA-30" target="umwTI3W-mNoqkro4EDPA-16">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="165" y="680" as="sourcePoint" />
+            <mxPoint x="470" y="720" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="520" y="630" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
