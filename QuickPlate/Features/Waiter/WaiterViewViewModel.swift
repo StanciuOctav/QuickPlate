@@ -67,6 +67,7 @@ final class WaiterViewViewModel: ObservableObject {
             }
         }
         FSOrdersColl.shared.deleteOrderWith(id: id)
+        self.canAcceptOrders()
     }
     
     private func canAcceptOrders() {

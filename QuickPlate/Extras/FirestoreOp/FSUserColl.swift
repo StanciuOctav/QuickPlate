@@ -50,21 +50,25 @@ final class FSUserColl {
     }
     
     func fetchFavouriteRestaurants(completion: @escaping ([String]?) -> Void) async {
-        let userId = UserDefaults.standard.value(forKey: "userId") as! String
-        coll.document(userId).addSnapshotListener { qdSnap, error in
-            if let error = error {
-                print("FSUserColl - Could't retrieve logged user")
-                print(error.localizedDescription)
-                completion(nil)
-                return
+        let userId = UserDefaults.standard.value(forKey: "userId") as? String ?? ""
+        if userId != "" {
+            coll.document(userId).addSnapshotListener { qdSnap, error in
+                if let error = error {
+                    print("FSUserColl - Could't retrieve logged user")
+                    print(error.localizedDescription)
+                    completion(nil)
+                    return
+                }
+                guard let qdSnap = qdSnap else {
+                    print("FSUserColl - There is no user with the id \(userId)")
+                    completion(nil)
+                    return
+                }
+                let user = try? qdSnap.data(as: MyUser.self)
+                completion(user?.favouriteRestaurants)
             }
-            guard let qdSnap = qdSnap else {
-                print("FSUserColl - There is no user with the id \(userId)")
-                completion(nil)
-                return
-            }
-            let user = try? qdSnap.data(as: MyUser.self)
-            completion(user?.favouriteRestaurants)
+        } else {
+            completion(nil)
         }
     }
     

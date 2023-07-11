@@ -33,15 +33,15 @@ class FirebaseEmailAuth {
                 completion(.failure(.anonymousUser))
                 return
             }
-            // completion(.success(user.uid))
-            switch user.isEmailVerified {
-            case true:
-                print("Email is verified")
-                completion(.success(user.uid))
-            case false:
-                print("Email is not verified")
-                completion(.failure(.emailExists))
-            }
+            completion(.success(user.uid))
+//            switch user.isEmailVerified {
+//            case true:
+//                print("Email is verified")
+//                completion(.success(user.uid))
+//            case false:
+//                print("Email is not verified")
+//                completion(.failure(.emailExists))
+//            }
         })
     }
     
@@ -58,21 +58,21 @@ class FirebaseEmailAuth {
                 completion(.failure(.anonymousUser))
                 return
             }
-            // completion(.success(user.uid))
-            switch user.isEmailVerified {
-            case true:
-                print("Email is verified")
-                completion(.success(user.uid))
-            case false:
-                print("Email is not verified")
-                user.sendEmailVerification { error in
-                    guard let _ = error else {
-                        completion(.success(user.uid))
-                        return
-                    }
-                    completion(.failure(.emailExists))
-                }
-            }
+            completion(.success(user.uid))
+//            switch user.isEmailVerified {
+//            case true:
+//                print("Email is verified")
+//                completion(.success(user.uid))
+//            case false:
+//                print("Email is not verified")
+//                user.sendEmailVerification { error in
+//                    guard let _ = error else {
+//                        completion(.success(user.uid))
+//                        return
+//                    }
+//                    completion(.failure(.emailExists))
+//                }
+//            }
         }
     }
     

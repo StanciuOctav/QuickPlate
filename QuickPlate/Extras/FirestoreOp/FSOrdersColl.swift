@@ -55,8 +55,24 @@ final class FSOrdersColl {
                 completion(false)
                 return
             }
-            let orders = documents.compactMap({ qdSnap in
+            // First check if the user has at least one order
+            var orders = documents.compactMap({ qdSnap in
                 let order = try? qdSnap.data(as: Order.self)
+                if order?.tableId == tableId && order?.userId == UserDefaults.standard.string(forKey: "userId") {
+                    return order
+                }
+                return nil
+            })
+            print("Ordercount: \(orders.count)")
+            if orders.count == 0 {
+                completion(true)
+                return
+            }
+            orders.removeAll()
+            // Second check the state of the user's orders
+            orders = documents.compactMap({ qdSnap in
+                let order = try? qdSnap.data(as: Order.self)
+                print("OrderTableId: \(order?.tableId), orderState: \(order?.orderState), OrderUserId: \(order?.userId), UserIdDefaults: \(UserDefaults.standard.string(forKey: "userId"))")
                 if order?.tableId == tableId && order?.orderState != .sent && order?.userId == UserDefaults.standard.string(forKey: "userId") {
                     return order
                 }

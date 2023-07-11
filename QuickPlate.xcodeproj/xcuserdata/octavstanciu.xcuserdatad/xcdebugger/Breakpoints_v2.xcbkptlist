@@ -3,4 +3,180 @@
    uuid = "A1BBE299-F7B2-4EBD-B18A-519673AA25FB"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FEC03C35-84A3-4293-A866-77F07501E783"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QuickPlate/Features/SignIn/SignInViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "signIn(completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CCA86C45-04AD-4F1D-8C6A-647F28E0629D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QuickPlate/Features/Client/ClientOrder/ClientOrderView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "body"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F33ABCB5-AA19-4A6F-807E-5852A1FE5C4D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QuickPlate/Features/Client/ClientOrder/ClientOrderViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
+            landmarkName = "didOrderFood()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D7141EA8-EEB5-4E38-89A3-67E09EFB5FD7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QuickPlate/Features/Client/ClientOrder/ClientOrderViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
+            landmarkName = "checkForOrdersStatus()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D7141EA8-EEB5-4E38-89A3-67E09EFB5FD7 - 6e0c3273fb1fe01f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "QuickPlate.ClientOrderViewModel.checkForOrdersStatus() -&gt; ()"
+                  moduleName = "QuickPlate"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/octavstanciu/Developer/Xcode/QuickPlate/QuickPlate/Features/Client/ClientOrder/ClientOrderViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "97"
+                  endingLineNumber = "97"
+                  offsetFromSymbolStart = "32">
+               </Location>
+               <Location
+                  uuid = "D7141EA8-EEB5-4E38-89A3-67E09EFB5FD7 - 3b76dc05f1c7436"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Bool&gt;) -&gt; () in QuickPlate.ClientOrderViewModel.checkForOrdersStatus() -&gt; ()"
+                  moduleName = "QuickPlate"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/octavstanciu/Developer/Xcode/QuickPlate/QuickPlate/Features/Client/ClientOrder/ClientOrderViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "97"
+                  endingLineNumber = "97"
+                  offsetFromSymbolStart = "56">
+               </Location>
+               <Location
+                  uuid = "D7141EA8-EEB5-4E38-89A3-67E09EFB5FD7 - 3b76dc05f1c7455"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Bool&gt;) -&gt; () in QuickPlate.ClientOrderViewModel.checkForOrdersStatus() -&gt; ()"
+                  moduleName = "QuickPlate"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/octavstanciu/Developer/Xcode/QuickPlate/QuickPlate/Features/Client/ClientOrder/ClientOrderViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "98"
+                  endingLineNumber = "98"
+                  offsetFromSymbolStart = "60">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9F73FC90-3058-4334-9AE4-F38449EA147D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "QuickPlate/Extras/FirestoreOp/FSOrdersColl.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "hasUnfinishedOrders(tableId:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9F73FC90-3058-4334-9AE4-F38449EA147D - 72946fd3995f0fde"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "QuickPlate.FSOrdersColl.hasUnfinishedOrders(tableId: Swift.String, completion: (Swift.Optional&lt;Swift.Bool&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "QuickPlate"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/octavstanciu/Developer/Xcode/QuickPlate/QuickPlate/Extras/FirestoreOp/FSOrdersColl.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "72">
+               </Location>
+               <Location
+                  uuid = "9F73FC90-3058-4334-9AE4-F38449EA147D - 8ab5dda58b793cd3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRQuerySnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in QuickPlate.FSOrdersColl.hasUnfinishedOrders(tableId: Swift.String, completion: (Swift.Optional&lt;Swift.Bool&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "QuickPlate"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/octavstanciu/Developer/Xcode/QuickPlate/QuickPlate/Extras/FirestoreOp/FSOrdersColl.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "148">
+               </Location>
+               <Location
+                  uuid = "9F73FC90-3058-4334-9AE4-F38449EA147D - 8ab5dda58b793cd3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRQuerySnapshot&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in QuickPlate.FSOrdersColl.hasUnfinishedOrders(tableId: Swift.String, completion: (Swift.Optional&lt;Swift.Bool&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "QuickPlate"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/octavstanciu/Developer/Xcode/QuickPlate/QuickPlate/Extras/FirestoreOp/FSOrdersColl.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "168">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
